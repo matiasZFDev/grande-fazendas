@@ -1,0 +1,23 @@
+geral:
+  sem_permissoes: '&cVocê não tem permissões para executar esse comando.'
+  jogador_offline: '&cEsse jogador encontra-se offline.'
+  quantia_invalida: '&cInsira uma quantia válida.'
+command:
+  argumentos_invalidos: '&cDigite /command ajuda para mais informaçoes.'
+gcommand:
+  argumentos_invalidos: '&cDigite /gcommand ajuda para mais informaçoes.'
+reload:
+  argumentos_invalidos: '&cDigite /gcommand ajuda'
+  sucesso: '&aConfigurações recarregadas com sucesso.'
+save:
+  argumentos_invalidos: '&cDigite /gcomand save'
+  iniciando: '&aIniciando salvado de dados.'
+  salvos: '&aDados foram salvados com sucesso.'
+ajuda:
+  argumentos_invalidos: '&cDigite /command ajuda'
+  pagina_invalida: '&cEssa página não existe'
+  mensagem_1: {}
+ajuda_staff:
+  argumentos_invalidos: '&cDigite /gcommand ajuda'
+  pagina_invalida: '&cEssa página não existe'
+  mensagem_1: {}

@@ -1,0 +1,9 @@
+use: mysql
+database:
+  mysql:
+    user: 'root'
+    password: ''
+    url: 'localhost:3306'
+    db: 'SERVER_DATABASE'
+  sqlite:
+    path: 'db.sql'

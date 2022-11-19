@@ -1,0 +1,24 @@
+mundo: 'fazendas'
+distanca: 100
+npcs:
+  terreno:
+    nome_skin: 'm1ddl3'
+  industria:
+    nome_skin: 'MatBed'
+evolucao:
+  nivel_maximo: 50
+  niveis:
+    requisitos:
+      cada_1: { xp: 1k }
+      em_5: { xp: 5k }
+      depois_10_cada_2: { xp: 3k }
+      em_20: { xp: 20k }
+      em_30: { xp: 30k }
+      em_45: { xp: 50k }
+      em_50: { xp: 100k }
+    melhorias:
+      em_1: { missoes_diarias: 3 }
+      em_10: { missoes_diarias: 4 }
+      em_30: { missoes_diarias: 5 }
+      em_50: { missoes_diarias: 6 }
+      em_100: { missoes_diarias: 10 }

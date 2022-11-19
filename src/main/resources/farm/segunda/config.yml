@@ -1,0 +1,22 @@
+id: 1
+posicao:
+  x: 8
+  y: 1
+  z: 30
+requisitos:
+  nivel_ilha: 1
+  items:
+    trigo: 1k
+  ouro: 1k
+niveis:
+  nivel_1:
+    nivel: 1
+    schematic: nivel_1
+    evolucao:
+      xp: 300
+      ouro: 2k
+      nivel: 2
+  nivel_2:
+    nivel: 2
+    schematic: nivel_2
+    evolucao: false

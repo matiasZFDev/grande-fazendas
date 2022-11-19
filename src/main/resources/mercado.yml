@@ -1,0 +1,3 @@
+tempo_expiracao: 2880 # minutos
+limite_itens_a_venda: 10
+taxa: 5

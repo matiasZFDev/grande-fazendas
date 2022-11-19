@@ -1,0 +1,8 @@
+fertilizante_1:
+  id: 0 # id numerico (db)
+  nome: 'Fertilizante 10%'
+  reducao: 10 # reducao do tempo em %
+fertilizante_2:
+  id: 1
+  nome: 'Fertilizante 25%'
+  reducao: 25

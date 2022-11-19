@@ -1,0 +1,38 @@
+coletar_trigo_1:
+  id: 0
+  nome: '&eColetar Trigo (x100)'
+  tipo: coleta
+  plantacao: trigo
+  quantia: 100
+  chance: 50
+  recompensas:
+    lootbox:
+      tipo: lootbox
+      id: 0
+      quantia: 1
+coletar_cenoura_1:
+  id: 0
+  nome: '&eColetar cenoura (x100)'
+  tipo: coleta
+  plantacao: cenoura
+  quantia: 50
+  chance: 30
+  recompensa:
+    fertilizante:
+      tipo: fertilizante
+      id: 0
+      quantia: 1
+craftar_bolo_1:
+  id: 1
+  tipo: craft
+  nome: '&aCrie Bolo de cenoura (x1)'
+  material_id: 3
+  quantia: 1
+  chance: 30
+  recompensa:
+    xp_1:
+      tipo: xp
+      quantia: 250
+    xp_2:
+      tipo: xp
+      quantia: 500

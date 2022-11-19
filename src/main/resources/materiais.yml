@@ -1,0 +1,16 @@
+trigo:
+  id: 0
+  nome: '&eTrigo'
+  ouro: 1
+cenoura:
+  id: 1
+  nome: '&6Cenoura'
+  ouro: 6
+pao:
+  id: 2
+  nome: '&ePao'
+  ouro: 12
+bolo_cenoura:
+  id: 3
+  nome: '&6Bolo de cenoura'
+  ouro: 30

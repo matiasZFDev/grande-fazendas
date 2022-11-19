@@ -1,0 +1,12 @@
+lootbox_1:
+  id: 0
+  nome: '&6Lootbox &e➊'
+  boosters:
+    booster_1:
+      chance: 10
+      boost: 2 # multiplicador (x)
+      duracao: 10 # segundos
+    booster_2:
+      chance: 4
+      boost: 2.5
+      duracao: 5

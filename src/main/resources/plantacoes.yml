@@ -1,0 +1,12 @@
+trigo:
+  tipo: WHEAT # nome tipo minecraft
+  nome: '&eTrigo' # display em hologramas/lores
+  nivel_ilha: 1 # nivel de ilha preciso
+  material_id: 0 # id do material de materiais.yml
+  reset: 10 # minutos
+cenoura:
+  tipo: CARROT
+  nome: '&6Cenoura'
+  nivel_ilha: 10
+  material_id: 1
+  reset: 60

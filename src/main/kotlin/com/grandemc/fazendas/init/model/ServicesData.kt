@@ -1,3 +1,11 @@
 package com.grandemc.fazendas.init.model
 
-class ServicesData()
+import com.grandemc.fazendas.storage.market.model.MarketItem
+import com.grandemc.fazendas.storage.player.model.FarmPlayer
+import com.grandemc.post.external.lib.database.base.DatabaseService
+import java.util.UUID
+
+data class ServicesData(
+    val playerService: DatabaseService<UUID, FarmPlayer>,
+    val marketService: DatabaseService<Int, MarketItem>
+)

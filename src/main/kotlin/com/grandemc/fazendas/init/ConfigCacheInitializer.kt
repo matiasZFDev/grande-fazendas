@@ -1,5 +1,8 @@
 package com.grandemc.fazendas.init
 
+import com.grandemc.fazendas.config.FarmsConfig
+import com.grandemc.fazendas.config.IslandConfig
+import com.grandemc.fazendas.global.createIfNotExists
 import com.grandemc.post.external.lib.cache.config.Updatable
 import com.grandemc.post.external.lib.cache.config.chunk.*
 import com.grandemc.post.external.lib.global.allPropertiesAs
@@ -9,8 +12,12 @@ import com.grandemc.post.external.lib.manager.view.MenuContainerManager
 import com.grandemc.post.external.lib.util.CustomConfig
 import com.grandemc.fazendas.init.model.ConfigCache
 import com.grandemc.fazendas.init.model.ConfigCacheUpdater
+import com.grandemc.fazendas.util.lazyValue
+import org.bukkit.plugin.Plugin
+import java.io.File
 
 class ConfigCacheInitializer(
+    private val plugin: Plugin,
     private val configManager: ConfigManager,
     private val menuContainerManager: MenuContainerManager,
     private val context: String
@@ -28,8 +35,20 @@ class ConfigCacheInitializer(
         return configManager.getWrapper(configName)
     }
 
-    private fun chunks(): ConfigCache.Chunks {
-        return ConfigCache.Chunks(
+    private fun chunks(): ConfigCache.Configs {
+        val islandConfig = IslandConfig(
+            config("farm/ilha"),
+            lazyValue {
+                val file = File(plugin.dataFolder, "farm/base.schematic")
+                if (!file.exists()) {
+                    file.createIfNotExists()
+                    plugin.saveResource("farm/base.schematic", true)
+                }
+                file
+            }
+        )
+        islandConfig.update()
+        return ConfigCache.Configs(
             MessagesChunkImpl(
                 configManager.getWrapper("resposta/mensagens"),
                 "resposta/mensagens.yml",
@@ -45,7 +64,12 @@ class ConfigCacheInitializer(
                 "resposta/efeitos.yml",
                 context
             ),
-            MenusChunkImpl(menuContainerManager)
+            MenusChunkImpl(menuContainerManager),
+            islandConfig,
+            FarmsConfig(
+                plugin, "farm", islandConfig.get().worldName,
+                islandConfig.get().cropBlock
+            )
         )
     }
 }

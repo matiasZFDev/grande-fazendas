@@ -7,10 +7,13 @@ import com.grandemc.fazendas.provider.GlobalSoundsProvider
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
-fun CommandSender.respond(
+fun CommandSender?.respond(
     respondKey: String,
     messageAction: (SubjectMessage.() -> SubjectMessage)? = null
 ) {
+    if (this == null)
+        return
+
     this.message(respondKey, messageAction)
 
     if (this is Player) {

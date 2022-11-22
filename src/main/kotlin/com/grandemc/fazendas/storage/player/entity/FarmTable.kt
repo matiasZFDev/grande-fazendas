@@ -1,19 +1,13 @@
 package com.grandemc.fazendas.storage.player.entity
 
 import com.grandemc.fazendas.global.getCuboid
-import com.grandemc.fazendas.global.getLocation
 import com.grandemc.fazendas.storage.player.model.FarmPlayer
-import com.grandemc.fazendas.util.Cuboid
-import com.grandemc.fazendas.util.FixedCuboid
+import com.grandemc.fazendas.util.cuboid.Cuboid
 import com.grandemc.post.external.lib.database.base.FixedTable
 import com.grandemc.post.external.lib.database.base.model.Table
 import com.grandemc.post.external.lib.database.buildColumnTable
 import com.grandemc.post.external.lib.global.getBytes
 import com.grandemc.post.external.lib.global.toUUID
-import org.bukkit.Bukkit
-import org.bukkit.CropState
-import org.bukkit.craftbukkit.v1_8_R3.block.CraftBlock
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftAgeable
 import java.sql.PreparedStatement
 import java.sql.ResultSet
 import java.util.UUID
@@ -21,6 +15,7 @@ import java.util.UUID
 class FarmTable(tableName: String) : FixedTable<FarmPlayer, UUID, FarmTable.Data>(tableName) {
     inner class Data(
         val ownerId: UUID,
+        val id: Int,
         val level: Byte,
         val location: Cuboid
     )
@@ -28,6 +23,7 @@ class FarmTable(tableName: String) : FixedTable<FarmPlayer, UUID, FarmTable.Data
     override fun tableModel(): Table {
         return buildColumnTable(tableName) {
             addColumn("owner_id", "BINARY(16) NOT NULL")
+            addColumn("id", "INT NOT NULL", true)
             addColumn("level", "TINYINT NOT NULL", true)
             addColumn("location_world_id", "BINARY(16) NOT NULL")
             addColumn("location_min_x", "INT NOT NULL")
@@ -41,16 +37,19 @@ class FarmTable(tableName: String) : FixedTable<FarmPlayer, UUID, FarmTable.Data
     }
 
     override fun consumeStatement(statement: PreparedStatement, value: FarmPlayer): Boolean {
+        val farm = value.farm() ?: return false
         statement.setBytes(1, value.id().getBytes())
-        statement.setByte(2, value.farm().level())
-        statement.setBytes(3, value.farm().location().min().world.uid.getBytes())
-        statement.setInt(4, value.farm().location().min().blockX)
-        statement.setInt(5, value.farm().location().min().blockY)
-        statement.setInt(5, value.farm().location().min().blockZ)
-        statement.setInt(6, value.farm().location().max().blockX)
-        statement.setInt(7, value.farm().location().max().blockY)
-        statement.setInt(8, value.farm().location().max().blockZ)
-        statement.setByte(9, value.farm().level())
+        statement.setInt(2, farm.id())
+        statement.setByte(3, farm.level())
+        statement.setBytes(4, farm.location().min().world.uid.getBytes())
+        statement.setInt(5, farm.location().min().blockX)
+        statement.setInt(6, farm.location().min().blockY)
+        statement.setInt(7, farm.location().min().blockZ)
+        statement.setInt(8, farm.location().max().blockX)
+        statement.setInt(9, farm.location().max().blockY)
+        statement.setInt(10, farm.location().max().blockZ)
+        statement.setInt(11, farm.id())
+        statement.setByte(12, farm.level())
         return true
     }
 
@@ -58,6 +57,7 @@ class FarmTable(tableName: String) : FixedTable<FarmPlayer, UUID, FarmTable.Data
         val ownerId = resultSet.getBytes("owner_id").toUUID()
         data[ownerId] = Data(
             ownerId,
+            resultSet.getInt("id"),
             resultSet.getByte("level"),
             resultSet.getCuboid()
         )

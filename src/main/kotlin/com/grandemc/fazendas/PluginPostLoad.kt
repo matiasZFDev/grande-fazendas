@@ -26,7 +26,7 @@ class PluginPostLoad(
         initAPIs()
         guiManagers = GuiManagersInitializer().init()
         configCache = ConfigCacheInitializer(
-            configManager, guiManagers.menuContainerManager, context
+            plugin, configManager, guiManagers.menuContainerManager, context
         ).init()
         initProviders()
         initPluginManagers()
@@ -44,7 +44,7 @@ class PluginPostLoad(
     }
 
     private fun initProviders() {
-        configCache.chunks.run {
+        configCache.configs.run {
             GlobalMessagesProvider.provide(messages)
             GlobalSoundsProvider.provide(sounds)
             GlobalEffectsProvider.provide(effects)
@@ -54,7 +54,12 @@ class PluginPostLoad(
     }
 
     private fun initPluginManagers() {
-        pluginManagers = PluginManagersInitializer().init()
+        pluginManagers = PluginManagersInitializer(
+            servicesData.playerService,
+            plugin,
+            configCache.configs.island,
+            configCache.configs.farms
+        ).init()
     }
 
     private fun initFactories() {
@@ -69,7 +74,7 @@ class PluginPostLoad(
         MenuContainerRegistry(
             guiManagers.menuContainerManager, configManager, context
         ).registerAll()
-        configCache.chunks.menus.update()
+        configCache.configs.menus.update()
         ViewRegistry(
             guiManagers.viewManager
         ).registerAll()
@@ -80,12 +85,15 @@ class PluginPostLoad(
     }
 
     private fun registerListeners() {
-        ListenerRegistry(plugin).registerAll()
+        ListenerRegistry(
+            plugin, pluginManagers.playerManager
+        ).registerAll()
     }
 
     private fun registerCommands() {
         CommandRegistry(
-            plugin, configManager, configCache.updater, databaseManager
+            plugin, configManager, configCache.updater, databaseManager,
+            pluginManagers.islandManager, pluginManagers.islandGenerationManager
         ).registerAll()
     }
 }

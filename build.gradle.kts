@@ -14,6 +14,7 @@ repositories {
     maven { url = uri("https://jitpack.io") }
     maven { url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots/") }
     maven { url = uri("https://maven.citizensnpcs.co/repo") }
+    maven { url = uri("https://maven.enginehub.org/repo/") }
 }
 
 dependencies {
@@ -24,7 +25,13 @@ dependencies {
     compileOnly(files("/home/aganac/BukkitDev/spigot.jar"))
     compileOnly(files("/home/aganac/BukkitDev/GrandeCash.jar"))
     compileOnly(files("/home/aganac/BukkitDev/FAWE.jar"))
-    compileOnly("net.citizensnpcs:citizens-main:2.0.30-SNAPSHOT")
+    compileOnly("com.sk89q.worldedit:worldedit-bukkit:6.1.1-SNAPSHOT") {
+        exclude(module = "bukkit")
+    }
+    compileOnly("net.citizensnpcs:citizens-main:2.0.30-SNAPSHOT") {
+        exclude(module = "bukkit")
+        exclude(module = "libby-bukkit")
+    }
     compileOnly(postLibFiles)
     testCompileOnly(postLibFiles)
 }

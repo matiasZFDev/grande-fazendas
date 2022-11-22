@@ -25,6 +25,7 @@ class FarmLandTable(
             addColumn("owner_id", "BINARY(16) NOT NULL")
             addColumn("type_id", "TINYINT NOT NULL")
             addColumn("level", "TINYINT NOT NULL")
+            addColumn("xp", "INT NOT NULL")
             addColumn("reset_countdown", "INT NOT NULL")
             addColumn("can_boost", "BIT NOT NULL")
             addColumn("location_world_id", "BINARY(16) NOT NULL")
@@ -41,29 +42,29 @@ class FarmLandTable(
         statement.setUUID(1, value.ownerId)
         statement.setByte(2, value.land.typeId())
         statement.setByte(3, value.land.level())
-        statement.setInt(4, value.land.resetCountdown())
-        statement.setBoolean(5, value.land.canBoost())
-        statement.setUUID(6, value.land.location().min().world.uid)
-        statement.setInt(7, value.land.location().min().blockX)
-        statement.setInt(8, value.land.location().min().blockY)
-        statement.setInt(9, value.land.location().min().blockZ)
-        statement.setInt(10, value.land.location().max().blockX)
-        statement.setInt(11, value.land.location().max().blockY)
-        statement.setInt(12, value.land.location().max().blockZ)
+        statement.setInt(4, value.land.xp())
+        statement.setInt(5, value.land.resetCountdown())
+        statement.setBoolean(6, value.land.canBoost())
+        statement.setUUID(7, value.land.location().min().world.uid)
+        statement.setInt(8, value.land.location().min().blockX)
+        statement.setInt(9, value.land.location().min().blockY)
+        statement.setInt(10, value.land.location().min().blockZ)
+        statement.setInt(11, value.land.location().max().blockX)
+        statement.setInt(12, value.land.location().max().blockY)
+        statement.setInt(13, value.land.location().max().blockZ)
         return true
     }
 
     override fun consumeResultSet(data: MutableMap<UUID, MutableList<FarmLand>>, resultSet: ResultSet) {
         data
             .computeIfAbsent(resultSet.getUUID("owner_id")) { LinkedList() }
-            .add(
-                FarmLand(
+            .add(FarmLand(
                 resultSet.getCuboid(),
                 resultSet.getByte("type_id"),
                 resultSet.getByte("level"),
+                resultSet.getInt("xp"),
                 resultSet.getInt("reset_countdown"),
                 resultSet.getBoolean("can_boost")
-            )
-            )
+            ))
     }
 }

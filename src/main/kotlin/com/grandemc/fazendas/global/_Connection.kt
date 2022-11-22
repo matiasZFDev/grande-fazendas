@@ -1,11 +1,10 @@
 package com.grandemc.fazendas.global
 
-import com.grandemc.fazendas.util.Cuboid
-import com.grandemc.fazendas.util.FixedCuboid
+import com.grandemc.fazendas.util.cuboid.Cuboid
+import com.grandemc.fazendas.util.cuboid.FixedCuboid
 import com.grandemc.post.external.lib.global.getBytes
 import com.grandemc.post.external.lib.global.toUUID
 import org.bukkit.Bukkit
-import org.bukkit.World
 import java.sql.PreparedStatement
 import java.sql.ResultSet
 import java.util.UUID

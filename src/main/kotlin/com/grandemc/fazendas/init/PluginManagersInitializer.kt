@@ -1,10 +1,42 @@
 package com.grandemc.fazendas.init
 
+import com.grandemc.fazendas.config.FarmsConfig
+import com.grandemc.fazendas.config.IslandConfig
+import com.grandemc.fazendas.global.respond
 import com.grandemc.post.external.lib.init.Initializer
 import com.grandemc.fazendas.init.model.PluginManagers
+import com.grandemc.fazendas.manager.BuildManager
+import com.grandemc.fazendas.manager.IslandGenerationManager
+import com.grandemc.fazendas.manager.IslandManager
+import com.grandemc.fazendas.manager.PlayerManager
+import com.grandemc.fazendas.storage.player.model.FarmPlayer
+import com.grandemc.post.external.lib.database.base.DatabaseService
+import org.bukkit.entity.Player
+import org.bukkit.plugin.Plugin
+import java.util.UUID
 
-class PluginManagersInitializer() : Initializer<PluginManagers> {
+class PluginManagersInitializer(
+    private val playerService: DatabaseService<UUID, FarmPlayer>,
+    private val plugin: Plugin,
+    private val islandConfig: IslandConfig,
+    private val farmsConfig: FarmsConfig
+) : Initializer<PluginManagers> {
     override fun init(): PluginManagers {
-        return PluginManagers()
+        val playerManager = PlayerManager(playerService)
+        val islandManager = IslandManager(playerManager, islandConfig)
+        val buildManager = BuildManager()
+        val successGeneration: (Player?) -> Unit = { player: Player? ->
+            player.respond("ilha.criada")
+            player?.let { islandManager.joinIsland(it) }
+        }
+        return PluginManagers(
+            playerManager,
+            islandManager,
+            buildManager,
+            IslandGenerationManager(
+                plugin, playerManager, buildManager, islandManager, islandConfig,
+                farmsConfig, successGeneration
+            )
+        )
     }
 }

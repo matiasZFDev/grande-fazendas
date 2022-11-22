@@ -1,14 +1,16 @@
 package com.grandemc.fazendas.storage.player.model
 
-import com.grandemc.fazendas.util.Cuboid
+import com.grandemc.fazendas.util.cuboid.Cuboid
 
 class PrivateFarm(
+    private val id: Int,
     private val location: Cuboid,
     private var level: Byte,
     private val lands: MutableList<FarmLand>,
     private val questMaster: QuestMaster,
     private val industry: FarmIndustry
 ) {
+    fun id(): Int = id
     fun location(): Cuboid = location
     fun level(): Byte = level
     fun levelUp() {

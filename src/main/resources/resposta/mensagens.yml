@@ -21,3 +21,12 @@ ajuda_staff:
   argumentos_invalidos: '&cDigite /gcommand ajuda'
   pagina_invalida: '&cEssa página não existe'
   mensagem_1: {}
+ilha:
+  gerando_ilha_fila: '&cVocê ja se encontra na fila de geração da fazenda.'
+  gerando_mundo: '&aGerando mundo... Sim, você vai ser o unico a ler isto.'
+  gerando_ilha: '&aEstamos gerando a sua ilha, espere um momento.'
+  gerando_fila:
+    actionbar: '&aGeração da fazenda! Você está na posição #{posicao} da fila.'
+  criada: '&aA sua fazenda foi criada com sucesso! Digite /fazenda para se teleportar ate ela.'
+  teleportado: '&aVocê foi teleportado para a sua fazenda.'
+  saida: '&eVocê saiu da sua fazenda.'

@@ -5,13 +5,16 @@ import java.util.UUID
 
 class FarmPlayer(
     private val playerId: UUID,
-    private val farm: PrivateFarm,
+    private var farm: PrivateFarm?,
     private val storage: ItemStorage,
     private val hoe: FarmHoe,
     private var gold: Double
 ) : Identifiable<UUID> {
     override fun id(): UUID = playerId
-    fun farm(): PrivateFarm = farm
+    fun farm(): PrivateFarm? = farm
+    fun setFarm(farm: PrivateFarm) {
+        this.farm = farm
+    }
     fun storage(): ItemStorage = storage
     fun hoe(): FarmHoe = hoe
     fun gold(): Double = gold

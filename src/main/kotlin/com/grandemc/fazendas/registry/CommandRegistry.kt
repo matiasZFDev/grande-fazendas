@@ -1,5 +1,7 @@
 package com.grandemc.fazendas.registry;
 
+import com.grandemc.fazendas.manager.IslandGenerationManager
+import com.grandemc.fazendas.manager.IslandManager
 import com.grandemc.post.external.lib.cache.config.Updatable
 import com.grandemc.post.external.lib.command.base.CommandCompound
 import com.grandemc.post.external.lib.factory.Factory
@@ -13,7 +15,9 @@ class CommandRegistry(
     private val plugin: JavaPlugin,
     private val configManager: ConfigManager,
     private val configCacheUpdater: Updatable,
-    private val databaseManager: DatabaseManager
+    private val databaseManager: DatabaseManager,
+    private val islandManager: IslandManager,
+    private val islandGenerationManager: IslandGenerationManager
 ) {
     fun registerAll() {
         factories()
@@ -26,7 +30,7 @@ class CommandRegistry(
     }
 
     private fun fazendas(): Factory<CommandCompound> = FazendasCommands(
-        plugin
+        plugin, islandManager, islandGenerationManager
     )
     private fun gfazendas(): Factory<CommandCompound> = GFazendasCommands(
         plugin, configManager, configCacheUpdater, databaseManager

@@ -13,6 +13,7 @@ class MarketTableManager : TableManager<MarketItem> {
     }
 
     override fun fetchAll(connection: Connection): Collection<MarketItem> {
+        marketItemTable.createTable(connection)
         return marketItemTable.fetchAll(connection).values.flatten()
     }
 }

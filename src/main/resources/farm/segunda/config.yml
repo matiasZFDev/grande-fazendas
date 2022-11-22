@@ -1,8 +1,8 @@
-id: 1
+id: 2
 posicao:
-  x: 8
-  y: 1
-  z: 30
+  x: 0
+  y: 0
+  z: 0
 requisitos:
   nivel_ilha: 1
   items:

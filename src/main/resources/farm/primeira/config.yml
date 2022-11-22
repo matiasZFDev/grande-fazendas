@@ -1,8 +1,8 @@
-id: 0
+id: 1
 posicao:
-  x: 10
-  y: 1
-  z: 10
+  x: 0
+  y: 0
+  z: 0
 requisitos:
   nivel_ilha: 1
   itens: {}
@@ -18,11 +18,4 @@ niveis:
   nivel_2:
     nivel: 2
     schematic: nivel_2
-    evolucao:
-      xp: 250
-      ouro: 75
-      nivel: 3
-  nivel_3:
-    nivel: 3
-    schematic: nivel_3
     evolucao: false

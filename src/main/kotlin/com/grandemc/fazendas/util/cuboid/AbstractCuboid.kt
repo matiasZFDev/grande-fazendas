@@ -1,4 +1,4 @@
-package com.grandemc.fazendas.util
+package com.grandemc.fazendas.util.cuboid
 
 import org.bukkit.Location
 

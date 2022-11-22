@@ -1,21 +1,29 @@
 package com.grandemc.fazendas.registry.command
 
+import com.grandemc.fazendas.bukkit.command.fazenda.Island
 import com.grandemc.post.external.lib.command.base.CommandCompound
 import com.grandemc.post.external.lib.factory.Factory
 import com.grandemc.post.external.lib.global.command.buildCommand
 import com.grandemc.fazendas.bukkit.command.fazendaTabCompleter
 import com.grandemc.fazendas.bukkit.command.fazendaHelp
+import com.grandemc.fazendas.manager.IslandGenerationManager
+import com.grandemc.fazendas.manager.IslandManager
 import com.grandemc.fazendas.provider.GlobalMessagesProvider
 import org.bukkit.plugin.java.JavaPlugin
 
-class FazendasCommands(private val plugin: JavaPlugin) : Factory<CommandCompound> {
+class FazendasCommands(
+    private val plugin: JavaPlugin,
+    private val islandManager: IslandManager,
+    private val islandGenerationManager: IslandGenerationManager
+) : Factory<CommandCompound> {
     override fun create(): CommandCompound {
         return buildCommand(plugin, GlobalMessagesProvider.get()) {
-            commandName("fazenda")
+            commandName("fazendas")
             tabCompleter(fazendaTabCompleter)
 
             handler {
-                noSuchCommandKey("fazenda")
+                noSuchCommandKey("fazendas")
+                emptyArgsModule(Island(islandManager, islandGenerationManager))
 
                 module("ajuda", fazendaHelp)
             }

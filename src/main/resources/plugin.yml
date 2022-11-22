@@ -2,9 +2,11 @@ name: GrandeFazendas
 main: com.grandemc.fazendas.GrandeFazendas
 version: 1.0
 softdepend: [Multiverse-Core]
-depend: [PostLib, Vault, GrandeCash, FAWE]
+depend: [PostLib, Vault, GrandeCash, Multiverse-Core, FastAsyncWorldEdit, Citizens]
 commands:
-  fazenda:
+  fazendas:
+    aliases: [fazenda]
     description: Player main command
-  gfazenda:
+  gfazendas:
+    aliases: [gfazenda]
     description: Staff main command

@@ -16,7 +16,7 @@ class MarketItemTable(
 ) : DynamicTable<MarketItem, UUID, MutableList<MarketItem>>(tableName) {
     override fun tableModel(): Table {
         return buildColumnTable(tableName) {
-            addColumn("id", "INT NOT NULL AUTO_INCREMENT")
+            addColumn("id", "INT NOT NULL")
             addColumn("seller_id", "BINARY(16) NOT NULL")
             addColumn("item_id", "TINYINT NOT NULL")
             addColumn("amount", "SMALLINT NOT NULL")
@@ -26,11 +26,12 @@ class MarketItemTable(
     }
 
     override fun consumeStatement(statement: PreparedStatement, value: MarketItem): Boolean {
-        statement.setUUID(1, value.sellerId)
-        statement.setByte(2, value.itemId)
-        statement.setShort(3, value.amount)
-        statement.setDouble(4, value.goldPrice)
-        statement.setInt(5, value.expiryTime)
+        statement.setInt(1, value.id)
+        statement.setUUID(2, value.sellerId)
+        statement.setByte(3, value.itemId)
+        statement.setShort(4, value.amount)
+        statement.setDouble(5, value.goldPrice)
+        statement.setInt(6, value.expiryTime)
         return true
     }
 

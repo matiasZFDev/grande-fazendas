@@ -1,6 +1,6 @@
 package com.grandemc.fazendas.storage.player.model
 
-import com.grandemc.fazendas.util.Cuboid
+import com.grandemc.fazendas.util.cuboid.Cuboid
 import com.grandemc.post.external.lib.global.ApplyType
 import com.grandemc.post.external.lib.global.applyPercentage
 

@@ -25,7 +25,10 @@ class IndustryTable(
     }
 
     override fun consumeStatement(statement: PreparedStatement, value: FarmPlayer): Boolean {
-        value.farm().industry().currentRecipe().let {
+        if (value.farm() == null)
+            return false
+
+        value.farm()!!.industry().currentRecipe().let {
             if (it == null)
                 return false
             statement.setUUID(1, value.id())

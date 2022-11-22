@@ -1,10 +1,18 @@
 mundo: 'fazendas'
 distanca: 100
+spawn:
+  x: 0
+  y: 0
+  z: 2
+farms_bloco_plantacao: 7
+comando_saida: 'mvtp world'
 npcs:
-  terreno:
+  terrenos:
     nome_skin: 'm1ddl3'
-  industria:
+  missoes:
     nome_skin: 'MatBed'
+  industria:
+    nome_skin: Sarn4
 evolucao:
   nivel_maximo: 50
   niveis:

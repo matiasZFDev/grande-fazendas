@@ -19,6 +19,9 @@ class ItemStorage(private val items: MutableList<StorageItem> = LinkedList()) {
 
     fun removeAmount(id: Byte, amount: Short) {
         items.find { id == it.id }?.let {
+            if (it.amount - amount < 0)
+                return
+
             it.amount = (it.amount - amount).toShort()
         }
     }

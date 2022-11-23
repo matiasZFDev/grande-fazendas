@@ -5,7 +5,7 @@ posicao:
   z: 0
 requisitos:
   nivel_ilha: 1
-  items:
+  itens:
     trigo: 1k
   ouro: 1k
 niveis:

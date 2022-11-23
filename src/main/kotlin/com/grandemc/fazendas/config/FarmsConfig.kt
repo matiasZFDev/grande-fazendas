@@ -93,7 +93,7 @@ class FarmsConfig(
                     ),
                     FarmRequirements(
                         farmYamlConfig.getByte("requisitos.nivel_ilha"),
-                        farmYamlConfig.keys().map {
+                        farmYamlConfig.section("requisitos.itens").keys().map {
                             ItemRequirement(
                                 it,
                                 farmYamlConfig.getShort("requisitos.itens.$it")

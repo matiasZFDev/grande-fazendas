@@ -7,6 +7,9 @@ import com.grandemc.fazendas.init.ConfigInitializer
 import com.grandemc.fazendas.init.DatabaseInitializer
 import com.grandemc.fazendas.init.ServicesInitializer
 import com.grandemc.fazendas.init.model.ServicesData
+import com.grandemc.fazendas.npc.LandsTrait
+import net.citizensnpcs.api.CitizensAPI
+import net.citizensnpcs.api.trait.TraitInfo
 
 class GrandeFazendas : GrandePlugin() {
     private lateinit var configManager: ConfigManager
@@ -28,6 +31,7 @@ class GrandeFazendas : GrandePlugin() {
     }
 
     override fun dataPostLoad() {
+        CitizensAPI.getTraitFactory().registerTrait(TraitInfo.create(LandsTrait::class.java))
         PluginPostLoad(this, servicesData, configManager, databaseManager, CONTEXT).run()
     }
 

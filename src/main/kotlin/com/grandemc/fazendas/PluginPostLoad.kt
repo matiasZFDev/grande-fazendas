@@ -58,7 +58,8 @@ class PluginPostLoad(
             servicesData.playerService,
             plugin,
             configCache.configs.island,
-            configCache.configs.farms
+            configCache.configs.farms,
+            configCache.configs.materials
         ).init()
     }
 
@@ -76,7 +77,9 @@ class PluginPostLoad(
         ).registerAll()
         configCache.configs.menus.update()
         ViewRegistry(
-            guiManagers.viewManager
+            guiManagers.viewManager,
+            pluginManagers,
+            configCache.configs
         ).registerAll()
     }
 

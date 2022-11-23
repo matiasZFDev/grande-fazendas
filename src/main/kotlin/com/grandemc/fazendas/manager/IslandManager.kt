@@ -4,11 +4,13 @@ import com.grandemc.fazendas.config.IslandConfig
 import com.grandemc.fazendas.global.*
 import com.grandemc.fazendas.manager.model.IslandEntities
 import com.grandemc.fazendas.manager.model.IslandSession
+import com.grandemc.fazendas.npc.LandsTrait
 import com.sk89q.worldedit.BlockVector
 import com.sk89q.worldedit.Vector
 import net.citizensnpcs.api.CitizensAPI
 import net.citizensnpcs.api.npc.MemoryNPCDataStore
 import net.citizensnpcs.api.npc.NPC
+import net.citizensnpcs.api.trait.Trait
 import net.minecraft.server.v1_8_R3.PacketPlayOutEntityMetadata
 import net.minecraft.server.v1_8_R3.PacketPlayOutScoreboardTeam
 import net.minecraft.server.v1_8_R3.ScoreboardTeam
@@ -54,12 +56,14 @@ class IslandManager(
 
     private fun createNPC(
         configNPC: IslandConfig.IslandNPC,
-        origin: Location
+        origin: Location,
+        trait: Trait? = null
     ): NPC {
         val npc = npcRegistry.createNPC(EntityType.PLAYER, configNPC.name)
         val npcLocation = origin.add(configNPC.position)
         npc.spawn(npcLocation)
         npc.data().setPersistent(NPC.NAMEPLATE_VISIBLE_METADATA, false)
+        trait?.let { npc.addTrait(it) }
         return npc
     }
 
@@ -73,7 +77,7 @@ class IslandManager(
                 createHologram(player, npcs.quests, islandSpawn)
             ),
             listOf(
-                createNPC(npcs.terrains, islandSpawn),
+                createNPC(npcs.terrains, islandSpawn, LandsTrait()),
                 createNPC(npcs.industry, islandSpawn),
                 createNPC(npcs.quests, islandSpawn)
             )

@@ -41,17 +41,18 @@ class FarmLandTable(
     override fun consumeStatement(statement: PreparedStatement, value: LandInput): Boolean {
         statement.setUUID(1, value.ownerId)
         statement.setByte(2, value.land.typeId())
-        statement.setByte(3, value.land.level())
-        statement.setInt(4, value.land.xp())
-        statement.setInt(5, value.land.resetCountdown())
-        statement.setBoolean(6, value.land.canBoost())
-        statement.setUUID(7, value.land.location().min().world.uid)
-        statement.setInt(8, value.land.location().min().blockX)
-        statement.setInt(9, value.land.location().min().blockY)
-        statement.setInt(10, value.land.location().min().blockZ)
-        statement.setInt(11, value.land.location().max().blockX)
-        statement.setInt(12, value.land.location().max().blockY)
-        statement.setInt(13, value.land.location().max().blockZ)
+        statement.setByte(3, value.land.cropId() ?: -1)
+        statement.setByte(4, value.land.level())
+        statement.setInt(5, value.land.xp())
+        statement.setInt(6, value.land.resetCountdown())
+        statement.setBoolean(7, value.land.canBoost())
+        statement.setUUID(8, value.land.location().min().world.uid)
+        statement.setInt(9, value.land.location().min().blockX)
+        statement.setInt(10, value.land.location().min().blockY)
+        statement.setInt(11, value.land.location().min().blockZ)
+        statement.setInt(12, value.land.location().max().blockX)
+        statement.setInt(13, value.land.location().max().blockY)
+        statement.setInt(14, value.land.location().max().blockZ)
         return true
     }
 
@@ -61,6 +62,10 @@ class FarmLandTable(
             .add(FarmLand(
                 resultSet.getCuboid(),
                 resultSet.getByte("type_id"),
+                if (resultSet.getByte("crop_id") == (-1).toByte())
+                    null
+                else
+                    resultSet.getByte("crop_id"),
                 resultSet.getByte("level"),
                 resultSet.getInt("xp"),
                 resultSet.getInt("reset_countdown"),

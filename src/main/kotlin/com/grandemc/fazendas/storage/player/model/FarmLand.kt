@@ -7,6 +7,7 @@ import com.grandemc.post.external.lib.global.applyPercentage
 class FarmLand(
     private var location: Cuboid,
     private val typeId: Byte,
+    private var cropId: Byte?,
     private var level: Byte,
     private var xp: Int,
     private var resetCountdown: Int,
@@ -17,6 +18,10 @@ class FarmLand(
         this.location = location
     }
     fun typeId(): Byte = typeId
+    fun cropId(): Byte? = cropId
+    fun setCrop(cropId: Byte) {
+        this.cropId = cropId
+    }
     fun xp(): Int = xp
     fun addXp(xp: Int) {
         this.xp += xp

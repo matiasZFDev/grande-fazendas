@@ -1,5 +1,6 @@
 package com.grandemc.fazendas.registry
 
+import com.grandemc.fazendas.bukkit.view.land.LandsMenuContainer
 import com.grandemc.post.external.lib.cache.config.menu.MenuContainer
 import com.grandemc.post.external.lib.manager.config.ConfigManager
 import com.grandemc.post.external.lib.manager.view.MenuContainerManager
@@ -23,6 +24,6 @@ class MenuContainerRegistry(
     }
 
     fun registerAll() {
-
+        register<LandsMenuContainer>("plantios")
     }
 }

@@ -2,6 +2,8 @@ package com.grandemc.fazendas.init
 
 import com.grandemc.fazendas.config.FarmsConfig
 import com.grandemc.fazendas.config.IslandConfig
+import com.grandemc.fazendas.config.LandsConfig
+import com.grandemc.fazendas.config.MaterialsConfig
 import com.grandemc.fazendas.global.createIfNotExists
 import com.grandemc.post.external.lib.cache.config.Updatable
 import com.grandemc.post.external.lib.cache.config.chunk.*
@@ -69,7 +71,10 @@ class ConfigCacheInitializer(
             FarmsConfig(
                 plugin, "farm", islandConfig.get().worldName,
                 islandConfig.get().cropBlock
-            )
+            ),
+            LandsConfig(config("plantios")),
+            MaterialsConfig(config("materiais")),
+            BaseItemsChunk(config("itens"), "itens.yml", context)
         )
     }
 }

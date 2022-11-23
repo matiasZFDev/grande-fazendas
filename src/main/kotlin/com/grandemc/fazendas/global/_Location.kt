@@ -1,5 +1,7 @@
 package com.grandemc.fazendas.global
 
+import com.grandemc.fazendas.util.ViewVector
+import com.sk89q.worldedit.Vector
 import org.bukkit.Location
 import org.bukkit.World
 
@@ -21,4 +23,11 @@ fun Location.max(other: Location): Location {
         kotlin.math.max(blockY, other.blockY),
         kotlin.math.max(blockZ, other.blockZ)
     )
+}
+
+fun Location.add(vector: ViewVector): Location {
+    val copy = clone().add(vector.x(), vector.y(), vector.z())
+    copy.yaw = copy.yaw + vector.yaw()
+    copy.pitch = copy.pitch + vector.pitch()
+    return copy
 }

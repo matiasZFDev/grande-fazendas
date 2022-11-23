@@ -9,10 +9,40 @@ comando_saida: 'mvtp world'
 npcs:
   terrenos:
     nome_skin: 'm1ddl3'
+    posicao:
+      x: 8
+      y: 0
+      z: 19
+      yaw: 99.5
+      pitch: 2.5
+    holograma:
+      - '&6&lTERRENOS'
+      - '&fDesbloqueia e utilize esses maravilhosos'
+      - '&fterrenos para plantar muito mais!'
   missoes:
     nome_skin: 'MatBed'
+    posicao:
+      x: -8
+      y: 0
+      z: 15
+      yaw: -91.3
+      pitch: 1.1
+    holograma:
+      - '&e&lMISSÕES'
+      - '&fComplete pequenhos desafios e obtenha'
+      - '&fótimas recompensas :D'
   industria:
     nome_skin: Sarn4
+    posicao:
+      x: 11
+      y: 0
+      z: 4
+      yaw: 99.3
+      pitch: 0.5
+    holograma:
+      - '&a&lINDUSTRIA!'
+      - '&fFaça melhores materiais usando plantações'
+      - '&fcoletadas previamente!'
 evolucao:
   nivel_maximo: 50
   niveis:

@@ -28,7 +28,7 @@ dependencies {
     compileOnly("com.sk89q.worldedit:worldedit-bukkit:6.1.1-SNAPSHOT") {
         exclude(module = "bukkit")
     }
-    compileOnly("net.citizensnpcs:citizens-main:2.0.30-SNAPSHOT") {
+    compileOnly("net.citizensnpcs:citizensapi:2.0.24-SNAPSHOT") {
         exclude(module = "bukkit")
         exclude(module = "libby-bukkit")
     }

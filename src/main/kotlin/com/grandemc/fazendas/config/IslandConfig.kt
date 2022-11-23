@@ -12,9 +12,12 @@ import com.grandemc.fazendas.config.model.level.island.iterative.pattern.LevelPa
 import com.grandemc.fazendas.config.model.level.island.iterative.pattern.WhenPattern
 import com.grandemc.fazendas.global.asSchematic
 import com.grandemc.fazendas.util.Lazy
+import com.grandemc.fazendas.util.ViewVector
 import com.grandemc.post.external.lib.cache.config.StateConfig
 import com.grandemc.post.external.lib.global.bukkit.keys
 import com.grandemc.post.external.lib.global.bukkit.section
+import com.grandemc.post.external.lib.global.bukkit.stringList
+import com.grandemc.post.external.lib.global.color
 import com.grandemc.post.external.lib.util.CustomConfig
 import com.sk89q.worldedit.BlockVector
 import com.sk89q.worldedit.Vector
@@ -40,9 +43,14 @@ class IslandConfig(
         val baseSchematic: Clipboard
     )
     inner class IslandNpcs(
-        val terrains: String,
-        val quests: String,
-        val industry: String
+        val terrains: IslandNPC,
+        val quests: IslandNPC,
+        val industry: IslandNPC
+    )
+    inner class IslandNPC(
+        val name: String,
+        val position: ViewVector,
+        val hologramLines: List<String>
     )
     inner class IslandEvolution(
         val maxLevel: Int,
@@ -62,9 +70,39 @@ class IslandConfig(
                 getInt("farm_bloco_plantacao"),
                 getString("comando_saida"),
                 IslandNpcs(
-                    getString("npcs.terrenos.nome_skin"),
-                    getString("npcs.missoes.nome_skin"),
-                    getString("npcs.industria.nome_skin"),
+                    IslandNPC(
+                        getString("npcs.terrenos.nome_skin"),
+                        ViewVector(
+                            getDouble("npcs.terrenos.posicao.x"),
+                            getDouble("npcs.terrenos.posicao.y"),
+                            getDouble("npcs.terrenos.posicao.z"),
+                            getDouble("npcs.terrenos.posicao.yaw").toFloat(),
+                            getDouble("npcs.terrenos.posicao.pitch").toFloat()
+                        ),
+                        stringList("npcs.terrenos.holograma").color()
+                    ),
+                    IslandNPC(
+                        getString("npcs.missoes.nome_skin"),
+                        ViewVector(
+                            getDouble("npcs.missoes.posicao.x"),
+                            getDouble("npcs.missoes.posicao.y"),
+                            getDouble("npcs.missoes.posicao.z"),
+                            getDouble("npcs.missoes.posicao.yaw").toFloat(),
+                            getDouble("npcs.missoes.posicao.pitch").toFloat()
+                        ),
+                        stringList("npcs.missoes.holograma").color()
+                    ),
+                    IslandNPC(
+                        getString("npcs.industria.nome_skin"),
+                        ViewVector(
+                            getDouble("npcs.industria.posicao.x"),
+                            getDouble("npcs.industria.posicao.y"),
+                            getDouble("npcs.industria.posicao.z"),
+                            getDouble("npcs.missoes.posicao.yaw").toFloat(),
+                            getDouble("npcs.missoes.posicao.pitch").toFloat()
+                        ),
+                        stringList("npcs.industria.holograma").color()
+                    )
                 ),
                 IslandEvolution(
                     getInt("evolucao.nivel_maximo"),

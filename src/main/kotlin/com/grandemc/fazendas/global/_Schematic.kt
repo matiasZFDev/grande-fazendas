@@ -1,24 +1,19 @@
 package com.grandemc.fazendas.global
 
-import com.boydti.fawe.`object`.schematic.Schematic
 import com.grandemc.fazendas.util.cuboid.Cuboid
 import com.grandemc.fazendas.util.cuboid.FixedCuboid
 import com.sk89q.worldedit.BlockVector
-import com.sk89q.worldedit.CuboidClipboard
 import com.sk89q.worldedit.Vector
-import com.sk89q.worldedit.blocks.BaseBlock
 import com.sk89q.worldedit.bukkit.BukkitWorld
 import com.sk89q.worldedit.extent.clipboard.Clipboard
 import com.sk89q.worldedit.extent.clipboard.io.ClipboardFormat
 import com.sk89q.worldedit.regions.Region
-import com.sk89q.worldedit.schematic.SchematicFormat
 import org.bukkit.Bukkit
 import org.bukkit.Location
 import org.bukkit.World
 import java.io.File
 import java.io.FileInputStream
 import java.nio.file.Files
-import java.util.LinkedList
 
 fun File.createIfNotExists(): File {
     if (!exists()) {
@@ -41,6 +36,10 @@ fun File.asSchematic(worldName: String): Clipboard {
 
 fun Vector.toLocation(world: World): Location {
     return Location(world, x, y, z)
+}
+
+fun String.findWorld(): World {
+    return Bukkit.getWorld(this)
 }
 
 fun Clipboard.toCuboid(origin: Vector, world: World): Cuboid {

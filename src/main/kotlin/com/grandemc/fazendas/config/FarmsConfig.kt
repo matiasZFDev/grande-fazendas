@@ -138,11 +138,11 @@ class FarmsConfig(
                 val schematics = farmDir.resolve("schematic").listFiles()!!.map {
                     val clipboard = it.asSchematic(islandConfig.get().worldName)
                     val vectorIt = clipboard.region.iterator()
-                    val cropVectors = LinkedList<Vector>()
+                    val cropVectors = mutableListOf<Vector>()
                     while (vectorIt.hasNext())
                         vectorIt.next().let { vector ->
                             if (clipboard.getBlock(vector).type == islandConfig.get().cropBlock) {
-                                cropVectors.add(vector)
+                                cropVectors.add(vector.toBlockPoint())
                                 clipboard.setBlock(vector, BaseBlock(0))
                             }
                         }

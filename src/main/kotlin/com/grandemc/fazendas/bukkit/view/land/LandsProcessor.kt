@@ -12,6 +12,7 @@ import com.grandemc.post.external.lib.cache.config.model.SlotItem
 import com.grandemc.post.external.lib.cache.config.model.menu.MenuItems
 import com.grandemc.post.external.lib.global.bukkit.formatLore
 import com.grandemc.post.external.lib.global.bukkit.formatLoreList
+import com.grandemc.post.external.lib.global.bukkit.formatName
 import com.grandemc.post.external.lib.global.bukkit.nms.NBTReference
 import com.grandemc.post.external.lib.global.bukkit.nms.addNBTReference
 import com.grandemc.post.external.lib.global.bukkit.nms.addNBTValue
@@ -84,6 +85,7 @@ class LandsProcessor(
                     val land = landManager.land(playerId, farm.id)
                     itemsConfig
                         .value("plantio")
+                        .formatName("{id}" to land.typeId().toString())
                         .formatLore(
                             "{nivel}" to land.level().toString(),
                             "{xp}" to land.xp().commaFormat(),

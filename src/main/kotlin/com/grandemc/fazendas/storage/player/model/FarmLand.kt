@@ -5,7 +5,6 @@ import com.grandemc.post.external.lib.global.ApplyType
 import com.grandemc.post.external.lib.global.applyPercentage
 
 class FarmLand(
-    private var location: Cuboid,
     private val typeId: Byte,
     private var cropId: Byte?,
     private var level: Byte,
@@ -13,18 +12,17 @@ class FarmLand(
     private var resetCountdown: Int,
     private var canBoost: Boolean
 ) {
-    fun location(): Cuboid = location
-    fun setLocation(location: Cuboid) {
-        this.location = location
-    }
     fun typeId(): Byte = typeId
     fun cropId(): Byte? = cropId
-    fun setCrop(cropId: Byte) {
+    fun setCrop(cropId: Byte?) {
         this.cropId = cropId
     }
     fun xp(): Int = xp
     fun addXp(xp: Int) {
         this.xp += xp
+    }
+    fun setXp(xp: Int) {
+        this.xp = xp
     }
     fun level(): Byte = level
     fun levelUp() {
@@ -37,6 +35,9 @@ class FarmLand(
         canBoost = true
     }
     fun canBoost(): Boolean = canBoost
+    fun setCanBoost(canBoost: Boolean) {
+        this.canBoost = canBoost
+    }
     fun boost(percentage: Double) {
         if (!canBoost)
             return

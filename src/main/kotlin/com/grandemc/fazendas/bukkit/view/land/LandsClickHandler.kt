@@ -19,7 +19,6 @@ import org.bukkit.inventory.ItemStack
 
 class LandsClickHandler(
     private val farmsConfig: FarmsConfig,
-    private val landUpgradeManager: LandUpgradeManager,
     private val goldBank: GoldBank,
     private val storageManager: StorageManager,
     private val landManager: LandManager
@@ -36,7 +35,7 @@ class LandsClickHandler(
                 val materialId = storageManager.materialId(requiredItem.type)
                 storageManager.withdraw(player.uniqueId, materialId, requiredItem.amount)
             }
-            landUpgradeManager.buildLand(player.uniqueId, farmId, 1)
+            landManager.upgradeLand(player.uniqueId, farmId)
             player.closeInventory()
             player.respond("plantio.comprado")
         }

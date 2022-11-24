@@ -38,10 +38,9 @@ class PluginManagersInitializer(
                 farmsConfig, successGeneration
             ),
             farmManager,
-            LandManager(farmManager),
+            LandManager(farmManager, farmsConfig, buildManager, islandManager, islandConfig),
             StorageManager(playerManager, materialsConfig),
-            GoldBank(playerManager),
-            LandUpgradeManager(farmsConfig, buildManager, islandManager, islandConfig)
+            GoldBank(playerManager)
         )
     }
 }

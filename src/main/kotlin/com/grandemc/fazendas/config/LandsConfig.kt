@@ -21,7 +21,7 @@ class LandsConfig(customConfig: CustomConfig) : StateConfig<LandsConfig.Config>(
             Config(
                 intList("menu_slots"),
                 getString("formato_iten_requerido").color(),
-                getString("sem_plantacao")
+                getString("sem_plantacao").color()
             )
         }
     }

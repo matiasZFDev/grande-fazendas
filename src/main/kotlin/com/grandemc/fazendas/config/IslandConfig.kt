@@ -98,8 +98,8 @@ class IslandConfig(
                             getDouble("npcs.industria.posicao.x"),
                             getDouble("npcs.industria.posicao.y"),
                             getDouble("npcs.industria.posicao.z"),
-                            getDouble("npcs.missoes.posicao.yaw").toFloat(),
-                            getDouble("npcs.missoes.posicao.pitch").toFloat()
+                            getDouble("npcs.industria.posicao.yaw").toFloat(),
+                            getDouble("npcs.industria.posicao.pitch").toFloat()
                         ),
                         stringList("npcs.industria.holograma").color()
                     )

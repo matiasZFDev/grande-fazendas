@@ -4,7 +4,7 @@ spawn:
   x: 0
   y: 0
   z: 2
-farms_bloco_plantacao: 7
+farm_bloco_plantacao: 7
 comando_saida: 'mvtp world'
 npcs:
   terrenos:

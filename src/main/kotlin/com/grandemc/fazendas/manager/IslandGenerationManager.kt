@@ -8,7 +8,6 @@ import com.grandemc.fazendas.storage.player.model.FarmIndustry
 import com.grandemc.fazendas.storage.player.model.PrivateFarm
 import com.grandemc.fazendas.storage.player.model.QuestMaster
 import com.grandemc.post.external.lib.global.bukkit.runIfOnline
-import com.sk89q.worldedit.BlockVector
 import com.sk89q.worldedit.bukkit.BukkitWorld
 import org.bukkit.Bukkit
 import org.bukkit.WorldCreator
@@ -60,8 +59,7 @@ class IslandGenerationManager(
         val farmCount = playerManager.allPlayers().lastOrNull {
             it.farm() != null
         }?.farm()?.id()?.inc() ?: 0
-        val locationX = farmCount * islandConfig.get().islandDistance
-        val baseLocation = BlockVector(locationX, ISLAND_Y, 0)
+        val baseLocation = islandManager.baseLocation()
         val baseSchematic = islandConfig.get().baseSchematic
         val farm = PrivateFarm(
             farmCount, baseSchematic.toCuboid(baseLocation, world), 1, mutableListOf(),

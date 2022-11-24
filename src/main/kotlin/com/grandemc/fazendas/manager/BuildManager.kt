@@ -1,6 +1,8 @@
 package com.grandemc.fazendas.manager
 
 import com.boydti.fawe.FaweAPI
+import com.boydti.fawe.`object`.clipboard.DiskOptimizedClipboard
+import com.grandemc.fazendas.global.member
 import com.sk89q.worldedit.CuboidClipboard
 import com.sk89q.worldedit.EditSession
 import com.sk89q.worldedit.Vector
@@ -19,20 +21,11 @@ class BuildManager {
         val session = newSession(world)
         val operation = ClipboardHolder(clipboard, world.worldData)
             .createPaste(session, world.worldData)
+            .ignoreEntities(true)
             .to(location)
             .build()
         Operations.complete(operation)
         session.flushQueue()
-    }
-
-    fun clearSchematic(clipboard: Clipboard, origin: Vector) {
-        val world = clipboard.region.world ?: throw Error(
-            "Mundo nulo ao momento de criar schematic"
-        )
-        val from = origin.add(clipboard.minimumPoint)
-        val to = origin.add(clipboard.maximumPoint)
-        val region = CuboidRegion(from, to)
-        newSession(world).setBlocks(region, BaseBlock(Material.AIR.id))
     }
 
     private fun newSession(world: World): EditSession {

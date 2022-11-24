@@ -69,8 +69,7 @@ class ConfigCacheInitializer(
             MenusChunkImpl(menuContainerManager),
             islandConfig,
             FarmsConfig(
-                plugin, "farm", islandConfig.get().worldName,
-                islandConfig.get().cropBlock
+                plugin, "farm", islandConfig
             ),
             LandsConfig(config("plantios")),
             MaterialsConfig(config("materiais")),

@@ -14,9 +14,11 @@ import com.grandemc.post.external.lib.global.bukkit.formatLore
 import com.grandemc.post.external.lib.global.bukkit.formatLoreList
 import com.grandemc.post.external.lib.global.bukkit.nms.NBTReference
 import com.grandemc.post.external.lib.global.bukkit.nms.addNBTReference
+import com.grandemc.post.external.lib.global.bukkit.nms.addNBTValue
 import com.grandemc.post.external.lib.global.formatReplace
 import com.grandemc.post.external.lib.global.toFormat
 import com.grandemc.post.external.lib.view.pack.MenuItemsProcessor
+import net.minecraft.server.v1_8_R3.NBTTagByte
 import org.bukkit.entity.Player
 
 class LandsProcessor(
@@ -72,8 +74,10 @@ class LandsProcessor(
                                     )
                                 }
                             )
-                            .addNBTReference(
-                                NBTReference.VIEW, "gfazendas.lands", "purchasable"
+                            .addNBTValue(
+                                NBTReference.VIEW, "gfazendas.lands.purchasable", NBTTagByte(
+                                    farm.id
+                                )
                             )
                 }
                 else {

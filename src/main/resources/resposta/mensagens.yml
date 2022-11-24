@@ -30,3 +30,7 @@ ilha:
   criada: '&aA sua fazenda foi criada com sucesso! Digite /fazenda para se teleportar ate ela.'
   teleportado: '&aVocê foi teleportado para a sua fazenda.'
   saida: '&eVocê saiu da sua fazenda.'
+plantio:
+  comprado:
+    titulo: '&6&lUHU!'
+    subtitulo: '&aPlantio comprado com sucesso!'

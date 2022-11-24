@@ -11,18 +11,15 @@ import net.citizensnpcs.api.CitizensAPI
 import net.citizensnpcs.api.npc.MemoryNPCDataStore
 import net.citizensnpcs.api.npc.NPC
 import net.citizensnpcs.api.trait.Trait
-import net.minecraft.server.v1_8_R3.PacketPlayOutEntityMetadata
-import net.minecraft.server.v1_8_R3.PacketPlayOutScoreboardTeam
-import net.minecraft.server.v1_8_R3.ScoreboardTeam
 import org.bukkit.Bukkit
 import org.bukkit.Location
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEntity
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Player
 import java.util.UUID
 
 class IslandManager(
     private val playerManager: PlayerManager,
+    private val farmManager: FarmManager,
     private val islandConfig: IslandConfig
 ) {
     private val islandPlayers: MutableMap<UUID, IslandSession> = mutableMapOf()
@@ -32,8 +29,17 @@ class IslandManager(
         return playerManager.player(playerId).farm() != null
     }
 
+    fun baseLocation(playerId: UUID? = null): Vector {
+        val farmCount = playerId?.let { farmManager.farm(playerId).id() }
+            ?: playerManager.allPlayers().lastOrNull {
+                it.farm() != null
+            }?.farm()?.id()?.inc() ?: 0
+        val locationX = farmCount * islandConfig.get().islandDistance
+        return BlockVector(locationX, IslandGenerationManager.ISLAND_Y, 0)
+    }
+
     fun islandOrigin(playerId: UUID): Vector {
-        val farm = playerManager.player(playerId).farm()!!
+        val farm = farmManager.farm(playerId)
         return BlockVector(
              farm.id() * (islandConfig.get().islandDistance),
             IslandGenerationManager.ISLAND_Y,

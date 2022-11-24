@@ -1,32 +1,47 @@
 package com.grandemc.fazendas.config
 
-import com.grandemc.fazendas.global.asSchematic
-import com.grandemc.fazendas.global.createIfNotExists
+import com.boydti.fawe.`object`.IntegerTrio
+import com.boydti.fawe.`object`.clipboard.DiskOptimizedClipboard
+import com.grandemc.fazendas.global.*
 import com.grandemc.post.external.lib.cache.config.Updatable
 import com.grandemc.post.external.lib.global.bukkit.*
+import com.sk89q.jnbt.CompoundTag
 import com.sk89q.worldedit.BlockVector
+import com.sk89q.worldedit.CuboidClipboard
 import com.sk89q.worldedit.Vector
 import com.sk89q.worldedit.blocks.BaseBlock
+import com.sk89q.worldedit.extent.clipboard.BlockArrayClipboard
 import com.sk89q.worldedit.extent.clipboard.Clipboard
+import com.sk89q.worldedit.schematic.SchematicFormat
 import org.bukkit.Material
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.plugin.Plugin
 import java.io.File
 import java.io.FileFilter
+import java.lang.reflect.Field
+import java.util.LinkedList
 
 class FarmsConfig(
     private val plugin: Plugin,
     private val farmsRootDirPath: String,
-    private val farmWorldName: String,
-    private val cropBlock: Int
+    private val islandConfig: IslandConfig
 ) : Updatable {
     inner class Config(
         val farms: List<Farm>
-    )
+    ) {
+        fun getFarmById(farmId: Byte): Farm {
+            return farms.first { it.config.id == farmId }
+        }
+    }
+
     inner class Farm(
         val config: FarmConfig,
         val schematics: List<FarmSchematic>
-    )
+    ) {
+        fun getSchematicByName(name: String): FarmSchematic {
+            return schematics.first { name == it.name }
+        }
+    }
     inner class FarmConfig(
         val id: Byte,
         val baseSchematic: Clipboard,
@@ -49,7 +64,7 @@ class FarmsConfig(
         }
 
         fun level(level: Byte): FarmLevel {
-            return levels[level.toInt()]
+            return levels[level.dec().toInt()]
         }
 
         fun nextLevel(level: Byte): FarmLevel? {
@@ -85,7 +100,9 @@ class FarmsConfig(
                 )
                 val farmConfig = FarmConfig(
                     farmYamlConfig.getByte("id"),
-                    farmDir.resolve("base.schematic").asSchematic(farmWorldName),
+                    farmDir.resolve("base.schematic").asSchematic(
+                        islandConfig.get().worldName
+                    ),
                     BlockVector(
                         farmYamlConfig.getInt("posicao.x"),
                         farmYamlConfig.getInt("posicao.y"),
@@ -119,15 +136,18 @@ class FarmsConfig(
                     )
                 )
                 val schematics = farmDir.resolve("schematic").listFiles()!!.map {
-                    val clipboard = it.asSchematic(farmWorldName)
-                    val cropVectors = clipboard.region.toList().filter { vector ->
-                        clipboard.getBlock(vector).type == cropBlock
-                    }
-                    cropVectors.forEach { vector ->
-                        clipboard.setBlock(vector, BaseBlock(Material.AIR.id))
-                    }
+                    val clipboard = it.asSchematic(islandConfig.get().worldName)
+                    val vectorIt = clipboard.region.iterator()
+                    val cropVectors = LinkedList<Vector>()
+                    while (vectorIt.hasNext())
+                        vectorIt.next().let { vector ->
+                            if (clipboard.getBlock(vector).type == islandConfig.get().cropBlock) {
+                                cropVectors.add(vector)
+                                clipboard.setBlock(vector, BaseBlock(0))
+                            }
+                        }
                     FarmSchematic(
-                        it.name,
+                        it.nameWithoutExtension,
                         clipboard,
                         cropVectors
                     )

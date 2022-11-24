@@ -18,17 +18,17 @@ class PluginManagersInitializer(
     private val plugin: Plugin,
     private val islandConfig: IslandConfig,
     private val farmsConfig: FarmsConfig,
-    private val materialsConfig: MaterialsConfig
+    private val materialsConfig: MaterialsConfig,
 ) : Initializer<PluginManagers> {
     override fun init(): PluginManagers {
         val playerManager = PlayerManager(playerService)
-        val islandManager = IslandManager(playerManager, islandConfig)
+        val farmManager = FarmManager(playerManager)
+        val islandManager = IslandManager(playerManager, farmManager, islandConfig)
         val buildManager = BuildManager()
         val successGeneration: (Player?) -> Unit = { player: Player? ->
             player.respond("ilha.criada")
             player?.let { islandManager.joinIsland(it) }
         }
-        val farmManager = FarmManager(playerManager)
         return PluginManagers(
             playerManager,
             islandManager,
@@ -40,7 +40,8 @@ class PluginManagersInitializer(
             farmManager,
             LandManager(farmManager),
             StorageManager(playerManager, materialsConfig),
-            GoldBank(playerManager)
+            GoldBank(playerManager),
+            LandUpgradeManager(farmsConfig, buildManager, islandManager, islandConfig)
         )
     }
 }

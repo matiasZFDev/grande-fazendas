@@ -2,9 +2,7 @@ package com.grandemc.fazendas.bukkit.view.land
 
 import com.grandemc.fazendas.config.FarmsConfig
 import com.grandemc.fazendas.config.LandsConfig
-import com.grandemc.fazendas.manager.GoldBank
-import com.grandemc.fazendas.manager.LandManager
-import com.grandemc.fazendas.manager.StorageManager
+import com.grandemc.fazendas.manager.*
 import com.grandemc.post.external.lib.cache.config.chunk.base.ItemsChunk
 import com.grandemc.post.external.lib.view.pack.impl.StatelessPackage
 
@@ -14,11 +12,14 @@ class LandsPackage(
     landManager: LandManager,
     goldBank: GoldBank,
     storageManager: StorageManager,
-    itemsConfig: ItemsChunk
+    itemsConfig: ItemsChunk,
+    landUpgradeManager: LandUpgradeManager
 ) : StatelessPackage(
     LandsMenuContainer::class,
     LandsProcessor(
         landsConfig, farmsConfig, landManager, goldBank, storageManager, itemsConfig
     ),
-    LandsClickHandler()
+    LandsClickHandler(
+        farmsConfig, landUpgradeManager, goldBank, storageManager, landManager
+    )
 )

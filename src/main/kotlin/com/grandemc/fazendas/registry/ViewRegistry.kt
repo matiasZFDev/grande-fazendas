@@ -26,7 +26,8 @@ class ViewRegistry(
     fun registerAll() {
         register(LandsView(LandsPackage(
             configs.lands, configs.farms, pluginManagers.landManager,
-            pluginManagers.goldBank, pluginManagers.storageManager, configs.items
+            pluginManagers.goldBank, pluginManagers.storageManager, configs.items,
+            pluginManagers.landUpgradeManager
         )))
     }
 }

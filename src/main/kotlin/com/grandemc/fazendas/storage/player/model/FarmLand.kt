@@ -10,6 +10,7 @@ class FarmLand(
     private var level: Byte,
     private var xp: Int,
     private var resetCountdown: Int,
+    private var boostId: Byte?,
     private var canBoost: Boolean
 ) {
     fun typeId(): Byte = typeId
@@ -38,10 +39,12 @@ class FarmLand(
     fun setCanBoost(canBoost: Boolean) {
         this.canBoost = canBoost
     }
-    fun boost(percentage: Double) {
+    fun boostId(): Byte? = boostId
+    fun boost(id: Byte, percentage: Double) {
         if (!canBoost)
             return
 
+        boostId = id
         resetCountdown = resetCountdown.toDouble().applyPercentage(
             percentage, ApplyType.DECREMENT
         ).toInt()

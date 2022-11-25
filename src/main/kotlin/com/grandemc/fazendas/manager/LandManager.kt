@@ -51,7 +51,7 @@ class LandManager(
         val playerFarm = farmManager.farm(playerId)
         if (!playerFarm.hasLand(landId))
             playerFarm.addLand(FarmLand(
-                landId, null, 1, 0, 0, true
+                landId, null, 1, 0, 0, null, true
             ))
         else {
             val land = land(playerId, landId)

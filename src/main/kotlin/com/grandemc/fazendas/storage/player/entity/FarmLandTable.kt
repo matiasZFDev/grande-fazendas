@@ -1,6 +1,5 @@
 package com.grandemc.fazendas.storage.player.entity
 
-import com.grandemc.fazendas.global.getCuboid
 import com.grandemc.fazendas.global.getUUID
 import com.grandemc.fazendas.global.setUUID
 import com.grandemc.fazendas.storage.player.model.FarmLand
@@ -24,10 +23,11 @@ class FarmLandTable(
         return buildColumnTable(tableName) {
             addColumn("owner_id", "BINARY(16) NOT NULL")
             addColumn("type_id", "TINYINT NOT NULL")
-            addColumn("crop_id", "TINYINT")
+            addColumn("crop_id", "TINYINT NOT NULL")
             addColumn("level", "TINYINT NOT NULL")
             addColumn("xp", "INT NOT NULL")
             addColumn("reset_countdown", "INT NOT NULL")
+            addColumn("boost_id", "TINYINT NOT NULL")
             addColumn("can_boost", "BIT NOT NULL")
         }
     }
@@ -39,7 +39,8 @@ class FarmLandTable(
         statement.setByte(4, value.land.level())
         statement.setInt(5, value.land.xp())
         statement.setInt(6, value.land.resetCountdown())
-        statement.setBoolean(7, value.land.canBoost())
+        statement.setByte(7, value.land.boostId() ?: -1)
+        statement.setBoolean(8, value.land.canBoost())
         return true
     }
 
@@ -55,6 +56,10 @@ class FarmLandTable(
                 resultSet.getByte("level"),
                 resultSet.getInt("xp"),
                 resultSet.getInt("reset_countdown"),
+                if (resultSet.getByte("boost_id") == (-1).toByte())
+                    null
+                else
+                    resultSet.getByte("boost_id"),
                 resultSet.getBoolean("can_boost")
             ))
     }

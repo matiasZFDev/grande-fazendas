@@ -1,9 +1,6 @@
 package com.grandemc.fazendas.init.model
 
-import com.grandemc.fazendas.config.FarmsConfig
-import com.grandemc.fazendas.config.IslandConfig
-import com.grandemc.fazendas.config.LandsConfig
-import com.grandemc.fazendas.config.MaterialsConfig
+import com.grandemc.fazendas.config.*
 import com.grandemc.post.external.lib.cache.config.Updatable
 import com.grandemc.post.external.lib.cache.config.chunk.base.*
 
@@ -20,6 +17,7 @@ data class ConfigCache(
         val farms: FarmsConfig,
         val lands: LandsConfig,
         val materials: MaterialsConfig,
-        val items: ItemsChunk
+        val items: ItemsChunk,
+        val fertilizing: FertilizingConfig
     )
 }

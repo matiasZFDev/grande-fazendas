@@ -16,7 +16,7 @@ class ConfigInitializer(private val plugin: Plugin) : Initializer<ConfigManager>
 
     private fun respondFiles(): List<String> = listOf("mensagens", "sons", "efeitos").map { "resposta/$it" }
     private fun menuFiles(): List<String> = listOf(
-        "plantios"
+        "plantios", "plantio"
     ).map { "menu/$it" }
     private fun rootFiles(): List<String> = listOf(
         "database", "enxada", "fertilizante", "industria", "itens", "lootbox",

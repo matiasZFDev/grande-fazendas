@@ -1,4 +1,4 @@
-package com.grandemc.fazendas.bukkit.view.land
+package com.grandemc.fazendas.bukkit.view.lands
 
 import com.grandemc.fazendas.config.FarmsConfig
 import com.grandemc.fazendas.config.LandsConfig

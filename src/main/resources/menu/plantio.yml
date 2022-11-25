@@ -1,0 +1,98 @@
+titulo: 'Plantio'
+linhas: 3
+conteudo:
+  evolucao_nao_upavel:
+    slot: 11
+    head: 'https://textures.minecraft.net/texture/b6b884a6000d6723ee080f403ec5c02e6f3bff709f3dc0c33c40f40f4f0f5840'
+    nome: '&6&lEVOLUÇÃO'
+    lore:
+      - '&7Evolua o seu plantio'
+      - '&7para gerar mais e'
+      - '&7mais plantações!'
+      - ''
+      - ' &6Informações ▼'
+      - ' &6▍ &fNivel &e{nivel} &7➟ &a{novo_nivel}'
+      - ' &6▍ &fPlantações &e{plantacoes} &8≈ &6{novas_plantacoes}'
+      - ''
+      - ' &eRequisitos ▼'
+      - ' &e▍ &fXP: &b{xp}&f/&a{xp_precisa}'
+      - ' &e▍ &fOuro: &e⛂{ouro}&f/&6⛂{ouro_preciso}'
+      - ''
+      - '&cRequisitos insuficientes'
+  evolucao_upavel:
+    slot: 11
+    head: 'https://textures.minecraft.net/texture/b6b884a6000d6723ee080f403ec5c02e6f3bff709f3dc0c33c40f40f4f0f5840'
+    nome: '&6&lEVOLUÇÃO'
+    lore:
+      - '&7Evolua o seu plantio'
+      - '&7para gerar mais e'
+      - '&7mais plantações!'
+      - ''
+      - ' &6Informações ▼'
+      - ' &6▍ &fNivel &e{nivel} &7➟ &a{novo_nivel}'
+      - ' &6▍ &fPlantações &e{plantacoes} &8≈ &6{novas_plantacoes}'
+      - ''
+      - ' &eRequisitos ▼'
+      - ' &e▍ &fXP: &b{xp}&f/&a{xp_precisa}'
+      - ' &e▍ &fOuro: &e⛂{ouro}&f/&6⛂{ouro_preciso}'
+      - ''
+      - '&aClique para upar!'
+  evolucao_maximo:
+    slot: 11
+    head: 'https://textures.minecraft.net/texture/b6b884a6000d6723ee080f403ec5c02e6f3bff709f3dc0c33c40f40f4f0f5840'
+    nome: '&6&lPLANTIO!'
+    lore:
+      - '&7Evolua o seu plantio'
+      - '&7para gerar mais e'
+      - '&7mais plantações!'
+      - ''
+      - ' &6Informações ▼'
+      - ' &6▍ &fNivel: &e{nivel}'
+      - ' &e▍ &fXP: &b{xp}'
+      - ' &6▍ &fPlantações: &8≈ &e{plantacoes}'
+      - ''
+      - '&ePlantio no nível máximo!'
+  fertilizante_inativo:
+    slot: 13
+    head: 'https://textures.minecraft.net/texture/72d03c876b9ea20ca1eb30ea631d9013b5c347d44e66ce77bd695259235e188a'
+    nome: '&a&lF&aertilizante'
+    lore:
+      - '&7Reduza o tempo de'
+      - '&7geração das plantações'
+      - '&7desse plantio!'
+      - ''
+      - '&cNenhum ativo'
+  fertilizante_ativo:
+    slot: 13
+    head: 'https://textures.minecraft.net/texture/72d03c876b9ea20ca1eb30ea631d9013b5c347d44e66ce77bd695259235e188a'
+    nome: '&a&lF&aertilizante'
+    lore:
+      - '&7Reduza o tempo de'
+      - '&7geração das plantações'
+      - '&7desse plantio!'
+      - ''
+      - ' &e• &fNome: {nome}'
+      - ' &e• &fRedução: {reducao}'
+      - ''
+      - '&7(Válido por &f1 &7geração)'
+  plantar_disponivel:
+    slot: 15
+    head: 'https://textures.minecraft.net/texture/9a656926adcd507ff079ce42f5177435c28ef369359cf7ca6f9d825f5767db'
+    nome: '&e&lP&elantar'
+    lore:
+      - '&7Belo plantio, pronto'
+      - '&7para ser usado...'
+      - ''
+      - '&aClique para plantar'
+  plantar_gerando:
+    slot: 15
+    head: 'https://textures.minecraft.net/texture/5670ba6cbcd60cca2906b0c4abb716820851d5c28a42ebf9547a15e7611768d1'
+    nome: '&e&lP&elantar'
+    lore:
+      - '&7O plantio se encontra'
+      - '&7gerando...'
+      - ''
+      - ' &8➥ &fPlantação: {plantacao}'
+      - ' &8➥ &fGeração: {geracao}'
+      - ''
+      - '&7[Gerando &f{plantacoes}x &7plantações]'

@@ -6,12 +6,16 @@ import com.grandemc.post.external.lib.global.createMenuData
 import com.grandemc.post.external.lib.util.CustomConfig
 import org.bukkit.configuration.ConfigurationSection
 
-class LandsMenuContainer(
-    customConfig: CustomConfig,
-    section: String?,
-    context: String
+class LandMenuContainer(
+    customConfig: CustomConfig, section: String?, context: String
 ) : StateMenuContainer(customConfig, context, section) {
     override fun create(section: ConfigurationSection): MenuData {
-        return createMenuData(section)
+        return createMenuData(section) {
+            val key = "gfazendas.land"
+            addReference("fertilizante_inativo", key, "fertilizing")
+            addReference("evolucao_upavel", key, "evolve")
+            addReference("plantar_disponivel", key, "plant")
+            colorAll()
+        }
     }
 }

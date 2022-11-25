@@ -4,5 +4,5 @@ fertilizante_1:
   reducao: 10 # reducao do tempo em %
 fertilizante_2:
   id: 1
-  nome: 'Fertilizante 25%'
+  nome: '&3Fertilizante &lXXV'
   reducao: 25

@@ -1,4 +1,4 @@
-package com.grandemc.fazendas.bukkit.view.land
+package com.grandemc.fazendas.bukkit.view.lands
 
 import com.grandemc.fazendas.config.FarmsConfig
 import com.grandemc.fazendas.config.LandsConfig
@@ -14,7 +14,6 @@ import com.grandemc.post.external.lib.global.bukkit.formatLore
 import com.grandemc.post.external.lib.global.bukkit.formatLoreList
 import com.grandemc.post.external.lib.global.bukkit.formatName
 import com.grandemc.post.external.lib.global.bukkit.nms.NBTReference
-import com.grandemc.post.external.lib.global.bukkit.nms.addNBTReference
 import com.grandemc.post.external.lib.global.bukkit.nms.addNBTValue
 import com.grandemc.post.external.lib.global.formatReplace
 import com.grandemc.post.external.lib.global.toFormat
@@ -93,8 +92,10 @@ class LandsProcessor(
                                 storageManager.materialData(farmCropId).name
                             } ?: landsConfig.get().notSelectedCrop)
                         )
-                        .addNBTReference(
-                            NBTReference.VIEW, "gfazendas.lands", "info"
+                        .addNBTValue(
+                            NBTReference.VIEW, "gfazendas.lands.info", NBTTagByte(
+                                farm.id
+                            )
                         )
                 }
 

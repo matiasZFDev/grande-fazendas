@@ -1,15 +1,11 @@
 package com.grandemc.fazendas.registry
 
+import com.grandemc.fazendas.bukkit.view.LandView
 import com.grandemc.fazendas.bukkit.view.LandsView
-import com.grandemc.fazendas.bukkit.view.land.LandsPackage
-import com.grandemc.fazendas.config.FarmsConfig
-import com.grandemc.fazendas.config.LandsConfig
+import com.grandemc.fazendas.bukkit.view.land.LandPackage
+import com.grandemc.fazendas.bukkit.view.lands.LandsPackage
 import com.grandemc.fazendas.init.model.ConfigCache
 import com.grandemc.fazendas.init.model.PluginManagers
-import com.grandemc.fazendas.manager.GoldBank
-import com.grandemc.fazendas.manager.LandManager
-import com.grandemc.fazendas.manager.StorageManager
-import com.grandemc.post.external.lib.cache.config.chunk.base.ItemsChunk
 import com.grandemc.post.external.lib.manager.view.ViewManager
 import com.grandemc.post.external.lib.view.base.ContextData
 import com.grandemc.post.external.lib.view.base.View
@@ -27,6 +23,10 @@ class ViewRegistry(
         register(LandsView(LandsPackage(
             configs.lands, configs.farms, pluginManagers.landManager,
             pluginManagers.goldBank, pluginManagers.storageManager, configs.items
+        )))
+        register(LandView(LandPackage(
+            pluginManagers.landManager, pluginManagers.goldBank, configs.farms,
+            configs.fertilizing, configs.materials
         )))
     }
 }

@@ -11,5 +11,6 @@ class PluginManagers(
     val landManager: LandManager,
     val storageManager: StorageManager,
     val goldBank: GoldBank,
-    val landPlantManager: LandPlantManager
+    val landPlantManager: LandPlantManager,
+    val farmItemManager: FarmItemManager
 )

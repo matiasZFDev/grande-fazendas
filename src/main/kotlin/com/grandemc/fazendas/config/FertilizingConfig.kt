@@ -12,8 +12,8 @@ class FertilizingConfig(customConfig: CustomConfig) : StateConfig<FertilizingCon
     customConfig, GrandeFazendas.CONTEXT
 ) {
     inner class Config(private val fertilizing: List<Fertilizing>) {
-        fun getById(id: Byte): Fertilizing {
-            return fertilizing.first { it.id == id }
+        fun getById(id: Byte): Fertilizing? {
+            return fertilizing.find { it.id == id }
         }
     }
 

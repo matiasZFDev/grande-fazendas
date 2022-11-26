@@ -1,6 +1,7 @@
 package com.grandemc.fazendas.init
 
 import com.grandemc.fazendas.config.FarmsConfig
+import com.grandemc.fazendas.config.FertilizingConfig
 import com.grandemc.fazendas.config.IslandConfig
 import com.grandemc.fazendas.config.MaterialsConfig
 import com.grandemc.fazendas.global.respond
@@ -8,6 +9,7 @@ import com.grandemc.post.external.lib.init.Initializer
 import com.grandemc.fazendas.init.model.PluginManagers
 import com.grandemc.fazendas.manager.*
 import com.grandemc.fazendas.storage.player.model.FarmPlayer
+import com.grandemc.post.external.lib.cache.config.chunk.base.ItemsChunk
 import com.grandemc.post.external.lib.database.base.DatabaseService
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
@@ -19,6 +21,8 @@ class PluginManagersInitializer(
     private val islandConfig: IslandConfig,
     private val farmsConfig: FarmsConfig,
     private val materialsConfig: MaterialsConfig,
+    private val itemsConfig: ItemsChunk,
+    private val fertilizingConfig: FertilizingConfig
 ) : Initializer<PluginManagers> {
     override fun init(): PluginManagers {
         val playerManager = PlayerManager(playerService)
@@ -44,7 +48,8 @@ class PluginManagersInitializer(
             landManager,
             StorageManager(playerManager, materialsConfig),
             GoldBank(playerManager),
-            LandPlantManager(islandConfig, islandManager, landManager)
+            LandPlantManager(islandConfig, islandManager, landManager),
+            FarmItemManager(itemsConfig, fertilizingConfig)
         )
     }
 }

@@ -37,3 +37,8 @@ plantio:
     subtitulo: '&aPlantio comprado com sucesso!'
   plantado: '&aVocê plantou {plantacao} &aneste plantio!'
   crescido: '&6A plantação &n"{plantacao}"&6 cresceu em um plantio!'
+darfertilizante:
+  argumentos_invalidos: '&cDigite /gfazendas darfertilizante <jogador> <id> <quantia>'
+  fertilizante_invalido: '&cA id ingresada não é um fertilizante válido'
+  enviado: '&aForam enviados &f{quantia}x {fertilizante} &apro jogador &f{jogador}'
+  recebido: '&aVocê recebêu &f{quantia}x {fertilizante}&a!'

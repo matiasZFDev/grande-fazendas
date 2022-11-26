@@ -94,7 +94,9 @@ class LandProcessor(
 
             if (landData.boostId() != null) {
                 val boostId = landData.boostId()!!
-                val fertilizing = fertilizingConfig.get().getById(boostId)
+                val fertilizing = fertilizingConfig.get().getById(boostId) ?: throw Error(
+                    "O fertilizaante #$boostId não existe!"
+                )
                 remove("fertilizante_inativo")
                 modify("fertilizante_ativo") {
                     it.formatLore(

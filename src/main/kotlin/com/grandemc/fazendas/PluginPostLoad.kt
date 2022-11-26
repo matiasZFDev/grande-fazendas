@@ -59,7 +59,9 @@ class PluginPostLoad(
             plugin,
             configCache.configs.island,
             configCache.configs.farms,
-            configCache.configs.materials
+            configCache.configs.materials,
+            configCache.configs.items,
+            configCache.configs.fertilizing
         ).init()
     }
 
@@ -101,7 +103,8 @@ class PluginPostLoad(
     private fun registerCommands() {
         CommandRegistry(
             plugin, configManager, configCache.updater, databaseManager,
-            pluginManagers.islandManager, pluginManagers.islandGenerationManager
+            pluginManagers.islandManager, pluginManagers.islandGenerationManager,
+            pluginManagers.farmItemManager
         ).registerAll()
     }
 }

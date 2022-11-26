@@ -58,3 +58,14 @@ plantacao_nao_disponivel:
     - ' &8❣ &fGeração: &7{geracao}'
     - ''
     - '&cNivel insuficiente...'
+fertilizante:
+  head: 'https://textures.minecraft.net/texture/7aadb37dd556f9eefbb8ea54943e1f657fac45409e34cd99c810d4dd461bc633'
+  nome: '{nome}'
+  lore:
+    - '&7Reduza o tempo de'
+    - '&7geração dos seus'
+    - '&7plantios!'
+    - ''
+    - ' &8⬇ &fRedução: &c-{reducao}%'
+    - ''
+    - '&eClique para utilizar'

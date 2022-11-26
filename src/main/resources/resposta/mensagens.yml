@@ -51,3 +51,11 @@ darlootbox:
   lootbox_invalido: '&cA id ingresada não é um lootbox válido'
   enviado: '&aForam enviados &f{quantia}x {lootbox} &apro jogador &f{jogador}'
   recebido: '&aVocê recebêu &f{quantia}x {lootbox} &alootboxes!'
+abrir_lootbox:
+  invalido: '&cEsse lootbox não é válido. Contate com algum staff.'
+  nada:
+    titulo: '&6&lLOOTBOX!'
+    subtitulo: '&cVocê ganhou nada D:'
+  recompensa:
+    titulo: '&6&lLOOTBOX!'
+    subtitulo: '&fVocê ganhou um &aBooster X{multiplicador} &7({duracao})&f!'

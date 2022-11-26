@@ -126,7 +126,7 @@ booster_xp:
     - '&7o xp ganho na coleta'
     - '&7de plantações!'
     - ''
-    - ' &2▪ &fMultiplicador: &a{multiplicador}'
+    - ' &2▪ &fMultiplicador: &ax{multiplicador}'
     - ' &2▪ &fDuração: &7{duracao}'
     - ''
     - '&aClique para ativar!'

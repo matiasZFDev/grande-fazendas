@@ -92,7 +92,8 @@ class PluginPostLoad(
 
     private fun registerListeners() {
         ListenerRegistry(
-            plugin, pluginManagers.playerManager, configCache.configs.fertilizing
+            plugin, pluginManagers.playerManager, configCache.configs.fertilizing,
+            configCache.configs.lootBox, pluginManagers.farmItemManager
         ).registerAll()
     }
 

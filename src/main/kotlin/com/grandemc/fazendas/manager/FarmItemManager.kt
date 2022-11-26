@@ -12,6 +12,8 @@ import com.grandemc.post.external.lib.global.formatReplace
 import com.grandemc.post.external.lib.global.intFormat
 import com.grandemc.post.external.lib.global.timeFormat
 import net.minecraft.server.v1_8_R3.NBTTagByte
+import net.minecraft.server.v1_8_R3.NBTTagDouble
+import net.minecraft.server.v1_8_R3.NBTTagInt
 import org.bukkit.inventory.ItemStack
 
 class FarmItemManager(
@@ -54,5 +56,24 @@ class FarmItemManager(
                 }
             )
             .addNBTValue(NBTReference.ITEM, "gfazendas.lootbox", NBTTagByte(id))
+    }
+
+    fun createBooster(boosterModel: LootBoxConfig.ChanceBooster): ItemStack {
+        return itemsConfig
+            .value("booster_xp")
+            .formatLore(
+                "{multiplicador}" to boosterModel.boost.intFormat(),
+                "{duracao}" to boosterModel.duration.timeFormat()
+            )
+            .addNBTValue(
+                NBTReference.ITEM, "gfazendas.xp_booster.multiplier", NBTTagDouble(
+                    boosterModel.boost
+                )
+            )
+            .addNBTValue(
+                NBTReference.ITEM, "gfazendas.xp_booster.duration", NBTTagInt(
+                    boosterModel.duration
+                )
+            )
     }
 }

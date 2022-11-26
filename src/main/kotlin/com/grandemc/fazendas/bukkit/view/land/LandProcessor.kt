@@ -2,7 +2,10 @@ package com.grandemc.fazendas.bukkit.view.land
 
 import com.grandemc.fazendas.config.FarmsConfig
 import com.grandemc.fazendas.config.FertilizingConfig
+import com.grandemc.fazendas.config.IslandConfig
 import com.grandemc.fazendas.config.MaterialsConfig
+import com.grandemc.fazendas.global.findWorld
+import com.grandemc.fazendas.global.toLocation
 import com.grandemc.fazendas.manager.GoldBank
 import com.grandemc.fazendas.manager.LandManager
 import com.grandemc.post.external.lib.cache.config.model.SlotItem
@@ -17,7 +20,8 @@ class LandProcessor(
     private val goldBank: GoldBank,
     private val farmsConfig: FarmsConfig,
     private val fertilizingConfig: FertilizingConfig,
-    private val materialsConfig: MaterialsConfig
+    private val materialsConfig: MaterialsConfig,
+    private val islandConfig: IslandConfig
 ) : MenuItemsProcessor<LandContext> {
     override fun process(player: Player, data: LandContext?, items: MenuItems): Collection<SlotItem> {
         requireNotNull(data)
@@ -106,6 +110,7 @@ class LandProcessor(
 
             if (landData.cropId() != null && landData.resetCountdown() >= 0) {
                 val cropName = materialsConfig.get().getById(landData.cropId()!!).name
+                remove("plantar_bloqueado")
                 remove("plantar_disponivel")
                 modify("plantar_gerando") {
                     it.formatLore(
@@ -119,7 +124,31 @@ class LandProcessor(
             }
 
             else {
-                remove("plantar_gerando")
+                val cropName = materialsConfig.get().getById(landData.cropId()!!).name
+                val world = islandConfig.get().worldName.findWorld()
+                val landCrops = landManager.landCrops(player.uniqueId, landData.typeId())
+                val harvestedCrops = landCrops.fold(0) { acc, cur ->
+                    if (cur.toLocation(world).block.isEmpty)
+                        acc + 1
+                    else
+                        acc
+                }
+                if (harvestedCrops < landCrops.size) {
+                    remove("plantar_disponivel")
+                    remove("plantar_gerando")
+                    modify("plantar_bloqueado") {
+                        it.formatLore(
+                            "{plantacao}" to cropName,
+                            "{colhidas}" to harvestedCrops.toString(),
+                            "{atuais}" to landCrops.size.toString()
+                        )
+                    }
+                }
+
+                else {
+                    remove("plantar_gerando")
+                    remove("plantar_bloqueado")
+                }
             }
         }
     }

@@ -28,7 +28,7 @@ class ViewRegistry(
         )))
         register(LandView(LandPackage(
             pluginManagers.landManager, pluginManagers.goldBank, configs.farms,
-            configs.fertilizing, configs.materials
+            configs.fertilizing, configs.materials, configs.island
         )))
         register(LandPlantView(LandPlantPackage(
             configs.items, configs.crops, pluginManagers.farmManager,

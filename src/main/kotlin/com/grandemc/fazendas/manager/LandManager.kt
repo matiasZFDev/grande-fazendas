@@ -5,6 +5,7 @@ import com.grandemc.fazendas.config.IslandConfig
 import com.grandemc.fazendas.global.getWeWorld
 import com.grandemc.fazendas.storage.player.model.FarmLand
 import com.grandemc.post.external.lib.global.bukkit.runIfOnline
+import com.sk89q.worldedit.Vector
 import org.bukkit.Bukkit
 import org.bukkit.Effect
 import org.bukkit.Location
@@ -69,5 +70,11 @@ class LandManager(
         return farmsConfig.get().getFarmById(farmId).getSchematicByName(
             farmsConfig.get().getFarmById(farmId).config.levels.level(landLevel).schematic
         )
+    }
+
+    fun landCrops(playerId: UUID, farmId: Byte): List<Vector> {
+        val origin = islandManager.islandOrigin(playerId, false)
+        val farmVectors = landSchematic(playerId, farmId).cropVectors.vectors()
+        return farmVectors.map { it.add(origin) }
     }
 }

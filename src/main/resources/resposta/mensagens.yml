@@ -36,4 +36,4 @@ plantio:
     titulo: '&6&lUHU!'
     subtitulo: '&aPlantio comprado com sucesso!'
   plantado: '&aVocê plantou {plantacao} &aneste plantio!'
-  crescido: ''
+  crescido: '&6A plantação &n"{plantacao}"&6 cresceu em um plantio!'

@@ -2,6 +2,7 @@ package com.grandemc.fazendas.bukkit.view.land
 
 import com.grandemc.fazendas.config.FarmsConfig
 import com.grandemc.fazendas.config.FertilizingConfig
+import com.grandemc.fazendas.config.IslandConfig
 import com.grandemc.fazendas.config.MaterialsConfig
 import com.grandemc.fazendas.manager.GoldBank
 import com.grandemc.fazendas.manager.LandManager
@@ -12,9 +13,13 @@ class LandPackage(
     goldBank: GoldBank,
     farmsConfig: FarmsConfig,
     fertilizingConfig: FertilizingConfig,
-    materialsConfig: MaterialsConfig
+    materialsConfig: MaterialsConfig,
+    islandConfig: IslandConfig
 ) : StatefulPackage<LandContext>(
     LandMenuContainer::class,
-    LandProcessor(landManager, goldBank, farmsConfig, fertilizingConfig, materialsConfig),
+    LandProcessor(
+        landManager, goldBank, farmsConfig, fertilizingConfig, materialsConfig,
+        islandConfig
+    ),
     LandClickHandler()
 )

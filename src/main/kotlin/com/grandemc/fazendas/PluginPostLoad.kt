@@ -57,11 +57,7 @@ class PluginPostLoad(
         pluginManagers = PluginManagersInitializer(
             servicesData.playerService,
             plugin,
-            configCache.configs.island,
-            configCache.configs.farms,
-            configCache.configs.materials,
-            configCache.configs.items,
-            configCache.configs.fertilizing
+            configCache.configs
         ).init()
     }
 

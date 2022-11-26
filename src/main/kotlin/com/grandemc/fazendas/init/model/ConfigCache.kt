@@ -19,6 +19,7 @@ data class ConfigCache(
         val materials: MaterialsConfig,
         val items: ItemsChunk,
         val fertilizing: FertilizingConfig,
-        val crops: CropsConfig
+        val crops: CropsConfig,
+        val lootBox: LootBoxConfig
     )
 }

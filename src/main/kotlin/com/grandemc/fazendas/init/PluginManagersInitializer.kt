@@ -1,10 +1,8 @@
 package com.grandemc.fazendas.init
 
-import com.grandemc.fazendas.config.FarmsConfig
-import com.grandemc.fazendas.config.FertilizingConfig
-import com.grandemc.fazendas.config.IslandConfig
-import com.grandemc.fazendas.config.MaterialsConfig
+import com.grandemc.fazendas.config.*
 import com.grandemc.fazendas.global.respond
+import com.grandemc.fazendas.init.model.ConfigCache
 import com.grandemc.post.external.lib.init.Initializer
 import com.grandemc.fazendas.init.model.PluginManagers
 import com.grandemc.fazendas.manager.*
@@ -18,19 +16,15 @@ import java.util.UUID
 class PluginManagersInitializer(
     private val playerService: DatabaseService<UUID, FarmPlayer>,
     private val plugin: Plugin,
-    private val islandConfig: IslandConfig,
-    private val farmsConfig: FarmsConfig,
-    private val materialsConfig: MaterialsConfig,
-    private val itemsConfig: ItemsChunk,
-    private val fertilizingConfig: FertilizingConfig
+    private val configs: ConfigCache.Configs
 ) : Initializer<PluginManagers> {
     override fun init(): PluginManagers {
         val playerManager = PlayerManager(playerService)
         val farmManager = FarmManager(playerManager)
-        val islandManager = IslandManager(playerManager, farmManager, islandConfig)
+        val islandManager = IslandManager(playerManager, farmManager, configs.island)
         val buildManager = BuildManager()
         val landManager = LandManager(
-            farmManager, farmsConfig, buildManager, islandManager, islandConfig
+            farmManager, configs.farms, buildManager, islandManager, configs.island
         )
         val successGeneration: (Player?) -> Unit = { player: Player? ->
             player.respond("ilha.criada")
@@ -41,15 +35,15 @@ class PluginManagersInitializer(
             islandManager,
             buildManager,
             IslandGenerationManager(
-                plugin, playerManager, buildManager, islandManager, islandConfig,
-                farmsConfig, successGeneration
+                plugin, playerManager, buildManager, islandManager, configs.island,
+                configs.farms, successGeneration
             ),
             farmManager,
             landManager,
-            StorageManager(playerManager, materialsConfig),
+            StorageManager(playerManager, configs.materials),
             GoldBank(playerManager),
-            LandPlantManager(islandConfig, islandManager, landManager),
-            FarmItemManager(itemsConfig, fertilizingConfig)
+            LandPlantManager(configs.island, islandManager, landManager),
+            FarmItemManager(configs.items, configs.fertilizing, configs.lootBox)
         )
     }
 }

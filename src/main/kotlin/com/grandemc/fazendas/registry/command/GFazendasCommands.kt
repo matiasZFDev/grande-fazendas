@@ -8,6 +8,7 @@ import com.grandemc.post.external.lib.manager.config.ConfigManager
 import com.grandemc.post.external.lib.manager.database.DatabaseManager
 import com.grandemc.fazendas.bukkit.command.*
 import com.grandemc.fazendas.bukkit.command.gfazendas.GiveFertilizing
+import com.grandemc.fazendas.bukkit.command.gfazendas.GiveLootBox
 import com.grandemc.fazendas.bukkit.command.gfazendas.Reload
 import com.grandemc.fazendas.bukkit.command.gfazendas.Save
 import com.grandemc.fazendas.manager.FarmItemManager
@@ -34,6 +35,7 @@ class GFazendasCommands(
                 module("save", Save(databaseManager))
                 module("ajuda", gfazendasHelp)
                 module("darfertilizante", GiveFertilizing(farmItemManager))
+                module("darlootbox", GiveLootBox(farmItemManager))
             }
         }
     }

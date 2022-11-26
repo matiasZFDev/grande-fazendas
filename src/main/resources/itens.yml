@@ -105,3 +105,28 @@ fertilizante_plantio_aplicavel:
     - ' &b✶ &fDepois: &e{depois} &c(-{reducao}%) '
     - ''
     - '&aClique para aplicar!'
+lootbox:
+  head: 'https://textures.minecraft.net/texture/81623d5238dab7decd320265cae1dc6ca91b7fa95f34673aaf4b3ad5c6ba16e1'
+  nome: '{nome}'
+  lore:
+    - '&7Tenha a chance de ganhar'
+    - '&7incriveis boosters com'
+    - '&7essa caixa!'
+    - ''
+    - ' &6Conteudo ◢'
+    - ' &8◆ {<conteudo>}'
+    - ''
+    - '&aClique para abrir!'
+booster_xp:
+  head: 'https://textures.minecraft.net/texture/8f62433a1ff5ecc8f8d4eb854e0bcf850fe6f423218f2db4c0b033ee5a3ea654'
+  nome: '&aGirasol de &2&lXP'
+  lore:
+    - '&7Ative essa adoravel'
+    - '&7flor e multiplique'
+    - '&7o xp ganho na coleta'
+    - '&7de plantações!'
+    - ''
+    - ' &2▪ &fMultiplicador: &a{multiplicador}'
+    - ' &2▪ &fDuração: &7{duracao}'
+    - ''
+    - '&aClique para ativar!'

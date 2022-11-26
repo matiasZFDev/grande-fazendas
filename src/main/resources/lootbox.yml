@@ -1,12 +1,14 @@
-lootbox_1:
-  id: 0
-  nome: '&6Lootbox &e➊'
-  boosters:
-    booster_1:
-      chance: 10
-      boost: 2 # multiplicador (x)
-      duracao: 10 # segundos
-    booster_2:
-      chance: 4
-      boost: 2.5
-      duracao: 5
+formato_booster: '&fBooster &7x{boost} &a{duracao} &8▸ &7({chance}%)'
+caixas:
+  lootbox_1:
+    id: 0
+    nome: '&6&lLOOTBOX &e➊'
+    boosters:
+      booster_1:
+        chance: 10
+        boost: 2 # multiplicador (x)
+        duracao: 10 # segundos
+      booster_2:
+        chance: 4
+        boost: 2.5
+        duracao: 5

@@ -104,13 +104,16 @@ class LandProcessor(
                 remove("fertilizante_ativo")
             }
 
-            if (landData.cropId() != null) {
+            if (landData.cropId() != null && landData.resetCountdown() >= 0) {
                 val cropName = materialsConfig.get().getById(landData.cropId()!!).name
                 remove("plantar_disponivel")
                 modify("plantar_gerando") {
                     it.formatLore(
                         "{plantacao}" to cropName,
-                        "{geracao}" to landData.resetCountdown().timeFormat()
+                        "{geracao}" to landData.resetCountdown().timeFormat(),
+                        "{plantacoes}" to currentLandSchematicData
+                            .cropVectors
+                            .vectors().size.toString()
                     )
                 }
             }

@@ -30,7 +30,10 @@ class FarmLand(
         level++
     }
     fun resetCountdown(): Int = resetCountdown
-    fun isResetting(): Boolean = resetCountdown != 1
+    fun reduceCountdown() {
+        resetCountdown--
+    }
+    fun isResetting(): Boolean = resetCountdown >= 0
     fun setCountdown(countdown: Int) {
         resetCountdown = countdown
         canBoost = true

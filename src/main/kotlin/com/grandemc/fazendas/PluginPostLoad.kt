@@ -84,7 +84,12 @@ class PluginPostLoad(
     }
 
     private fun registerExecutors() {
-        ExecutorRegistry(plugin).startAll()
+        ExecutorRegistry(
+            plugin,
+            configCache.configs.crops,
+            pluginManagers.playerManager,
+            pluginManagers.landPlantManager
+        ).startAll()
     }
 
     private fun registerListeners() {

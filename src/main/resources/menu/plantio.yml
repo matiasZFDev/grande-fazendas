@@ -93,6 +93,6 @@ conteudo:
       - '&7gerando...'
       - ''
       - ' &8➥ &fPlantação: {plantacao}'
-      - ' &8➥ &fGeração: {geracao}'
+      - ' &8➥ &fGeração: &7{geracao}'
       - ''
-      - '&7[Gerando &f{plantacoes}x &7plantações]'
+      - '&7(Gerando &f{plantacoes}x &7plantações)'

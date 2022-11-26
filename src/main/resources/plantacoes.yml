@@ -26,7 +26,7 @@ plantacoes:
     nome: '&eTrigo' # display em hologramas/lores
     nivel_ilha: 1 # nivel de ilha preciso
     material_id: 0 # id do material de materiais.yml
-    reset: 10 # minutos
+    reset: 1 # minutos
 
   cenoura:
     id: 1

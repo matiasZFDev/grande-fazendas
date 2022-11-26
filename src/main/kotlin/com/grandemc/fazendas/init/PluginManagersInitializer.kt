@@ -25,6 +25,9 @@ class PluginManagersInitializer(
         val farmManager = FarmManager(playerManager)
         val islandManager = IslandManager(playerManager, farmManager, islandConfig)
         val buildManager = BuildManager()
+        val landManager = LandManager(
+            farmManager, farmsConfig, buildManager, islandManager, islandConfig
+        )
         val successGeneration: (Player?) -> Unit = { player: Player? ->
             player.respond("ilha.criada")
             player?.let { islandManager.joinIsland(it) }
@@ -38,9 +41,10 @@ class PluginManagersInitializer(
                 farmsConfig, successGeneration
             ),
             farmManager,
-            LandManager(farmManager, farmsConfig, buildManager, islandManager, islandConfig),
+            landManager,
             StorageManager(playerManager, materialsConfig),
-            GoldBank(playerManager)
+            GoldBank(playerManager),
+            LandPlantManager(islandConfig, islandManager, landManager)
         )
     }
 }

@@ -32,7 +32,7 @@ class ViewRegistry(
         )))
         register(LandPlantView(LandPlantPackage(
             configs.items, configs.crops, pluginManagers.farmManager,
-            pluginManagers.islandManager, pluginManagers.landManager, configs.island
+            pluginManagers.landPlantManager
         )))
     }
 }

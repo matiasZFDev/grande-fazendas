@@ -2,12 +2,8 @@ package com.grandemc.fazendas.bukkit.view.land_plant
 
 import com.grandemc.fazendas.bukkit.view.land.LandContext
 import com.grandemc.fazendas.config.CropsConfig
-import com.grandemc.fazendas.config.IslandConfig
-import com.grandemc.fazendas.global.findWorld
 import com.grandemc.fazendas.global.respond
-import com.grandemc.fazendas.global.toLocation
-import com.grandemc.fazendas.manager.IslandManager
-import com.grandemc.fazendas.manager.LandManager
+import com.grandemc.fazendas.manager.LandPlantManager
 import com.grandemc.post.external.lib.global.bukkit.nms.NBTReference
 import com.grandemc.post.external.lib.global.bukkit.nms.toByte
 import com.grandemc.post.external.lib.global.bukkit.nms.useNBTValueIfPresent
@@ -19,9 +15,7 @@ import org.bukkit.inventory.ItemStack
 
 class LandPlantClickHandler(
     private val cropsConfig: CropsConfig,
-    private val islandManager: IslandManager,
-    private val landManager: LandManager,
-    private val islandConfig: IslandConfig
+    private val landPlantManager: LandPlantManager
 ) : ViewClickHandler<LandContext> {
     override fun onClick(player: Player, data: LandContext?, item: ItemStack, event: InventoryClickEvent) {
         requireNotNull(data)
@@ -35,13 +29,7 @@ class LandPlantClickHandler(
                 }
                 crop
             }
-            val world = islandConfig.get().worldName.findWorld()
-            val origin = islandManager.islandOrigin(
-                player.uniqueId, false
-            ).toLocation(world)
-            val cropsArea = landManager.landSchematic(player.uniqueId, data.landId).cropVectors
-            val process = cropData.process.type.initializeProcess(cropsArea)
-            process.start(origin, cropData.process.startBlocks)
+            landPlantManager.startPlantation(player.uniqueId, data.landId, cropData)
             player.closeInventory()
             player.respond("plantio.plantado") {
                 replace(

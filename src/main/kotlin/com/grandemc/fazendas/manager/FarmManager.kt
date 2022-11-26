@@ -1,5 +1,6 @@
 package com.grandemc.fazendas.manager
 
+import com.grandemc.fazendas.storage.player.model.FarmLand
 import com.grandemc.fazendas.storage.player.model.PrivateFarm
 import java.util.UUID
 

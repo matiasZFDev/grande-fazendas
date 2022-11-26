@@ -14,7 +14,7 @@
 # > Bota o material indicado
 # > Ao crescer, bota o bloco indicado
 # > O bloco é indicado pelo valor "processo.bloco"
-menu_slots: [10,11]
+menu_slots: [10,11,12,13,14]
 plantacoes:
   trigo:
     id: 0
@@ -74,7 +74,7 @@ plantacoes:
     reset: 40
 
   pimenta:
-    id: 3
+    id: 4
     processo:
       tipo: farm_custom
       plantado:

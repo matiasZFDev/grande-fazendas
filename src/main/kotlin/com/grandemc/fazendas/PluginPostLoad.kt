@@ -96,7 +96,7 @@ class PluginPostLoad(
 
     private fun registerListeners() {
         ListenerRegistry(
-            plugin, pluginManagers.playerManager
+            plugin, pluginManagers.playerManager, configCache.configs.fertilizing
         ).registerAll()
     }
 

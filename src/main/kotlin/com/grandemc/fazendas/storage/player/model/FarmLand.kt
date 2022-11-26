@@ -39,17 +39,17 @@ class FarmLand(
         canBoost = true
     }
     fun canBoost(): Boolean = canBoost
-    fun setCanBoost(canBoost: Boolean) {
-        this.canBoost = canBoost
+    fun resetCanBoost() {
+        canBoost = true
+        boostId = null
     }
     fun boostId(): Byte? = boostId
-    fun boost(id: Byte, percentage: Double) {
+    fun boost(id: Byte, reduction: Int) {
         if (!canBoost)
             return
 
         boostId = id
-        resetCountdown = resetCountdown.toDouble().applyPercentage(
-            percentage, ApplyType.DECREMENT
-        ).toInt()
+        resetCountdown -= reduction
+        canBoost = false
     }
 }

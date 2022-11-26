@@ -60,7 +60,7 @@ class LandManager(
             land.setCrop(null)
             land.setCountdown(0)
             land.setXp(0)
-            land.setCanBoost(true)
+            land.resetCanBoost()
         }
         buildLand(playerId, landId)
     }

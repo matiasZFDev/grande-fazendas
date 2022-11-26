@@ -43,8 +43,9 @@ class CropsGrowthTask(
                         }
                         crop
                     }
-                    land.reduceCountdown()
                     landPlantManager.growPlantation(player.id(), land, cropData)
+                    land.reduceCountdown()
+                    land.resetCanBoost()
                     player.id().runIfOnline {
                         respond("plantio.crescido") {
                             replace("{plantacao}" to cropData.name)

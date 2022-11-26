@@ -69,3 +69,39 @@ fertilizante:
     - ' &8⬇ &fRedução: &c-{reducao}%'
     - ''
     - '&eClique para utilizar'
+fertilizante_plantio_bloqueado:
+  head: 'https://textures.minecraft.net/texture/8b73bbf5458cd04657ecb682c090ffd3785bdc9fbe84f366c0cb6254779ae7d9'
+  nome: '&c&lT&cerreno &c&lB&cloqueado'
+  lore:
+    - '&7Esse plantio se encontra'
+    - '&7bloqueado.'
+    - ''
+    - '&CLibere para aplicar'
+fertilizante_plantio_nao_aplicavel:
+  head: 'https://textures.minecraft.net/texture/c22839d5c7fc0678062f1c6c8f27b332094384e3bb5c4b5ebd1676b279b06bf'
+  nome: '&a&lT&aerreno &l#{id}'
+  lore:
+    - '&7Esse plantio não se'
+    - '&7encontra gerando...'
+    - ''
+    - '&cPlante para aplicar'
+fertilizante_plantio_aplicado:
+  head: 'https://textures.minecraft.net/texture/c22839d5c7fc0678062f1c6c8f27b332094384e3bb5c4b5ebd1676b279b06bf'
+  nome: '&a&lT&aerreno &l#{id}'
+  lore:
+    - '&7Esse plantio ja possui'
+    - '&7um fertilizante...'
+    - ''
+    - '&cPlantio acelerado'
+fertilizante_plantio_aplicavel:
+  head: 'https://textures.minecraft.net/texture/c22839d5c7fc0678062f1c6c8f27b332094384e3bb5c4b5ebd1676b279b06bf'
+  nome: '&a&lT&aerreno &l#{id}'
+  lore:
+    - '&7Aplique fertilizante'
+    - '&7neste plantio para'
+    - '&7acelerar a geração!'
+    - ''
+    - ' &b✶ &fGeração: &7{atual}'
+    - ' &b✶ &fDepois: &e{depois} &c(-{reducao}%) '
+    - ''
+    - '&aClique para aplicar!'

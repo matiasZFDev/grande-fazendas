@@ -36,9 +36,13 @@ plantio:
     titulo: '&6&lUHU!'
     subtitulo: '&aPlantio comprado com sucesso!'
   plantado: '&aVocê plantou {plantacao} &aneste plantio!'
-  crescido: '&6A plantação &n"{plantacao}"&6 cresceu em um plantio!'
+  crescido: '&6A plantação "{plantacao}&6" cresceu em um plantio!'
 darfertilizante:
   argumentos_invalidos: '&cDigite /gfazendas darfertilizante <jogador> <id> <quantia>'
   fertilizante_invalido: '&cA id ingresada não é um fertilizante válido'
   enviado: '&aForam enviados &f{quantia}x {fertilizante} &apro jogador &f{jogador}'
   recebido: '&aVocê recebêu &f{quantia}x {fertilizante}&a!'
+aplicar_fertilizante:
+  invalido: '&cEsse fertilizante não é válido. Contate com algum staff.'
+  pronta: '&cEsse plantio ja cresceu.'
+  aplicado: '&6Foi aplicado o fertilizante {fertilizante} &6ao plantio &f#{plantio}&6.'

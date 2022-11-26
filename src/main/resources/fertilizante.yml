@@ -1,8 +1,10 @@
-fertilizante_1:
-  id: 0 # id numerico (db)
-  nome: '&eFertilizante &lX'
-  reducao: 10 # reducao do tempo em %
-fertilizante_2:
-  id: 1
-  nome: '&3Fertilizante &lXXV'
-  reducao: 25
+menu_slots: [12,14]
+fertilizantes:
+  fertilizante_1:
+    id: 0 # id numerico (db)
+    nome: '&eFertilizante &lX'
+    reducao: 10 # reducao do tempo em %
+  fertilizante_2:
+    id: 1
+    nome: '&3Fertilizante &lXXV'
+    reducao: 25

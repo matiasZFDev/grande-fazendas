@@ -15,8 +15,8 @@ conteudo:
       - ' &6▍ &fPlantações &e{plantacoes} &8≈ &6{novas_plantacoes}'
       - ''
       - ' &eRequisitos ▼'
-      - ' &e▍ &fXP: &b{xp}&f/&a{xp_precisa}'
-      - ' &e▍ &fOuro: &e⛂{ouro}&f/&6⛂{ouro_preciso}'
+      - ' &e▍ &fXP: &b{xp}&8/&a{xp_precisa}'
+      - ' &e▍ &fOuro: &e⛂{ouro}&8/&6⛂{ouro_preciso}'
       - ''
       - '&cRequisitos insuficientes'
   evolucao_upavel:
@@ -33,8 +33,8 @@ conteudo:
       - ' &6▍ &fPlantações &e{plantacoes} &8≈ &6{novas_plantacoes}'
       - ''
       - ' &eRequisitos ▼'
-      - ' &e▍ &fXP: &b{xp}&f/&a{xp_precisa}'
-      - ' &e▍ &fOuro: &e⛂{ouro}&f/&6⛂{ouro_preciso}'
+      - ' &e▍ &fXP: &b{xp}&8/&a{xp_precisa}'
+      - ' &e▍ &fOuro: &e⛂{ouro}&8/&6⛂{ouro_preciso}'
       - ''
       - '&aClique para upar!'
   evolucao_maximo:
@@ -72,7 +72,7 @@ conteudo:
       - '&7desse plantio!'
       - ''
       - ' &e• &fNome: {nome}'
-      - ' &e• &fRedução: {reducao}'
+      - ' &e• &fRedução: &7{reducao}'
       - ''
       - '&7(Válido por &f1 &7geração)'
   plantar_disponivel:

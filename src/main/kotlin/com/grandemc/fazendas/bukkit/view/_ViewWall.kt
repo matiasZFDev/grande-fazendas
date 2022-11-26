@@ -1,5 +1,6 @@
 package com.grandemc.fazendas.bukkit.view
 
+import com.grandemc.fazendas.bukkit.view.fertilizing.FertilizingContext
 import com.grandemc.fazendas.bukkit.view.land.LandContext
 import com.grandemc.fazendas.provider.GlobalMenuContainerProvider
 import com.grandemc.post.external.lib.view.base.ContextData
@@ -15,5 +16,9 @@ class LandView(viewPackage: ViewPackage<LandContext>) : PackedView<LandContext>(
 )
 
 class LandPlantView(viewPackage: ViewPackage<LandContext>) : PackedView<LandContext>(
+    viewPackage, GlobalMenuContainerProvider.get()
+)
+
+class FertilizingView(viewPackage: ViewPackage<FertilizingContext>) : PackedView<FertilizingContext>(
     viewPackage, GlobalMenuContainerProvider.get()
 )

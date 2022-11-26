@@ -13,3 +13,7 @@ class LandsView(viewPackage: ViewPackage<ContextData>) : PackedView<ContextData>
 class LandView(viewPackage: ViewPackage<LandContext>) : PackedView<LandContext>(
     viewPackage, GlobalMenuContainerProvider.get()
 )
+
+class LandPlantView(viewPackage: ViewPackage<LandContext>) : PackedView<LandContext>(
+    viewPackage, GlobalMenuContainerProvider.get()
+)

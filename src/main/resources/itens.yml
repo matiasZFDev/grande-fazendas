@@ -36,3 +36,25 @@ plantio:
     - ' &8☘ &fPlatação: {plantacao}'
     - ''
     - '&eClique para gerenciar'
+plantacao_disponivel:
+  id: 1
+  nome: '{nome}'
+  lore:
+    - '&7Plante, colete, venda'
+    - '&7ou troque essa plantaçaõ!'
+    - ''
+    - ' &8❣ &fNivel ilha: &a{nivel}'
+    - ' &8❣ &fGeração: &7{geracao}'
+    - ''
+    - '&aClique para plantar!'
+plantacao_nao_disponivel:
+  id: 1
+  nome: '{nome}'
+  lore:
+    - '&7Plante, colete, venda'
+    - '&7ou troque essa plantação!'
+    - ''
+    - ' &8❣ &fNivel ilha: &a{nivel}'
+    - ' &8❣ &fGeração: &7{geracao}'
+    - ''
+    - '&cNivel insuficiente...'

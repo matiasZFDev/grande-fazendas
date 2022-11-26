@@ -2,6 +2,7 @@ geral:
   sem_permissoes: '&cVocê não tem permissões para executar esse comando.'
   jogador_offline: '&cEsse jogador encontra-se offline.'
   quantia_invalida: '&cInsira uma quantia válida.'
+  error: '&cOcorreu um error no momento da interação. Tente novamente.'
 command:
   argumentos_invalidos: '&cDigite /command ajuda para mais informaçoes.'
 gcommand:
@@ -34,3 +35,4 @@ plantio:
   comprado:
     titulo: '&6&lUHU!'
     subtitulo: '&aPlantio comprado com sucesso!'
+  plantado: '&aVocê plantou {plantacao} &aneste plantio!'

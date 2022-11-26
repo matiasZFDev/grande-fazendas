@@ -31,12 +31,13 @@ class LandProcessor(
         ).config.levels.nextLevel(landLevel)
         return newItemProcessing(items) {
             if (nextLandLevel == null) {
+                val crops = currentLandSchematicData.cropVectors.vectors().size
                 remove("evolucao_upavel")
                 remove("evolucao_nao_upavel")
                 modify("evolucao_maximo") {
                     it.formatLore(
                         "{nivel}" to landLevel.toString(),
-                        "{plantacoes}" to currentLandSchematicData.cropVectors.size.toString()
+                        "{plantacoes}" to crops.toString()
                     )
                 }
             }
@@ -49,14 +50,16 @@ class LandProcessor(
                 val nextLevelSchematicData = farmData.getSchematicByName(nextLandLevel.schematic)
 
                 if (canLevelUpLand) {
+                    val currentCrops = currentLandSchematicData.cropVectors.vectors().size
+                    val newCrops = nextLevelSchematicData.cropVectors.vectors().size
                     remove("evolucao_nao_upavel")
                     remove("evolucao_maximo")
                     modify("evolucao_upavel") {
                         it.formatLore(
                             "{nivel}" to landLevel.toString(),
                             "{novo_nivel}" to landLevel.inc().toString(),
-                            "{plantacoes}" to currentLandSchematicData.cropVectors.size.toString(),
-                            "{novas_plantacoes}" to nextLevelSchematicData.cropVectors.size.toString(),
+                            "{plantacoes}" to currentCrops.toString(),
+                            "{novas_plantacoes}" to newCrops.toString(),
                             "{xp}" to landData.xp().dottedFormat(),
                             "{xp_precisa}" to currentLand.evolution.xp.dottedFormat(),
                             "{ouro}" to goldBank.gold(player.uniqueId).toFormat(),
@@ -66,14 +69,16 @@ class LandProcessor(
                 }
 
                 else {
+                    val currentCrops = currentLandSchematicData.cropVectors.vectors().size
+                    val newCrops = nextLevelSchematicData.cropVectors.vectors().size
                     remove("evolucao_upavel")
                     remove("evolucao_maximo")
                     modify("evolucao_nao_upavel") {
                         it.formatLore(
                             "{nivel}" to landLevel.toString(),
                             "{novo_nivel}" to landLevel.inc().toString(),
-                            "{plantacoes}" to currentLandSchematicData.cropVectors.size.toString(),
-                            "{novas_plantacoes}" to nextLevelSchematicData.cropVectors.size.toString(),
+                            "{plantacoes}" to currentCrops.toString(),
+                            "{novas_plantacoes}" to newCrops.toString(),
                             "{xp}" to landData.xp().dottedFormat(),
                             "{xp_precisa}" to currentLand.evolution.xp.dottedFormat(),
                             "{ouro}" to goldBank.gold(player.uniqueId).toFormat(),

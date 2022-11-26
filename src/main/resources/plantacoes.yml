@@ -1,12 +1,90 @@
-trigo:
-  tipo: WHEAT # nome tipo minecraft
-  nome: '&eTrigo' # display em hologramas/lores
-  nivel_ilha: 1 # nivel de ilha preciso
-  material_id: 0 # id do material de materiais.yml
-  reset: 10 # minutos
-cenoura:
-  tipo: CARROT
-  nome: '&6Cenoura'
-  nivel_ilha: 10
-  material_id: 1
-  reset: 60
+# Processos de farm:
+# farm:
+# > Bota a plantação indicado e terra molhada em baixo (nao seca)
+# > Ao crescer, bota o material crescido (trigo, cenoura, batata)
+# farm_bloco:
+# > Bota a plantação indicado e terra molhada em baixo (nao seca)
+# > Ao crescer, bota o bloco indicado (simulação de: melancia, abobora)
+# > O bloco é indicado pelo valor "processo.bloco"
+# farm_custom:
+# > Bota o material indicado e terra molhada em baixo (nao seca)
+# > Ao crescer, bota o bloco indicado
+# > O bloco é indicado pelo valor "processo.bloco
+# custom:
+# > Bota o material indicado
+# > Ao crescer, bota o bloco indicado
+# > O bloco é indicado pelo valor "processo.bloco"
+menu_slots: [10,11]
+plantacoes:
+  trigo:
+    id: 0
+    processo:
+      tipo: farm
+      plantacao: CROPS # nome tipo minecraft
+    iten: # iten mostrando na escolha da plantação
+      id: 296
+    nome: '&eTrigo' # display em hologramas/lores
+    nivel_ilha: 1 # nivel de ilha preciso
+    material_id: 0 # id do material de materiais.yml
+    reset: 10 # minutos
+
+  cenoura:
+    id: 1
+    processo:
+      tipo: farm
+      plantacao: CARROT
+    iten:
+      head: 'https://textures.minecraft.net/texture/b2e10f86fc5606ecf34ad48078160bbb7768236a3d2415075862d3d4526072be'
+    nome: '&6Cenoura'
+    nivel_ilha: 5
+    material_id: 1
+    reset: 30
+
+  melancia:
+    id: 2
+    processo:
+      tipo: farm_bloco
+      plantacao: MELON_STEM
+      bloco:
+        id: 103
+        data: 0
+    iten:
+      id: 360
+    nome: '&aMelancia'
+    nivel_ilha: 10
+    material_id: 2
+    reset: 60
+
+  flor_branca:
+    id: 3
+    processo:
+      tipo: custom
+      plantado:
+        id: 37
+        data: 0
+      crescido:
+        id: 38
+        data: 8
+    iten:
+      id: 38
+      data: 8
+    nome: '&eFlor branca'
+    nivel_ilha: 15
+    material_id: 3
+    reset: 40
+
+  pimenta:
+    id: 3
+    processo:
+      tipo: farm_custom
+      plantado:
+        id: 32
+        data: 0
+      crescido:
+        head: 'https://textures.minecraft.net/texture/7e5e8293c158eb23885a474f3a79c70491390b76fddc46b251c8dbad600155f4'
+    iten:
+      head: 'https://textures.minecraft.net/texture/7e5e8293c158eb23885a474f3a79c70491390b76fddc46b251c8dbad600155f4'
+    nome: '&cPimenta'
+    nivel_ilha: 30
+    material_id: 4
+    reset: 90

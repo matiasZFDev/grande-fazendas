@@ -1,8 +1,6 @@
 package com.grandemc.fazendas.registry
 
 import com.grandemc.fazendas.bukkit.listener.RegisterOnJoinListener
-import com.grandemc.fazendas.config.IslandConfig
-import com.grandemc.fazendas.manager.BuildManager
 import com.grandemc.fazendas.manager.PlayerManager
 import org.bukkit.Bukkit
 import org.bukkit.event.Listener

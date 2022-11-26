@@ -63,4 +63,11 @@ class LandManager(
         }
         buildLand(playerId, landId)
     }
+
+    fun landSchematic(playerId: UUID, farmId: Byte): FarmsConfig.FarmSchematic {
+        val landLevel = land(playerId, farmId).level()
+        return farmsConfig.get().getFarmById(farmId).getSchematicByName(
+            farmsConfig.get().getFarmById(farmId).config.levels.level(landLevel).schematic
+        )
+    }
 }

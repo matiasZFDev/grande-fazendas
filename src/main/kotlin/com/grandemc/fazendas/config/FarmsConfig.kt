@@ -84,7 +84,7 @@ class FarmsConfig(
     inner class FarmSchematic(
         val name: String,
         val schematic: Clipboard,
-        val cropVectors: List<Vector>
+        val cropVectors: VectorArea
     )
 
     private lateinit var config: Config
@@ -149,7 +149,7 @@ class FarmsConfig(
                     FarmSchematic(
                         it.nameWithoutExtension,
                         clipboard,
-                        cropVectors
+                        VectorArea(cropVectors)
                     )
                 }
                 Farm(farmConfig, schematics)

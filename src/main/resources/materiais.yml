@@ -6,11 +6,23 @@ cenoura:
   id: 1
   nome: '&6Cenoura'
   ouro: 6
-pao:
+melancia:
   id: 2
+  nome: '&aMelancia'
+  ouro: 10
+flor_branca:
+  id: 3
+  nome: '&eFlor branca'
+  ouro: 7
+pimenta:
+  id: 4
+  nome: '&cPimenta'
+  ouro: 12
+pao:
+  id: 20
   nome: '&ePao'
   ouro: 12
 bolo_cenoura:
-  id: 3
+  id: 21
   nome: '&6Bolo de cenoura'
   ouro: 30

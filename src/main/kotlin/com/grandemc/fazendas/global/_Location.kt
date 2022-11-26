@@ -31,3 +31,7 @@ fun Location.add(vector: ViewVector): Location {
     copy.pitch = copy.pitch + vector.pitch()
     return copy
 }
+
+fun Location.toWeVector(): Vector {
+    return toVector().run { Vector(x, y, z) }
+}

@@ -126,30 +126,38 @@ class LandProcessor(
             }
 
             else {
-                val cropName = materialsConfig.get().getById(landData.cropId()!!).name
-                val world = islandConfig.get().worldName.findWorld()
-                val landCrops = landManager.landCrops(player.uniqueId, landData.typeId())
-                val harvestedCrops = landCrops.fold(0) { acc, cur ->
-                    if (cur.toLocation(world).block.isEmpty)
-                        acc + 1
-                    else
-                        acc
-                }
-                if (harvestedCrops < landCrops.size) {
-                    remove("plantar_disponivel")
+                if (landData.cropId() == null) {
                     remove("plantar_gerando")
-                    modify("plantar_bloqueado") {
-                        it.formatLore(
-                            "{plantacao}" to cropName,
-                            "{colhidas}" to harvestedCrops.toString(),
-                            "{atuais}" to landCrops.size.toString()
-                        )
-                    }
+                    remove("plantar_bloqueado")
                 }
 
                 else {
-                    remove("plantar_gerando")
-                    remove("plantar_bloqueado")
+                    val cropName = materialsConfig.get().getById(landData.cropId()!!).name
+                    val world = islandConfig.get().worldName.findWorld()
+                    val landCrops = landManager.landCrops(player.uniqueId, landData.typeId())
+                    val harvestedCrops = landCrops.fold(0) { acc, cur ->
+                        if (cur.toLocation(world).block.isEmpty)
+                            acc + 1
+                        else
+                            acc
+                    }
+
+                    if (harvestedCrops < landCrops.size) {
+                        remove("plantar_disponivel")
+                        remove("plantar_gerando")
+                        modify("plantar_bloqueado") {
+                            it.formatLore(
+                                "{plantacao}" to cropName,
+                                "{colhidas}" to harvestedCrops.toString(),
+                                "{atuais}" to landCrops.size.toString()
+                            )
+                        }
+                    }
+
+                    else {
+                        remove("plantar_gerando")
+                        remove("plantar_bloqueado")
+                    }
                 }
             }
         }

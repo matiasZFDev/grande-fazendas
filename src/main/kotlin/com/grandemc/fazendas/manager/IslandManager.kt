@@ -5,6 +5,9 @@ import com.grandemc.fazendas.global.*
 import com.grandemc.fazendas.manager.model.IslandEntities
 import com.grandemc.fazendas.manager.model.IslandSession
 import com.grandemc.fazendas.npc.LandsTrait
+import com.grandemc.post.external.lib.cache.config.chunk.base.ItemsChunk
+import com.grandemc.post.external.lib.global.bukkit.giveItem
+import com.grandemc.post.external.lib.global.bukkit.removeItemByReference
 import com.sk89q.worldedit.BlockVector
 import com.sk89q.worldedit.Vector
 import net.citizensnpcs.api.CitizensAPI
@@ -20,7 +23,8 @@ import java.util.UUID
 class IslandManager(
     private val playerManager: PlayerManager,
     private val farmManager: FarmManager,
-    private val islandConfig: IslandConfig
+    private val islandConfig: IslandConfig,
+    private val farmItemManager: FarmItemManager
 ) {
     private val islandPlayers: MutableMap<UUID, IslandSession> = mutableMapOf()
     private val npcRegistry = CitizensAPI.createAnonymousNPCRegistry(MemoryNPCDataStore())
@@ -79,7 +83,9 @@ class IslandManager(
 
     fun joinIsland(player: Player) {
         val islandSpawn = islandSpawn(player.uniqueId)
+        val farmTool = farmItemManager.createFarmTool(player.uniqueId)
         player.teleport(islandSpawn)
+        player.giveItem(farmTool)
         val npcs = islandConfig.get().islandNpcs
         val entities = IslandEntities(listOf(
                 createHologram(player, npcs.terrains, islandSpawn),
@@ -102,6 +108,7 @@ class IslandManager(
     fun leaveIsland(player: Player) {
         islandPlayers[player.uniqueId]!!.entities().clearAll(player)
         islandPlayers.remove(player.uniqueId)
+        player.inventory.removeItemByReference("gfazendas.farm_tool")
         player.performCommand(islandConfig.get().leaveCommand)
     }
 }

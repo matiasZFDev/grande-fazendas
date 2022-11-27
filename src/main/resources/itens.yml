@@ -130,3 +130,15 @@ booster_xp:
     - ' &2▪ &fDuração: &7{duracao}'
     - ''
     - '&aClique para ativar!'
+enxada_farm:
+  id: 294
+  nome: '&6Enxada Farm &7[{contagem}]'
+  lore:
+    - '&7Utilize essa enxada'
+    - '&7para quebrar as'
+    - '&7suas plantações.'
+    - ''
+    - ' &8✩ &fExperiente &e{experiente}'
+    - ' &8✩ &fReplantar &e{replantar}'
+    - ' &8✩ &fRadar &e{radar}'
+    - ''

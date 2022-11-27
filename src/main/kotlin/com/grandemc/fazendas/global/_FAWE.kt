@@ -5,6 +5,7 @@ import com.grandemc.fazendas.util.Checkable
 import com.sk89q.worldedit.EditSession
 import com.sk89q.worldedit.Vector
 import com.sk89q.worldedit.world.World
+import org.bukkit.Location
 
 fun newSession(world: World): EditSession {
     return FaweAPI
@@ -46,4 +47,8 @@ class MappedVectors(private val vectors: Iterable<Vector>) : Checkable<Vector> {
     override fun contains(value: Vector): Boolean {
         return mapped[value.blockX]?.get(value.blockY)?.contains(value.blockZ) ?: false
     }
+}
+
+fun Vector.subtract(location: Location): Vector {
+    return subtract(location.blockX, location.blockY, location.blockZ)
 }

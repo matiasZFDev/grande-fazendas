@@ -77,4 +77,8 @@ class LandManager(
         val farmVectors = landSchematic(playerId, farmId).cropVectors.vectors()
         return farmVectors.map { it.add(origin) }
     }
+
+    fun playerLands(playerId: UUID): List<FarmLand> {
+        return farmManager.farm(playerId).lands()
+    }
 }

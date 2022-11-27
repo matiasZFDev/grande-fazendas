@@ -21,7 +21,11 @@ interface CropProcess {
             val min = vectorArea.min().add(originVector)
             val max = vectorArea.max().add(originVector)
             val changeVectors = vectorArea.vectors().map { it.add(originVector) }
-            session.setMask { vectorArea.mapped().contains(it) }
+            session.setMask {
+                vectorArea.mapped().contains(
+                    it.subtract(origin.x, 0.0, origin.z)
+                )
+            }
             blocks.placeAll(session, min, max, changeVectors)
         }
 

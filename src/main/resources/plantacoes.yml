@@ -78,7 +78,7 @@ plantacoes:
     processo:
       tipo: farm_custom
       plantado:
-        id: 32
+        id: 38
         data: 0
       crescido:
         head: 'https://textures.minecraft.net/texture/7e5e8293c158eb23885a474f3a79c70491390b76fddc46b251c8dbad600155f4'

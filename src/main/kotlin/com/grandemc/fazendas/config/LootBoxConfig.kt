@@ -24,9 +24,14 @@ class LootBoxConfig(customConfig: CustomConfig) : StateConfig<LootBoxConfig.Conf
         fun getLootBox(id: Byte): LootBox? {
             return lootBoxes.find { it.id == id }
         }
+
+        fun getByLandId(id: Byte): List<LootBox> {
+            return lootBoxes.filter { it.landGainId == id }
+        }
     }
     inner class LootBox(
         val id: Byte,
+        val landGainId: Byte,
         val name: String,
         val content: List<ChanceBooster>
     )
@@ -40,6 +45,7 @@ class LootBoxConfig(customConfig: CustomConfig) : StateConfig<LootBoxConfig.Conf
         return config.section("caixas").mappedSection {
             LootBox(
                 getByte("id"),
+                getByte("plantio"),
                 getString("nome").color(),
                 section("boosters").mappedSection {
                     ChanceBooster(

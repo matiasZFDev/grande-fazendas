@@ -20,6 +20,7 @@ data class ConfigCache(
         val items: ItemsChunk,
         val fertilizing: FertilizingConfig,
         val crops: CropsConfig,
-        val lootBox: LootBoxConfig
+        val lootBox: LootBoxConfig,
+        val farmHoe: FarmHoeConfig
     )
 }

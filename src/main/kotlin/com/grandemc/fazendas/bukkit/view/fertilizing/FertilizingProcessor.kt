@@ -39,7 +39,7 @@ class FertilizingProcessor(
                 else {
                     val land = landManager.land(player.uniqueId, farm.id)
 
-                    if (land.resetCountdown() < 0)
+                    if (land.resetCountdown() < 0 || land.cropId() == null)
                         itemsConfig.value("fertilizante_plantio_nao_aplicavel")
                             .formatName("{id}" to farm.id.toString())
                     else if (!land.canBoost())

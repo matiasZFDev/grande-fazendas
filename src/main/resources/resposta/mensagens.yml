@@ -39,6 +39,10 @@ plantio:
   crescido: '&6A plantação "{plantacao}&6" cresceu em um plantio!'
   coletada:
     actionbar: '&2☘ &f+1 &e{plantacao} &8● &a+{xp} &lXP'
+  replantado: '&a&lEBA! &aO que aconteceu? não quebrou esse bagui...'
+  lootbox:
+    titulo: '&6&lFAZENDA'
+    subtitulo: '&aVocê achou uma {lootbox}&a!'
 darfertilizante:
   argumentos_invalidos: '&cDigite /gfazendas darfertilizante <jogador> <id> <quantia>'
   fertilizante_invalido: '&cA id ingresada não é um fertilizante válido'
@@ -61,3 +65,8 @@ abrir_lootbox:
   recompensa:
     titulo: '&6&lLOOTBOX!'
     subtitulo: '&fVocê ganhou um &aBooster X{multiplicador} &7({duracao})&f!'
+enxada:
+  upar_mao: '&cVocê precisa de segurar a sua enxada na mão!'
+  upar_maximo: '&eEsse encantamento encontra-se no nível máximo!'
+  upar_ouro: '&cVocê nao possui o ouro suficiente para upar.'
+  upada: '&6&lFAZENDAS &aMelhoria upada com sucesso!'

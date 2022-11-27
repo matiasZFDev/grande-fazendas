@@ -1,11 +1,8 @@
 package com.grandemc.fazendas.registry
 
-import com.grandemc.fazendas.bukkit.view.FertilizingView
-import com.grandemc.fazendas.bukkit.view.LandPlantView
-import com.grandemc.fazendas.bukkit.view.LandView
-import com.grandemc.fazendas.bukkit.view.LandsView
-import com.grandemc.fazendas.bukkit.view.fertilizing.FertilizingContext
+import com.grandemc.fazendas.bukkit.view.*
 import com.grandemc.fazendas.bukkit.view.fertilizing.FertilizingPackage
+import com.grandemc.fazendas.bukkit.view.hoe.HoePackage
 import com.grandemc.fazendas.bukkit.view.land.LandPackage
 import com.grandemc.fazendas.bukkit.view.land_plant.LandPlantPackage
 import com.grandemc.fazendas.bukkit.view.lands.LandsPackage
@@ -40,6 +37,9 @@ class ViewRegistry(
         register(FertilizingView(FertilizingPackage(
             configs.fertilizing, configs.farms, pluginManagers.landManager,
             configs.items, configs.crops
+        )))
+        register(HoeView(HoePackage(
+            pluginManagers.playerManager, configs.farmHoe, pluginManagers.goldBank
         )))
     }
 }

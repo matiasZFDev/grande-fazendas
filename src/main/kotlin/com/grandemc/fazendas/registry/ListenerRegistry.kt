@@ -24,7 +24,8 @@ class ListenerRegistry(
         register(CropCollectListener(
             configs.island, managers.islandManager, managers.landManager,
             configs.crops, managers.storageManager, managers.farmItemManager,
-            managers.playerManager
+            managers.playerManager, configs.farmHoe, configs.lootBox
         ))
+        register(FarmHoeMenuOpenListener())
     }
 }

@@ -2,6 +2,7 @@ formato_booster: '&fBooster &7x{boost} &a{duracao} &8▸ &7({chance}%)'
 caixas:
   lootbox_1:
     id: 0
+    plantio: 1 # plantio onde poderá ser pego
     nome: '&6&lLOOTBOX &e➊'
     boosters:
       booster_1:

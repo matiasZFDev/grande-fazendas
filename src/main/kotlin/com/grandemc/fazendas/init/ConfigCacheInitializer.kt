@@ -73,7 +73,8 @@ class ConfigCacheInitializer(
             BaseItemsChunk(config("itens"), "itens.yml", context),
             FertilizingConfig(config("fertilizante")),
             CropsConfig(config("plantacoes")),
-            LootBoxConfig(config("lootbox"))
+            LootBoxConfig(config("lootbox")),
+            FarmHoeConfig(config("enxada"))
         )
     }
 }

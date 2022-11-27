@@ -2,14 +2,11 @@ package com.grandemc.fazendas.config
 
 import com.grandemc.fazendas.GrandeFazendas
 import com.grandemc.fazendas.config.model.level.LevelContainer
-import com.grandemc.fazendas.config.model.level.island.IslandLevel
-import com.grandemc.fazendas.config.model.level.island.iterative.IslandLevelRequirements
-import com.grandemc.fazendas.config.model.level.island.iterative.IslandLevelUpgrades
-import com.grandemc.fazendas.config.model.level.island.iterative.IterativeIslandLevels
-import com.grandemc.fazendas.config.model.level.island.iterative.pattern.EveryAfterPattern
-import com.grandemc.fazendas.config.model.level.island.iterative.pattern.EveryPattern
-import com.grandemc.fazendas.config.model.level.island.iterative.pattern.LevelPattern
-import com.grandemc.fazendas.config.model.level.island.iterative.pattern.WhenPattern
+import com.grandemc.fazendas.config.model.level.base.pattern.EveryAfterPattern
+import com.grandemc.fazendas.config.model.level.base.pattern.EveryPattern
+import com.grandemc.fazendas.config.model.level.base.pattern.LevelPattern
+import com.grandemc.fazendas.config.model.level.base.pattern.WhenPattern
+import com.grandemc.fazendas.config.model.level.island.*
 import com.grandemc.fazendas.global.asSchematic
 import com.grandemc.fazendas.util.Lazy
 import com.grandemc.fazendas.util.ViewVector
@@ -106,54 +103,10 @@ class IslandConfig(
                 ),
                 IslandEvolution(
                     getInt("evolucao.nivel_maximo"),
-                    iterativeLevels(section("evolucao.niveis"))
+                    IslandLevelFetcher(section("evolucao.niveis")).fetch()
                 ),
                 baseSchematicFile.get().asSchematic(getString("mundo"))
             )
-        }
-    }
-
-    private fun iterativeLevels(section: ConfigurationSection): IterativeIslandLevels {
-        val requirements = mutableListOf<IslandLevelRequirements>()
-        val upgrades = mutableListOf<IslandLevelUpgrades>()
-        section.section("requisitos").keys().forEach { key ->
-            patternResolve(key) {
-                requirements.add(
-                    IslandLevelRequirements(
-                    it, section.getInt("requisitos.$key.xp")
-                ))
-            }
-
-        }
-        section.section("melhorias").keys().forEach { key ->
-            patternResolve(key) {
-                upgrades.add(
-                    IslandLevelUpgrades(
-                    it,
-                    section.getInt("melhorias.$key.missoes_diarias")
-                )
-                )
-            }
-        }
-        return IterativeIslandLevels(requirements, upgrades)
-    }
-
-    private fun patternResolve(key: String, consumer: (LevelPattern) -> Unit) {
-        if (key.startsWith("cada")) {
-            val level = key.split("_")[1].toInt()
-            consumer(EveryPattern(level))
-        }
-
-        else if (key.startsWith("em")) {
-            val level = key.split("_")[1].toInt()
-            consumer(WhenPattern(level))
-        }
-
-        else if (key.startsWith("depois")) {
-            val patternFormat = key.split("_")
-            val afterLevel = patternFormat[1].toInt()
-            val everyLevel = patternFormat[3].toInt()
-            consumer(EveryAfterPattern(afterLevel, everyLevel))
         }
     }
 }

@@ -44,6 +44,10 @@ class FarmItemManager(
             it
         }
 
+        return createLootBox(lootBox)
+    }
+
+    fun createLootBox(lootBox: LootBoxConfig.LootBox): ItemStack {
         return itemsConfig
             .value("lootbox")
             .formatName("{nome}" to lootBox.name)
@@ -57,7 +61,9 @@ class FarmItemManager(
                         )
                 }
             )
-            .addNBTValue(NBTReference.ITEM, "gfazendas.lootbox", NBTTagByte(id))
+            .addNBTValue(
+                NBTReference.ITEM, "gfazendas.lootbox", NBTTagByte(lootBox.id)
+            )
     }
 
     fun createBooster(boosterModel: LootBoxConfig.ChanceBooster): ItemStack {

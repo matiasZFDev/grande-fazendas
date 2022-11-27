@@ -1,6 +1,7 @@
 package com.grandemc.fazendas.registry
 
 import com.grandemc.fazendas.bukkit.view.fertilizing.FertilizingMenuContainer
+import com.grandemc.fazendas.bukkit.view.hoe.HoeMenuContainer
 import com.grandemc.fazendas.bukkit.view.land.LandMenuContainer
 import com.grandemc.fazendas.bukkit.view.land_plant.LandPlantMenuContainer
 import com.grandemc.fazendas.bukkit.view.lands.LandsMenuContainer
@@ -31,5 +32,6 @@ class MenuContainerRegistry(
         register<LandMenuContainer>("plantio")
         register<LandPlantMenuContainer>("plantar")
         register<FertilizingMenuContainer>("aplicar_fertilizante")
+        register<HoeMenuContainer>("enxada")
     }
 }

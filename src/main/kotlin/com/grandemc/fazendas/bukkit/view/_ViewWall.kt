@@ -22,3 +22,7 @@ class LandPlantView(viewPackage: ViewPackage<LandContext>) : PackedView<LandCont
 class FertilizingView(viewPackage: ViewPackage<FertilizingContext>) : PackedView<FertilizingContext>(
     viewPackage, GlobalMenuContainerProvider.get()
 )
+
+class HoeView(viewPackage: ViewPackage<ContextData>) : PackedView<ContextData>(
+    viewPackage, GlobalMenuContainerProvider.get()
+)

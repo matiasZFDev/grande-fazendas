@@ -1,0 +1,40 @@
+titulo: 'Sua enxada'
+linhas: 4
+conteudo:
+  experiente:
+    slot: 13
+    id: 384
+    nome: '&a&lE&axperiente &8- &7(x{valor})'
+    lore:
+      - '&7Aumente a xp ganha na'
+      - '&7coleta de plantações!'
+      - ''
+      - ' &8✵ &fNivel: &e{nivel}'
+      - ' &8✵ &fCusto: &6⛂{custo}'
+      - ''
+      - '&aClique para upar!'
+  replantar:
+    slot: 21
+    head: 'https://textures.minecraft.net/texture/f2b41f1f0d8efc6fc9383a6b8146159e165a39a409ef0fedbc45842b656441e7'
+    nome: '&d&lR&deplantar &8- &7({valor}%)'
+    lore:
+      - '&7Tenha a chance de'
+      - '&7replantar uma colheita!'
+      - ''
+      - ' &8✵ &fNivel: &e{nivel}'
+      - ' &8✵ &fCusto: &6⛂{custo}'
+      - ''
+      - '&aClique para upar!'
+  radar:
+    slot: 23
+    id: 345
+    nome: '&c&lR&cadar &8- &7({valor}%)'
+    lore:
+      - '&7Tenha a chance de'
+      - '&7ganhar lootboxes'
+      - '&7quebrando colheitas!'
+      - ''
+      - ' &8✵ &fNivel: &e{nivel}'
+      - ' &8✵ &fCusto: &6⛂{custo}'
+      - ''
+      - '&aClique para upar!'

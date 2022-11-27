@@ -7,8 +7,8 @@ experiente:
       depois_20_cada_1: { ouro: 5 }
       cada_50: { ouro: 20 }
     melhorias:
-      cada_1: { valor: 0.0025 }
-replantador:
+      cada_1: { valor: 2 }
+replantar:
   nivel_maximo: 500
   nivel:
     requisitos:
@@ -16,9 +16,9 @@ replantador:
       cada_5: { ouro: 2 }
       depois_20_cada_1: { ouro: 5 }
       cada_50: { ouro: 20 }
-      cada_250: { ouro 1k }
+      cada_250: { ouro: 1k }
     melhorias:
-      cada_1: { valor: 0.02 }
+      cada_1: { valor: 50 }
 radar:
   nivel_maximo: 300
   nivel:
@@ -27,6 +27,6 @@ radar:
       cada_5: { ouro: 2 }
       depois_20_cada_1: { ouro: 5 }
       cada_50: { ouro: 20 }
-      cada_250: { ouro 1k }
+      cada_250: { ouro: 1k }
     melhorias:
-      cada_1: { valor: 0.02 }
+      cada_1: { valor: 50 }

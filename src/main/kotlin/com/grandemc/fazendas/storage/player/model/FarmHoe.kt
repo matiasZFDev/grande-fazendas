@@ -15,4 +15,7 @@ class FarmHoe(
     }
 
     fun collectCount(): Double = collectCount
+    fun incrementCollectCount() {
+        collectCount++
+    }
 }

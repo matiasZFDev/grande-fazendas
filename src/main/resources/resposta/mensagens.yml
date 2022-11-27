@@ -37,6 +37,8 @@ plantio:
     subtitulo: '&aPlantio comprado com sucesso!'
   plantado: '&aVocê plantou {plantacao} &aneste plantio!'
   crescido: '&6A plantação "{plantacao}&6" cresceu em um plantio!'
+  coletada:
+    actionbar: '&2☘ &f+1 &e{plantacao} &8● &a+{xp} &lXP'
 darfertilizante:
   argumentos_invalidos: '&cDigite /gfazendas darfertilizante <jogador> <id> <quantia>'
   fertilizante_invalido: '&cA id ingresada não é um fertilizante válido'

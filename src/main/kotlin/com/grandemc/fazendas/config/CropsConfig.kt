@@ -2,16 +2,11 @@ package com.grandemc.fazendas.config
 
 import com.grandemc.fazendas.GrandeFazendas
 import com.grandemc.fazendas.config.model.block.PlaceBlocks
-import com.grandemc.fazendas.config.model.block.SimpleBlocks
-import com.grandemc.fazendas.config.model.block.SkullBlocks
 import com.grandemc.fazendas.config.model.crop.CropType
 import com.grandemc.post.external.lib.cache.config.StateConfig
 import com.grandemc.post.external.lib.global.bukkit.*
 import com.grandemc.post.external.lib.global.color
 import com.grandemc.post.external.lib.util.CustomConfig
-import com.sk89q.worldedit.blocks.BaseBlock
-import org.bukkit.Material
-import org.bukkit.configuration.ConfigurationSection
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.inventory.ItemStack
 
@@ -38,6 +33,7 @@ class CropsConfig(customConfig: CustomConfig) : StateConfig<CropsConfig.Config>(
         val name: String,
         val islandLevel: Byte,
         val materialId: Byte,
+        val xp: Int,
         val reset: Int,
     )
     class ProcessData(
@@ -58,6 +54,7 @@ class CropsConfig(customConfig: CustomConfig) : StateConfig<CropsConfig.Config>(
                 section.getString("nome").color(),
                 section.getByte("nivel_ilha"),
                 section.getByte("material_id"),
+                section.getInt("xp"),
                 section.getInt("reset") * 60
             )
         }.let { Config(config.intList("menu_slots"), it) }

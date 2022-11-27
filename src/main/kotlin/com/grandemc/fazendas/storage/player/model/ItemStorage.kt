@@ -14,7 +14,7 @@ class ItemStorage(private val items: MutableList<StorageItem> = LinkedList()) {
     }
 
     fun hasAmount(id: Byte, amount: Short): Boolean {
-        return getAmount(id)?.let { it >= amount } ?: false
+        return getAmount(id)?.let { it >= amount } ?: (amount == (0).toShort())
     }
 
     fun removeAmount(id: Byte, amount: Short) {

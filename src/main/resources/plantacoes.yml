@@ -26,6 +26,7 @@ plantacoes:
     nome: '&eTrigo' # display em hologramas/lores
     nivel_ilha: 1 # nivel de ilha preciso
     material_id: 0 # id do material de materiais.yml
+    xp: 1 # xp ganho ao quebrar
     reset: 1 # minutos
 
   cenoura:
@@ -38,6 +39,7 @@ plantacoes:
     nome: '&6Cenoura'
     nivel_ilha: 5
     material_id: 1
+    xp: 1 # xp ganho ao quebrar
     reset: 30
 
   melancia:
@@ -53,6 +55,7 @@ plantacoes:
     nome: '&aMelancia'
     nivel_ilha: 10
     material_id: 2
+    xp: 2 # xp ganho ao quebrar
     reset: 60
 
   flor_branca:
@@ -71,6 +74,7 @@ plantacoes:
     nome: '&eFlor branca'
     nivel_ilha: 15
     material_id: 3
+    xp: 3 # xp ganho ao quebrar
     reset: 40
 
   pimenta:
@@ -87,4 +91,5 @@ plantacoes:
     nome: '&cPimenta'
     nivel_ilha: 30
     material_id: 4
+    xp: 5 # xp ganho ao quebrar
     reset: 90

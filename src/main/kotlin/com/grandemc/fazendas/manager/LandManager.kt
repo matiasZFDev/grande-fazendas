@@ -67,9 +67,8 @@ class LandManager(
 
     fun landSchematic(playerId: UUID, farmId: Byte): FarmsConfig.FarmSchematic {
         val landLevel = land(playerId, farmId).level()
-        return farmsConfig.get().getFarmById(farmId).getSchematicByName(
-            farmsConfig.get().getFarmById(farmId).config.levels.level(landLevel).schematic
-        )
+        val farmData = farmsConfig.get().getFarmById(farmId)
+        return farmData.getSchematicByName(farmData.config.levels.level(landLevel).schematic)
     }
 
     fun landCrops(playerId: UUID, farmId: Byte): List<Vector> {

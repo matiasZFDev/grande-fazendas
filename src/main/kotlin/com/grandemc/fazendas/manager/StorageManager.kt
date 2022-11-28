@@ -2,6 +2,7 @@ package com.grandemc.fazendas.manager
 
 import com.grandemc.fazendas.config.MaterialsConfig
 import com.grandemc.fazendas.storage.player.model.ItemStorage
+import com.grandemc.fazendas.storage.player.model.StorageItem
 import java.util.UUID
 
 class StorageManager(
@@ -29,7 +30,7 @@ class StorageManager(
     }
 
     fun material(playerId: UUID, type: Byte): Short {
-        return storage(playerId).getAmount(type)!!
+        return storage(playerId).getAmount(type)
     }
 
     fun deposit(playerId: UUID, type: Byte, amount: Short) {
@@ -38,5 +39,9 @@ class StorageManager(
 
     fun withdraw(playerId: UUID, type: Byte, amount: Short) {
         storage(playerId).removeAmount(type, amount)
+    }
+
+    fun items(playerId: UUID): List<StorageItem> {
+        return storage(playerId).items()
     }
 }

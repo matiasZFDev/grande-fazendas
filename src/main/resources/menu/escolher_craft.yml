@@ -1,0 +1,10 @@
+titulo: "Escolha uma receita"
+linhas: 4
+conteudo:
+  voltar:
+    slot: 35
+    head: 'https://textures.minecraft.net/texture/c61b279e00f19d9f69a712f6560767cae0cfa02c83160d46c7f50c7526f6776e'
+    nome: '&eVoltar'
+    lore:
+      - '&7Clique para voltar'
+      - '&7ao menu anterior.'

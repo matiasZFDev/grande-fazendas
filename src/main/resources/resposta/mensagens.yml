@@ -70,3 +70,7 @@ enxada:
   upar_maximo: '&eEsse encantamento encontra-se no nível máximo!'
   upar_ouro: '&cVocê nao possui o ouro suficiente para upar.'
   upada: '&6&lFAZENDAS &aMelhoria upada com sucesso!'
+receita:
+  iniciar:
+    titulo: '&6&lFAZENDA'
+    subtitulo: '&fReceita {receita} &ffoi iniciada!'

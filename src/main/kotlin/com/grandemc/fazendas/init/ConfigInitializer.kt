@@ -16,11 +16,12 @@ class ConfigInitializer(private val plugin: Plugin) : Initializer<ConfigManager>
 
     private fun respondFiles(): List<String> = listOf("mensagens", "sons", "efeitos").map { "resposta/$it" }
     private fun menuFiles(): List<String> = listOf(
-        "plantios", "plantio", "plantar", "aplicar_fertilizante", "enxada"
+        "plantios", "plantio", "plantar", "aplicar_fertilizante", "enxada",
+        "armazem", "escolher_craft", "industria", "iniciar_craft"
     ).map { "menu/$it" }
     private fun rootFiles(): List<String> = listOf(
         "database", "enxada", "fertilizante", "industria", "itens", "lootbox",
         "materiais", "mercado", "missoes", "plantacoes", "farm/ilha", "itens",
-        "plantios"
+        "plantios", "armazem"
     )
 }

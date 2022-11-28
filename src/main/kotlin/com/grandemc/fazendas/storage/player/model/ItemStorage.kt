@@ -9,8 +9,8 @@ class ItemStorage(private val items: MutableList<StorageItem> = LinkedList()) {
         } ?: items.add(StorageItem(id, amount))
     }
 
-    fun getAmount(id: Byte): Short? {
-        return items.find { id == it.id }?.amount
+    fun getAmount(id: Byte): Short {
+        return items.find { id == it.id }?.amount ?: 0
     }
 
     fun hasAmount(id: Byte, amount: Short): Boolean {

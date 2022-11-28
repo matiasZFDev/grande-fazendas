@@ -1,0 +1,47 @@
+titulo: 'Industria'
+linhas: 5
+conteudo:
+  carinha:
+    slot: 13
+    head: 'https://textures.minecraft.net/texture/fea30b2b041d3471c7d02e5dd14276831c9f48fd78a1f3f0c13676c5306a51ac'
+    nome: '&a&lINDUSTRIA'
+    lore:
+      - '&fOlá &7fazendeiro&f! alem'
+      - '&fde plantar e coletar'
+      - '&fplantações, você'
+      - '&ftambém poderá &7criar'
+      - '&fgeniais &7receitas &f:D'
+  craft_ativo:
+    slot: 30
+    head: 'https://textures.minecraft.net/texture/4c48044e937c044920ec0d537cfb31d89d07a51724f38db19f8bf7cc7293d65d'
+    nome: '&6&lC&6raft!'
+    lore:
+      - '&7Crie materiais'
+      - '&7usando os seus'
+      - '&7coletáveis.'
+      - ''
+      - ' &fReceita atual: {receita}'
+      - ' &fTempo restante: &7{tempo}'
+      - ''
+      - '&eEspere para coletar'
+  craft_inativo:
+    slot: 30
+    head: 'https://textures.minecraft.net/texture/4c48044e937c044920ec0d537cfb31d89d07a51724f38db19f8bf7cc7293d65d'
+    nome: '&6&lC&6raft!'
+    lore:
+      - '&7Crie materiais'
+      - '&7usando os seus'
+      - '&7coletáveis.'
+      - ''
+      - '&aClique para craftar!'
+  armazem:
+    slot: 32
+    head: 'https://textures.minecraft.net/texture/c390eede381bb8447f7d72e15b56347683e02c17c9b8fc6becd726f0a52c7fc1'
+    nome: '&e&lA&ermazem'
+    lore:
+      - '&7O lugar onde todas'
+      - '&7as suas colheitas'
+      - '&7e materiais são'
+      - '&7guardos!'
+      - ''
+      - '&fClique para abrir'

@@ -142,3 +142,24 @@ enxada_farm:
     - ' &8✩ &fReplantar &e{replantar}'
     - ' &8✩ &fRadar &e{radar}'
     - ''
+material_armazem:
+  id: 1
+  nome: '{nome}'
+  lore:
+    - '&7Apenas um material'
+    - '&7do seu armazem...'
+    - ''
+    - ' &fQuantia: &7{quantia}'
+    - ''
+    - '&aClique para gerenciar'
+material_craft:
+  id: 1
+  nome: "{nome}"
+  lore:
+    - '&7Sobre a receita'
+    - '&7em questão.'
+    - ''
+    - ' &fPreço: &6⛂{ouro}'
+    - ' &fPreparaçao: &7{tempo}'
+    - ''
+    - '&eClique para escolher'

@@ -1,11 +1,15 @@
 package com.grandemc.fazendas.registry
 
 import com.grandemc.fazendas.bukkit.view.*
+import com.grandemc.fazendas.bukkit.view.craft.select.CraftSelectPackage
+import com.grandemc.fazendas.bukkit.view.craft.start.CraftStartPackage
 import com.grandemc.fazendas.bukkit.view.fertilizing.FertilizingPackage
 import com.grandemc.fazendas.bukkit.view.hoe.HoePackage
+import com.grandemc.fazendas.bukkit.view.industry.IndustryPackage
 import com.grandemc.fazendas.bukkit.view.land.LandPackage
 import com.grandemc.fazendas.bukkit.view.land_plant.LandPlantPackage
 import com.grandemc.fazendas.bukkit.view.lands.LandsPackage
+import com.grandemc.fazendas.bukkit.view.storage.StoragePackage
 import com.grandemc.fazendas.init.model.ConfigCache
 import com.grandemc.fazendas.init.model.PluginManagers
 import com.grandemc.post.external.lib.manager.view.ViewManager
@@ -40,6 +44,20 @@ class ViewRegistry(
         )))
         register(HoeView(HoePackage(
             pluginManagers.playerManager, configs.farmHoe, pluginManagers.goldBank
+        )))
+        register(IndustryView(IndustryPackage(
+            pluginManagers.industryManager, configs.industry, configs.materials
+        )))
+        register(StorageView(StoragePackage(
+            pluginManagers.storageManager, configs.storage, configs.materials,
+            configs.items
+        )))
+        register(CraftSelectView(CraftSelectPackage(
+            configs.industry, configs.items, configs.materials
+        )))
+        register(CraftStartView(CraftStartPackage(
+            pluginManagers.storageManager, configs.industry,
+            pluginManagers.industryManager
         )))
     }
 }

@@ -1,28 +1,43 @@
 trigo:
   id: 0
   nome: '&eTrigo'
+  iten:
+    id: 296
   ouro: 1
 cenoura:
   id: 1
   nome: '&6Cenoura'
+  iten:
+    id: 279
   ouro: 6
 melancia:
   id: 2
   nome: '&aMelancia'
+  iten:
+    id: 360
   ouro: 10
 flor_branca:
   id: 3
   nome: '&eFlor branca'
+  iten:
+    id: 37
+    data: 0
   ouro: 7
 pimenta:
   id: 4
   nome: '&cPimenta'
+  iten:
+    head: 'https://textures.minecraft.net/texture/7e5e8293c158eb23885a474f3a79c70491390b76fddc46b251c8dbad600155f4'
   ouro: 12
 pao:
   id: 20
   nome: '&ePao'
+  iten:
+    id: 297
   ouro: 12
 bolo_cenoura:
   id: 21
   nome: '&6Bolo de cenoura'
+  iten:
+    head: 'https://textures.minecraft.net/texture/bed8704610aec29fef979ec7fcf513e17a737e51a61b2b26d74a5fdc5da79'
   ouro: 30

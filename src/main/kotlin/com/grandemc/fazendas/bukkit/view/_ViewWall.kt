@@ -1,5 +1,6 @@
 package com.grandemc.fazendas.bukkit.view
 
+import com.grandemc.fazendas.bukkit.view.craft.start.CraftContext
 import com.grandemc.fazendas.bukkit.view.fertilizing.FertilizingContext
 import com.grandemc.fazendas.bukkit.view.land.LandContext
 import com.grandemc.fazendas.provider.GlobalMenuContainerProvider
@@ -24,5 +25,21 @@ class FertilizingView(viewPackage: ViewPackage<FertilizingContext>) : PackedView
 )
 
 class HoeView(viewPackage: ViewPackage<ContextData>) : PackedView<ContextData>(
+    viewPackage, GlobalMenuContainerProvider.get()
+)
+
+class StorageView(viewPackage: ViewPackage<ContextData>) : PackedView<ContextData>(
+    viewPackage, GlobalMenuContainerProvider.get()
+)
+
+class IndustryView(viewPackage: ViewPackage<ContextData>) : PackedView<ContextData>(
+    viewPackage, GlobalMenuContainerProvider.get()
+)
+
+class CraftSelectView(viewPackage: ViewPackage<ContextData>) : PackedView<ContextData>(
+    viewPackage, GlobalMenuContainerProvider.get()
+)
+
+class CraftStartView(viewPackage: ViewPackage<CraftContext>) : PackedView<CraftContext>(
     viewPackage, GlobalMenuContainerProvider.get()
 )

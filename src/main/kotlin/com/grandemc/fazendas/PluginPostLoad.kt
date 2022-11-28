@@ -6,6 +6,7 @@ import com.grandemc.fazendas.init.*
 import com.grandemc.fazendas.init.model.*
 import com.grandemc.fazendas.provider.*
 import com.grandemc.fazendas.registry.*
+import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 
 class PluginPostLoad(

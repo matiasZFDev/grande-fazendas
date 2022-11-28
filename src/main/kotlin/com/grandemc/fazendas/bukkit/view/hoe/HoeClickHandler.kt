@@ -22,7 +22,7 @@ class HoeClickHandler(
 ) : ViewClickHandler.Stateless() {
     override fun onClick(player: Player, item: ItemStack, event: InventoryClickEvent) {
         item.useReferenceIfPresent(NBTReference.VIEW, "gfazendas.hoe.enchant") {
-            if (!player.itemInHand.hasReferenceTag(NBTReference.ITEM, "gfazendas.hoe")) {
+            if (!player.itemInHand.hasReferenceTag(NBTReference.ITEM, "gfazendas.farm_tool")) {
                 player.closeInventory()
                 player.respond("enxada.upar_mao")
                 return@useReferenceIfPresent

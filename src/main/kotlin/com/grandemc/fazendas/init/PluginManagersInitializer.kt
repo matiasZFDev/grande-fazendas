@@ -33,6 +33,7 @@ class PluginManagersInitializer(
             player.respond("ilha.criada")
             player?.let { islandManager.joinIsland(it) }
         }
+        val storageManager = StorageManager(playerManager, configs.materials)
         return PluginManagers(
             playerManager,
             islandManager,
@@ -43,10 +44,11 @@ class PluginManagersInitializer(
             ),
             farmManager,
             landManager,
-            StorageManager(playerManager, configs.materials),
+            storageManager,
             GoldBank(playerManager),
             LandPlantManager(configs.island, islandManager, landManager),
-            farmItemManager
+            farmItemManager,
+            IndustryManager(farmManager, storageManager, configs.industry)
         )
     }
 }

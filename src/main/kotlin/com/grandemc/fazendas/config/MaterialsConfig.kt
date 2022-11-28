@@ -6,6 +6,7 @@ import com.grandemc.post.external.lib.global.bukkit.*
 import com.grandemc.post.external.lib.global.color
 import com.grandemc.post.external.lib.util.CustomConfig
 import org.bukkit.configuration.file.FileConfiguration
+import org.bukkit.inventory.ItemStack
 
 class MaterialsConfig(customConfig: CustomConfig) : StateConfig<MaterialsConfig.Config>(
     customConfig, GrandeFazendas.CONTEXT
@@ -27,13 +28,16 @@ class MaterialsConfig(customConfig: CustomConfig) : StateConfig<MaterialsConfig.
         val nameId: String,
         val id: Byte,
         val name: String,
+        val item: ItemStack,
         val goldPrice: Double
     )
 
     override fun fetch(config: FileConfiguration): Config {
         val materials = config.mappedKeys().map { (key, section) ->
             StorageMaterial(
-                key, section.getByte("id"), section.getString("nome").color(),
+                key, section.getByte("id"),
+                section.getString("nome").color(),
+                section.buildItem("iten", false),
                 section.formatNumber("ouro")
             )
         }

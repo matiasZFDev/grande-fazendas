@@ -7,6 +7,7 @@ import com.grandemc.fazendas.init.ConfigInitializer
 import com.grandemc.fazendas.init.DatabaseInitializer
 import com.grandemc.fazendas.init.ServicesInitializer
 import com.grandemc.fazendas.init.model.ServicesData
+import com.grandemc.fazendas.npc.IndustryTrait
 import com.grandemc.fazendas.npc.LandsTrait
 import com.sk89q.jnbt.CompoundTag
 import com.sk89q.worldedit.blocks.BaseBlock
@@ -37,6 +38,7 @@ class GrandeFazendas : GrandePlugin() {
 
     override fun dataPostLoad() {
         CitizensAPI.getTraitFactory().registerTrait(TraitInfo.create(LandsTrait::class.java))
+        CitizensAPI.getTraitFactory().registerTrait(TraitInfo.create(IndustryTrait::class.java))
         PluginPostLoad(this, servicesData, configManager, databaseManager, CONTEXT).run()
     }
 

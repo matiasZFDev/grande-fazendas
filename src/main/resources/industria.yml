@@ -1,15 +1,19 @@
-pao:
-  id: 0 # id numerica (db)
-  nivel_ilha: 1
-  material_id: 2 # id do material de materiais.yml
-  itens_precisos:
-    trigo: 15
-  tempo_preparacao: 1 # minutos
-bolo_cenoura:
-  id: 1
-  nivel_ilha: 5
-  material_id: 3
-  itens_precisos:
-    trigo: 30
-    cenoura: 10
-  tempo_preparacao: 5
+# ilha id bugado
+selecao_menu_slots: [10,11]
+formato_ingrediente: '{ingrediente} &7{quantia}&8/&f{total}'
+receitas:
+  pao:
+    id: 0 # id numerica (db)
+    nivel_ilha: 1
+    material_id: 20 # id do material de materiais.yml
+    itens_precisos:
+      trigo: 15
+    tempo_preparacao: 1 # minutos
+  bolo_cenoura:
+    id: 1
+    nivel_ilha: 5
+    material_id: 21
+    itens_precisos:
+      trigo: 30
+      cenoura: 10
+    tempo_preparacao: 5

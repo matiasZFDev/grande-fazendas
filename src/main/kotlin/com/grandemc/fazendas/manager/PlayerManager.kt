@@ -22,7 +22,7 @@ class PlayerManager(private val playerService: DatabaseService<UUID, FarmPlayer>
     fun registerPlayer(playerId: UUID) {
         playerService.insert(FarmPlayer(
             playerId, null, ItemStorage(), FarmHoe(CustomEnchant.values().map {
-                HoeEnchant(it, 0)
+                HoeEnchant(it, 1)
             }, 0.0),0.0
         ))
     }

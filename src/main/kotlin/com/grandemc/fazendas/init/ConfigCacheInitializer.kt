@@ -74,7 +74,9 @@ class ConfigCacheInitializer(
             FertilizingConfig(config("fertilizante")),
             CropsConfig(config("plantacoes")),
             LootBoxConfig(config("lootbox")),
-            FarmHoeConfig(config("enxada"))
+            FarmHoeConfig(config("enxada")),
+            IndustryConfig(config("industria")),
+            StorageConfig(config("armazem"))
         )
     }
 }

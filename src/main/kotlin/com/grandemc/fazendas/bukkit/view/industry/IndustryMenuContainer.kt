@@ -13,6 +13,7 @@ class IndustryMenuContainer(
         return createMenuData(section) {
             val key = "gfazendas.industry"
             addReference("craft_inativo", key, "craft")
+            addReference("craft_pronto", key, "collect")
             addReference("armazem", key, "storage")
             colorAll()
         }

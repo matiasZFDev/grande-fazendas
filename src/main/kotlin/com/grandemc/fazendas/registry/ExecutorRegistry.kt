@@ -1,6 +1,7 @@
 package com.grandemc.fazendas.registry
 
 import com.grandemc.fazendas.bukkit.task.CropsGrowthTask
+import com.grandemc.fazendas.bukkit.task.IndustryRecipeTask
 import com.grandemc.fazendas.config.CropsConfig
 import com.grandemc.fazendas.manager.LandPlantManager
 import com.grandemc.fazendas.manager.PlayerManager
@@ -14,5 +15,6 @@ class ExecutorRegistry(
 ) {
     fun startAll() {
         CropsGrowthTask(plugin, cropsConfig, playerManager, landPlantManager).start()
+        IndustryRecipeTask(plugin, playerManager).start()
     }
 }

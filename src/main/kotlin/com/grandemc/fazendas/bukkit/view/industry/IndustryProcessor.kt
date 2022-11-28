@@ -5,6 +5,8 @@ import com.grandemc.fazendas.config.MaterialsConfig
 import com.grandemc.fazendas.manager.IndustryManager
 import com.grandemc.post.external.lib.cache.config.model.SlotItem
 import com.grandemc.post.external.lib.cache.config.model.menu.MenuItems
+import com.grandemc.post.external.lib.global.bukkit.copyNBTs
+import com.grandemc.post.external.lib.global.bukkit.displayFrom
 import com.grandemc.post.external.lib.global.bukkit.formatLore
 import com.grandemc.post.external.lib.global.newItemProcessing
 import com.grandemc.post.external.lib.global.timeFormat
@@ -18,21 +20,38 @@ class IndustryProcessor(
 ) : MenuItemsProcessor.Stateless() {
     override fun process(player: Player, items: MenuItems): Collection<SlotItem> {
         return newItemProcessing(items) {
-            if (industryManager.isBaking(player.uniqueId)) {
+            if (!industryManager.isBaking(player.uniqueId)) {
+                remove("craft_ativo")
+                remove("craft_pronto")
+            }
+
+            else {
                 val recipe = industryManager.currentRecipe(player.uniqueId)!!
                 val recipeConfig = industryConfig.get().getById(recipe.id())
                 val materialConfig = materialsConfig.get().getById(recipeConfig.materialId)
-                remove("craft_inativo")
-                modify("craft_ativo") {
-                    it.formatLore(
-                        "{receita}" to materialConfig.name,
-                        "{tempo}" to recipe.timeLeft().timeFormat()
-                    )
+
+                if (recipe.timeLeft() == -1) {
+                    remove("craft_ativo")
+                    remove("craft_inativo")
+                    modify("craft_pronto") {
+                        materialConfig.item
+                            .displayFrom(it)
+                            .copyNBTs(it)
+                            .formatLore("{receita}" to materialConfig.name)
+                    }
+                }
+
+                else {
+                    remove("craft_inativo")
+                    remove("craft_pronto")
+                    modify("craft_ativo") {
+                        it.formatLore(
+                            "{receita}" to materialConfig.name,
+                            "{tempo}" to recipe.timeLeft().timeFormat()
+                        )
+                    }
                 }
             }
-
-            else
-                remove("craft_ativo")
         }
     }
 }

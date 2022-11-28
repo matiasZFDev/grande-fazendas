@@ -38,4 +38,10 @@ class IndustryManager(
     fun canCraft(playerId: UUID, recipeId: Byte): Boolean {
         return canCraft(playerId, industryConfig.get().getById(recipeId))
     }
+
+    fun collectRecipe(playerId: UUID): FarmRecipe {
+        val recipe = farmManager.farm(playerId).industry().currentRecipe()!!
+        farmManager.farm(playerId).industry().setCurrentRecipe(null)
+        return recipe
+    }
 }

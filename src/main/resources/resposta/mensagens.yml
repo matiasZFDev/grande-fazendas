@@ -74,3 +74,9 @@ receita:
   iniciar:
     titulo: '&6&lFAZENDA'
     subtitulo: '&fReceita {receita} &ffoi iniciada!'
+  pronta:
+    titulo: '&6&lFAZENDA'
+    subtitulo: '&fA sua receita está pronta!'
+  coletada:
+    titulo: '&6&lFAZENDA'
+    subtitulo: '&fA sua receita está pronta!'

@@ -46,7 +46,8 @@ class ViewRegistry(
             pluginManagers.playerManager, configs.farmHoe, pluginManagers.goldBank
         )))
         register(IndustryView(IndustryPackage(
-            pluginManagers.industryManager, configs.industry, configs.materials
+            pluginManagers.industryManager, configs.industry, configs.materials,
+            pluginManagers.storageManager
         )))
         register(StorageView(StoragePackage(
             pluginManagers.storageManager, configs.storage, configs.materials,

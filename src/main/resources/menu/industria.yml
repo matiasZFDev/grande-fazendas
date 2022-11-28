@@ -24,6 +24,17 @@ conteudo:
       - ' &fTempo restante: &7{tempo}'
       - ''
       - '&eEspere para coletar'
+  craft_pronto:
+    slot: 30
+    id: 1
+    nome: '&6&lC&6raft!'
+    lore:
+      - '&7Sua receita está'
+      - '&7pronta!'
+      - ''
+      - ' &8☕ &fReceita: {receita}'
+      - ''
+      - '&aClique para coletar'
   craft_inativo:
     slot: 30
     head: 'https://textures.minecraft.net/texture/4c48044e937c044920ec0d537cfb31d89d07a51724f38db19f8bf7cc7293d65d'

@@ -1,0 +1,144 @@
+titulo: 'Fazenda ▶ Mercado'
+linhas: 6
+conteudo:
+  voltar:
+    slot: 49
+    head: 'https://textures.minecraft.net/texture/c61b279e00f19d9f69a712f6560767cae0cfa02c83160d46c7f50c7526f6776e'
+    nome: '&eVoltar'
+    lore:
+      - '&7Clique para voltar'
+      - '&7ao menu anterior.'
+  seguinte:
+    slot: 18
+    id: 351
+    data: 10
+    nome: '&a&lS&aeguinte'
+    lore:
+      - '&fPróxima página!'
+  anterior:
+    slot: 26
+    id: 351
+    data: 11
+    nome: '&e&lA&enterior'
+    lore:
+      - '&fPágina anterior.'
+  filtro_maior_quantia:
+    slot: 49
+    id: 154
+    nome: '&a&lF&ailtro'
+    lore:
+      - '&7Filtre os produtos'
+      - '&7segundo seus valores!'
+      - ''
+      - ' &2▶ &aQuantia &8[&fMaior &8| &7Menor&8]'
+      - ' &7▶ Preço [Maior | Menor]'
+      - ' &7▶ Preço [Melhor | Pior]'
+      - ' &7▶ Recente &7[Mais | Menos]'
+      - ''
+      - '&8• &fB. esquerdo para avançar'
+      - '&8• &fB. direito para alternar'
+  filtro_menor_quantia:
+    slot: 49
+    id: 154
+    nome: '&a&lF&ailtro'
+    lore:
+      - '&7Filtre os produtos'
+      - '&7segundo seus valores!'
+      - ''
+      - ' &2▶ &aQuantia &8[&7Maior &8| &fMenor&8]'
+      - ' &7▶ Preço [Maior | Menor]'
+      - ' &7▶ Preço [Melhor | Pior]'
+      - ' &7▶ Recente &7[Mais | Menos]'
+      - ''
+      - '&8• &fB. esquerdo para avançar'
+      - '&8• &fB. direito para alternar'
+  filtro_maior_preco:
+    slot: 49
+    id: 154
+    nome: '&a&lF&ailtro'
+    lore:
+      - '&7Filtre os produtos'
+      - '&7segundo seus valores!'
+      - ''
+      - ' &7▶ Quantia [Maior | Menor]'
+      - ' &2▶ &aPreço &8[&fMaior &8| &7Menor&8]'
+      - ' &7▶ Preço [Melhor | Pior]'
+      - ' &7▶ Recente &7[Mais | Menos]'
+      - ''
+      - '&8• &fB. esquerdo para avançar'
+      - '&8• &fB. direito para alternar'
+  filtro_menor_preco:
+    slot: 49
+    id: 154
+    nome: '&a&lF&ailtro'
+    lore:
+      - '&7Filtre os produtos'
+      - '&7segundo seus valores!'
+      - ''
+      - ' &7▶ Quantia [Maior | Menor]'
+      - ' &2▶ &aPreço &8[&7Maior &8| &fMenor&8]'
+      - ' &7▶ Preço [Melhor | Pior]'
+      - ' &7▶ Recente &7[Mais | Menos]'
+      - ''
+      - '&8• &fB. esquerdo para avançar'
+      - '&8• &fB. direito para alternar'
+  filtro_melhor_preco:
+    slot: 49
+    id: 154
+    nome: '&a&lF&ailtro'
+    lore:
+      - '&7Filtre os produtos'
+      - '&7segundo seus valores!'
+      - ''
+      - ' &7▶ Quantia [Maior | Menor]'
+      - ' &7▶ Preço [Maior | Menor]'
+      - ' &2▶ &aPreço &8[&fMelhor &8| &7Pior&8]'
+      - ' &7▶ Recente &7[Mais | Menos]'
+      - ''
+      - '&8• &fB. esquerdo para avançar'
+      - '&8• &fB. direito para alternar'
+  filtro_pior_preco:
+    slot: 49
+    id: 154
+    nome: '&a&lF&ailtro'
+    lore:
+      - '&7Filtre os produtos'
+      - '&7segundo seus valores!'
+      - ''
+      - ' &7▶ Quantia [Maior | Menor]'
+      - ' &7▶ Preço [Maior | Menor]'
+      - ' &2▶ &aPreço &8[&7Melhor &8| &fPior&8]'
+      - ' &7▶ Recente &7[Mais | Menos]'
+      - ''
+      - '&8• &fB. esquerdo para avançar'
+      - '&8• &fB. direito para alternar'
+  filtro_mais_recente:
+    slot: 49
+    id: 154
+    nome: '&a&lF&ailtro'
+    lore:
+      - '&7Filtre os produtos'
+      - '&7segundo seus valores!'
+      - ''
+      - ' &7▶ Quantia [Maior | Menor]'
+      - ' &7▶ Preço [Maior | Menor]'
+      - ' &7▶ Preço [Melhor | Pior]'
+      - ' &2▶ &aRecente &8[&fMais &8| &7Menos&8]'
+      - ''
+      - '&8• &fB. esquerdo para avançar'
+      - '&8• &fB. direito para alternar'
+  filtro_menos_recente:
+    slot: 49
+    id: 154
+    nome: '&a&lF&ailtro'
+    lore:
+      - '&7Filtre os produtos'
+      - '&7segundo seus valores!'
+      - ''
+      - ' &7▶ Quantia [Maior | Menor]'
+      - ' &7▶ Preço [Maior | Menor]'
+      - ' &7▶ Preço [Melhor | Pior]'
+      - ' &2▶ &aRecente &8[&7Mais &8| &fMenos&8]'
+      - ''
+      - '&8• &fB. esquerdo para avançar'
+      - '&8• &fB. direito para alternar'

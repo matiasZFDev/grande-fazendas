@@ -23,6 +23,11 @@ class GrandeFazendas : GrandePlugin() {
     companion object {
         const val CONTEXT: String = "GrandeFazendas"
         lateinit var instance: GrandeFazendas
+        val SLOTS_PATTERN: List<Int> = listOf(
+            10,11,12,13,14,15,16,19,20,21,22,23,24,25,
+            28,29,30,31,32,33,34,37,38,39,40,41,42,43
+        )
+        const val MAX_ITEM_AMOUNT: Short = 9999
     }
 
     override fun dataPreload() {

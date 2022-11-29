@@ -8,6 +8,12 @@ import com.grandemc.fazendas.bukkit.view.industry.IndustryMenuContainer
 import com.grandemc.fazendas.bukkit.view.land.LandMenuContainer
 import com.grandemc.fazendas.bukkit.view.land_plant.LandPlantMenuContainer
 import com.grandemc.fazendas.bukkit.view.lands.LandsMenuContainer
+import com.grandemc.fazendas.bukkit.view.market.category.MarketCategoryMenuContainer
+import com.grandemc.fazendas.bukkit.view.market.menu.MarketMenuContainer
+import com.grandemc.fazendas.bukkit.view.market.purchase.MarketPurchaseMenuContainer
+import com.grandemc.fazendas.bukkit.view.market.sell.material.MarketSellMaterialMenuContainer
+import com.grandemc.fazendas.bukkit.view.market.sell.menu.MarketSellMenuContainer
+import com.grandemc.fazendas.bukkit.view.market.selling.MarketSellingMenuContainer
 import com.grandemc.fazendas.bukkit.view.storage.StorageMenuContainer
 import com.grandemc.post.external.lib.cache.config.menu.MenuContainer
 import com.grandemc.post.external.lib.manager.config.ConfigManager
@@ -41,5 +47,11 @@ class MenuContainerRegistry(
         register<StorageMenuContainer>("armazem")
         register<CraftSelectMenuContainer>("escolher_craft")
         register<CraftStartMenuContainer>("iniciar_craft")
+        register<MarketMenuContainer>("mercado")
+        register<MarketCategoryMenuContainer>("mercado_categoria")
+        register<MarketSellMenuContainer>("mercado_vender")
+        register<MarketSellMaterialMenuContainer>("mercado_vender_material")
+        register<MarketSellingMenuContainer>("mercado_em_venda")
+        register<MarketPurchaseMenuContainer>("mercado_comprar")
     }
 }

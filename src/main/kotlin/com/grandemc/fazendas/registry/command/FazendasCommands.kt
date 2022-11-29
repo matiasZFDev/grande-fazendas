@@ -1,6 +1,7 @@
 package com.grandemc.fazendas.registry.command
 
 import com.grandemc.fazendas.bukkit.command.fazenda.Island
+import com.grandemc.fazendas.bukkit.command.fazenda.Market
 import com.grandemc.post.external.lib.command.base.CommandCompound
 import com.grandemc.post.external.lib.factory.Factory
 import com.grandemc.post.external.lib.global.command.buildCommand
@@ -26,6 +27,7 @@ class FazendasCommands(
                 emptyArgsModule(Island(islandManager, islandGenerationManager))
 
                 module("ajuda", fazendaHelp)
+                module("mercado", Market())
             }
         }
     }

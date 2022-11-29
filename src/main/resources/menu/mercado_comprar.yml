@@ -1,0 +1,30 @@
+titulo: 'Mercado ▶ Comprar'
+linhas: 4
+conteudo:
+  info:
+    slot: 22
+    id: 1
+    nome: '&e&lI&enformação da compra'
+    lore:
+      - '&7Dados sobre a compra'
+      - '&7em questão.'
+      - ''
+      - ' &8∞ &fVendedor: &a{vendedor} '
+      - ' &8∞ &fProduto: {produto}'
+      - ' &8∞ &fQuantia: &7{quantia}'
+      - ' &8∞ &fPreço: &6⛂{preco}'
+      - ''
+  cancelar:
+    slot: 28
+    id: 351
+    data: 11
+    nome: '&c&lC&cancelar'
+    lore:
+      - '&7Cancelar essa compra.'
+  confirmar:
+    slot: 34
+    id: 351
+    data: 10
+    nome: '&a&lC&aonfirmar'
+    lore:
+      - '&7Comprar esse produto!'

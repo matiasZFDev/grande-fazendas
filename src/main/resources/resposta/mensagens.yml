@@ -80,3 +80,18 @@ receita:
   coletada:
     titulo: '&6&lFAZENDA'
     subtitulo: '&fA sua receita está pronta!'
+mercado:
+  argumentos_invalidos: '&cDigite /fazenda mercado'
+mercado_vender:
+  material_setado: '&aO material foi setado.'
+  quantia_iniciar:
+    - ''
+    - '    &aInsira a quantia do material que deseja vender.'
+    - '    &fDigite &c&lCANCELAR &fpara cancelar.'
+  quantia_setada: '&aA quantia foi setada.'
+  preco_iniciar:
+    - ''
+    - '    &aInsira o preço do material que deseja vender.'
+    - '    &fDigite &c&lCANCELAR &fpara cancelar.'
+  preco_setado: '&aO preço foi setado.'
+  vendido: '&aVocê colocou {material} &f({quantia}x) &apor &6⛂{preco} &aem venda!'

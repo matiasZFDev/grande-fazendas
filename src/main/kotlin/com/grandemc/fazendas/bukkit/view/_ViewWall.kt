@@ -3,6 +3,9 @@ package com.grandemc.fazendas.bukkit.view
 import com.grandemc.fazendas.bukkit.view.craft.start.CraftContext
 import com.grandemc.fazendas.bukkit.view.fertilizing.FertilizingContext
 import com.grandemc.fazendas.bukkit.view.land.LandContext
+import com.grandemc.fazendas.bukkit.view.market.category.MarketCategoryContext
+import com.grandemc.fazendas.bukkit.view.market.purchase.MarketPurchaseContext
+import com.grandemc.fazendas.bukkit.view.market.sell.menu.MarketSellContext
 import com.grandemc.fazendas.provider.GlobalMenuContainerProvider
 import com.grandemc.post.external.lib.view.base.ContextData
 import com.grandemc.post.external.lib.view.pack.ViewPackage
@@ -43,3 +46,27 @@ class CraftSelectView(viewPackage: ViewPackage<ContextData>) : PackedView<Contex
 class CraftStartView(viewPackage: ViewPackage<CraftContext>) : PackedView<CraftContext>(
     viewPackage, GlobalMenuContainerProvider.get()
 )
+
+class MarketView(viewPackage: ViewPackage<PageContext>) : PackedView<PageContext>(
+    viewPackage, GlobalMenuContainerProvider.get()
+)
+
+class MarketCategoryView(
+    viewPackage: ViewPackage<MarketCategoryContext>
+) : PackedView<MarketCategoryContext>(viewPackage, GlobalMenuContainerProvider.get())
+
+class MarketSellView(
+    viewPackage: ViewPackage<MarketSellContext>
+) : PackedView<MarketSellContext>(viewPackage, GlobalMenuContainerProvider.get())
+
+class MarketSellMaterialView(
+    viewPackage: ViewPackage<MarketSellContext>
+) : PackedView<MarketSellContext>(viewPackage, GlobalMenuContainerProvider.get())
+
+class MarketSellingView(viewPackage: ViewPackage<ContextData>) : PackedView<ContextData>(
+    viewPackage, GlobalMenuContainerProvider.get()
+)
+
+class MarketPurchaseView(
+    viewPackage: ViewPackage<MarketPurchaseContext>
+) : PackedView<MarketPurchaseContext>(viewPackage, GlobalMenuContainerProvider.get())

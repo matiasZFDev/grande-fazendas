@@ -26,12 +26,12 @@ class MarketItemTable(
     }
 
     override fun consumeStatement(statement: PreparedStatement, value: MarketItem): Boolean {
-        statement.setInt(1, value.id)
+        statement.setInt(1, value.id())
         statement.setUUID(2, value.sellerId)
         statement.setByte(3, value.itemId)
         statement.setShort(4, value.amount)
         statement.setDouble(5, value.goldPrice)
-        statement.setInt(6, value.expiryTime)
+        statement.setInt(6, value.expiryTime())
         return true
     }
 

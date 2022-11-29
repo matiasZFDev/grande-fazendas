@@ -163,3 +163,58 @@ material_craft:
     - ' &fPreparaçao: &7{tempo}'
     - ''
     - '&eClique para escolher'
+mercado_categoria:
+  id: 1
+  nome: '{nome}'
+  lore:
+    - '&7Há {quantia} itens'
+    - '&7dessa categoría.'
+    - ''
+    - '&eClique para abrir'
+mercado_produto:
+  id: 1
+  nome: '&aProduto &l#{id}'
+  lore:
+    - '&7Informações sobre'
+    - '&7o produto.'
+    - ''
+    - ' &8∞ &fVendedor: &a{vendedor} '
+    - ' &8∞ &fProduto: {produto}'
+    - ' &8∞ &fQuantia: &7{quantia}'
+    - ' &8∞ &fPreço: &6⛂{preco}'
+    - ' &8∞ &fExpiração: &7{expiracao} '
+    - ''
+    - '&aClique para comprar'
+mercado_produto_jogador:
+  id: 1
+  nome: '&aProduto &l#{id}'
+  lore:
+    - '&7Informações sobre'
+    - '&7o produto.'
+    - ''
+    - ' &8∞ &fVendedor: &eVocê '
+    - ' &8∞ &fProduto: {produto}'
+    - ' &8∞ &fQuantia: &7{quantia}'
+    - ' &8∞ &fPreço: &6⛂{preco}'
+    - ' &8∞ &fExpiração: &7{expiracao} '
+    - ''
+    - '7aEsse é o seu produto!'
+mercado_venda_escolher:
+  id: 1
+  nome: '{nome}'
+  lore:
+    - '&aClique para escolher'
+    - '&aesse iten!'
+mercado_iten_a_venda:
+  id: 1
+  nome: '&aProduto &l#{id}'
+  lore:
+    - '&7Um produto seu'
+    - '&7á venda.'
+    - ''
+    - ' &8∞ &fProduto: {produto}'
+    - ' &8∞ &fQuantia: &7{quantia}'
+    - ' &8∞ &fPreço: &6⛂{preco}'
+    - ' &8∞ &fExpiração: &7{expiracao} '
+    - ''
+    - '&aClique para coletar'

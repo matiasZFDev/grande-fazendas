@@ -1,6 +1,7 @@
 package com.grandemc.fazendas.init
 
 import com.grandemc.fazendas.config.*
+import com.grandemc.fazendas.config.model.MarketConfig
 import com.grandemc.fazendas.global.createIfNotExists
 import com.grandemc.post.external.lib.cache.config.Updatable
 import com.grandemc.post.external.lib.cache.config.chunk.*
@@ -76,7 +77,8 @@ class ConfigCacheInitializer(
             LootBoxConfig(config("lootbox")),
             FarmHoeConfig(config("enxada")),
             IndustryConfig(config("industria")),
-            StorageConfig(config("armazem"))
+            StorageConfig(config("armazem")),
+            MarketConfig(config("mercado"))
         )
     }
 }

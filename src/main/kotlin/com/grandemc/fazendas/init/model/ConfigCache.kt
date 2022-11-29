@@ -1,6 +1,7 @@
 package com.grandemc.fazendas.init.model
 
 import com.grandemc.fazendas.config.*
+import com.grandemc.fazendas.config.model.MarketConfig
 import com.grandemc.post.external.lib.cache.config.Updatable
 import com.grandemc.post.external.lib.cache.config.chunk.base.*
 
@@ -23,6 +24,7 @@ data class ConfigCache(
         val lootBox: LootBoxConfig,
         val farmHoe: FarmHoeConfig,
         val industry: IndustryConfig,
-        val storage: StorageConfig
+        val storage: StorageConfig,
+        val market: MarketConfig
     )
 }

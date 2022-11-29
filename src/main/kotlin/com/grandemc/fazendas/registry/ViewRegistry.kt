@@ -9,8 +9,15 @@ import com.grandemc.fazendas.bukkit.view.industry.IndustryPackage
 import com.grandemc.fazendas.bukkit.view.land.LandPackage
 import com.grandemc.fazendas.bukkit.view.land_plant.LandPlantPackage
 import com.grandemc.fazendas.bukkit.view.lands.LandsPackage
+import com.grandemc.fazendas.bukkit.view.market.category.MarketCategoryPackage
+import com.grandemc.fazendas.bukkit.view.market.menu.MarketPackage
+import com.grandemc.fazendas.bukkit.view.market.purchase.MarketPurchasePackage
+import com.grandemc.fazendas.bukkit.view.market.sell.material.MarketSellMaterialPackage
+import com.grandemc.fazendas.bukkit.view.market.sell.menu.MarketSellPackage
+import com.grandemc.fazendas.bukkit.view.market.selling.MarketSellingPackage
 import com.grandemc.fazendas.bukkit.view.storage.StoragePackage
 import com.grandemc.fazendas.init.model.ConfigCache
+import com.grandemc.fazendas.init.model.PluginAPIs
 import com.grandemc.fazendas.init.model.PluginManagers
 import com.grandemc.post.external.lib.manager.view.ViewManager
 import com.grandemc.post.external.lib.view.base.ContextData
@@ -19,7 +26,8 @@ import com.grandemc.post.external.lib.view.base.View
 class ViewRegistry(
     private val viewManager: ViewManager,
     private val pluginManagers: PluginManagers,
-    private val configs: ConfigCache.Configs
+    private val configs: ConfigCache.Configs,
+    private val apis: PluginAPIs
 ) {
     private fun register(view: View<out ContextData>) {
         viewManager.register(view)
@@ -59,6 +67,29 @@ class ViewRegistry(
         register(CraftStartView(CraftStartPackage(
             pluginManagers.storageManager, configs.industry,
             pluginManagers.industryManager
+        )))
+        register(MarketView(MarketPackage(
+            pluginManagers.marketManager, configs.market, pluginManagers.storageManager,
+            configs.items
+        )))
+        register(MarketCategoryView(MarketCategoryPackage(
+            pluginManagers.marketManager, configs.market, configs.items,
+            pluginManagers.storageManager
+        )))
+        register(MarketSellView(MarketSellPackage(
+            pluginManagers.storageManager, apis.conversationFactory,
+            pluginManagers.marketManager
+        )))
+        register(MarketSellMaterialView(MarketSellMaterialPackage(
+            pluginManagers.storageManager, configs.items
+        )))
+        register(MarketSellingView(MarketSellingPackage(
+            pluginManagers.marketManager, pluginManagers.storageManager,
+            configs.items
+        )))
+        register(MarketPurchaseView(MarketPurchasePackage(
+            pluginManagers.marketManager, pluginManagers.storageManager,
+            pluginManagers.goldBank
         )))
     }
 }

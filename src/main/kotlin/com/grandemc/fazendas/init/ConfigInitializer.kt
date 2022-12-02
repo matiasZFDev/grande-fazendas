@@ -19,8 +19,8 @@ class ConfigInitializer(private val plugin: Plugin) : Initializer<ConfigManager>
         "plantios", "plantio", "plantar", "aplicar_fertilizante", "enxada",
         "armazem", "escolher_craft", "industria", "iniciar_craft", "mercado",
         "mercado_categoria", "mercado_vender", "mercado_vender_material",
-        "mercado_em_venda", "mercado_comprar", "missoes", "missoes_feitas",
-        "missoes_entrega", "missoes_historia"
+        "mercado_em_venda", "mercado_comprar", "missoes", "missoes_entrega",
+        "missoes_historia"
     ).map { "menu/$it" }
     private fun rootFiles(): List<String> = listOf(
         "database", "enxada", "fertilizante", "industria", "itens", "lootbox",

@@ -4,14 +4,13 @@ class QuestMaster(
     private var currentQuest: FarmQuest?,
     private var dailyDoneQuests: Byte,
     private var questHistoryProgress: Byte,
-    private val questsDone: MutableList<Byte>,
+    private var questsDone: Short,
 ) {
     fun current(): FarmQuest? = currentQuest
-    fun questsDone(): List<Byte> = questsDone
+    fun questsDone(): Short = questsDone
     fun concludeQuest() {
-        val quest = currentQuest!!
-        quest.complete()
-        questsDone.add(quest.id())
+        currentQuest!!.complete()
+        questsDone++
         currentQuest = null
     }
 

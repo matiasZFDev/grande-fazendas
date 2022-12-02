@@ -2,10 +2,8 @@ package com.grandemc.fazendas.bukkit.view.quests.menu
 
 import com.grandemc.fazendas.bukkit.view.QuestHandOverView
 import com.grandemc.fazendas.bukkit.view.QuestHistoryView
-import com.grandemc.fazendas.bukkit.view.QuestsDoneView
 import com.grandemc.fazendas.bukkit.view.QuestsView
 import com.grandemc.fazendas.config.QuestsConfig
-import com.grandemc.fazendas.config.model.quest.type.Quest
 import com.grandemc.fazendas.global.openView
 import com.grandemc.fazendas.global.respond
 import com.grandemc.fazendas.manager.PlayerManager
@@ -29,7 +27,6 @@ class QuestsClickHandler(
     override fun onClick(player: Player, item: ItemStack, event: InventoryClickEvent) {
         item.useReferenceIfPresent(NBTReference.VIEW, "gfazendas.quests") {
             when (it) {
-                "done" -> player.openView(QuestsDoneView::class)
                 "hand_over" -> player.openView(QuestHandOverView::class)
                 "history" -> player.openView(QuestHistoryView::class)
                 "current_quest" -> {

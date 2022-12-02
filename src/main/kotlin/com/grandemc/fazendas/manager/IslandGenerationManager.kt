@@ -67,7 +67,7 @@ class IslandGenerationManager(
             1,
             0,
             mutableListOf(),
-            QuestMaster(null, 0, 0, mutableListOf()),
+            QuestMaster(null, 0, 0, 0),
             FarmIndustry()
         )
 

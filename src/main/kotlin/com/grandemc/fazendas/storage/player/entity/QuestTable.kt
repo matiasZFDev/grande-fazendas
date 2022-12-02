@@ -25,7 +25,7 @@ class QuestTable(
             addColumn("done", "BIT NOT NULL", true)
             addColumn("daily_quests_done", "TINYINT NOT NULL", true)
             addColumn("history_progress", "TINYINT NOT NULL", true)
-            addColumn("quests_done", "varbinary(128)", true)
+            addColumn("quests_done", "SMALLINT NOT NULL", true)
             primaryKey("player_id")
         }
     }
@@ -42,14 +42,14 @@ class QuestTable(
         statement.setBoolean(5, questMaster.current()?.isDone() ?: false)
         statement.setByte(6, questMaster.dailyQuestsDone())
         statement.setByte(7, questMaster.questHistoryProgress())
-        statement.setBytes(8, questMaster.questsDone().toByteArray())
+        statement.setShort(8, questMaster.questsDone())
         statement.setByte(9, questMaster.current()?.id() ?: -1)
         statement.setByte(10, questMaster.current()?.type()?.id() ?: -1)
         statement.setInt(11, questMaster.current()?.progress() ?: -1)
         statement.setBoolean(12, questMaster.current()?.isDone() ?: false)
         statement.setByte(13, questMaster.dailyQuestsDone())
         statement.setByte(14, questMaster.questHistoryProgress())
-        statement.setBytes(15, questMaster.questsDone().toByteArray())
+        statement.setShort(15, questMaster.questsDone())
         return true
     }
 
@@ -66,7 +66,7 @@ class QuestTable(
                 ),
             resultSet.getByte("daily_quests_done"),
             resultSet.getByte("history_progress"),
-            resultSet.getBytes("quests_done").toMutableList()
+            resultSet.getShort("quests_done")
         )
     }
 }

@@ -14,7 +14,6 @@ import com.grandemc.fazendas.bukkit.view.market.purchase.MarketPurchaseMenuConta
 import com.grandemc.fazendas.bukkit.view.market.sell.material.MarketSellMaterialMenuContainer
 import com.grandemc.fazendas.bukkit.view.market.sell.menu.MarketSellMenuContainer
 import com.grandemc.fazendas.bukkit.view.market.selling.MarketSellingMenuContainer
-import com.grandemc.fazendas.bukkit.view.quests.done.QuestsDoneMenuContainer
 import com.grandemc.fazendas.bukkit.view.quests.hand_over.QuestHandOverMenuContainer
 import com.grandemc.fazendas.bukkit.view.quests.history.QuestHistoryMenuContainer
 import com.grandemc.fazendas.bukkit.view.quests.menu.QuestsMenuContainer
@@ -60,7 +59,6 @@ class MenuContainerRegistry(
         register<MarketPurchaseMenuContainer>("mercado_comprar")
 
         register<QuestsMenuContainer>("missoes")
-        register<QuestsDoneMenuContainer>("missoes_feitas")
         register<QuestHandOverMenuContainer>("missoes_entrega")
         register<QuestHistoryMenuContainer>("missoes_historia")
     }

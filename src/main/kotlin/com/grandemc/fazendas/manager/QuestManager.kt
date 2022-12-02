@@ -33,7 +33,7 @@ class QuestManager(
         currentQuest(playerId)?.advance(points)
     }
 
-    fun questsDone(playerId: UUID): List<Byte> {
+    fun questsDone(playerId: UUID): Short {
         return master(playerId).questsDone()
     }
 

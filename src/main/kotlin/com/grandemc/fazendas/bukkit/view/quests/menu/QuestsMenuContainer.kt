@@ -12,7 +12,6 @@ class QuestsMenuContainer(
     override fun create(section: ConfigurationSection): MenuData {
         return createMenuData(section) {
             val key = "gfazendas.quests"
-            addReference("completadas", key, "done")
             addReference("entrega_aberta", key, "hand_over")
             addReference("atual_completa", key, "current_quest")
             addReference("diarias", key, "daily")

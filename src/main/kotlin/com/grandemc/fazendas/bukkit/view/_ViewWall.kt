@@ -76,14 +76,6 @@ class QuestsView(viewPackage: ViewPackage<ContextData>) : PackedView<ContextData
     viewPackage, GlobalMenuContainerProvider.get()
 )
 
-class QuestsDoneView(viewPackage: ViewPackage<PageContext>) : PackedView<PageContext>(
-    viewPackage, GlobalMenuContainerProvider.get()
-) {
-    override fun getDefaultData(): PageContext {
-        return PageContext(0)
-    }
-}
-
 class QuestHandOverView(
     viewPackage: ViewPackage<HandOverContext>
 ) : PackedView<HandOverContext>(viewPackage, GlobalMenuContainerProvider.get()) {

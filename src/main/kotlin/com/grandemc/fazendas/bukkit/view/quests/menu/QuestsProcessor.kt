@@ -17,7 +17,7 @@ class QuestsProcessor(
 ) : MenuItemsProcessor.Stateless() {
     override fun process(player: Player, items: MenuItems): Collection<SlotItem> {
         val quest = questManager.currentQuest(player.uniqueId)
-        val questsDone = questManager.questsDone(player.uniqueId).size
+        val questsDone = questManager.questsDone(player.uniqueId)
         return newItemProcessing(items) {
             modify("completadas") {
                 it.formatLore("{quantia}" to questsDone.commaFormat())

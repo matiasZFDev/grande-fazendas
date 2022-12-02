@@ -15,7 +15,6 @@ import com.grandemc.fazendas.bukkit.view.market.purchase.MarketPurchasePackage
 import com.grandemc.fazendas.bukkit.view.market.sell.material.MarketSellMaterialPackage
 import com.grandemc.fazendas.bukkit.view.market.sell.menu.MarketSellPackage
 import com.grandemc.fazendas.bukkit.view.market.selling.MarketSellingPackage
-import com.grandemc.fazendas.bukkit.view.quests.done.QuestsDonePackage
 import com.grandemc.fazendas.bukkit.view.quests.hand_over.QuestHandOverPackage
 import com.grandemc.fazendas.bukkit.view.quests.history.QuestHistoryPackage
 import com.grandemc.fazendas.bukkit.view.quests.menu.QuestsPackage
@@ -100,9 +99,6 @@ class ViewRegistry(
         register(QuestsView(QuestsPackage(
             pluginManagers.questManager, pluginManagers.statsManager,
             configs.quests, pluginManagers.playerManager
-        )))
-        register(QuestsDoneView(QuestsDonePackage(
-            pluginManagers.questManager, configs.items
         )))
         register(QuestHandOverView(QuestHandOverPackage(
             pluginManagers.questManager, pluginManagers.storageManager,

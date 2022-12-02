@@ -3,7 +3,7 @@ package com.grandemc.fazendas.storage.player.model
 class QuestMaster(
     private var currentQuest: FarmQuest?,
     private var dailyDoneQuests: Byte,
-    private var questHistoryProgress: Byte,
+    private var questHistoryProgress: Short,
     private var questsDone: Short,
 ) {
     fun current(): FarmQuest? = currentQuest
@@ -15,7 +15,7 @@ class QuestMaster(
     }
 
     fun dailyQuestsDone(): Byte = dailyDoneQuests
-    fun questHistoryProgress(): Byte = questHistoryProgress
+    fun questHistoryProgress(): Short = questHistoryProgress
     fun advanceHistoryProgress() {
         questHistoryProgress++
     }

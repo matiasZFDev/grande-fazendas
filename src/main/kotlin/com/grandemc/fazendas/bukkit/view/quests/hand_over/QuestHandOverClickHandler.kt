@@ -14,7 +14,6 @@ import com.grandemc.post.external.lib.global.bukkit.nms.NBTReference
 import com.grandemc.post.external.lib.global.bukkit.nms.useReferenceIfPresent
 import com.grandemc.post.external.lib.global.callEvent
 import com.grandemc.post.external.lib.view.pack.ViewClickHandler
-import org.bukkit.Bukkit
 import org.bukkit.conversations.ConversationFactory
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent

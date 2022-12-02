@@ -21,16 +21,12 @@ class QuestManager(
         } ?: false
     }
 
-    fun questConfig(id: Byte): Quest {
+    fun questConfig(id: Short): Quest {
         return questsConfig.get().getQuest(id)
     }
 
     fun currentConfig(playerId: UUID) : Quest {
         return questConfig(currentQuest(playerId)!!.id())
-    }
-
-    fun advanceProgress(playerId: UUID, points: Int = 1) {
-        currentQuest(playerId)?.advance(points)
     }
 
     fun questsDone(playerId: UUID): Short {
@@ -45,15 +41,11 @@ class QuestManager(
         return questsConfig.get().history()
     }
 
-    fun dailyQuestsDone(playerId: UUID): Byte {
-        return master(playerId).dailyQuestsDone()
-    }
-
-    fun historyProgress(playerId: UUID): Byte {
+    fun historyProgress(playerId: UUID): Short {
         return master(playerId).questHistoryProgress()
     }
 
-    fun isHistoryQuest(playerId: UUID, questId: Byte): Boolean {
+    fun isHistoryQuest(questId: Short): Boolean {
         return history().quests().any { it.id == questId }
     }
 }

@@ -7,6 +7,7 @@ import com.grandemc.fazendas.config.model.quest.type.*
 import com.grandemc.fazendas.manager.FarmItemManager
 import com.grandemc.post.external.lib.cache.config.StateConfig
 import com.grandemc.post.external.lib.global.bukkit.getByte
+import com.grandemc.post.external.lib.global.bukkit.getShort
 import com.grandemc.post.external.lib.global.bukkit.mappedSection
 import com.grandemc.post.external.lib.global.bukkit.section
 import com.grandemc.post.external.lib.util.CustomConfig
@@ -33,7 +34,7 @@ class QuestsConfig(
         private val dailyQuests: List<DailyQuest>,
         private val questHistory: QuestHistory
     ) {
-        private val quests: Map<Byte, Quest> = dailyQuests.associate {
+        private val quests: Map<Short, Quest> = dailyQuests.associate {
             it.id to it.quest
         } + questHistory.quests().associate { it.id to it.quest }
 
@@ -42,13 +43,13 @@ class QuestsConfig(
         fun dailyQuests(): List<DailyQuest> {
             return dailyQuests
         }
-        fun getDailyQuest(id: Byte): DailyQuest {
+        fun getDailyQuest(id: Short): DailyQuest {
             return dailyQuests.first { it.id == id }
         }
-        fun getHistoryQuest(position: Byte): HistoryQuest {
+        fun getHistoryQuest(position: Short): HistoryQuest {
             return questHistory.getQuest(position)
         }
-        fun getQuest(id: Byte): Quest {
+        fun getQuest(id: Short): Quest {
             return quests[id] ?: throw Error(
                 "Missão #$id não existe."
             )
@@ -59,21 +60,21 @@ class QuestsConfig(
         }
     }
     inner class DailyQuest(
-        val id: Byte,
-        val islandLevel: Byte,
+        val id: Short,
+        val islandLevel: Short,
         val chance: Double,
         val quest: Quest
     )
     inner class QuestHistory(private val quests: List<HistoryQuest>) {
-        fun getQuest(position: Byte): HistoryQuest {
+        fun getQuest(position: Short): HistoryQuest {
             return quests[position.toInt()]
         }
         fun quests(): List<HistoryQuest> = quests
     }
     inner class HistoryQuest(
-        val id: Byte,
-        val position: Byte,
-        val islandLevel: Byte,
+        val id: Short,
+        val position: Short,
+        val islandLevel: Short,
         val quest: Quest
     )
     inner class RewardsFormat(
@@ -106,8 +107,8 @@ class QuestsConfig(
         )
         val dailyQuests = config.section("diarias").mappedSection {
             DailyQuest(
-                getByte("id"),
-                getByte("nivel_ilha"),
+                getShort("id"),
+                getShort("nivel_ilha"),
                 getDouble("chance"),
                 questResolver.resolve(this)
             )
@@ -115,9 +116,9 @@ class QuestsConfig(
         val questHistory = QuestHistory(
             config.section("historia").mappedSection {
                 HistoryQuest(
-                    getByte("id"),
-                    getByte("posicao"),
-                    getByte("nivel_ilha"),
+                    getShort("id"),
+                    getShort("posicao"),
+                    getShort("nivel_ilha"),
                     questResolver.resolve(this)
                 )
             }

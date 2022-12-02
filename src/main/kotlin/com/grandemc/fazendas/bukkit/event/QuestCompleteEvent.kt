@@ -6,7 +6,7 @@ import java.util.UUID
 
 class QuestCompleteEvent(
     private val playerId: UUID,
-    private val id: Byte
+    private val id: Short
 ) : Event() {
     companion object {
         private val HANDLER_LIST: HandlerList = HandlerList()
@@ -20,5 +20,5 @@ class QuestCompleteEvent(
     }
 
     fun playerId(): UUID = playerId
-    fun questId(): Byte = id
+    fun questId(): Short = id
 }

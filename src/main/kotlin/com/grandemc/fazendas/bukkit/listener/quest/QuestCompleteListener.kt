@@ -12,7 +12,7 @@ class QuestCompleteListener(
 ) : Listener {
     @EventHandler
     fun onComplete(event: QuestCompleteEvent) {
-        if (questManager.isHistoryQuest(event.playerId(), event.questId())) {
+        if (questManager.isHistoryQuest(event.questId())) {
             questManager.master(event.playerId()).advanceHistoryProgress()
             event.playerId().runIfOnline {
                 respond("missao_historia.completada")

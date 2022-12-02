@@ -57,7 +57,7 @@ class FarmPlayerTableManager : TableManager<FarmPlayer> {
                 playerId,
                 farms[playerId]?.run {
                     PrivateFarm(
-                        id, location, level, farmLands[playerId] ?: mutableListOf(),
+                        id, location, level, xp, farmLands[playerId] ?: mutableListOf(),
                         quests[playerId]!!, industries[playerId] ?: FarmIndustry()
                     )
                 },

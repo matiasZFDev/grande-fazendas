@@ -62,8 +62,12 @@ class IslandGenerationManager(
         val baseLocation = islandManager.baseLocation()
         val baseSchematic = islandConfig.get().baseSchematic
         val farm = PrivateFarm(
-            farmCount, baseSchematic.toCuboid(baseLocation, world), 1, mutableListOf(),
-            QuestMaster(null, 0, mutableListOf()),
+            farmCount,
+            baseSchematic.toCuboid(baseLocation, world),
+            1,
+            0,
+            mutableListOf(),
+            QuestMaster(null, 0, 0, mutableListOf()),
             FarmIndustry()
         )
 

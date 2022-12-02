@@ -6,6 +6,7 @@ import com.grandemc.fazendas.manager.model.IslandEntities
 import com.grandemc.fazendas.manager.model.IslandSession
 import com.grandemc.fazendas.npc.IndustryTrait
 import com.grandemc.fazendas.npc.LandsTrait
+import com.grandemc.fazendas.npc.QuestsTrait
 import com.grandemc.post.external.lib.cache.config.chunk.base.ItemsChunk
 import com.grandemc.post.external.lib.global.bukkit.giveItem
 import com.grandemc.post.external.lib.global.bukkit.removeItemByReference
@@ -96,7 +97,7 @@ class IslandManager(
             listOf(
                 createNPC(npcs.terrains, islandSpawn, LandsTrait()),
                 createNPC(npcs.industry, islandSpawn, IndustryTrait()),
-                createNPC(npcs.quests, islandSpawn)
+                createNPC(npcs.quests, islandSpawn, QuestsTrait())
             )
         )
         islandPlayers[player.uniqueId] = IslandSession(entities)

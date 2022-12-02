@@ -37,6 +37,9 @@ class LootBoxConfig(customConfig: CustomConfig) : StateConfig<LootBoxConfig.Conf
     )
     inner class ChanceBooster(
         val chance: Double,
+        val booster: Booster
+    )
+    class Booster(
         val boost: Double,
         val duration: Int
     )
@@ -50,8 +53,10 @@ class LootBoxConfig(customConfig: CustomConfig) : StateConfig<LootBoxConfig.Conf
                 section("boosters").mappedSection {
                     ChanceBooster(
                         getDouble("chance"),
-                        getDouble("boost"),
-                        getInt("duracao")
+                        Booster(
+                            getDouble("boost"),
+                            getInt("duracao")
+                        )
                     )
                 }
             )

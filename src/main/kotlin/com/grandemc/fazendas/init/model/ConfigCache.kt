@@ -2,8 +2,10 @@ package com.grandemc.fazendas.init.model
 
 import com.grandemc.fazendas.config.*
 import com.grandemc.fazendas.config.model.MarketConfig
+import com.grandemc.fazendas.config.model.reward.FarmReward
 import com.grandemc.post.external.lib.cache.config.Updatable
 import com.grandemc.post.external.lib.cache.config.chunk.base.*
+import com.grandemc.post.external.util.reward.base.config.chunk.RewardsChunk
 
 data class ConfigCache(
     val updater: Updatable,
@@ -25,6 +27,8 @@ data class ConfigCache(
         val farmHoe: FarmHoeConfig,
         val industry: IndustryConfig,
         val storage: StorageConfig,
-        val market: MarketConfig
+        val market: MarketConfig,
+        val rewards: RewardsChunk<Boolean?>,
+        val quests: QuestsConfig
     )
 }

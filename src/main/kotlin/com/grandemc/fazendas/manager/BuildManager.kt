@@ -18,10 +18,4 @@ class BuildManager {
         Operations.complete(operation)
         session.flushQueue()
     }
-
-    private fun cropVectors(clipboard: Clipboard, cropHolderId: Int): List<Vector> {
-        return clipboard.region.toList().filter {
-            clipboard.getBlock(it).type == cropHolderId
-        }
-    }
 }

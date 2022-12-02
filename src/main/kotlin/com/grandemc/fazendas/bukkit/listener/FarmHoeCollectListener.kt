@@ -1,5 +1,7 @@
 package com.grandemc.fazendas.bukkit.listener
 
+import com.grandemc.fazendas.bukkit.event.CropCollectEvent
+import com.grandemc.fazendas.bukkit.event.XpGainEvent
 import com.grandemc.fazendas.config.*
 import com.grandemc.fazendas.global.findWorld
 import com.grandemc.fazendas.global.respond
@@ -10,13 +12,14 @@ import com.grandemc.post.external.lib.global.bukkit.giveItem
 import com.grandemc.post.external.lib.global.bukkit.isLeftClick
 import com.grandemc.post.external.lib.global.bukkit.nms.NBTReference
 import com.grandemc.post.external.lib.global.bukkit.nms.hasReferenceTag
+import com.grandemc.post.external.lib.global.callEvent
 import com.grandemc.post.external.util.random.RandomUtils
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerInteractEvent
 
-class CropCollectListener(
+class FarmHoeCollectListener(
     private val islandConfig: IslandConfig,
     private val islandManager: IslandManager,
     private val landManager: LandManager,
@@ -105,6 +108,9 @@ class CropCollectListener(
                         "{xp}" to cropXp.toString()
                     )
                 }
+
+                callEvent(CropCollectEvent(event.player.uniqueId, landCrop))
+                callEvent(XpGainEvent(event.player.uniqueId, cropXp))
             }
     }
 }

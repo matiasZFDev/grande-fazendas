@@ -4,6 +4,7 @@ import com.grandemc.fazendas.bukkit.task.CropsGrowthTask
 import com.grandemc.fazendas.bukkit.task.IndustryRecipeTask
 import com.grandemc.fazendas.bukkit.task.MarketItemExpiryTask
 import com.grandemc.fazendas.config.CropsConfig
+import com.grandemc.fazendas.config.IndustryConfig
 import com.grandemc.fazendas.manager.LandPlantManager
 import com.grandemc.fazendas.manager.MarketManager
 import com.grandemc.fazendas.manager.PlayerManager
@@ -16,11 +17,12 @@ class ExecutorRegistry(
     private val playerManager: PlayerManager,
     private val landPlantManager: LandPlantManager,
     private val marketManager: MarketManager,
-    private val storageManager: StorageManager
+    private val storageManager: StorageManager,
+    private val industryConfig: IndustryConfig
 ) {
     fun startAll() {
         CropsGrowthTask(plugin, cropsConfig, playerManager, landPlantManager).start()
-        IndustryRecipeTask(plugin, playerManager).start()
+        IndustryRecipeTask(plugin, playerManager, industryConfig).start()
         MarketItemExpiryTask(plugin, marketManager, storageManager).start()
     }
 }

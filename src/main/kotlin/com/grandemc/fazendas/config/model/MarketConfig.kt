@@ -1,6 +1,7 @@
 package com.grandemc.fazendas.config.model
 
 import com.grandemc.fazendas.GrandeFazendas
+import com.grandemc.fazendas.config.model.reward.FarmReward
 import com.grandemc.post.external.lib.cache.config.StateConfig
 import com.grandemc.post.external.lib.global.bukkit.getShort
 import com.grandemc.post.external.lib.global.bukkit.intList

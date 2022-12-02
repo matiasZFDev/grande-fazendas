@@ -14,5 +14,7 @@ class PluginManagers(
     val landPlantManager: LandPlantManager,
     val farmItemManager: FarmItemManager,
     val industryManager: IndustryManager,
-    val marketManager: MarketManager
+    val marketManager: MarketManager,
+    val questManager: QuestManager,
+    val statsManager: StatsManager
 )

@@ -52,12 +52,13 @@ class LootBoxOpenListener(
                         }
                     }
                     .forEach {
-                        val boosterItem = farmItemManager.createBooster(it)
+                        val booster = it.booster
+                        val boosterItem = farmItemManager.createBooster(booster)
                         event.player.giveItem(boosterItem)
                         event.player.respond("abrir_lootbox.recompensa") {
                             replace(
-                                "{multiplicador}" to it.boost.intFormat(),
-                                "{duracao}" to it.duration.timeFormat()
+                                "{multiplicador}" to booster.boost.intFormat(),
+                                "{duracao}" to booster.duration.timeFormat()
                             )
                         }
                     }
@@ -79,13 +80,13 @@ class LootBoxOpenListener(
                     }
                 val lastBox = lootBoxes.last()
                 lootBoxes.forEach {
-                    val boosterItem = farmItemManager.createBooster(it)
+                    val boosterItem = farmItemManager.createBooster(it.booster)
                     event.player.giveItem(boosterItem)
                 }
                 event.player.respond("abrir_lootbox.recompensa") {
                     replace(
-                        "{multiplicador}" to lastBox.boost.intFormat(),
-                        "{duracao}" to lastBox.duration.timeFormat()
+                        "{multiplicador}" to lastBox.booster.boost.intFormat(),
+                        "{duracao}" to lastBox.booster.duration.timeFormat()
                     )
                 }
             }

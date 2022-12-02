@@ -1,38 +1,127 @@
-coletar_trigo_1:
-  id: 0
-  nome: '&eColetar Trigo (x100)'
-  tipo: coleta
-  plantacao: trigo
-  quantia: 100
-  chance: 50
-  recompensas:
-    lootbox:
-      tipo: lootbox
-      id: 0
+# Tipos de missoes
+
+# [Loot Box]
+# tipo: lootbox
+# id: id da lootbox, lootbox.yml
+# quantia: quantia dessa lootbox
+
+# [Fertilizante]
+# tipo: fertilizante
+# id: id do fertilizante, fertilizante.yml
+# quantia: quantia desse fertilizante
+
+# [XP]
+# tipo: xp
+# quantia: quantia de xp
+
+# [Booster]
+# tipo: booster
+# boost: multiplicador (x)
+# duracao: duracao em segundos
+
+# [Iten-referencia]
+# tipo: iten
+# slot: slot do iten, recompensas.yml
+
+missoes_diarias: 3
+diarias_reset: { hora: 8, minuto: 0 }
+formatos:
+  xp: '&a{xp} &fde &2&lXP'
+  lootbox: '{nome} &f{quantia}x'
+  booster: '&aBooster &f{boost} &7{duracao}'
+  fertilizante: '{nome} &f{quantia}x'
+  iten: '{nome} &f{quantia}x'
+  plantar_qualquer: '&6Qualquer'
+  progresso:
+    tamanho: 10
+    completo:
+      char: '▪'
+      color: '&a'
+    incompleto:
+      char: '▪'
+      color: '&7'
+
+diarias:
+  coletar_trigo_1:
+    id: 0
+    nivel_ilha: 1
+    chance: 50
+    missao: { nome: '&eColetar Trigo (x100)', tipo: coleta, plantacao: trigo, quantia: 100 }
+    recompensas:
+      lootbox_1:
+        tipo: lootbox
+        id: 0
+        quantia: 1
+
+  entregar_cenoura_1:
+    id: 1
+    nivel_ilha: 1
+    chance: 30
+    missao: { nome: '&eEntregar cenoura (x100)', tipo: entrega, material: cenoura, quantia: 50 }
+    recompensas:
+      fertilizante:
+        tipo: fertilizante
+        id: 0
+        quantia: 1
+
+  craftar_bolo_1:
+    id: 2
+    nivel_ilha: 1
+    chance: 30
+    missao: { nome: '&aCrie Bolo de cenoura (x1)', tipo: craft, material: bolo_cenoura, quantia: 1 }
+    recompensas:
+      xp_1:
+        tipo: xp
+        quantia: 250
+      xp_2:
+        tipo: xp
+        quantia: 500
+
+
+historia:
+  coletar_trigo_1:
+    id: 3
+    posicao: 0
+    nivel_ilha: 1
+    missao:
+      nome: '&eColetar Trigo (x100)'
+      tipo: coleta
+      plantacao: trigo
+      quantia: 100
+    recompensas:
+      lootbox:
+        tipo: lootbox
+        id: 0
+        quantia: 1
+
+  coletar_cenoura_1:
+    id: 4
+    posicao: 1
+    nivel_ilha: 1
+    missao:
+      nome: '&eColetar cenoura (x100)'
+      tipo: coleta
+      plantacao: cenoura
+      quantia: 50
+    recompensas:
+      fertilizante:
+        tipo: fertilizante
+        id: 0
+        quantia: 1
+
+  craftar_bolo_1:
+    id: 5
+    posicao: 2
+    nivel_ilha: 1
+    missao:
+      nome: '&aCrie Bolo de cenoura (x1)'
+      tipo: craft
+      material: bolo_cenoura
       quantia: 1
-coletar_cenoura_1:
-  id: 0
-  nome: '&eColetar cenoura (x100)'
-  tipo: coleta
-  plantacao: cenoura
-  quantia: 50
-  chance: 30
-  recompensa:
-    fertilizante:
-      tipo: fertilizante
-      id: 0
-      quantia: 1
-craftar_bolo_1:
-  id: 1
-  tipo: craft
-  nome: '&aCrie Bolo de cenoura (x1)'
-  material_id: 3
-  quantia: 1
-  chance: 30
-  recompensa:
-    xp_1:
-      tipo: xp
-      quantia: 250
-    xp_2:
-      tipo: xp
-      quantia: 500
+    recompensas:
+      xp_1:
+        tipo: xp
+        quantia: 250
+      xp_2:
+        tipo: xp
+        quantia: 500

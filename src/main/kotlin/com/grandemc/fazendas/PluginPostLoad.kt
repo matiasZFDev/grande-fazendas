@@ -4,8 +4,10 @@ import com.grandemc.post.external.lib.manager.config.ConfigManager
 import com.grandemc.post.external.lib.manager.database.DatabaseManager
 import com.grandemc.fazendas.init.*
 import com.grandemc.fazendas.init.model.*
+import com.grandemc.fazendas.manager.FarmItemManager
 import com.grandemc.fazendas.provider.*
 import com.grandemc.fazendas.registry.*
+import com.grandemc.post.external.lib.util.state.LateMutableState
 import org.bukkit.plugin.java.JavaPlugin
 
 class PluginPostLoad(
@@ -23,13 +25,16 @@ class PluginPostLoad(
     private lateinit var states: PluginStates
 
     override fun run() {
+        val farmItemManagerState = LateMutableState<FarmItemManager>()
         initAPIs()
         guiManagers = GuiManagersInitializer().init()
         configCache = ConfigCacheInitializer(
-            plugin, configManager, guiManagers.menuContainerManager, context
+            plugin, configManager, guiManagers.menuContainerManager, context,
+            farmItemManagerState
         ).init()
         initProviders()
         initPluginManagers()
+        farmItemManagerState.change(pluginManagers.farmItemManager)
         initFactories()
         initStates()
         registerViews()
@@ -58,7 +63,7 @@ class PluginPostLoad(
             servicesData.playerService,
             servicesData.marketService,
             plugin,
-            configCache.configs
+            configCache.configs,
         ).init()
     }
 
@@ -90,7 +95,8 @@ class PluginPostLoad(
             pluginManagers.playerManager,
             pluginManagers.landPlantManager,
             pluginManagers.marketManager,
-            pluginManagers.storageManager
+            pluginManagers.storageManager,
+            configCache.configs.industry
         ).startAll()
     }
 

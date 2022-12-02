@@ -51,7 +51,9 @@ class PluginManagersInitializer(
             LandPlantManager(configs.island, islandManager, landManager),
             farmItemManager,
             IndustryManager(farmManager, storageManager, configs.industry),
-            MarketManager(marketService, configs.market)
+            MarketManager(marketService, configs.market),
+            QuestManager(configs.quests, farmManager),
+            StatsManager(configs.quests)
         )
     }
 }

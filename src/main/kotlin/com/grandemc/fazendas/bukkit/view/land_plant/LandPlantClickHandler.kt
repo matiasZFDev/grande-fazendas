@@ -1,5 +1,6 @@
 package com.grandemc.fazendas.bukkit.view.land_plant
 
+import com.grandemc.fazendas.bukkit.event.FarmPlantEvent
 import com.grandemc.fazendas.bukkit.view.land.LandContext
 import com.grandemc.fazendas.config.CropsConfig
 import com.grandemc.fazendas.global.respond
@@ -7,6 +8,7 @@ import com.grandemc.fazendas.manager.LandPlantManager
 import com.grandemc.post.external.lib.global.bukkit.nms.NBTReference
 import com.grandemc.post.external.lib.global.bukkit.nms.toByte
 import com.grandemc.post.external.lib.global.bukkit.nms.useNBTValueIfPresent
+import com.grandemc.post.external.lib.global.callEvent
 import com.grandemc.post.external.lib.view.pack.ViewClickHandler
 import net.minecraft.server.v1_8_R3.NBTTagByte
 import org.bukkit.entity.Player
@@ -36,6 +38,7 @@ class LandPlantClickHandler(
                     "{plantacao}" to cropData.name
                 )
             }
+            callEvent(FarmPlantEvent(player.uniqueId, cropId))
         }
     }
 }

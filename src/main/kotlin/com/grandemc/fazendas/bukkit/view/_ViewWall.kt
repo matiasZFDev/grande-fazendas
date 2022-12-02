@@ -6,6 +6,7 @@ import com.grandemc.fazendas.bukkit.view.land.LandContext
 import com.grandemc.fazendas.bukkit.view.market.category.MarketCategoryContext
 import com.grandemc.fazendas.bukkit.view.market.purchase.MarketPurchaseContext
 import com.grandemc.fazendas.bukkit.view.market.sell.menu.MarketSellContext
+import com.grandemc.fazendas.bukkit.view.quests.hand_over.HandOverContext
 import com.grandemc.fazendas.provider.GlobalMenuContainerProvider
 import com.grandemc.post.external.lib.view.base.ContextData
 import com.grandemc.post.external.lib.view.pack.ViewPackage
@@ -70,3 +71,31 @@ class MarketSellingView(viewPackage: ViewPackage<ContextData>) : PackedView<Cont
 class MarketPurchaseView(
     viewPackage: ViewPackage<MarketPurchaseContext>
 ) : PackedView<MarketPurchaseContext>(viewPackage, GlobalMenuContainerProvider.get())
+
+class QuestsView(viewPackage: ViewPackage<ContextData>) : PackedView<ContextData>(
+    viewPackage, GlobalMenuContainerProvider.get()
+)
+
+class QuestsDoneView(viewPackage: ViewPackage<PageContext>) : PackedView<PageContext>(
+    viewPackage, GlobalMenuContainerProvider.get()
+) {
+    override fun getDefaultData(): PageContext {
+        return PageContext(0)
+    }
+}
+
+class QuestHandOverView(
+    viewPackage: ViewPackage<HandOverContext>
+) : PackedView<HandOverContext>(viewPackage, GlobalMenuContainerProvider.get()) {
+    override fun getDefaultData(): HandOverContext {
+        return HandOverContext(1)
+    }
+}
+
+class QuestHistoryView(viewPackage: ViewPackage<PageContext>) : PackedView<PageContext>(
+    viewPackage, GlobalMenuContainerProvider.get()
+) {
+    override fun getDefaultData(): PageContext {
+        return PageContext(0)
+    }
+}

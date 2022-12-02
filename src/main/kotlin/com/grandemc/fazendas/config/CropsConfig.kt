@@ -24,6 +24,10 @@ class CropsConfig(customConfig: CustomConfig) : StateConfig<CropsConfig.Config>(
         fun getCrop(cropId: Byte): Crop? {
             return cropList.find { it.id == cropId }
         }
+
+        fun getCropByNameId(nameId: String): Crop {
+            return cropList.first { it.nameId == nameId }
+        }
     }
     inner class Crop(
         val id: Byte,

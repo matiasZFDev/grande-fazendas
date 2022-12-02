@@ -4,8 +4,10 @@ import com.grandemc.fazendas.bukkit.view.IndustryView
 import com.grandemc.fazendas.global.openView
 import net.citizensnpcs.api.event.NPCRightClickEvent
 import net.citizensnpcs.api.trait.Trait
+import net.citizensnpcs.api.trait.TraitName
 import org.bukkit.event.EventHandler
 
+@TraitName("industry-menu")
 class IndustryTrait : Trait("industry-menu") {
     @EventHandler
     fun click(event: NPCRightClickEvent) {

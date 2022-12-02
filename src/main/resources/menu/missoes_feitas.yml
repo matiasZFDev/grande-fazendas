@@ -1,0 +1,22 @@
+titulo: 'Missões completadas'
+linhas: 6
+conteudo:
+  voltar:
+    slot: 49
+    head: 'https://textures.minecraft.net/texture/c61b279e00f19d9f69a712f6560767cae0cfa02c83160d46c7f50c7526f6776e'
+    nome: '&eVoltar'
+    lore:
+      - '&7Clique para voltar'
+      - '&7ao menu anterior.'
+  seguinte:
+    slot: 50
+    head: 'https://textures.minecraft.net/texture/59152c2e91f470485be222db5d2a895cadc903326f5c671bf8a559149673be80'
+    nome: '&bSeguinte'
+    lore:
+      - '&7Próxima página.'
+  anterior:
+    slot: 48
+    head: 'https://textures.minecraft.net/texture/ea4a9b70a25a27d8189e60d27ea8cc9632c36b46928155de7755f366ef04c877'
+    nome: '&bAnterior'
+    lore:
+      - '&7Página anterior.'

@@ -1,13 +1,12 @@
 package com.grandemc.fazendas.bukkit.event
 
-import org.bukkit.event.Event
 import org.bukkit.event.HandlerList
 import java.util.UUID
 
-class RecipeBakeEvent(
-    private val playerId: UUID,
-    private val recipeId: Byte
-) : Event() {
+class IndustryCraftEvent(
+    playerId: UUID,
+    private val materialId: Byte
+) : SourceEvent(playerId) {
     companion object {
         private val HANDLER_LIST: HandlerList = HandlerList()
 
@@ -16,9 +15,8 @@ class RecipeBakeEvent(
     }
 
     override fun getHandlers(): HandlerList {
-        return getHandlerList()
+        return HANDLER_LIST
     }
 
-    fun playerId(): UUID = playerId
-    fun recipeId(): Byte = recipeId
+    fun materialId(): Byte = materialId
 }

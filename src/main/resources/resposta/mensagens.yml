@@ -3,6 +3,7 @@ geral:
   jogador_offline: '&cEsse jogador encontra-se offline.'
   quantia_invalida: '&cInsira uma quantia válida.'
   error: '&cOcorreu um error no momento da interação. Tente novamente.'
+  operacao_cancelada: '&cEsse operação foi cancelada.'
 command:
   argumentos_invalidos: '&cDigite /command ajuda para mais informaçoes.'
 gcommand:

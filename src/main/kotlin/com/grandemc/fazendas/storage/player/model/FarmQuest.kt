@@ -1,9 +1,9 @@
 package com.grandemc.fazendas.storage.player.model
 
-class Quest(
+class FarmQuest(
     private val id: Byte,
     private val type: QuestType,
-    private var progress: Int,
+    private var progress: Int = 0,
     private var done: Boolean = false
 ) {
     fun id(): Byte = id

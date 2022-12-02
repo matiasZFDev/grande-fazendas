@@ -8,7 +8,6 @@ import com.grandemc.post.external.lib.cache.config.chunk.base.ItemsChunk
 import com.grandemc.post.external.lib.global.*
 import com.grandemc.post.external.lib.global.bukkit.*
 import com.grandemc.post.external.lib.global.bukkit.nms.NBTReference
-import com.grandemc.post.external.lib.global.bukkit.nms.addNBTReference
 import com.grandemc.post.external.lib.global.bukkit.nms.addNBTValue
 import com.grandemc.post.external.lib.global.bukkit.nms.addReferenceId
 import net.minecraft.server.v1_8_R3.NBTTagByte
@@ -23,6 +22,16 @@ class FarmItemManager(
     private val lootBoxConfig: LootBoxConfig,
     private val playerManager: PlayerManager
 ) {
+    fun createFertilizing(fertilizing: FertilizingConfig.Fertilizing): ItemStack {
+        return itemsConfig
+            .value("fertilizante")
+            .formatName("{nome}" to fertilizing.name)
+            .formatLore("{reducao}" to fertilizing.boost.intFormat())
+            .addNBTValue(
+                NBTReference.ITEM, "gfazendas.fertilizing", NBTTagByte(fertilizing.id)
+            )
+    }
+
     fun createFertilizing(id: Byte): ItemStack? {
         val fertilizing = fertilizingConfig.get().getById(id).let {
             if (it == null)
@@ -30,11 +39,7 @@ class FarmItemManager(
             it
         }
 
-        return itemsConfig
-            .value("fertilizante")
-            .formatName("{nome}" to fertilizing.name)
-            .formatLore("{reducao}" to fertilizing.boost.intFormat())
-            .addNBTValue(NBTReference.ITEM, "gfazendas.fertilizing", NBTTagByte(id))
+        return createFertilizing(fertilizing)
     }
 
     fun createLootBox(id: Byte): ItemStack? {
@@ -55,8 +60,8 @@ class FarmItemManager(
                 "{<conteudo>}" to lootBox.content.map {
                     lootBoxConfig.get().boosterFormat()
                         .formatReplace(
-                            "{boost}" to it.boost.intFormat(),
-                            "{duracao}" to it.duration.timeFormat(),
+                            "{boost}" to it.booster.boost.intFormat(),
+                            "{duracao}" to it.booster.duration.timeFormat(),
                             "{chance}" to it.chance.intFormat()
                         )
                 }
@@ -66,7 +71,7 @@ class FarmItemManager(
             )
     }
 
-    fun createBooster(boosterModel: LootBoxConfig.ChanceBooster): ItemStack {
+    fun createBooster(boosterModel: LootBoxConfig.Booster): ItemStack {
         return itemsConfig
             .value("booster_xp")
             .formatLore(

@@ -1,5 +1,7 @@
 package com.grandemc.fazendas.bukkit.view.market.purchase
 
+import com.grandemc.fazendas.bukkit.event.MarketBuyEvent
+import com.grandemc.fazendas.bukkit.event.MarketSellEvent
 import com.grandemc.fazendas.bukkit.view.MarketCategoryView
 import com.grandemc.fazendas.bukkit.view.MarketSellingView
 import com.grandemc.fazendas.global.openView
@@ -11,6 +13,7 @@ import com.grandemc.fazendas.manager.StorageManager
 import com.grandemc.post.external.lib.global.bukkit.nms.NBTReference
 import com.grandemc.post.external.lib.global.bukkit.nms.useReferenceIfPresent
 import com.grandemc.post.external.lib.global.bukkit.runIfOnline
+import com.grandemc.post.external.lib.global.callEvent
 import com.grandemc.post.external.lib.view.pack.ViewClickHandler
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
@@ -55,6 +58,10 @@ class MarketPurchaseClickHandler(
                     goldBank.withdraw(player.uniqueId, product.goldPrice)
                     goldBank.deposit(product.sellerId, product.goldPrice)
                     storageManager.deposit(player.uniqueId, product.itemId, product.amount)
+
+                    callEvent(MarketBuyEvent(player.uniqueId))
+                    callEvent(MarketSellEvent(product.sellerId))
+
                     player.closeInventory()
                     player.respond("mercado.produto_comprado_comprador")
 

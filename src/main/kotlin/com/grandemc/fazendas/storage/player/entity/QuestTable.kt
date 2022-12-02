@@ -2,7 +2,7 @@ package com.grandemc.fazendas.storage.player.entity
 
 import com.grandemc.fazendas.global.getUUID
 import com.grandemc.fazendas.global.setUUID
-import com.grandemc.fazendas.storage.player.model.Quest
+import com.grandemc.fazendas.storage.player.model.FarmQuest
 import com.grandemc.fazendas.storage.player.model.QuestMaster
 import com.grandemc.fazendas.storage.player.model.QuestType
 import com.grandemc.fazendas.storage.player.model.FarmPlayer
@@ -19,10 +19,12 @@ class QuestTable(
     override fun tableModel(): Table {
         return buildColumnTable(tableName) {
             addColumn("player_id", "BINARY(16) NOT NULL")
-            addColumn("current_id", "TINYINT", true)
-            addColumn("progress", "INT", true)
-            addColumn("done", "BIT", true)
+            addColumn("current_id", "TINYINT NOT NULL", true)
+            addColumn("quest_type", "TINYINT NOT NULL", true)
+            addColumn("progress", "INT NOT NULL", true)
+            addColumn("done", "BIT NOT NULL", true)
             addColumn("daily_quests_done", "TINYINT NOT NULL", true)
+            addColumn("history_progress", "TINYINT NOT NULL", true)
             addColumn("quests_done", "varbinary(128)", true)
             primaryKey("player_id")
         }
@@ -35,15 +37,19 @@ class QuestTable(
         val questMaster = value.farm()!!.questMaster()
         statement.setUUID(1, value.id())
         statement.setByte(2, questMaster.current()?.id() ?: -1)
-        statement.setInt(3, questMaster.current()?.progress() ?: -1)
-        statement.setBoolean(4, questMaster.current()?.isDone() ?: false)
-        statement.setByte(5, questMaster.dailyQuestsDone())
-        statement.setBytes(6, questMaster.questsDone().toByteArray())
-        statement.setByte(7, questMaster.current()?.id() ?: -1)
-        statement.setInt(8, questMaster.current()?.progress() ?: -1)
-        statement.setBoolean(9, questMaster.current()?.isDone() ?: false)
-        statement.setByte(10, questMaster.dailyQuestsDone())
-        statement.setBytes(11, questMaster.questsDone().toByteArray())
+        statement.setByte(3, questMaster.current()?.type()?.id() ?: -1)
+        statement.setInt(4, questMaster.current()?.progress() ?: -1)
+        statement.setBoolean(5, questMaster.current()?.isDone() ?: false)
+        statement.setByte(6, questMaster.dailyQuestsDone())
+        statement.setByte(7, questMaster.questHistoryProgress())
+        statement.setBytes(8, questMaster.questsDone().toByteArray())
+        statement.setByte(9, questMaster.current()?.id() ?: -1)
+        statement.setByte(10, questMaster.current()?.type()?.id() ?: -1)
+        statement.setInt(11, questMaster.current()?.progress() ?: -1)
+        statement.setBoolean(12, questMaster.current()?.isDone() ?: false)
+        statement.setByte(13, questMaster.dailyQuestsDone())
+        statement.setByte(14, questMaster.questHistoryProgress())
+        statement.setBytes(15, questMaster.questsDone().toByteArray())
         return true
     }
 
@@ -52,13 +58,14 @@ class QuestTable(
             if (resultSet.getByte("current_id") == (-1).toByte())
                 null
             else
-                Quest(
+                FarmQuest(
                     resultSet.getByte("current_id"),
-                    QuestType.CROP_COLLECT, // MODIFY
+                    QuestType.fromId(resultSet.getByte("quest_type")),
                     resultSet.getInt("progress"),
                     resultSet.getBoolean("done")
                 ),
             resultSet.getByte("daily_quests_done"),
+            resultSet.getByte("history_progress"),
             resultSet.getBytes("quests_done").toMutableList()
         )
     }

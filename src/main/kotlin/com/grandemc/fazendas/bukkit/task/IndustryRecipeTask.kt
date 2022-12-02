@@ -1,8 +1,11 @@
 package com.grandemc.fazendas.bukkit.task
 
-import com.grandemc.fazendas.bukkit.event.RecipeBakeEvent
+import com.grandemc.fazendas.bukkit.event.IndustryCraftEvent
+import com.grandemc.fazendas.config.IndustryConfig
 import com.grandemc.fazendas.global.respond
+import com.grandemc.fazendas.manager.IndustryManager
 import com.grandemc.fazendas.manager.PlayerManager
+import com.grandemc.fazendas.manager.StorageManager
 import com.grandemc.post.external.lib.global.bukkit.runIfOnline
 import com.grandemc.post.external.lib.global.callEvent
 import org.bukkit.Bukkit
@@ -10,7 +13,8 @@ import org.bukkit.plugin.Plugin
 
 class IndustryRecipeTask(
     private val plugin: Plugin,
-    private val playerManager: PlayerManager
+    private val playerManager: PlayerManager,
+    private val industryConfig: IndustryConfig
 ) {
     fun start() {
         Bukkit.getScheduler().runTaskTimer(plugin, this::run, 20L, 20L)
@@ -28,8 +32,9 @@ class IndustryRecipeTask(
                     return@let
                 }
 
+                val recipeMaterialId = industryConfig.get().getById(it.id()).materialId
                 it.advance()
-                callEvent(RecipeBakeEvent(player.id(), it.id()))
+                callEvent(IndustryCraftEvent(player.id(), recipeMaterialId))
                 player.id().runIfOnline {
                     respond("receita.pronta")
                 }

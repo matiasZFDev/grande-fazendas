@@ -1,0 +1,60 @@
+titulo: 'Missões ▶ Oferenda'
+linhas: 5
+conteudo:
+  material:
+    slot: 12
+    id: 1
+    nome: '{nome}'
+    lore:
+      - '&7O material que'
+      - '&7a missão está'
+      - '&7requerindo.'
+  quantia:
+    slot: 14
+    head: 'https://textures.minecraft.net/texture/91c9efabd99832e9837beebfb6cd5555805f02fe7e98b4d868096417778b8b04'
+    nome: '&a&lQ&auantia'
+    lore:
+      - '&7Clique para escolher'
+      - '&7a quantia que'
+      - '&7deseja oferecer.'
+      - ''
+      - ' &fPossui: &7{possui}'
+      - ' &fOferecendo: &7{quantia}'
+      - ''
+      - '&aClique para adicionar'
+  oferecer_insuficiente:
+    slot: 31
+    head: 'https://textures.minecraft.net/texture/c42070acc814bc946e59879ec7da45de984d3ee9a159393defb59853abe3b6'
+    nome: '&c&lO&cferecer'
+    lore:
+      - '&7Ofereça materiais'
+      - '&7para completar a'
+      - '&7missão :D'
+      - ''
+      - ' &fPrecisos: &a{precisos}'
+      - ' &fAtuais: &7{atuais}'
+      - ' &fLogo: &e{logo}'
+      - ''
+      - '&cVocê não possui a'
+      - '&cquantia oferecida'
+  oferecer_suficiente:
+    slot: 31
+    head: 'https://textures.minecraft.net/texture/bd7d44e86448a96bb5bb23e24a21a665b73f856ba10de42f577c688c1918f'
+    nome: '&a&lO&aferecer'
+    lore:
+      - '&7Ofereça materiais'
+      - '&7para completar a'
+      - '&7missão :D'
+      - ''
+      - ' &fPrecisos: &a{precisos}'
+      - ' &fAtuais: &7{atuais}'
+      - ' &fLogo: &e{logo}'
+      - ''
+      - '&aClique para enviar!'
+  voltar:
+    slot: 44
+    head: 'https://textures.minecraft.net/texture/c61b279e00f19d9f69a712f6560767cae0cfa02c83160d46c7f50c7526f6776e'
+    nome: '&eVoltar'
+    lore:
+      - '&7Clique para voltar'
+      - '&7ao menu anterior.'

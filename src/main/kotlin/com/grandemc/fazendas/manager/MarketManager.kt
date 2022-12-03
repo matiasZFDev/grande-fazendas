@@ -1,6 +1,7 @@
 package com.grandemc.fazendas.manager
 
 import com.grandemc.fazendas.config.model.MarketConfig
+import com.grandemc.fazendas.global.firstIndex
 import com.grandemc.fazendas.manager.model.MarketFilter
 import com.grandemc.fazendas.storage.market.model.MarketItem
 import com.grandemc.post.external.lib.database.base.DatabaseService
@@ -21,7 +22,12 @@ class MarketManager(
     private fun getNextId(): Int {
         if (marketService.getAll().isEmpty())
             return 0
-        return marketService.getAll().sortedByDescending(MarketItem::id).first().id().inc()
+        val marketSize = marketService.getAll().size
+
+        if (marketService.get(marketSize) == null)
+            return marketSize
+
+        return marketService.getAll().firstIndex { index, it -> it.id() != index }
     }
 
     fun postItem(playerId: UUID, itemId: Byte, amount: Short, price: Double) {

@@ -1,6 +1,5 @@
 package com.grandemc.fazendas.bukkit.listener.quest
 
-import com.grandemc.fazendas.bukkit.event.MarketBuyEvent
 import com.grandemc.fazendas.bukkit.event.MarketPostEvent
 import com.grandemc.fazendas.config.model.quest.type.MarketPostQuest
 import com.grandemc.fazendas.manager.QuestManager

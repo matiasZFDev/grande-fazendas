@@ -4,6 +4,7 @@ import com.grandemc.fazendas.manager.*
 
 class PluginManagers(
     val playerManager: PlayerManager,
+    val locationManager: IslandLocationManager,
     val islandManager: IslandManager,
     val buildManager: BuildManager,
     val islandGenerationManager: IslandGenerationManager,

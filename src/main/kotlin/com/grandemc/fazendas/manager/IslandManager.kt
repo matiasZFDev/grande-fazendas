@@ -1,110 +1,46 @@
 package com.grandemc.fazendas.manager
 
+import com.grandemc.fazendas.config.CropsConfig
+import com.grandemc.fazendas.config.FarmsConfig
 import com.grandemc.fazendas.config.IslandConfig
-import com.grandemc.fazendas.global.*
-import com.grandemc.fazendas.manager.model.IslandEntities
+import com.grandemc.fazendas.manager.helper.IslandEntityManager
 import com.grandemc.fazendas.manager.model.IslandSession
-import com.grandemc.fazendas.npc.IndustryTrait
-import com.grandemc.fazendas.npc.LandsTrait
-import com.grandemc.fazendas.npc.QuestsTrait
-import com.grandemc.post.external.lib.cache.config.chunk.base.ItemsChunk
 import com.grandemc.post.external.lib.global.bukkit.giveItem
+import com.grandemc.post.external.lib.global.bukkit.offlinePlayer
 import com.grandemc.post.external.lib.global.bukkit.removeItemByReference
-import com.sk89q.worldedit.BlockVector
-import com.sk89q.worldedit.Vector
-import net.citizensnpcs.api.CitizensAPI
-import net.citizensnpcs.api.npc.MemoryNPCDataStore
-import net.citizensnpcs.api.npc.NPC
-import net.citizensnpcs.api.trait.Trait
-import org.bukkit.Bukkit
-import org.bukkit.Location
-import org.bukkit.entity.EntityType
+import com.grandemc.post.external.lib.global.bukkit.runIfOnline
 import org.bukkit.entity.Player
 import java.util.UUID
 
 class IslandManager(
     private val playerManager: PlayerManager,
-    private val farmManager: FarmManager,
+    private val locationManager: IslandLocationManager,
     private val islandConfig: IslandConfig,
-    private val farmItemManager: FarmItemManager
+    private val farmItemManager: FarmItemManager,
+    farmsConfig: FarmsConfig,
+    landManager: LandManager,
+    cropsConfig: CropsConfig
 ) {
     private val islandPlayers: MutableMap<UUID, IslandSession> = mutableMapOf()
-    private val npcRegistry = CitizensAPI.createAnonymousNPCRegistry(MemoryNPCDataStore())
+    private val entityManager: IslandEntityManager = IslandEntityManager(
+        locationManager, islandConfig, farmsConfig, landManager, cropsConfig
+    )
+
+    fun insideIsland(playerId: UUID): Boolean {
+        return islandPlayers.contains(playerId)
+    }
 
     fun hasIsland(playerId: UUID): Boolean {
         return playerManager.player(playerId).farm() != null
     }
 
-    fun baseLocation(playerId: UUID? = null, yAxis: Boolean = true): Vector {
-        val farmCount = playerId?.let { farmManager.farm(playerId).id() }
-            ?: playerManager.allPlayers().lastOrNull {
-                it.farm() != null
-            }?.farm()?.id()?.inc() ?: 0
-        val locationX = farmCount * islandConfig.get().islandDistance
-        return BlockVector(
-            locationX,
-            if (yAxis) IslandGenerationManager.ISLAND_Y else 0,
-            0
-        )
-    }
-
-    fun islandOrigin(playerId: UUID, yAxis: Boolean = true): Vector {
-        val farm = farmManager.farm(playerId)
-        return BlockVector(
-             farm.id() * (islandConfig.get().islandDistance),
-            if (yAxis) IslandGenerationManager.ISLAND_Y else 0,
-            0
-        )
-    }
-
-    private fun islandSpawn(playerId: UUID): Location {
-        val world = Bukkit.getWorld(islandConfig.get().worldName)
-        return islandOrigin(playerId).add(islandConfig.get().spawn).toLocation(world)
-    }
-
-    private fun createHologram(
-        player: Player, configNPC: IslandConfig.IslandNPC, origin: Location
-    ): Hologram {
-        val hologram = player.prepareHologram(configNPC.hologramLines)
-        hologram.send(player, origin.add(configNPC.position))
-        return hologram
-    }
-
-    private fun createNPC(
-        configNPC: IslandConfig.IslandNPC,
-        origin: Location,
-        trait: Trait? = null
-    ): NPC {
-        val npc = npcRegistry.createNPC(EntityType.PLAYER, configNPC.name)
-        val npcLocation = origin.add(configNPC.position)
-        npc.spawn(npcLocation)
-        npc.data().setPersistent(NPC.NAMEPLATE_VISIBLE_METADATA, false)
-        trait?.let { npc.addTrait(it) }
-        return npc
-    }
-
     fun joinIsland(player: Player) {
-        val islandSpawn = islandSpawn(player.uniqueId)
+        val islandSpawn = locationManager.islandSpawn(player.uniqueId)
         val farmTool = farmItemManager.createFarmTool(player.uniqueId)
         player.teleport(islandSpawn)
         player.giveItem(farmTool)
-        val npcs = islandConfig.get().islandNpcs
-        val entities = IslandEntities(listOf(
-                createHologram(player, npcs.terrains, islandSpawn),
-                createHologram(player, npcs.industry, islandSpawn),
-                createHologram(player, npcs.quests, islandSpawn)
-            ),
-            listOf(
-                createNPC(npcs.terrains, islandSpawn, LandsTrait()),
-                createNPC(npcs.industry, islandSpawn, IndustryTrait()),
-                createNPC(npcs.quests, islandSpawn, QuestsTrait())
-            )
-        )
+        val entities = entityManager.createEntities(player, islandSpawn)
         islandPlayers[player.uniqueId] = IslandSession(entities)
-    }
-
-    fun insideIsland(playerId: UUID): Boolean {
-        return islandPlayers.contains(playerId)
     }
 
     fun leaveIsland(player: Player) {
@@ -112,5 +48,17 @@ class IslandManager(
         islandPlayers.remove(player.uniqueId)
         player.inventory.removeItemByReference("gfazendas.farm_tool")
         player.performCommand(islandConfig.get().leaveCommand)
+    }
+
+    private fun session(playerId: UUID): IslandSession {
+        return islandPlayers[playerId] ?: throw Error(
+            "Houve um error de posição do jogador ${playerId.offlinePlayer().name} na ilha."
+        )
+    }
+
+    fun updateLandHologram(playerId: UUID, landId: Byte) {
+        playerId.runIfOnline {
+            session(uniqueId).entities().updateHologram(this, landId)
+        }
     }
 }

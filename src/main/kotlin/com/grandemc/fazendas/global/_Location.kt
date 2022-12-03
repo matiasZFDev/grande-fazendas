@@ -32,6 +32,10 @@ fun Location.add(vector: ViewVector): Location {
     return copy
 }
 
+fun Location.add(vector: Vector): Location {
+    return clone().add(vector.x, vector.y, vector.z)
+}
+
 fun Location.toWeVector(): Vector {
     return toVector().run { Vector(x, y, z) }
 }

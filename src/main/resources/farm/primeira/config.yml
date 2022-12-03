@@ -1,8 +1,9 @@
 id: 1
-posicao:
-  x: 0
+nome: '&6☘ &e&lP&r&elantio &e&lB&r&eásico &6☘'
+posicao_holograma:
+  x: 14
   y: 0
-  z: 0
+  z: 25
 requisitos:
   nivel_ilha: 1
   itens: {}

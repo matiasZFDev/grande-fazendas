@@ -1,8 +1,9 @@
 id: 2
-posicao:
+nome: '&3☘ &b&lP&r&blantio &b&lA&r&bvançado &3☘'
+posicao_holograma:
   x: 0
   y: 0
-  z: 0
+  z: 38
 requisitos:
   nivel_ilha: 1
   itens:

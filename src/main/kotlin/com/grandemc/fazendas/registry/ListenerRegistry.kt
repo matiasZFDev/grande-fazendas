@@ -23,9 +23,10 @@ class ListenerRegistry(
         register(LootBoxOpenListener(configs.lootBox, managers.farmItemManager))
         register(IslandInteractionListener(configs.island))
         register(FarmHoeCollectListener(
-            configs.island, managers.islandManager, managers.landManager,
+            configs.island, managers.locationManager, managers.landManager,
             configs.crops, managers.storageManager, managers.farmItemManager,
-            managers.playerManager, configs.farmHoe, configs.lootBox
+            managers.playerManager, configs.farmHoe, configs.lootBox,
+            managers.islandManager
         ))
         register(FarmHoeMenuOpenListener())
         questListeners()

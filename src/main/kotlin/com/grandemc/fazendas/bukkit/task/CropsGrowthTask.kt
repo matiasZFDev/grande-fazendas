@@ -2,6 +2,7 @@ package com.grandemc.fazendas.bukkit.task
 
 import com.grandemc.fazendas.config.CropsConfig
 import com.grandemc.fazendas.global.respond
+import com.grandemc.fazendas.manager.IslandManager
 import com.grandemc.fazendas.manager.LandPlantManager
 import com.grandemc.fazendas.manager.PlayerManager
 import com.grandemc.post.external.lib.global.bukkit.runIfOnline
@@ -13,6 +14,7 @@ class CropsGrowthTask(
     private val cropsConfig: CropsConfig,
     private val playerManager: PlayerManager,
     private val landPlantManager: LandPlantManager,
+    private val islandManager: IslandManager
 ) {
     fun start() {
         Bukkit.getScheduler().runTaskTimer(plugin, this::run, 20L, 20L)
@@ -51,6 +53,10 @@ class CropsGrowthTask(
                             replace("{plantacao}" to cropData.name)
                         }
                     }
+
+                    islandManager.updateLandHologram(
+                        player.id(), land.typeId()
+                    )
                 }
             }
         }

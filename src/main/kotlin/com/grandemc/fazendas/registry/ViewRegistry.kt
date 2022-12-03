@@ -39,7 +39,8 @@ class ViewRegistry(
     fun registerAll() {
         register(LandsView(LandsPackage(
             configs.lands, configs.farms, pluginManagers.landManager,
-            pluginManagers.goldBank, pluginManagers.storageManager, configs.items
+            pluginManagers.goldBank, pluginManagers.storageManager, configs.items,
+            pluginManagers.islandManager
         )))
         register(LandView(LandPackage(
             pluginManagers.landManager, pluginManagers.goldBank, configs.farms,
@@ -47,7 +48,7 @@ class ViewRegistry(
         )))
         register(LandPlantView(LandPlantPackage(
             configs.items, configs.crops, pluginManagers.farmManager,
-            pluginManagers.landPlantManager
+            pluginManagers.landPlantManager, pluginManagers.islandManager
         )))
         register(FertilizingView(FertilizingPackage(
             configs.fertilizing, configs.farms, pluginManagers.landManager,

@@ -20,7 +20,7 @@ class IslandGenerationManager(
     private val plugin: Plugin,
     private val playerManager: PlayerManager,
     private val buildManager: BuildManager,
-    private val islandManager: IslandManager,
+    private val locationManager: IslandLocationManager,
     private val islandConfig: IslandConfig,
     private val farmsConfig: FarmsConfig,
     private val successGeneration: (Player?) -> Unit
@@ -59,7 +59,7 @@ class IslandGenerationManager(
         val farmCount = playerManager.allPlayers().lastOrNull {
             it.farm() != null
         }?.farm()?.id()?.inc() ?: 0
-        val baseLocation = islandManager.baseLocation()
+        val baseLocation = locationManager.baseLocation()
         val baseSchematic = islandConfig.get().baseSchematic
         val farm = PrivateFarm(
             farmCount,
@@ -76,7 +76,7 @@ class IslandGenerationManager(
         val weWorld = BukkitWorld(world)
         buildManager.pasteSchematic(baseSchematic, baseLocation, weWorld)
         farmsConfig.get().farms.forEach {
-            val landLocation = islandManager.islandOrigin(playerId).add(it.config.position)
+            val landLocation = locationManager.islandOrigin(playerId)
             buildManager.pasteSchematic(it.config.baseSchematic, landLocation, weWorld)
         }
         successGeneration(player)

@@ -12,13 +12,14 @@ class LandsPackage(
     landManager: LandManager,
     goldBank: GoldBank,
     storageManager: StorageManager,
-    itemsConfig: ItemsChunk
+    itemsConfig: ItemsChunk,
+    islandManager: IslandManager
 ) : StatelessPackage(
     LandsMenuContainer::class,
     LandsProcessor(
         landsConfig, farmsConfig, landManager, goldBank, storageManager, itemsConfig
     ),
     LandsClickHandler(
-        farmsConfig, goldBank, storageManager, landManager
+        farmsConfig, goldBank, storageManager, landManager, islandManager
     )
 )

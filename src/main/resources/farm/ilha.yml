@@ -43,6 +43,34 @@ npcs:
       - '&a&lINDUSTRIA!'
       - '&fFaça melhores materiais usando plantações'
       - '&fcoletadas previamente!'
+hologramas:
+  progresso_formato:
+    completo:
+      char: '●'
+      color: '&6'
+    incompleto:
+      char: '●'
+      color: '&7'
+    tamanho: 10
+    porcentagem:
+      color: '&a'
+      decimais: 2
+  plantacao_inativa: '&cnada'
+  lista:
+    plantio_bloqueado:
+      - '{nome}'
+      - '&cEsse plantio se encontra bloqueado!'
+      - '&cCompre para disponibilizar.'
+    plantio:
+      - '{nome}'
+      - '&8✔ &fNível: &6&l{nivel}&r &8◄► &fXP: &a{xp}'
+      - '&8✔ &eGerando {plantacao}&e...'
+      - '&8✔ &fProgresso: {progresso}'
+    plantio_maximo:
+      - '{nome}'
+      - '&8✔ &fNível: &6&l{nivel}&r &8◄► &fXP: &a{xp}'
+      - '&8✔ &eGerando {plantacao}&e...'
+      - '&6Plantio no nível máximo!'
 evolucao:
   nivel_maximo: 50
   niveis:

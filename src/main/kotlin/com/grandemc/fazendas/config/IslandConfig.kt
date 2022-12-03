@@ -2,24 +2,20 @@ package com.grandemc.fazendas.config
 
 import com.grandemc.fazendas.GrandeFazendas
 import com.grandemc.fazendas.config.model.level.LevelContainer
-import com.grandemc.fazendas.config.model.level.base.pattern.EveryAfterPattern
-import com.grandemc.fazendas.config.model.level.base.pattern.EveryPattern
-import com.grandemc.fazendas.config.model.level.base.pattern.LevelPattern
-import com.grandemc.fazendas.config.model.level.base.pattern.WhenPattern
 import com.grandemc.fazendas.config.model.level.island.*
 import com.grandemc.fazendas.global.asSchematic
 import com.grandemc.fazendas.util.Lazy
 import com.grandemc.fazendas.util.ViewVector
 import com.grandemc.post.external.lib.cache.config.StateConfig
-import com.grandemc.post.external.lib.global.bukkit.keys
 import com.grandemc.post.external.lib.global.bukkit.section
 import com.grandemc.post.external.lib.global.bukkit.stringList
 import com.grandemc.post.external.lib.global.color
 import com.grandemc.post.external.lib.util.CustomConfig
+import com.grandemc.post.external.util.ProgressFormat
+import com.grandemc.post.external.util.ProgressFormatFetcher
 import com.sk89q.worldedit.BlockVector
 import com.sk89q.worldedit.Vector
 import com.sk89q.worldedit.extent.clipboard.Clipboard
-import org.bukkit.configuration.ConfigurationSection
 import org.bukkit.configuration.file.FileConfiguration
 import java.io.File
 
@@ -36,6 +32,7 @@ class IslandConfig(
         val cropBlock: Int,
         val leaveCommand: String,
         val islandNpcs: IslandNpcs,
+        val landHolograms: LandHolograms,
         val evolution: IslandEvolution,
         val baseSchematic: Clipboard
     )
@@ -48,6 +45,13 @@ class IslandConfig(
         val name: String,
         val position: ViewVector,
         val hologramLines: List<String>
+    )
+    inner class LandHolograms(
+        val progressFormat: ProgressFormat,
+        val noPlantation: String,
+        val blockedHologram: List<String>,
+        val runningHologram: List<String>,
+        val maxedHologram: List<String>
     )
     inner class IslandEvolution(
         val maxLevel: Int,
@@ -100,6 +104,15 @@ class IslandConfig(
                         ),
                         stringList("npcs.industria.holograma").color()
                     )
+                ),
+                LandHolograms(
+                    ProgressFormatFetcher.fromSection(
+                        section("hologramas.progresso_formato")
+                    ),
+                    getString("hologramas.plantacao_inativa").color(),
+                    stringList("hologramas.lista.plantio_bloqueado"),
+                    stringList("hologramas.lista.plantio"),
+                    stringList("hologramas.lista.plantio_maximo")
                 ),
                 IslandEvolution(
                     getInt("evolucao.nivel_maximo"),

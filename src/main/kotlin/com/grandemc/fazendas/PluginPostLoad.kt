@@ -96,7 +96,8 @@ class PluginPostLoad(
             pluginManagers.landPlantManager,
             pluginManagers.marketManager,
             pluginManagers.storageManager,
-            configCache.configs.industry
+            configCache.configs.industry,
+            pluginManagers.islandManager,
         ).startAll()
     }
 

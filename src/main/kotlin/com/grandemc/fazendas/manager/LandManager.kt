@@ -15,7 +15,7 @@ class LandManager(
     private val farmManager: FarmManager,
     private val farmsConfig: FarmsConfig,
     private val buildManager: BuildManager,
-    private val islandManager: IslandManager,
+    private val locationManager: IslandLocationManager,
     private val islandConfig: IslandConfig,
 ) {
     fun hasLand(playerId: UUID, id: Byte): Boolean {
@@ -33,7 +33,7 @@ class LandManager(
         val landLevel = land(playerId, id).level()
         val farmLevel = farm.config.levels.level(landLevel)
         val schematic = farm.getSchematicByName(farmLevel.schematic)
-        val baseLocation = islandManager.baseLocation(playerId)
+        val baseLocation = locationManager.baseLocation(playerId)
         val weWorld = getWeWorld(islandConfig.get().worldName)
         val centerVector = baseLocation.add(schematic.schematic.region.min())
         playerId.runIfOnline {
@@ -72,12 +72,18 @@ class LandManager(
     }
 
     fun landCrops(playerId: UUID, farmId: Byte): List<Vector> {
-        val origin = islandManager.islandOrigin(playerId, false)
+        val origin = locationManager.islandOrigin(playerId, false)
         val farmVectors = landSchematic(playerId, farmId).cropVectors.vectors()
         return farmVectors.map { it.add(origin) }
     }
 
     fun playerLands(playerId: UUID): List<FarmLand> {
         return farmManager.farm(playerId).lands()
+    }
+
+    fun isLandMaxed(land: FarmLand): Boolean {
+        return farmsConfig.get().getFarmById(land.typeId()).config.levels.isMaxLevel(
+            land.level()
+        )
     }
 }

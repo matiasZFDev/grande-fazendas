@@ -1,25 +1,15 @@
 package com.grandemc.fazendas.config
 
-import com.boydti.fawe.`object`.IntegerTrio
-import com.boydti.fawe.`object`.clipboard.DiskOptimizedClipboard
 import com.grandemc.fazendas.global.*
 import com.grandemc.post.external.lib.cache.config.Updatable
 import com.grandemc.post.external.lib.global.bukkit.*
-import com.sk89q.jnbt.CompoundTag
-import com.sk89q.worldedit.BlockVector
-import com.sk89q.worldedit.CuboidClipboard
 import com.sk89q.worldedit.Vector
 import com.sk89q.worldedit.blocks.BaseBlock
-import com.sk89q.worldedit.extent.clipboard.BlockArrayClipboard
 import com.sk89q.worldedit.extent.clipboard.Clipboard
-import com.sk89q.worldedit.schematic.SchematicFormat
-import org.bukkit.Material
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.plugin.Plugin
 import java.io.File
 import java.io.FileFilter
-import java.lang.reflect.Field
-import java.util.LinkedList
 
 class FarmsConfig(
     private val plugin: Plugin,
@@ -44,8 +34,9 @@ class FarmsConfig(
     }
     inner class FarmConfig(
         val id: Byte,
+        val name: String,
         val baseSchematic: Clipboard,
-        val position: Vector,
+        val hologramPosition: Vector,
         val requirements: FarmRequirements,
         val levels: FarmLevels
     )
@@ -69,6 +60,10 @@ class FarmsConfig(
 
         fun nextLevel(level: Byte): FarmLevel? {
             return if (hasLevel(level.inc())) level(level.inc()) else null
+        }
+
+        fun isMaxLevel(level: Byte): Boolean {
+            return nextLevel(level) == null
         }
     }
     inner class FarmLevel(
@@ -100,13 +95,14 @@ class FarmsConfig(
                 )
                 val farmConfig = FarmConfig(
                     farmYamlConfig.getByte("id"),
+                    farmYamlConfig.getString("nome"),
                     farmDir.resolve("base.schematic").asSchematic(
                         islandConfig.get().worldName
                     ),
-                    BlockVector(
-                        farmYamlConfig.getInt("posicao.x"),
-                        farmYamlConfig.getInt("posicao.y"),
-                        farmYamlConfig.getInt("posicao.z")
+                    Vector(
+                        farmYamlConfig.getDouble("posicao_holograma.x"),
+                        farmYamlConfig.getDouble("posicao_holograma.y"),
+                        farmYamlConfig.getDouble("posicao_holograma.z")
                     ),
                     FarmRequirements(
                         farmYamlConfig.getByte("requisitos.nivel_ilha"),

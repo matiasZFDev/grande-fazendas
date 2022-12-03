@@ -4,6 +4,7 @@ import com.grandemc.fazendas.bukkit.event.FarmPlantEvent
 import com.grandemc.fazendas.bukkit.view.land.LandContext
 import com.grandemc.fazendas.config.CropsConfig
 import com.grandemc.fazendas.global.respond
+import com.grandemc.fazendas.manager.IslandManager
 import com.grandemc.fazendas.manager.LandPlantManager
 import com.grandemc.post.external.lib.global.bukkit.nms.NBTReference
 import com.grandemc.post.external.lib.global.bukkit.nms.toByte
@@ -17,7 +18,8 @@ import org.bukkit.inventory.ItemStack
 
 class LandPlantClickHandler(
     private val cropsConfig: CropsConfig,
-    private val landPlantManager: LandPlantManager
+    private val landPlantManager: LandPlantManager,
+    private val islandManager: IslandManager
 ) : ViewClickHandler<LandContext> {
     override fun onClick(player: Player, data: LandContext?, item: ItemStack, event: InventoryClickEvent) {
         requireNotNull(data)
@@ -32,6 +34,7 @@ class LandPlantClickHandler(
                 crop
             }
             landPlantManager.startPlantation(player.uniqueId, data.landId, cropData)
+            islandManager.updateLandHologram(player.uniqueId, data.landId)
             player.closeInventory()
             player.respond("plantio.plantado") {
                 replace(

@@ -7,6 +7,7 @@ import com.grandemc.fazendas.global.findWorld
 import com.grandemc.fazendas.global.respond
 import com.grandemc.fazendas.global.toWeVector
 import com.grandemc.fazendas.manager.*
+import com.grandemc.fazendas.manager.IslandLocationManager
 import com.grandemc.fazendas.storage.player.model.CustomEnchant
 import com.grandemc.post.external.lib.global.bukkit.giveItem
 import com.grandemc.post.external.lib.global.bukkit.isLeftClick
@@ -21,14 +22,15 @@ import org.bukkit.event.player.PlayerInteractEvent
 
 class FarmHoeCollectListener(
     private val islandConfig: IslandConfig,
-    private val islandManager: IslandManager,
+    private val locationManager: IslandLocationManager,
     private val landManager: LandManager,
     private val cropsConfig: CropsConfig,
     private val storageManager: StorageManager,
     private val farmItemManager: FarmItemManager,
     private val playerManager: PlayerManager,
     private val farmHoeConfig: FarmHoeConfig,
-    private val lootBoxConfig: LootBoxConfig
+    private val lootBoxConfig: LootBoxConfig,
+    private val islandManager: IslandManager
 ) : Listener {
     @EventHandler
     fun onInteract(event: PlayerInteractEvent) {
@@ -41,7 +43,7 @@ class FarmHoeCollectListener(
         if (!event.item.hasReferenceTag(NBTReference.ITEM, "gfazendas.farm_tool"))
             return
 
-        val islandOrigin = islandManager.islandOrigin(event.player.uniqueId, false)
+        val islandOrigin = locationManager.islandOrigin(event.player.uniqueId, false)
         val possibleCropVector = event.clickedBlock.location.toWeVector().subtract(
             islandOrigin.blockX,
             0,
@@ -102,6 +104,7 @@ class FarmHoeCollectListener(
                 val cropXp = (cropData.xp * xpUpgrade.upgrades.value).toInt()
                 storageManager.deposit(event.player.uniqueId, landCrop, 1)
                 land.addXp(cropXp)
+                islandManager.updateLandHologram(event.player.uniqueId, land.typeId())
                 event.player.respond("plantio.coletada") {
                     replace(
                         "{plantacao}" to cropData.name,

@@ -19,7 +19,8 @@ class LandsClickHandler(
     private val farmsConfig: FarmsConfig,
     private val goldBank: GoldBank,
     private val storageManager: StorageManager,
-    private val landManager: LandManager
+    private val landManager: LandManager,
+    private val islandManager: IslandManager
 ) : ViewClickHandler.Stateless() {
     override fun onClick(player: Player, item: ItemStack, event: InventoryClickEvent) {
         item.useNBTValueIfPresent<NBTTagByte>(
@@ -33,6 +34,7 @@ class LandsClickHandler(
                 storageManager.withdraw(player.uniqueId, materialId, requiredItem.amount)
             }
             landManager.upgradeLand(player.uniqueId, farmId)
+            islandManager.updateLandHologram(player.uniqueId, farmId)
             player.closeInventory()
             player.respond("plantio.comprado")
         }

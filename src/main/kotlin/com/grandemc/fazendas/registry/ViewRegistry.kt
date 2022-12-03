@@ -18,6 +18,7 @@ import com.grandemc.fazendas.bukkit.view.market.selling.MarketSellingPackage
 import com.grandemc.fazendas.bukkit.view.quests.hand_over.QuestHandOverPackage
 import com.grandemc.fazendas.bukkit.view.quests.history.QuestHistoryPackage
 import com.grandemc.fazendas.bukkit.view.quests.menu.QuestsPackage
+import com.grandemc.fazendas.bukkit.view.sell.MaterialSellPackage
 import com.grandemc.fazendas.bukkit.view.storage.StoragePackage
 import com.grandemc.fazendas.init.model.ConfigCache
 import com.grandemc.fazendas.init.model.PluginAPIs
@@ -111,6 +112,10 @@ class ViewRegistry(
         )))
         register(QuestHistoryView(QuestHistoryPackage(
             pluginManagers.questManager, pluginManagers.farmManager, configs.items
+        )))
+        register(MaterialSellView(MaterialSellPackage(
+            pluginManagers.storageManager, apis.conversationFactory,
+            pluginManagers.goldBank
         )))
     }
 }

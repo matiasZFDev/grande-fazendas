@@ -17,6 +17,7 @@ import com.grandemc.fazendas.bukkit.view.market.selling.MarketSellingMenuContain
 import com.grandemc.fazendas.bukkit.view.quests.hand_over.QuestHandOverMenuContainer
 import com.grandemc.fazendas.bukkit.view.quests.history.QuestHistoryMenuContainer
 import com.grandemc.fazendas.bukkit.view.quests.menu.QuestsMenuContainer
+import com.grandemc.fazendas.bukkit.view.sell.MaterialSellMenuContainer
 import com.grandemc.fazendas.bukkit.view.storage.StorageMenuContainer
 import com.grandemc.post.external.lib.cache.config.menu.MenuContainer
 import com.grandemc.post.external.lib.manager.config.ConfigManager
@@ -61,5 +62,7 @@ class MenuContainerRegistry(
         register<QuestsMenuContainer>("missoes")
         register<QuestHandOverMenuContainer>("missoes_entrega")
         register<QuestHistoryMenuContainer>("missoes_historia")
+
+        register<MaterialSellMenuContainer>("vender_material")
     }
 }

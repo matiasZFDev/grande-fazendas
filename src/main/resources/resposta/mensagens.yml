@@ -3,7 +3,7 @@ geral:
   jogador_offline: '&cEsse jogador encontra-se offline.'
   quantia_invalida: '&cInsira uma quantia válida.'
   error: '&cOcorreu um error no momento da interação. Tente novamente.'
-  operacao_cancelada: '&cEsse operação foi cancelada.'
+  operacao_cancelada: '&cEssa operação foi cancelada.'
 command:
   argumentos_invalidos: '&cDigite /command ajuda para mais informaçoes.'
 gcommand:
@@ -106,3 +106,11 @@ mercado_vender:
     - '    &fDigite &c&lCANCELAR &fpara cancelar.'
   preco_setado: '&aO preço foi setado.'
   vendido: '&aVocê colocou {material} &f({quantia}x) &apor &6⛂{preco} &aem venda!'
+armazem:
+  iten_vender_quantia_iniciar:
+    - ''
+    - '    &aInsira a quantia do material que deseja vender.'
+    - '    &fDigite &c&lCANCELAR &fpara cancelar.'
+  iten_vender_quantia_setada: '&aA quantia foi setada.'
+  iten_vendido:
+    actionbar: '&2☘ &c⬇ {material} &7{quantia}x &8● &a⬆ &6⛂{ouro}'

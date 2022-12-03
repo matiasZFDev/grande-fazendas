@@ -1,0 +1,57 @@
+titulo: 'Vender material'
+linhas: 4
+conteudo:
+  voltar:
+    slot: 31
+    head: 'https://textures.minecraft.net/texture/c61b279e00f19d9f69a712f6560767cae0cfa02c83160d46c7f50c7526f6776e'
+    nome: '&eVoltar'
+    lore:
+      - '&7Clique para voltar'
+      - '&7ao menu anterior.'
+  material:
+    slot: 11
+    id: 1
+    nome: '{nome}'
+    lore:
+      - '&7O iten escolhido'
+      - '&7pra venda.'
+      - ''
+      - ' &fUnidade: &6⛂{preco}'
+      - ''
+      - '&eIten a venda'
+  quantia:
+    slot: 13
+    id: 342
+    nome: '&e&lQ&euantia'
+    lore:
+      - '&7Escolha a quantia'
+      - '&7desse material que'
+      - '&7deseja vender.'
+      - ''
+      - ' &fPossui: &7{possui}'
+      - ' &fQuantia: &7{quantia}'
+      - ''
+      - '&aClique para escolher'
+  venda_possivel:
+    slot: 15
+    id: 266
+    nome: '&a&lV&aenda!'
+    lore:
+      - '&7Venda o seu material'
+      - '&7pro mestre da fazenda!'
+      - ''
+      - ' &fIten: {iten}'
+      - ' &fQuantia: &7{quantia}'
+      - ' &fPreço: &6⛂{preco}'
+      - ''
+      - '&aClique para vender!'
+  venda_nao_possivel:
+    slot: 15
+    id: 351
+    data: 1
+    nome: '&c&lV&cenda!'
+    lore:
+      - '&7Venda o seu material'
+      - '&7pro mestre da fazenda!'
+      - ''
+      - '&cQuantia insuficiente'

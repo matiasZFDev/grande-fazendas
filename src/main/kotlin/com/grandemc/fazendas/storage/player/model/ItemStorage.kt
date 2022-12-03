@@ -23,6 +23,10 @@ class ItemStorage(private val items: MutableList<StorageItem> = LinkedList()) {
                 return
 
             it.amount = (it.amount - amount).toShort()
+
+            if (it.amount == (0).toShort()) {
+                items.removeIf { material -> material.id == it.id }
+            }
         }
     }
 

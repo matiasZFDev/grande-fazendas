@@ -7,6 +7,7 @@ import com.grandemc.fazendas.bukkit.view.market.category.MarketCategoryContext
 import com.grandemc.fazendas.bukkit.view.market.purchase.MarketPurchaseContext
 import com.grandemc.fazendas.bukkit.view.market.sell.menu.MarketSellContext
 import com.grandemc.fazendas.bukkit.view.quests.hand_over.HandOverContext
+import com.grandemc.fazendas.bukkit.view.sell.MaterialSellContext
 import com.grandemc.fazendas.provider.GlobalMenuContainerProvider
 import com.grandemc.post.external.lib.view.base.ContextData
 import com.grandemc.post.external.lib.view.pack.ViewPackage
@@ -91,3 +92,7 @@ class QuestHistoryView(viewPackage: ViewPackage<PageContext>) : PackedView<PageC
         return PageContext(0)
     }
 }
+
+class MaterialSellView(
+    viewPackage: ViewPackage<MaterialSellContext>
+) : PackedView<MaterialSellContext>(viewPackage, GlobalMenuContainerProvider.get())

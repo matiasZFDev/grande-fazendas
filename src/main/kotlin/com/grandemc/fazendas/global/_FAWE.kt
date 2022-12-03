@@ -16,8 +16,20 @@ fun newSession(world: World): EditSession {
 }
 
 class VectorArea(private val vectors: List<Vector>) {
-    private val min: Vector = vectors.minBy { it.x + it.y + it.z }
-    private val max: Vector = vectors.maxBy { it.x + it.y + it.z }
+    private val min: Vector = vectors.run {
+        Vector(
+            minBy(Vector::getX).x,
+            minBy(Vector::getY).y,
+            minBy(Vector::getZ).z,
+        )
+    }
+    private val max: Vector = vectors.run {
+        Vector(
+            maxBy(Vector::getX).x,
+            maxBy(Vector::getY).y,
+            maxBy(Vector::getZ).z,
+        )
+    }
     private val mapped = MappedVectors(vectors)
 
     fun vectors(): List<Vector> = vectors

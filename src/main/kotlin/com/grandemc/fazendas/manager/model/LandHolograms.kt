@@ -89,10 +89,8 @@ class LandHolograms(
 
     fun sendAll(player: Player) {
         val islandOrigin = locationManager.islandOrigin(player.uniqueId)
-        println("origin: $islandOrigin")
         holograms.forEach {
             val position = farmsConfig.get().getFarmById(it.key()).config.hologramPosition
-            println(position)
             it.value().send(player, islandOrigin.add(position).toLocation(player.world))
         }
     }

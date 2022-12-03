@@ -53,7 +53,7 @@ class FarmHoeCollectListener(
             .playerLands(event.player.uniqueId)
             .find {
                 it.resetCountdown() < 0 && landManager
-                    .landSchematic(event.player.uniqueId, it.level())
+                    .landSchematic(event.player.uniqueId, it.typeId())
                     .cropVectors.mapped().contains(possibleCropVector)
             }
             ?.let { land ->

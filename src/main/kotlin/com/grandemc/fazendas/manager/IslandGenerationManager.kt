@@ -46,23 +46,21 @@ class IslandGenerationManager(
         }
     }
 
+    private fun getNextFarmId(): Int {
+        return playerManager.allPlayers()
+            .filter { it.farm() != null }
+            .maxByOrNull { it.farm()!!.id() }
+            ?.farm()?.id()?.inc() ?: 0
+    }
+
     private fun createFarmIsland(playerId: UUID) {
         val player = Bukkit.getPlayer(playerId)
-
-        if (Bukkit.getWorld(islandConfig.get().worldName) == null) {
-            player.respond("ilha.gerando_mundo")
-            generateWorld(islandConfig.get().worldName)
-        }
-
         val world = Bukkit.getWorld(islandConfig.get().worldName)
-
-        val farmCount = playerManager.allPlayers().lastOrNull {
-            it.farm() != null
-        }?.farm()?.id()?.inc() ?: 0
+        val farmId = getNextFarmId()
         val baseLocation = locationManager.baseLocation()
         val baseSchematic = islandConfig.get().baseSchematic
         val farm = PrivateFarm(
-            farmCount,
+            farmId,
             baseSchematic.toCuboid(baseLocation, world),
             1,
             0,
@@ -119,12 +117,5 @@ class IslandGenerationManager(
 
     private fun resetGenerationDelay() {
         delayCount = GENERATION_DELAY
-    }
-
-    private fun generateWorld(worldName: String) {
-        val wc = WorldCreator(worldName)
-        wc.type(WorldType.FLAT)
-        wc.generatorSettings("2;0;1")
-        wc.createWorld()
     }
 }

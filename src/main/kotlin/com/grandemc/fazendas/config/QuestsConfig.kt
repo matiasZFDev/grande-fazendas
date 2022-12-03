@@ -29,6 +29,7 @@ class QuestsConfig(
     customConfig, GrandeFazendas.CONTEXT
 ) {
     inner class Config(
+        private val xp: Int,
         private val dailyQuestsLimit: Byte,
         private val dailyQuestsReset: Int,
         private val dailyQuests: List<DailyQuest>,
@@ -37,6 +38,8 @@ class QuestsConfig(
         private val quests: Map<Short, Quest> = dailyQuests.associate {
             it.id to it.quest
         } + questHistory.quests().associate { it.id to it.quest }
+
+        fun xp(): Int = xp
 
         fun dailyQuestsLimit(): Byte = dailyQuestsLimit
         fun dailyQuestsReset(): Int = dailyQuestsReset
@@ -124,6 +127,7 @@ class QuestsConfig(
             }
         )
         return Config(
+            config.getInt("xp"),
             config.getByte("missoes_diarias"),
             config.section("diarias_reset").run {
                 (getInt("hora") * 3600) + (getInt("minuto") * 60)

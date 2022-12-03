@@ -9,4 +9,8 @@ class StatsManager(
     fun dailyQuests(playerId: UUID): Byte {
         return questsConfig.get().dailyQuestsLimit()
     }
+
+    fun boostedXp(xp: Int): Int {
+        return xp
+    }
 }

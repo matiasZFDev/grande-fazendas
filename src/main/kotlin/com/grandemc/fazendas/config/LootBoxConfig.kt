@@ -3,7 +3,6 @@ package com.grandemc.fazendas.config
 import com.grandemc.fazendas.GrandeFazendas
 import com.grandemc.post.external.lib.cache.config.StateConfig
 import com.grandemc.post.external.lib.global.bukkit.getByte
-import com.grandemc.post.external.lib.global.bukkit.mappedKeys
 import com.grandemc.post.external.lib.global.bukkit.mappedSection
 import com.grandemc.post.external.lib.global.bukkit.section
 import com.grandemc.post.external.lib.global.color

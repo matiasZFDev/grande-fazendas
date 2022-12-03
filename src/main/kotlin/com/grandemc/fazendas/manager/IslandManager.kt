@@ -57,6 +57,9 @@ class IslandManager(
     }
 
     fun updateLandHologram(playerId: UUID, landId: Byte) {
+        if (!insideIsland(playerId))
+            return
+
         playerId.runIfOnline {
             session(uniqueId).entities().updateHologram(this, landId)
         }

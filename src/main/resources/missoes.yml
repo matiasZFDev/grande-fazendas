@@ -25,6 +25,7 @@
 
 missoes_diarias: 3
 diarias_reset: { hora: 8, minuto: 0 }
+xp: 50 # xp ganho por missao completada, independente das recompensas
 formatos:
   xp: '&a{xp} &fde &2&lXP'
   lootbox: '{nome} &f{quantia}x'

@@ -38,6 +38,7 @@ class CropsConfig(customConfig: CustomConfig) : StateConfig<CropsConfig.Config>(
         val islandLevel: Byte,
         val materialId: Byte,
         val xp: Int,
+        val plantXp: Int,
         val reset: Int,
     )
     class ProcessData(
@@ -59,6 +60,7 @@ class CropsConfig(customConfig: CustomConfig) : StateConfig<CropsConfig.Config>(
                 section.getByte("nivel_ilha"),
                 section.getByte("material_id"),
                 section.getInt("xp"),
+                section.getInt("xp_plantar"),
                 section.getInt("reset") * 60
             )
         }.let { Config(config.intList("menu_slots"), it) }

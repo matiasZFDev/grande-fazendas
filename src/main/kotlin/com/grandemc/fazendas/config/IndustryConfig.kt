@@ -32,7 +32,8 @@ class IndustryConfig(customConfig: CustomConfig) : StateConfig<IndustryConfig.Co
         val materialId: Byte,
         val islandLevel: Byte,
         val items: List<ItemRequirement>,
-        val bakeTime: Int
+        val bakeTime: Int,
+        val xp: Int
     )
     inner class ItemRequirement(
         val name: String,
@@ -48,7 +49,8 @@ class IndustryConfig(customConfig: CustomConfig) : StateConfig<IndustryConfig.Co
                 section("itens_precisos").keys().map {
                     ItemRequirement(it, getShort("itens_precisos.$it"))
                 },
-                getInt("tempo_preparacao")
+                getInt("tempo_preparacao"),
+                getInt("xp")
             )
         }.let {
             Config(

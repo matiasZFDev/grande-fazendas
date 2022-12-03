@@ -9,6 +9,7 @@ receitas:
     itens_precisos:
       trigo: 15
     tempo_preparacao: 1 # minutos
+    xp: 10 # xp ganho ao finalizar craftar
   bolo_cenoura:
     id: 1
     nivel_ilha: 5
@@ -17,3 +18,4 @@ receitas:
       trigo: 30
       cenoura: 10
     tempo_preparacao: 5
+    xp: 18

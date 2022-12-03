@@ -3,6 +3,7 @@ package com.grandemc.fazendas.bukkit.listener
 import com.grandemc.fazendas.config.LootBoxConfig
 import com.grandemc.fazendas.global.respond
 import com.grandemc.fazendas.manager.FarmItemManager
+import com.grandemc.fazendas.manager.FarmManager
 import com.grandemc.post.external.lib.global.bukkit.giveItem
 import com.grandemc.post.external.lib.global.bukkit.isRightClick
 import com.grandemc.post.external.lib.global.bukkit.nms.NBTReference

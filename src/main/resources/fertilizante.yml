@@ -4,7 +4,9 @@ fertilizantes:
     id: 0 # id numerico (db)
     nome: '&eFertilizante &lX'
     reducao: 10 # reducao do tempo em %
+    xp: 5 # xp ganho por ativa-lo
   fertilizante_2:
     id: 1
     nome: '&3Fertilizante &lXXV'
     reducao: 25
+    xp: 8

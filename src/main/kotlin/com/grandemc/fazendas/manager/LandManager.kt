@@ -86,4 +86,11 @@ class LandManager(
             land.level()
         )
     }
+
+    fun addXp(playerId: UUID, landId: Byte, xp: Int, farmXp: Boolean = true) {
+        land(playerId, landId).addXp(xp)
+
+        if (farmXp)
+            farmManager.farm(playerId).addXp(xp)
+    }
 }

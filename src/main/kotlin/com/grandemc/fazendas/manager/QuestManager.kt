@@ -48,4 +48,8 @@ class QuestManager(
     fun isHistoryQuest(questId: Short): Boolean {
         return history().quests().any { it.id == questId }
     }
+
+    fun questDoneXp(): Int {
+        return questsConfig.get().xp()
+    }
 }

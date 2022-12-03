@@ -28,7 +28,8 @@ class FertilizingConfig(customConfig: CustomConfig) : StateConfig<FertilizingCon
         val nameId: String,
         val id: Byte,
         val name: String,
-        val boost: Double
+        val boost: Double,
+        val xp: Int
     )
 
     override fun fetch(config: FileConfiguration): Config {
@@ -37,7 +38,8 @@ class FertilizingConfig(customConfig: CustomConfig) : StateConfig<FertilizingCon
                 key,
                 section.getByte("id"),
                 section.getString("nome").color(),
-                section.getDouble("reducao")
+                section.getDouble("reducao"),
+                section.getInt("xp")
             )
         }.let {
             Config(config.intList("menu_slots"), it)

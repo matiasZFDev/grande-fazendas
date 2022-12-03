@@ -1,20 +1,23 @@
 package com.grandemc.fazendas.bukkit.task
 
 import com.grandemc.fazendas.bukkit.event.IndustryCraftEvent
+import com.grandemc.fazendas.bukkit.event.XpGainEvent
 import com.grandemc.fazendas.config.IndustryConfig
 import com.grandemc.fazendas.global.respond
-import com.grandemc.fazendas.manager.IndustryManager
-import com.grandemc.fazendas.manager.PlayerManager
-import com.grandemc.fazendas.manager.StorageManager
+import com.grandemc.fazendas.manager.*
 import com.grandemc.post.external.lib.global.bukkit.runIfOnline
 import com.grandemc.post.external.lib.global.callEvent
+import com.grandemc.post.external.lib.global.dottedFormat
 import org.bukkit.Bukkit
 import org.bukkit.plugin.Plugin
 
 class IndustryRecipeTask(
     private val plugin: Plugin,
     private val playerManager: PlayerManager,
-    private val industryConfig: IndustryConfig
+    private val industryConfig: IndustryConfig,
+    private val statsManager: StatsManager,
+    private val farmManager: FarmManager,
+    private val storageManager: StorageManager
 ) {
     fun start() {
         Bukkit.getScheduler().runTaskTimer(plugin, this::run, 20L, 20L)
@@ -32,12 +35,22 @@ class IndustryRecipeTask(
                     return@let
                 }
 
-                val recipeMaterialId = industryConfig.get().getById(it.id()).materialId
+                val recipeConfig = industryConfig.get().getById(it.id())
+                val craftXp = statsManager.boostedXp(recipeConfig.xp)
+                val materialConfig = storageManager.materialData(recipeConfig.materialId)
+                farmManager.farm(player.id()).addXp(craftXp)
                 it.advance()
-                callEvent(IndustryCraftEvent(player.id(), recipeMaterialId))
                 player.id().runIfOnline {
                     respond("receita.pronta")
+                    respond("receita.pronta_xp") {
+                        replace(
+                            "{plantacao}" to materialConfig.name,
+                            "{xp}" to craftXp.dottedFormat()
+                        )
+                    }
                 }
+                callEvent(IndustryCraftEvent(player.id(), recipeConfig.materialId))
+                callEvent(XpGainEvent(player.id(), craftXp))
             }
         }
     }

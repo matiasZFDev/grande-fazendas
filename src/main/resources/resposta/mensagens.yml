@@ -37,6 +37,8 @@ plantio:
     titulo: '&6&lUHU!'
     subtitulo: '&aPlantio comprado com sucesso!'
   plantado: '&aVocê plantou {plantacao} &aneste plantio!'
+  plantado_xp:
+    actionbar: '&2☘ &fPlantado {plantacao} &8● &a+{xp} &lXP'
   crescido: '&6A plantação "{plantacao}&6" cresceu em um plantio!'
   coletada:
     actionbar: '&2☘ &f+1 &e{plantacao} &8● &a+{xp} &lXP'
@@ -54,6 +56,8 @@ aplicar_fertilizante:
   invalido: '&cEsse fertilizante não é válido. Contate com algum staff.'
   pronta: '&cEsse plantio ja cresceu.'
   aplicado: '&6Foi aplicado o fertilizante {fertilizante} &6ao plantio &f#{plantio}&6.'
+  aplicado_xp:
+    actionbar: '&2☘ &fUso de &e{fertilizante} &8● &a+{xp} &lXP'
 darlootbox:
   argumentos_invalidos: '&cDigite /gfazendas darlootbox <jogador> <id> <quantia>'
   lootbox_invalido: '&cA id ingresada não é um lootbox válido'
@@ -79,6 +83,8 @@ receita:
   pronta:
     titulo: '&6&lFAZENDA'
     subtitulo: '&fA sua receita está pronta!'
+  pronta_xp:
+    actionbar: '&2☘ &fCraftou um {plantacao} &8● &a+{xp} &lXP'
   coletada:
     titulo: '&6&lFAZENDA'
     subtitulo: '&fA sua receita está pronta!'

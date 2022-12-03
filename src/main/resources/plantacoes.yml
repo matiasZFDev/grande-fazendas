@@ -27,6 +27,7 @@ plantacoes:
     nivel_ilha: 1 # nivel de ilha preciso
     material_id: 0 # id do material de materiais.yml
     xp: 1 # xp ganho ao quebrar
+    xp_plantar: 12 # xp ganho ao crescer um plantio com essa crop
     reset: 1 # minutos
 
   cenoura:
@@ -39,7 +40,8 @@ plantacoes:
     nome: '&6Cenoura'
     nivel_ilha: 5
     material_id: 1
-    xp: 1 # xp ganho ao quebrar
+    xp: 1
+    xp_plantar: 16
     reset: 30
 
   melancia:
@@ -55,7 +57,8 @@ plantacoes:
     nome: '&aMelancia'
     nivel_ilha: 10
     material_id: 2
-    xp: 2 # xp ganho ao quebrar
+    xp: 2
+    xp_plantar: 24
     reset: 60
 
   flor_branca:
@@ -74,7 +77,8 @@ plantacoes:
     nome: '&eFlor branca'
     nivel_ilha: 15
     material_id: 3
-    xp: 3 # xp ganho ao quebrar
+    xp: 3
+    xp_plantar: 30
     reset: 40
 
   pimenta:
@@ -91,5 +95,6 @@ plantacoes:
     nome: '&cPimenta'
     nivel_ilha: 30
     material_id: 4
-    xp: 5 # xp ganho ao quebrar
+    xp: 5
+    xp_plantar: 50
     reset: 90

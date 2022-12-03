@@ -9,13 +9,10 @@ import com.grandemc.fazendas.init.ServicesInitializer
 import com.grandemc.fazendas.init.model.ServicesData
 import com.grandemc.fazendas.npc.IndustryTrait
 import com.grandemc.fazendas.npc.LandsTrait
-import com.grandemc.fazendas.npc.QuestsTrait
-import com.sk89q.jnbt.CompoundTag
-import com.sk89q.worldedit.blocks.BaseBlock
+import com.grandemc.fazendas.npc.MasterTrait
 import net.citizensnpcs.api.CitizensAPI
 import net.citizensnpcs.api.trait.Trait
 import net.citizensnpcs.api.trait.TraitInfo
-import net.minecraft.server.v1_8_R3.TileEntity
 
 class GrandeFazendas : GrandePlugin() {
     private lateinit var configManager: ConfigManager
@@ -54,7 +51,7 @@ class GrandeFazendas : GrandePlugin() {
     private fun registerTraits() {
         registerTrait<LandsTrait>()
         registerTrait<IndustryTrait>()
-        registerTrait<QuestsTrait>()
+        registerTrait<MasterTrait>()
     }
 
     override fun dataPostLoad() {

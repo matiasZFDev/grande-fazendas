@@ -38,7 +38,7 @@ class IslandConfig(
     )
     inner class IslandNpcs(
         val terrains: IslandNPC,
-        val quests: IslandNPC,
+        val master: IslandNPC,
         val industry: IslandNPC
     )
     inner class IslandNPC(
@@ -83,15 +83,15 @@ class IslandConfig(
                         stringList("npcs.terrenos.holograma").color()
                     ),
                     IslandNPC(
-                        getString("npcs.missoes.nome_skin"),
+                        getString("npcs.mestre.nome_skin"),
                         ViewVector(
-                            getDouble("npcs.missoes.posicao.x"),
-                            getDouble("npcs.missoes.posicao.y"),
-                            getDouble("npcs.missoes.posicao.z"),
-                            getDouble("npcs.missoes.posicao.yaw").toFloat(),
-                            getDouble("npcs.missoes.posicao.pitch").toFloat()
+                            getDouble("npcs.mestre.posicao.x"),
+                            getDouble("npcs.mestre.posicao.y"),
+                            getDouble("npcs.mestre.posicao.z"),
+                            getDouble("npcs.mestre.posicao.yaw").toFloat(),
+                            getDouble("npcs.mestre.posicao.pitch").toFloat()
                         ),
-                        stringList("npcs.missoes.holograma").color()
+                        stringList("npcs.mestre.holograma").color()
                     ),
                     IslandNPC(
                         getString("npcs.industria.nome_skin"),

@@ -19,7 +19,7 @@ npcs:
       - '&6&lTERRENOS'
       - '&fDesbloqueia e utilize esses maravilhosos'
       - '&fterrenos para plantar muito mais!'
-  missoes:
+  mestre:
     nome_skin: 'MatBed'
     posicao:
       x: -8
@@ -28,9 +28,9 @@ npcs:
       yaw: -91.3
       pitch: 1.1
     holograma:
-      - '&e&lMISSÕES'
-      - '&fComplete pequenhos desafios e obtenha'
-      - '&fótimas recompensas :D'
+      - '&b&lMESTRE'
+      - '&fOlá amigo! Eu sou seu guia, clique'
+      - '&fem mim para abrir o menu principal'
   industria:
     nome_skin: Sarn4
     posicao:

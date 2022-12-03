@@ -27,7 +27,7 @@ class MarketSellClickHandler(
         requireNotNull(data)
         item.useReferenceIfPresent(NBTReference.VIEW, "gfazendas.market.sell") {
             when (it) {
-                "return" -> player.openView(MarketView::class, PageContext(0))
+                "return" -> player.openView(MarketView::class)
                 "material" -> player.openView(
                     MarketSellMaterialView::class,
                     data

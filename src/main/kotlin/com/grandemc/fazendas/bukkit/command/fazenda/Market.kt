@@ -6,6 +6,7 @@ import com.grandemc.fazendas.global.openView
 import com.grandemc.fazendas.global.respond
 import com.grandemc.fazendas.provider.GlobalMessagesProvider
 import com.grandemc.post.external.lib.command.base.PlayerCommandModule
+import org.bukkit.Effect
 import org.bukkit.entity.Player
 
 class Market : PlayerCommandModule(GlobalMessagesProvider.get()) {
@@ -15,6 +16,6 @@ class Market : PlayerCommandModule(GlobalMessagesProvider.get()) {
             return
         }
 
-        player.openView(MarketView::class, PageContext(0))
+        player.openView(MarketView::class)
     }
 }

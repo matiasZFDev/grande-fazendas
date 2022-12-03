@@ -5,6 +5,7 @@ import com.grandemc.fazendas.config.model.level.base.ConfigLevelFetcher
 import com.grandemc.fazendas.config.model.level.base.LevelRequirements
 import com.grandemc.fazendas.config.model.level.base.LevelUpgrades
 import com.grandemc.fazendas.config.model.level.base.pattern.LevelPattern
+import com.grandemc.post.external.lib.global.bukkit.formatNumber
 import org.bukkit.configuration.ConfigurationSection
 
 class IslandLevelFetcher(
@@ -16,7 +17,7 @@ class IslandLevelFetcher(
     ): LevelRequirements<IslandRequirements> {
         return IslandLevelRequirements(
             pattern,
-            IslandRequirements(section.getInt("xp"))
+            IslandRequirements(section.formatNumber("xp").toInt())
         )
     }
 

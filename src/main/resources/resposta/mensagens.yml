@@ -114,3 +114,7 @@ armazem:
   iten_vender_quantia_setada: '&aA quantia foi setada.'
   iten_vendido:
     actionbar: '&2☘ &c⬇ {material} &7{quantia}x &8● &a⬆ &6⛂{ouro}'
+fazenda:
+  upada:
+    titulo: '&b&lGG'
+    subtitulo: '&fFazenda upada com sucesso!'

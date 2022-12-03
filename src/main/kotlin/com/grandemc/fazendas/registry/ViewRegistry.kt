@@ -6,6 +6,7 @@ import com.grandemc.fazendas.bukkit.view.craft.start.CraftStartPackage
 import com.grandemc.fazendas.bukkit.view.fertilizing.FertilizingPackage
 import com.grandemc.fazendas.bukkit.view.hoe.HoePackage
 import com.grandemc.fazendas.bukkit.view.industry.IndustryPackage
+import com.grandemc.fazendas.bukkit.view.island.IslandPackage
 import com.grandemc.fazendas.bukkit.view.land.LandPackage
 import com.grandemc.fazendas.bukkit.view.land_plant.LandPlantPackage
 import com.grandemc.fazendas.bukkit.view.lands.LandsPackage
@@ -15,6 +16,7 @@ import com.grandemc.fazendas.bukkit.view.market.purchase.MarketPurchasePackage
 import com.grandemc.fazendas.bukkit.view.market.sell.material.MarketSellMaterialPackage
 import com.grandemc.fazendas.bukkit.view.market.sell.menu.MarketSellPackage
 import com.grandemc.fazendas.bukkit.view.market.selling.MarketSellingPackage
+import com.grandemc.fazendas.bukkit.view.master.MasterPackage
 import com.grandemc.fazendas.bukkit.view.quests.hand_over.QuestHandOverPackage
 import com.grandemc.fazendas.bukkit.view.quests.history.QuestHistoryPackage
 import com.grandemc.fazendas.bukkit.view.quests.menu.QuestsPackage
@@ -117,5 +119,7 @@ class ViewRegistry(
             pluginManagers.storageManager, apis.conversationFactory,
             pluginManagers.goldBank
         )))
+        register(MasterView(MasterPackage()))
+        register(IslandView(IslandPackage(pluginManagers.farmManager, configs.island)))
     }
 }

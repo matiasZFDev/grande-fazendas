@@ -1,0 +1,42 @@
+titulo: 'Mestre da fazendao'
+linhas: 3
+conteudo:
+  mercado:
+    slot: 10
+    head: 'https://textures.minecraft.net/texture/a5062e352814833dbca59e953c881cc09ec87b754265aa30120106769a7ef3d2'
+    nome: '&6&lM&6ercado'
+    lore:
+      - '&7Venda e compre itens'
+      - '&7dos proprios jogadores!'
+      - ''
+      - '&6Clique para ver'
+  missoes:
+    slot: 12
+    head: 'https://textures.minecraft.net/texture/bfa7dcc32a4332f048efec93ef5466f3440db49c2582f920e6284a54ace3dbe'
+    nome: '&a&lM&aissões'
+    lore:
+      - '&7Complete os desafios'
+      - '&7do mestre e obtenha'
+      - '&7diversas recompensas!'
+      - '&f(Algumas valoradas em &ncash&f)'
+      - ''
+      - '&aClique para conferir'
+  ilha:
+    slot: 14
+    head: 'https://textures.minecraft.net/texture/6d0636fa7b7a812a1c7621e2399ed038d85b3eab03ca83c199b771af70e2b8c3'
+    nome: '&b&lI&blha'
+    lore:
+      - '&7Veja o estado'
+      - '&7e nivel da sua'
+      - '&7ilha.'
+      - ''
+      - '&bClique para ver'
+  top:
+    slot: 16
+    head: 'https://textures.minecraft.net/texture/e3e45831c1ea817f7477bcaebfa3d2ee3a936ee8ea2b8bde29006b7e9bdf58'
+    nome: '&6&lI&6lhas &6&lR&6anking'
+    lore:
+      - '&7Os jogadores com as'
+      - '&7melhores, ilhas.'
+      - ''
+      - '&6Clique para ver'

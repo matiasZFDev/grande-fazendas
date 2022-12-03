@@ -5,6 +5,7 @@ import com.grandemc.fazendas.bukkit.view.craft.start.CraftStartMenuContainer
 import com.grandemc.fazendas.bukkit.view.fertilizing.FertilizingMenuContainer
 import com.grandemc.fazendas.bukkit.view.hoe.HoeMenuContainer
 import com.grandemc.fazendas.bukkit.view.industry.IndustryMenuContainer
+import com.grandemc.fazendas.bukkit.view.island.IslandMenuContainer
 import com.grandemc.fazendas.bukkit.view.land.LandMenuContainer
 import com.grandemc.fazendas.bukkit.view.land_plant.LandPlantMenuContainer
 import com.grandemc.fazendas.bukkit.view.lands.LandsMenuContainer
@@ -14,6 +15,7 @@ import com.grandemc.fazendas.bukkit.view.market.purchase.MarketPurchaseMenuConta
 import com.grandemc.fazendas.bukkit.view.market.sell.material.MarketSellMaterialMenuContainer
 import com.grandemc.fazendas.bukkit.view.market.sell.menu.MarketSellMenuContainer
 import com.grandemc.fazendas.bukkit.view.market.selling.MarketSellingMenuContainer
+import com.grandemc.fazendas.bukkit.view.master.MasterMenuContainer
 import com.grandemc.fazendas.bukkit.view.quests.hand_over.QuestHandOverMenuContainer
 import com.grandemc.fazendas.bukkit.view.quests.history.QuestHistoryMenuContainer
 import com.grandemc.fazendas.bukkit.view.quests.menu.QuestsMenuContainer
@@ -64,5 +66,7 @@ class MenuContainerRegistry(
         register<QuestHistoryMenuContainer>("missoes_historia")
 
         register<MaterialSellMenuContainer>("vender_material")
+        register<MasterMenuContainer>("mestre")
+        register<IslandMenuContainer>("ilha")
     }
 }

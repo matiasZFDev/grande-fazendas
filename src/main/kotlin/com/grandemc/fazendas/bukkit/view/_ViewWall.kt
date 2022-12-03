@@ -51,7 +51,11 @@ class CraftStartView(viewPackage: ViewPackage<CraftContext>) : PackedView<CraftC
 
 class MarketView(viewPackage: ViewPackage<PageContext>) : PackedView<PageContext>(
     viewPackage, GlobalMenuContainerProvider.get()
-)
+) {
+    override fun getDefaultData(): PageContext {
+        return PageContext(0)
+    }
+}
 
 class MarketCategoryView(
     viewPackage: ViewPackage<MarketCategoryContext>
@@ -96,3 +100,11 @@ class QuestHistoryView(viewPackage: ViewPackage<PageContext>) : PackedView<PageC
 class MaterialSellView(
     viewPackage: ViewPackage<MaterialSellContext>
 ) : PackedView<MaterialSellContext>(viewPackage, GlobalMenuContainerProvider.get())
+
+class MasterView(viewPackage: ViewPackage<ContextData>) : PackedView<ContextData>(
+    viewPackage, GlobalMenuContainerProvider.get()
+)
+
+class IslandView(viewPackage: ViewPackage<ContextData>) : PackedView<ContextData>(
+    viewPackage, GlobalMenuContainerProvider.get()
+)

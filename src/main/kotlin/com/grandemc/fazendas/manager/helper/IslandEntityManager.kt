@@ -13,7 +13,7 @@ import com.grandemc.fazendas.manager.model.KeyableHologram
 import com.grandemc.fazendas.manager.model.LandHolograms
 import com.grandemc.fazendas.npc.IndustryTrait
 import com.grandemc.fazendas.npc.LandsTrait
-import com.grandemc.fazendas.npc.QuestsTrait
+import com.grandemc.fazendas.npc.MasterTrait
 import com.grandemc.fazendas.util.ViewVector
 import com.grandemc.post.external.lib.global.color
 import com.grandemc.post.external.lib.global.format
@@ -71,7 +71,7 @@ class IslandEntityManager(
         val entities = IslandEntities(listOf(
                 createHologramNPC(player, npcs.terrains, origin),
                 createHologramNPC(player, npcs.industry, origin),
-                createHologramNPC(player, npcs.quests, origin)
+                createHologramNPC(player, npcs.master, origin)
             ),
             LandHolograms(
                 farmsConfig.get().farms.map {
@@ -95,7 +95,7 @@ class IslandEntityManager(
             listOf(
                 createNPC(npcs.terrains, origin, LandsTrait()),
                 createNPC(npcs.industry, origin, IndustryTrait()),
-                createNPC(npcs.quests, origin, QuestsTrait())
+                createNPC(npcs.master, origin, MasterTrait())
             )
         )
         farmsConfig.get().farms.forEach {

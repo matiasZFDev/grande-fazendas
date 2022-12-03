@@ -16,13 +16,18 @@ class ExecutorRegistry(
     private val marketManager: MarketManager,
     private val storageManager: StorageManager,
     private val industryConfig: IndustryConfig,
-    private val islandManager: IslandManager
+    private val islandManager: IslandManager,
+    private val statsManager: StatsManager,
+    private val farmManager: FarmManager
 ) {
     fun startAll() {
         CropsGrowthTask(
             plugin, cropsConfig, playerManager, landPlantManager, islandManager
         ).start()
-        IndustryRecipeTask(plugin, playerManager, industryConfig).start()
+        IndustryRecipeTask(
+            plugin, playerManager, industryConfig, statsManager, farmManager,
+            storageManager
+        ).start()
         MarketItemExpiryTask(plugin, marketManager, storageManager).start()
     }
 }

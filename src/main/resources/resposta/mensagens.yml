@@ -47,6 +47,9 @@ plantio:
   lootbox:
     titulo: '&6&lFAZENDA'
     subtitulo: '&aVocê achou uma {lootbox}&a!'
+  upado:
+    titulo: '&b&lOPA!'
+    subtitulo: '&aPlantio upado com sucesso!'
 darfertilizante:
   argumentos_invalidos: '&cDigite /gfazendas darfertilizante <jogador> <id> <quantia>'
   fertilizante_invalido: '&cA id ingresada não é um fertilizante válido'

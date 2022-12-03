@@ -98,6 +98,8 @@ class PluginPostLoad(
             pluginManagers.storageManager,
             configCache.configs.industry,
             pluginManagers.islandManager,
+            pluginManagers.statsManager,
+            pluginManagers.farmManager
         ).startAll()
     }
 

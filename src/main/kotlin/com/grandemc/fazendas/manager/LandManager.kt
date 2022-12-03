@@ -2,7 +2,9 @@ package com.grandemc.fazendas.manager
 
 import com.grandemc.fazendas.config.FarmsConfig
 import com.grandemc.fazendas.config.IslandConfig
+import com.grandemc.fazendas.global.findWorld
 import com.grandemc.fazendas.global.getWeWorld
+import com.grandemc.fazendas.global.toLocation
 import com.grandemc.fazendas.storage.player.model.FarmLand
 import com.grandemc.post.external.lib.global.bukkit.runIfOnline
 import com.sk89q.worldedit.Vector
@@ -35,13 +37,11 @@ class LandManager(
         val schematic = farm.getSchematicByName(farmLevel.schematic)
         val baseLocation = locationManager.baseLocation(playerId)
         val weWorld = getWeWorld(islandConfig.get().worldName)
-        val centerVector = baseLocation.add(schematic.schematic.region.min())
         playerId.runIfOnline {
-            val location = Location(
-                Bukkit.getWorld(islandConfig.get().worldName),
-                centerVector.x + schematic.schematic.region.width / 2,
-                baseLocation.y + schematic.schematic.region.height.toDouble() / 2,
-                centerVector.z + schematic.schematic.region.length / 2
+            val origin = locationManager.islandOrigin(player.uniqueId, false)
+            val centerVector = origin.add(schematic.cropVectors.mid())
+            val location = centerVector.toLocation(
+                islandConfig.get().worldName.findWorld()
             )
             playEffect(location, Effect.EXPLOSION_HUGE, 0)
         }
@@ -54,14 +54,8 @@ class LandManager(
             playerFarm.addLand(FarmLand(
                 landId, null, 1, 0, 0, null, true
             ))
-        else {
-            val land = land(playerId, landId)
-            land.levelUp()
-            land.setCrop(null)
-            land.setCountdown(0)
-            land.setXp(0)
-            land.resetCanBoost()
-        }
+        else
+            land(playerId, landId).levelUp()
         buildLand(playerId, landId)
     }
 
@@ -92,5 +86,10 @@ class LandManager(
 
         if (farmXp)
             farmManager.farm(playerId).addXp(xp)
+    }
+
+    fun landLevelConfig(playerId: UUID, landId: Byte): FarmsConfig.FarmLevel {
+        val landLevel = land(playerId, landId).level()
+        return farmsConfig.get().getFarmById(landId).config.levels.level(landLevel)
     }
 }

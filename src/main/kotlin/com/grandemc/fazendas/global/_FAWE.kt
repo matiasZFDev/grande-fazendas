@@ -35,6 +35,13 @@ class VectorArea(private val vectors: List<Vector>) {
     fun vectors(): List<Vector> = vectors
     fun min(): Vector = min
     fun max(): Vector = max
+    fun mid(): Vector {
+        return Vector(
+            min.x + ((max.x - min.x) / 2),
+            min.y + ((max.y - min.y) / 2),
+            min.z + ((max.z - min.z) / 2),
+        )
+    }
     fun mapped(): MappedVectors = mapped
 }
 

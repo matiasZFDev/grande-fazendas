@@ -12,7 +12,6 @@ class LandMenuContainer(
     override fun create(section: ConfigurationSection): MenuData {
         return createMenuData(section) {
             val key = "gfazendas.land"
-            addReference("fertilizante_inativo", key, "fertilizing")
             addReference("evolucao_upavel", key, "evolve")
             addReference("plantar_disponivel", key, "plant")
             colorAll()

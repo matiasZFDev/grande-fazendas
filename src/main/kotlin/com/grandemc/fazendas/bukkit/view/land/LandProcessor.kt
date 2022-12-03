@@ -4,6 +4,7 @@ import com.grandemc.fazendas.config.FarmsConfig
 import com.grandemc.fazendas.config.FertilizingConfig
 import com.grandemc.fazendas.config.IslandConfig
 import com.grandemc.fazendas.config.MaterialsConfig
+import com.grandemc.fazendas.global.commaFormat
 import com.grandemc.fazendas.global.findWorld
 import com.grandemc.fazendas.global.toLocation
 import com.grandemc.fazendas.manager.GoldBank
@@ -41,6 +42,7 @@ class LandProcessor(
                 modify("evolucao_maximo") {
                     it.formatLore(
                         "{nivel}" to landLevel.toString(),
+                        "{xp}" to landData.xp().commaFormat(),
                         "{plantacoes}" to crops.toString()
                     )
                 }
@@ -64,8 +66,8 @@ class LandProcessor(
                             "{novo_nivel}" to landLevel.inc().toString(),
                             "{plantacoes}" to currentCrops.toString(),
                             "{novas_plantacoes}" to newCrops.toString(),
-                            "{xp}" to landData.xp().dottedFormat(),
-                            "{xp_precisa}" to currentLand.evolution.xp.dottedFormat(),
+                            "{xp}" to landData.xp().commaFormat(),
+                            "{xp_precisa}" to currentLand.evolution.xp.commaFormat(),
                             "{ouro}" to goldBank.gold(player.uniqueId).toFormat(),
                             "{ouro_preciso}" to currentLand.evolution.gold.toFormat()
                         )
@@ -83,8 +85,8 @@ class LandProcessor(
                             "{novo_nivel}" to landLevel.inc().toString(),
                             "{plantacoes}" to currentCrops.toString(),
                             "{novas_plantacoes}" to newCrops.toString(),
-                            "{xp}" to landData.xp().dottedFormat(),
-                            "{xp_precisa}" to currentLand.evolution.xp.dottedFormat(),
+                            "{xp}" to landData.xp().commaFormat(),
+                            "{xp_precisa}" to currentLand.evolution.xp.commaFormat(),
                             "{ouro}" to goldBank.gold(player.uniqueId).toFormat(),
                             "{ouro_preciso}" to currentLand.evolution.gold.toFormat()
                         )

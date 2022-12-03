@@ -51,7 +51,7 @@ class FarmsConfig(
     )
     inner class FarmLevels(private val levels: List<FarmLevel>) {
         fun hasLevel(level: Byte): Boolean {
-            return level >= levels.size
+            return level <= levels.size
         }
 
         fun level(level: Byte): FarmLevel {

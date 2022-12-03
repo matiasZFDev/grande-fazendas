@@ -33,7 +33,9 @@ class ListenerRegistry(
     }
 
     private fun questListeners() {
-        register(QuestCompleteListener(managers.questManager))
+        register(QuestCompleteListener(
+            managers.questManager, managers.farmManager, managers.statsManager
+        ))
         register(CropCollectListener(managers.questManager))
         register(XpGainListener(managers.questManager))
         register(FarmPlantListener(managers.questManager))

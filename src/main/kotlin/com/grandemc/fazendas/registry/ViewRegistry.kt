@@ -44,15 +44,19 @@ class ViewRegistry(
         )))
         register(LandView(LandPackage(
             pluginManagers.landManager, pluginManagers.goldBank, configs.farms,
-            configs.fertilizing, configs.materials, configs.island
+            configs.fertilizing, configs.materials, configs.island,
+            pluginManagers.islandManager, pluginManagers.landPlantManager,
+            configs.crops
         )))
         register(LandPlantView(LandPlantPackage(
             configs.items, configs.crops, pluginManagers.farmManager,
-            pluginManagers.landPlantManager, pluginManagers.islandManager
+            pluginManagers.landPlantManager, pluginManagers.landManager,
+            pluginManagers.islandManager, pluginManagers.statsManager
         )))
         register(FertilizingView(FertilizingPackage(
             configs.fertilizing, configs.farms, pluginManagers.landManager,
-            configs.items, configs.crops
+            configs.items, configs.crops, pluginManagers.statsManager,
+            pluginManagers.islandManager
         )))
         register(HoeView(HoePackage(
             pluginManagers.playerManager, configs.farmHoe, pluginManagers.goldBank

@@ -14,13 +14,17 @@ class LandPlantManager(
 ) {
     fun startPlantation(playerId: UUID, landId: Byte, cropData: CropsConfig.Crop) {
         val playerLand = landManager.land(playerId, landId)
+        plant(playerId, landId, cropData)
+        playerLand.setCrop(cropData.id)
+        playerLand.setCountdown(cropData.reset)
+    }
+
+    fun plant(playerId: UUID, landId: Byte, cropData: CropsConfig.Crop) {
         val world = islandConfig.get().worldName.findWorld()
         val origin = locationManager.islandOrigin(playerId, false).toLocation(world)
         val cropsArea = landManager.landSchematic(playerId, landId).cropVectors
         val process = cropData.process.type.initializeProcess(cropsArea)
         process.start(origin, cropData.process.startBlocks)
-        playerLand.setCrop(cropData.id)
-        playerLand.setCountdown(cropData.reset)
     }
 
     fun growPlantation(playerId: UUID, land: FarmLand, cropData: CropsConfig.Crop) {

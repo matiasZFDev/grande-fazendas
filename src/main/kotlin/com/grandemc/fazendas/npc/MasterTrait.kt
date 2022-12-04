@@ -8,8 +8,8 @@ import net.citizensnpcs.api.trait.Trait
 import net.citizensnpcs.api.trait.TraitName
 import org.bukkit.event.EventHandler
 
-@TraitName("master-menu")
-class MasterTrait : Trait("master-menu") {
+@TraitName("fazenda-master-menu")
+class MasterTrait : Trait("fazenda-master-menu") {
     @EventHandler
     fun click(event: NPCRightClickEvent) {
         if (event.npc != getNPC())

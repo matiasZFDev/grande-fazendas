@@ -7,8 +7,8 @@ import net.citizensnpcs.api.trait.Trait
 import net.citizensnpcs.api.trait.TraitName
 import org.bukkit.event.EventHandler
 
-@TraitName("industry-menu")
-class IndustryTrait : Trait("industry-menu") {
+@TraitName("fazenda-industry-menu")
+class IndustryTrait : Trait("fazenda-industry-menu") {
     @EventHandler
     fun click(event: NPCRightClickEvent) {
         if (event.npc != getNPC())

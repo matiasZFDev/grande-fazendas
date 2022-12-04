@@ -7,8 +7,8 @@ import net.citizensnpcs.api.trait.Trait
 import net.citizensnpcs.api.trait.TraitName
 import org.bukkit.event.EventHandler
 
-@TraitName("lands-menu")
-class LandsTrait : Trait("lands-menu") {
+@TraitName("fazenda-lands-menu")
+class LandsTrait : Trait("fazenda-lands-menu") {
     @EventHandler
     fun click(event: NPCRightClickEvent) {
         if (event.npc != getNPC())

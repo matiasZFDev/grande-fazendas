@@ -33,15 +33,8 @@ class LandPlantClickHandler(
         requireNotNull(data)
         item.useNBTValueIfPresent<NBTTagByte>(NBTReference.VIEW, "gfazendas.plant.crop") {
             val cropId = it.toByte()
-            val cropData = cropsConfig.get().getCrop(cropId).let { crop ->
-                if (crop == null) {
-                    player.respond("geral.error")
-                    player.closeInventory()
-                    return
-                }
-                crop
-            }
-            val xp = statsManager.boostedXp(cropData.plantXp)
+            val cropData = cropsConfig.get().getCrop(cropId)
+            val xp = statsManager.boostedXp(player.uniqueId, cropData.plantXp)
             landPlantManager.startPlantation(player.uniqueId, data.landId, cropData)
             landManager.addXp(player.uniqueId, data.landId, xp)
             islandManager.updateLandHologram(player.uniqueId, data.landId)

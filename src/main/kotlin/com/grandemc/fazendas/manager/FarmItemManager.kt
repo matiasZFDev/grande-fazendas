@@ -3,6 +3,8 @@ package com.grandemc.fazendas.manager
 import com.grandemc.fazendas.config.FertilizingConfig
 import com.grandemc.fazendas.config.LootBoxConfig
 import com.grandemc.fazendas.global.dottedFormat
+import com.grandemc.fazendas.global.intFormat
+import com.grandemc.fazendas.global.timeFormat
 import com.grandemc.fazendas.storage.player.model.CustomEnchant
 import com.grandemc.post.external.lib.cache.config.chunk.base.ItemsChunk
 import com.grandemc.post.external.lib.global.*
@@ -11,8 +13,8 @@ import com.grandemc.post.external.lib.global.bukkit.nms.NBTReference
 import com.grandemc.post.external.lib.global.bukkit.nms.addNBTValue
 import com.grandemc.post.external.lib.global.bukkit.nms.addReferenceId
 import net.minecraft.server.v1_8_R3.NBTTagByte
-import net.minecraft.server.v1_8_R3.NBTTagDouble
-import net.minecraft.server.v1_8_R3.NBTTagInt
+import net.minecraft.server.v1_8_R3.NBTTagFloat
+import net.minecraft.server.v1_8_R3.NBTTagShort
 import org.bukkit.inventory.ItemStack
 import java.util.UUID
 
@@ -79,12 +81,12 @@ class FarmItemManager(
                 "{duracao}" to boosterModel.duration.timeFormat()
             )
             .addNBTValue(
-                NBTReference.ITEM, "gfazendas.xp_booster.multiplier", NBTTagDouble(
+                NBTReference.ITEM, "gfazendas.xp_booster.multiplier", NBTTagFloat(
                     boosterModel.boost
                 )
             )
             .addNBTValue(
-                NBTReference.ITEM, "gfazendas.xp_booster.duration", NBTTagInt(
+                NBTReference.ITEM, "gfazendas.xp_booster.duration", NBTTagShort(
                     boosterModel.duration
                 )
             )

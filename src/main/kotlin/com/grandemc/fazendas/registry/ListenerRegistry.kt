@@ -44,5 +44,6 @@ class ListenerRegistry(
         register(MarketSellListener(managers.questManager))
         register(MarketBuyListener(managers.questManager))
         register(MaterialHandOverListener(managers.questManager))
+        register(BoosterConsumeListener(managers.playerManager))
     }
 }

@@ -19,7 +19,7 @@ class QuestCompleteListener(
 ) : Listener {
     @EventHandler
     fun onComplete(event: QuestCompleteEvent) {
-        val xp = statsManager.boostedXp(questManager.questDoneXp())
+        val xp = statsManager.boostedXp(event.playerId(), questManager.questDoneXp())
         farmManager.farm(event.playerId()).addXp(xp)
 
         if (questManager.isHistoryQuest(event.questId())) {

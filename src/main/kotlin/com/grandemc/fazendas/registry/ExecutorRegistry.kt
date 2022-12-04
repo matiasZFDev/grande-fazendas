@@ -1,6 +1,7 @@
 package com.grandemc.fazendas.registry
 
 import com.grandemc.fazendas.bukkit.task.CropsGrowthTask
+import com.grandemc.fazendas.bukkit.task.FarmBoosterTask
 import com.grandemc.fazendas.bukkit.task.IndustryRecipeTask
 import com.grandemc.fazendas.bukkit.task.MarketItemExpiryTask
 import com.grandemc.fazendas.config.CropsConfig
@@ -8,6 +9,8 @@ import com.grandemc.fazendas.config.IndustryConfig
 import com.grandemc.fazendas.init.model.IslandTopState
 import com.grandemc.fazendas.init.model.PluginStates
 import com.grandemc.fazendas.manager.*
+import com.grandemc.fazendas.manager.task.TaskManager
+import com.grandemc.fazendas.storage.player.model.FarmBooster
 import com.grandemc.post.external.util.TopExecutor
 import net.minecraft.server.v1_8_R3.Position
 import org.bukkit.plugin.Plugin
@@ -23,7 +26,8 @@ class ExecutorRegistry(
     private val islandManager: IslandManager,
     private val statsManager: StatsManager,
     private val farmManager: FarmManager,
-    private val islandTopState: IslandTopState
+    private val islandTopState: IslandTopState,
+    private val taskManager: TaskManager
 ) {
     fun startAll() {
         CropsGrowthTask(
@@ -34,6 +38,7 @@ class ExecutorRegistry(
             storageManager
         ).start()
         MarketItemExpiryTask(plugin, marketManager, storageManager).start()
+        FarmBoosterTask(taskManager, playerManager).start()
         TopExecutor(
             plugin,
             islandTopState,

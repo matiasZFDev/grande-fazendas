@@ -2,6 +2,7 @@ package com.grandemc.fazendas.config.model.quest.resolve
 
 import com.grandemc.fazendas.config.*
 import com.grandemc.fazendas.config.model.quest.reward.*
+import com.grandemc.fazendas.global.getFloat
 import com.grandemc.fazendas.manager.FarmItemManager
 import com.grandemc.post.external.lib.global.bukkit.getByte
 import com.grandemc.post.external.lib.global.bukkit.getShort
@@ -41,8 +42,8 @@ class QuestRewardResolver(
             )
             "booster" -> BoosterReward(
                 LootBoxConfig.Booster(
-                    section.getDouble("boost"),
-                    section.getInt("duracao")
+                    section.getFloat("boost"),
+                    section.getShort("duracao")
                 ),
                 section.getShort("amount"),
                 farmItemManager,

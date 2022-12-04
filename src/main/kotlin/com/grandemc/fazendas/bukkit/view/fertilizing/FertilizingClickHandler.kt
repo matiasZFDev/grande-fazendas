@@ -61,12 +61,12 @@ class FertilizingClickHandler(
 
             val cropResetTime = cropsConfig.get().getCrop(
                 land.cropId()!!
-            )!!.reset
+            ).reset
             val reducedTime = cropResetTime.toDouble()
                 .applyPercentage(fertilizingBoost, ApplyType.DECREMENT)
                 .let { cropResetTime - it.toInt() }
                 .let { if (land.resetCountdown() - it < 0) land.resetCountdown() else it }
-            val xp = statsManager.boostedXp(fertilizing.xp)
+            val xp = statsManager.boostedXp(player.uniqueId, fertilizing.xp)
             land.boost(data.fertilizingId, reducedTime)
             landManager.addXp(player.uniqueId, land.typeId(), xp)
             islandManager.updateLandHologram(player.uniqueId, land.typeId())

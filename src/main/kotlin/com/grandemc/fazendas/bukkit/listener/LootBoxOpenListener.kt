@@ -1,17 +1,16 @@
 package com.grandemc.fazendas.bukkit.listener
 
 import com.grandemc.fazendas.config.LootBoxConfig
+import com.grandemc.fazendas.global.intFormat
 import com.grandemc.fazendas.global.respond
+import com.grandemc.fazendas.global.timeFormat
 import com.grandemc.fazendas.manager.FarmItemManager
-import com.grandemc.fazendas.manager.FarmManager
 import com.grandemc.post.external.lib.global.bukkit.giveItem
 import com.grandemc.post.external.lib.global.bukkit.isRightClick
 import com.grandemc.post.external.lib.global.bukkit.nms.NBTReference
 import com.grandemc.post.external.lib.global.bukkit.nms.toByte
 import com.grandemc.post.external.lib.global.bukkit.nms.useNBTValueIfPresent
 import com.grandemc.post.external.lib.global.bukkit.reduceItemInHand
-import com.grandemc.post.external.lib.global.intFormat
-import com.grandemc.post.external.lib.global.timeFormat
 import com.grandemc.post.external.util.random.RandomUtils
 import net.minecraft.server.v1_8_R3.NBTTagByte
 import org.bukkit.event.EventHandler

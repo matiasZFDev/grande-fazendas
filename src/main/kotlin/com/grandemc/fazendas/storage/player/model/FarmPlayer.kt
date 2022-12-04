@@ -8,7 +8,8 @@ class FarmPlayer(
     private var farm: PrivateFarm?,
     private val storage: ItemStorage,
     private val hoe: FarmHoe,
-    private var gold: Double
+    private var gold: Double,
+    private var booster: FarmBooster?
 ) : Identifiable<UUID> {
     override fun id(): UUID = playerId
     fun farm(): PrivateFarm? = farm
@@ -24,7 +25,8 @@ class FarmPlayer(
     fun withdrawGold(gold: Double) {
         this.gold =- gold
     }
-    fun hasGold(gold: Double): Boolean {
-        return this.gold >= gold
+    fun booster(): FarmBooster? = booster
+    fun setBooster(booster: FarmBooster?) {
+        this.booster = booster
     }
 }

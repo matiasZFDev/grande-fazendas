@@ -118,3 +118,18 @@ fazenda:
   upada:
     titulo: '&b&lGG'
     subtitulo: '&fFazenda upada com sucesso!'
+booster:
+  ativo: '&eVocê ja possui um booster ativo.'
+  ativado: '&aBooster ativadom com sucesso! Mais informações com /fazenda booster'
+  status_ativo:
+    - '&a&lBooster da fazenda'
+    - ''
+    - '  &8✔ &fMultiplicador: &ax{boost}'
+    - '  &8✔ &fDuração: &7{duracao}'
+    - ''
+  status_inativo:
+    - '&a&lBooster da fazenda'
+    - ''
+    - '  &cNenhum booster ativo.'
+    - ''
+  expirado: '&cO seu booster da fazenda cabou de expirar.'

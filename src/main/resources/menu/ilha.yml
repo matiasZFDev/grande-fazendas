@@ -26,7 +26,7 @@ conteudo:
       - '&7em todas as atividades!'
       - ''
       - ' &fMultiplicador: &a{boost}'
-      - ' &fAcaba em: &7{tenmpo}'
+      - ' &fAcaba em: &7{duracao}'
       - ''
       - '&aBooster ativo'
   ilha_upavel:

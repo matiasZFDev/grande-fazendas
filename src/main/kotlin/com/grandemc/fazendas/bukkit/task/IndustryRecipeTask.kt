@@ -36,7 +36,7 @@ class IndustryRecipeTask(
                 }
 
                 val recipeConfig = industryConfig.get().getById(it.id())
-                val craftXp = statsManager.boostedXp(recipeConfig.xp)
+                val craftXp = statsManager.boostedXp(player.id(), recipeConfig.xp)
                 val materialConfig = storageManager.materialData(recipeConfig.materialId)
                 farmManager.farm(player.id()).addXp(craftXp)
                 it.advance()

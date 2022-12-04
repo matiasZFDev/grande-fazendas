@@ -2,6 +2,8 @@ package com.grandemc.fazendas.config.model.quest.reward
 
 import com.grandemc.fazendas.config.LootBoxConfig
 import com.grandemc.fazendas.global.dottedFormat
+import com.grandemc.fazendas.global.intFormat
+import com.grandemc.fazendas.global.timeFormat
 import com.grandemc.fazendas.manager.FarmItemManager
 import com.grandemc.fazendas.storage.player.model.FarmPlayer
 import com.grandemc.post.external.lib.global.bukkit.giveItem

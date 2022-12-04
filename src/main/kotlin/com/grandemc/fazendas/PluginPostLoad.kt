@@ -101,7 +101,8 @@ class PluginPostLoad(
             pluginManagers.islandManager,
             pluginManagers.statsManager,
             pluginManagers.farmManager,
-            states.islandTopState
+            states.islandTopState,
+            pluginManagers.taskManager
         ).startAll()
     }
 
@@ -113,7 +114,7 @@ class PluginPostLoad(
         CommandRegistry(
             plugin, configManager, configCache.updater, databaseManager,
             pluginManagers.islandManager, pluginManagers.islandGenerationManager,
-            pluginManagers.farmItemManager
+            pluginManagers.farmItemManager, pluginManagers.playerManager
         ).registerAll()
     }
 }

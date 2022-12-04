@@ -1,6 +1,7 @@
 package com.grandemc.fazendas.init.model
 
 import com.grandemc.fazendas.manager.*
+import com.grandemc.fazendas.manager.task.TaskManager
 
 class PluginManagers(
     val playerManager: PlayerManager,
@@ -17,5 +18,6 @@ class PluginManagers(
     val industryManager: IndustryManager,
     val marketManager: MarketManager,
     val questManager: QuestManager,
-    val statsManager: StatsManager
+    val statsManager: StatsManager,
+    val taskManager: TaskManager
 )

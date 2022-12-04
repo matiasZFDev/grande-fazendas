@@ -123,7 +123,9 @@ class ViewRegistry(
             pluginManagers.goldBank
         )))
         register(MasterView(MasterPackage(pluginManagers.goldBank)))
-        register(IslandView(IslandPackage(pluginManagers.farmManager, configs.island)))
+        register(IslandView(IslandPackage(
+            pluginManagers.farmManager, configs.island, pluginManagers.playerManager
+        )))
         register(IslandTopView(IslandTopPackage(
             states.islandTopState, configs.items
         )))

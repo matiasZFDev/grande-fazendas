@@ -1,8 +1,10 @@
 package com.grandemc.fazendas.config
 
 import com.grandemc.fazendas.GrandeFazendas
+import com.grandemc.fazendas.global.getFloat
 import com.grandemc.post.external.lib.cache.config.StateConfig
 import com.grandemc.post.external.lib.global.bukkit.getByte
+import com.grandemc.post.external.lib.global.bukkit.getShort
 import com.grandemc.post.external.lib.global.bukkit.mappedSection
 import com.grandemc.post.external.lib.global.bukkit.section
 import com.grandemc.post.external.lib.global.color
@@ -39,8 +41,8 @@ class LootBoxConfig(customConfig: CustomConfig) : StateConfig<LootBoxConfig.Conf
         val booster: Booster
     )
     class Booster(
-        val boost: Double,
-        val duration: Int
+        val boost: Float,
+        val duration: Short
     )
 
     override fun fetch(config: FileConfiguration): Config {
@@ -53,8 +55,8 @@ class LootBoxConfig(customConfig: CustomConfig) : StateConfig<LootBoxConfig.Conf
                     ChanceBooster(
                         getDouble("chance"),
                         Booster(
-                            getDouble("boost"),
-                            getInt("duracao")
+                            getFloat("boost"),
+                            getShort("duracao")
                         )
                     )
                 }

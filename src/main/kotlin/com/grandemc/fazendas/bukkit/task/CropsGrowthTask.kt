@@ -35,28 +35,18 @@ class CropsGrowthTask(
                         return@land
                     }
 
-                    val cropData = cropsConfig.get().getCrop(land.cropId()!!).let { crop ->
-                        if (crop == null) {
-                            player.id().runIfOnline {
-                                respond("geral.error")
-                                closeInventory()
-                            }
-                            return@land
-                        }
-                        crop
-                    }
+                    val cropData = cropsConfig.get().getCrop(land.cropId()!!)
                     landPlantManager.growPlantation(player.id(), land, cropData)
                     land.reduceCountdown()
                     land.resetCanBoost()
+                    islandManager.updateLandHologram(
+                        player.id(), land.typeId()
+                    )
                     player.id().runIfOnline {
                         respond("plantio.crescido") {
                             replace("{plantacao}" to cropData.name)
                         }
                     }
-
-                    islandManager.updateLandHologram(
-                        player.id(), land.typeId()
-                    )
                 }
             }
         }

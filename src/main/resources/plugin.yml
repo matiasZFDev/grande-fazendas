@@ -10,3 +10,6 @@ commands:
   gfazendas:
     aliases: [gfazenda]
     description: Staff main command
+  xfazendas:
+    aliases: [xfazenda]
+    description: Staff extras command

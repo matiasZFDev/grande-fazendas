@@ -10,7 +10,6 @@ import com.grandemc.post.external.lib.global.bukkit.runIfOnline
 import com.sk89q.worldedit.Vector
 import org.bukkit.Bukkit
 import org.bukkit.Effect
-import org.bukkit.Location
 import java.util.UUID
 
 class LandManager(
@@ -31,8 +30,11 @@ class LandManager(
     }
 
     private fun buildLand(playerId: UUID, id: Byte) {
+        buildLand(playerId, id, land(playerId, id).level())
+    }
+
+    fun buildLand(playerId: UUID, id: Byte, landLevel: Byte) {
         val farm = farmsConfig.get().getFarmById(id)
-        val landLevel = land(playerId, id).level()
         val farmLevel = farm.config.levels.level(landLevel)
         val schematic = farm.getSchematicByName(farmLevel.schematic)
         val baseLocation = locationManager.baseLocation(playerId)

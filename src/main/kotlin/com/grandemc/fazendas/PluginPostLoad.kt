@@ -114,7 +114,8 @@ class PluginPostLoad(
         CommandRegistry(
             plugin, configManager, configCache.updater, databaseManager,
             pluginManagers.islandManager, pluginManagers.islandGenerationManager,
-            pluginManagers.farmItemManager, pluginManagers.playerManager
+            pluginManagers.farmItemManager, pluginManagers.playerManager,
+            pluginManagers.landManager
         ).registerAll()
     }
 }

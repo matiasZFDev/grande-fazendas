@@ -11,7 +11,7 @@ conteudo:
       - ''
       - '&6Clique para ver'
   missoes:
-    slot: 12
+    slot: 11
     head: 'https://textures.minecraft.net/texture/bfa7dcc32a4332f048efec93ef5466f3440db49c2582f920e6284a54ace3dbe'
     nome: '&a&lM&aissões'
     lore:
@@ -22,7 +22,7 @@ conteudo:
       - ''
       - '&aClique para conferir'
   ilha:
-    slot: 14
+    slot: 13
     head: 'https://textures.minecraft.net/texture/6d0636fa7b7a812a1c7621e2399ed038d85b3eab03ca83c199b771af70e2b8c3'
     nome: '&b&lI&blha'
     lore:
@@ -31,6 +31,16 @@ conteudo:
       - '&7ilha.'
       - ''
       - '&bClique para ver'
+  banco:
+    slot: 15
+    head: 'https://textures.minecraft.net/texture/14aeab01c04f36ba887b7bda8d9c538bc9686dbbce7e3a5bb10f308c50302bc4'
+    nome: '&e&lB&eanco'
+    lore:
+      - '&7O banco onde é salvo'
+      - '&7todo seu ouro.'
+      - ''
+      - ' &8☗ &fOuro: &6⛂{ouro}'
+      - ''
   top:
     slot: 16
     head: 'https://textures.minecraft.net/texture/e3e45831c1ea817f7477bcaebfa3d2ee3a936ee8ea2b8bde29006b7e9bdf58'

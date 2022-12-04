@@ -122,7 +122,7 @@ class ViewRegistry(
             pluginManagers.storageManager, apis.conversationFactory,
             pluginManagers.goldBank
         )))
-        register(MasterView(MasterPackage()))
+        register(MasterView(MasterPackage(pluginManagers.goldBank)))
         register(IslandView(IslandPackage(pluginManagers.farmManager, configs.island)))
         register(IslandTopView(IslandTopPackage(
             states.islandTopState, configs.items

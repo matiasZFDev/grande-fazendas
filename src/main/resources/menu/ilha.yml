@@ -60,7 +60,7 @@ conteudo:
       - ' &3⚒ &fNível: &b&l{nivel}'
       - ' &3⚒ &fXP: &a{xp} &8✈ &6&l{xp_preciso}'
       - ''
-      - '&bClique para upar!'
+      - '&cXP insuficiente'
   ilha_maximo:
     slot: 14
     head: 'https://textures.minecraft.net/texture/6d0636fa7b7a812a1c7621e2399ed038d85b3eab03ca83c199b771af70e2b8c3'

@@ -16,7 +16,7 @@ class StatsManager(
             .let {
                 playerManager.player(playerId).booster()?.let { booster ->
                     (it * booster.boost()).toInt()
-                } ?: 0
+                } ?: it
             }
     }
 }

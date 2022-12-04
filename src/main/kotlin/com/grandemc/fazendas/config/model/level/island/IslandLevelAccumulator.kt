@@ -7,7 +7,7 @@ import com.grandemc.fazendas.config.model.level.base.LevelUpgrades
 class IslandLevelAccumulator : LevelAccumulator<IslandLevel, IslandRequirements, IslandUpgrades> {
     private var xp: Int = 0
 
-    private var dailyQuests: Int = 0
+    private var dailyQuests: Byte = 0
 
     override fun applyRequirements(
         result: Int, requirements: LevelRequirements<IslandRequirements>
@@ -16,7 +16,7 @@ class IslandLevelAccumulator : LevelAccumulator<IslandLevel, IslandRequirements,
     }
 
     override fun applyUpgrades(result: Int, upgrades: LevelUpgrades<IslandUpgrades>) {
-        dailyQuests += result * upgrades.upgrades.dailyQuests
+        dailyQuests = (dailyQuests + result * upgrades.upgrades.dailyQuests).toByte()
     }
 
     override fun build(): IslandLevel {

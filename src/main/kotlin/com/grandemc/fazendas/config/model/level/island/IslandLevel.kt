@@ -9,6 +9,6 @@ data class IslandLevel(
     )
 
     data class Upgrades(
-        val dailyQuests: Int
+        val dailyQuests: Byte
     )
 }

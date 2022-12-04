@@ -20,6 +20,9 @@ class GrandeFazendas : GrandePlugin() {
     private lateinit var databaseManager: DatabaseManager
 
     companion object {
+        val DESC_MID_SLOTS_PATTERN: List<Int> = listOf(
+            10,11,12,13,14,15,16,21,22,23
+        )
         const val CONTEXT: String = "GrandeFazendas"
         lateinit var instance: GrandeFazendas
         val SLOTS_PATTERN: List<Int> = listOf(

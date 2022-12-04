@@ -1,5 +1,6 @@
 package com.grandemc.fazendas.bukkit.view.master
 
+import com.grandemc.fazendas.bukkit.view.IslandTopView
 import com.grandemc.fazendas.bukkit.view.IslandView
 import com.grandemc.fazendas.bukkit.view.MarketView
 import com.grandemc.fazendas.bukkit.view.QuestsView
@@ -18,7 +19,7 @@ class MasterClickHandler : ViewClickHandler.Stateless() {
                 "quests" -> player.openView(QuestsView::class)
                 "market" -> player.openView(MarketView::class)
                 "island" -> player.openView(IslandView::class)
-                "top" -> {}
+                "top" -> player.openView(IslandTopView::class)
             }
         }
     }

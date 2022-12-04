@@ -7,6 +7,7 @@ import com.grandemc.fazendas.bukkit.view.fertilizing.FertilizingPackage
 import com.grandemc.fazendas.bukkit.view.hoe.HoePackage
 import com.grandemc.fazendas.bukkit.view.industry.IndustryPackage
 import com.grandemc.fazendas.bukkit.view.island.IslandPackage
+import com.grandemc.fazendas.bukkit.view.island.top.IslandTopPackage
 import com.grandemc.fazendas.bukkit.view.land.LandPackage
 import com.grandemc.fazendas.bukkit.view.land_plant.LandPlantPackage
 import com.grandemc.fazendas.bukkit.view.lands.LandsPackage
@@ -25,6 +26,7 @@ import com.grandemc.fazendas.bukkit.view.storage.StoragePackage
 import com.grandemc.fazendas.init.model.ConfigCache
 import com.grandemc.fazendas.init.model.PluginAPIs
 import com.grandemc.fazendas.init.model.PluginManagers
+import com.grandemc.fazendas.init.model.PluginStates
 import com.grandemc.post.external.lib.manager.view.ViewManager
 import com.grandemc.post.external.lib.view.base.ContextData
 import com.grandemc.post.external.lib.view.base.View
@@ -33,7 +35,8 @@ class ViewRegistry(
     private val viewManager: ViewManager,
     private val pluginManagers: PluginManagers,
     private val configs: ConfigCache.Configs,
-    private val apis: PluginAPIs
+    private val apis: PluginAPIs,
+    private val states: PluginStates
 ) {
     private fun register(view: View<out ContextData>) {
         viewManager.register(view)
@@ -121,5 +124,8 @@ class ViewRegistry(
         )))
         register(MasterView(MasterPackage()))
         register(IslandView(IslandPackage(pluginManagers.farmManager, configs.island)))
+        register(IslandTopView(IslandTopPackage(
+            states.islandTopState, configs.items
+        )))
     }
 }

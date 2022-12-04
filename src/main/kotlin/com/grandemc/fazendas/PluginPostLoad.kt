@@ -84,7 +84,8 @@ class PluginPostLoad(
             guiManagers.viewManager,
             pluginManagers,
             configCache.configs,
-            apis
+            apis,
+            states
         ).registerAll()
     }
 
@@ -99,7 +100,8 @@ class PluginPostLoad(
             configCache.configs.industry,
             pluginManagers.islandManager,
             pluginManagers.statsManager,
-            pluginManagers.farmManager
+            pluginManagers.farmManager,
+            states.islandTopState
         ).startAll()
     }
 

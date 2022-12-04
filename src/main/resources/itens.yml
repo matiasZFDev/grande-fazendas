@@ -307,3 +307,10 @@ missao_historia_anterior:
     - ' &6★ {<recompensas>}'
     - ''
     - '&cComplete a missão anterior'
+ilha_top:
+  head: dinamic
+  nome: '&3&l#{lugar} &b{jogador} &8⚒'
+  lore:
+    - '&7■ &fNível: &6{nivel}'
+    - '&7■ &fXP: &a{xp}'
+    - '&7■ &fMissões: &7{missoes}'

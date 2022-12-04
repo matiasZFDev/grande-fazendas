@@ -30,7 +30,8 @@ class FarmHoeCollectListener(
     private val playerManager: PlayerManager,
     private val farmHoeConfig: FarmHoeConfig,
     private val lootBoxConfig: LootBoxConfig,
-    private val islandManager: IslandManager
+    private val islandManager: IslandManager,
+    private val statsManager: StatsManager
 ) : Listener {
     @EventHandler
     fun onInteract(event: PlayerInteractEvent) {
@@ -60,11 +61,7 @@ class FarmHoeCollectListener(
                 event.isCancelled = true
 
                 val landCrop = land.cropId()!!
-                val cropData = cropsConfig.get().getCrop(landCrop).let {
-                    if (it == null)
-                        return
-                    it
-                }
+                val cropData = cropsConfig.get().getCrop(landCrop)
                 val farmHoe = playerManager.player(event.player.uniqueId).hoe()
                 val xpUpgrade = farmHoeConfig.get()
                     .getEnchant(CustomEnchant.EXPERIENT).levels
@@ -102,18 +99,19 @@ class FarmHoeCollectListener(
                     event.player.itemInHand
                 )
                 val cropXp = (cropData.xp * xpUpgrade.upgrades.value).toInt()
+                val earnedXp = statsManager.boostedXp(event.player.uniqueId, cropXp)
                 storageManager.deposit(event.player.uniqueId, landCrop, 1)
-                land.addXp(cropXp)
+                land.addXp(earnedXp)
                 islandManager.updateLandHologram(event.player.uniqueId, land.typeId())
                 event.player.respond("plantio.coletada") {
                     replace(
                         "{plantacao}" to cropData.name,
-                        "{xp}" to cropXp.toString()
+                        "{xp}" to earnedXp.toString()
                     )
                 }
 
                 callEvent(CropCollectEvent(event.player.uniqueId, landCrop))
-                callEvent(XpGainEvent(event.player.uniqueId, cropXp))
+                callEvent(XpGainEvent(event.player.uniqueId, earnedXp))
             }
     }
 }

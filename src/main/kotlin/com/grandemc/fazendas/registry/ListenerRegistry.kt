@@ -26,7 +26,7 @@ class ListenerRegistry(
             configs.island, managers.locationManager, managers.landManager,
             configs.crops, managers.storageManager, managers.farmItemManager,
             managers.playerManager, configs.farmHoe, configs.lootBox,
-            managers.islandManager
+            managers.islandManager, managers.statsManager
         ))
         register(FarmHoeMenuOpenListener())
         questListeners()

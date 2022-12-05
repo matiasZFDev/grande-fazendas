@@ -133,3 +133,5 @@ booster:
     - '  &cNenhum booster ativo.'
     - ''
   expirado: '&cO seu booster da fazenda cabou de expirar.'
+melhorias:
+  upada: '&6&lFAZENDAS &aMelhoria upada com sucesso!'

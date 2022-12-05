@@ -1,0 +1,50 @@
+titulo: 'Melhorias da fazenda'
+linhas: 4
+conteudo:
+  voltar:
+    slot: 35
+    head: 'https://textures.minecraft.net/texture/c61b279e00f19d9f69a712f6560767cae0cfa02c83160d46c7f50c7526f6776e'
+    nome: '&eVoltar'
+    lore:
+      - '&7Clique para voltar'
+      - '&7ao menu anterior.'
+  mais_xp:
+    slot: 10
+    id: 1
+    nome: '&a&lXP B&aonus'
+    lore:
+      - '&7Aumente o xp ganho'
+      - '&7em todas as áreas'
+      - '&7da fazenda!'
+      - ''
+      - ' &fBoost: &a{valor}'
+  mais_diarias:
+    slot: 12
+    id: 1
+    nome: '&a&lD&aiarias'
+    lore:
+      - '&7Adicione mais missões'
+      - '&7diarias pro mestre.'
+      - ''
+      - ' &fMissões: &a{valor}'
+  menor_tempo_craft:
+    slot: 14
+    id: 1
+    nome: '&a&lC&araft'
+    lore:
+      - '&7Diminua o tempo de'
+      - '&7criação de todas'
+      - '&7as receitas.'
+      - ''
+      - ' &fRedução: &a{valor}'
+  bonus_venda_local:
+    slot: 16
+    id: 1
+    nome: '&a&lV&aenda &a&lL&aocal'
+    lore:
+      - '&7Recêba um bonus na'
+      - '&7venda local, é dizer'
+      - '&7venda de materiais'
+      - '&7pro mestre.'
+      - ''
+      - ' &fBonus: &a{valor}'

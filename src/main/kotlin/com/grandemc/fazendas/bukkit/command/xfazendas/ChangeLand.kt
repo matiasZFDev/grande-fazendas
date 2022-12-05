@@ -11,6 +11,7 @@ class ChangeLand(
     override fun execute(player: Player, args: Array<String>) {
         val landId = args[1].toByte()
         val landLevel = args[2].toByte()
+        landManager.land(player.uniqueId, landId).levelSet(landLevel)
         landManager.buildLand(player.uniqueId, landId, landLevel)
     }
 }

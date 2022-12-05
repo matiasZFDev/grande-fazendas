@@ -52,4 +52,8 @@ class FarmLand(
         resetCountdown -= reduction
         canBoost = false
     }
+
+    fun levelSet(level: Byte) {
+        this.level = level
+    }
 }

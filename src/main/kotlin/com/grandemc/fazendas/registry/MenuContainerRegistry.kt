@@ -22,6 +22,7 @@ import com.grandemc.fazendas.bukkit.view.quests.history.QuestHistoryMenuContaine
 import com.grandemc.fazendas.bukkit.view.quests.menu.QuestsMenuContainer
 import com.grandemc.fazendas.bukkit.view.sell.MaterialSellMenuContainer
 import com.grandemc.fazendas.bukkit.view.storage.StorageMenuContainer
+import com.grandemc.fazendas.bukkit.view.upgrades.UpgradesMenuContainer
 import com.grandemc.post.external.lib.cache.config.menu.MenuContainer
 import com.grandemc.post.external.lib.manager.config.ConfigManager
 import com.grandemc.post.external.lib.manager.view.MenuContainerManager
@@ -70,5 +71,6 @@ class MenuContainerRegistry(
         register<MasterMenuContainer>("mestre")
         register<IslandMenuContainer>("ilha")
         register<IslandTopMenuContainer>("top")
+        register<UpgradesMenuContainer>("melhorias")
     }
 }

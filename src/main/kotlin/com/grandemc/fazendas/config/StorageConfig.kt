@@ -1,5 +1,8 @@
 package com.grandemc.fazendas.config
 
+import com.boydti.fawe.Fawe
+import com.boydti.fawe.FaweAPI
+import com.boydti.fawe.`object`.FawePlayer
 import com.grandemc.fazendas.GrandeFazendas
 import com.grandemc.post.external.lib.cache.config.StateConfig
 import com.grandemc.post.external.lib.global.bukkit.intList

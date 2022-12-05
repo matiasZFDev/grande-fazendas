@@ -3,6 +3,7 @@ package com.grandemc.fazendas.registry.command
 import com.grandemc.fazendas.bukkit.command.fazenda.Booster
 import com.grandemc.fazendas.bukkit.command.fazenda.Island
 import com.grandemc.fazendas.bukkit.command.fazenda.Market
+import com.grandemc.fazendas.bukkit.command.fazenda.Upgrades
 import com.grandemc.post.external.lib.command.base.CommandCompound
 import com.grandemc.post.external.lib.factory.Factory
 import com.grandemc.post.external.lib.global.command.buildCommand
@@ -32,6 +33,7 @@ class FazendasCommands(
                 module("ajuda", fazendaHelp)
                 module("mercado", Market())
                 module("booster", Booster(playerManager))
+                module("melhorias", Upgrades())
             }
         }
     }

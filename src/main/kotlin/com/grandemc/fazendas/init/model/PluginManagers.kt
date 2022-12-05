@@ -19,5 +19,6 @@ class PluginManagers(
     val marketManager: MarketManager,
     val questManager: QuestManager,
     val statsManager: StatsManager,
-    val taskManager: TaskManager
+    val taskManager: TaskManager,
+    val upgradesManager: UpgradesManager
 )

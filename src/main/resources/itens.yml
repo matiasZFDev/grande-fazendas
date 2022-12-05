@@ -314,3 +314,30 @@ ilha_top:
     - '&7■ &fNível: &6{nivel}'
     - '&7■ &fXP: &a{xp}'
     - '&7■ &fMissões: &7{missoes}'
+melhoria_upavel:
+  id: 296
+  nome: '{nome}'
+  lore:
+    - '{<lore>}'
+    - ''
+    - ' &fSeguinte: &a{seguinte}'
+    - ' &fCusto: &6✪&e{custo}'
+    - ''
+    - '&aClique para upar'
+melhoria_nao_upavel:
+  id: 296
+  nome: '{nome}'
+  lore:
+    - '{<lore>}'
+    - ''
+    - ' &fSeguinte: &a{seguinte}'
+    - ' &fCusto: &6✪&e{custo}'
+    - ''
+    - '&cCash insuficiente'
+melhoria_maximo:
+  id: 296
+  nome: '{nome}'
+  lore:
+    - '{<lore>}'
+    - ''
+    - '&6Nível máximo atingido'

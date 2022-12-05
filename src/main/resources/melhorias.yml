@@ -1,0 +1,31 @@
+mais_xp:
+  0:
+    custo: 0
+    valor: 0
+  1:
+    custo: 10k
+    valor: 2
+mais_diarias:
+  0:
+    custo: 0
+    valor: 0
+  1:
+    custo: 10k
+    valor: 3
+menor_tempo_craft:
+  0:
+    custo: 0
+    valor: 0
+  1:
+    custo: 10k
+    valor: 20
+bonus_venda_local:
+  0:
+    custo: 0
+    valor: 0
+  1:
+    custo: 10k
+    valor: 10
+  2:
+    custo: 20k
+    valor: 15

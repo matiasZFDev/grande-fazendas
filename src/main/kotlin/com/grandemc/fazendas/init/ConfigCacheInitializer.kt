@@ -98,7 +98,8 @@ class ConfigCacheInitializer(
                 fertilizingConfig,
                 lootBoxConfig,
                 rewardsConfig
-            )
+            ),
+            UpgradesConfig(config("melhorias"))
         )
     }
 }

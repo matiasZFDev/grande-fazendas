@@ -6,6 +6,7 @@ import com.grandemc.fazendas.global.commaFormat
 import com.grandemc.fazendas.global.openView
 import com.grandemc.fazendas.global.respond
 import com.grandemc.fazendas.manager.GoldBank
+import com.grandemc.fazendas.manager.StatsManager
 import com.grandemc.fazendas.manager.StorageManager
 import com.grandemc.post.external.lib.global.bukkit.converse
 import com.grandemc.post.external.lib.global.bukkit.nms.NBTReference
@@ -20,7 +21,8 @@ import org.bukkit.inventory.ItemStack
 class MaterialSellClickHandler(
     private val conversationFactory: ConversationFactory,
     private val storageManager: StorageManager,
-    private val goldBank: GoldBank
+    private val goldBank: GoldBank,
+    private val statsManager: StatsManager
 ) : ViewClickHandler<MaterialSellContext> {
     override fun onClick(
         player: Player, data: MaterialSellContext?, item: ItemStack, event: InventoryClickEvent
@@ -34,17 +36,18 @@ class MaterialSellClickHandler(
                 )
                 "sell" -> {
                     val materialConfig = storageManager.materialData(data.materialId)
-                    val goldPrice = data.amount * materialConfig.goldPrice
+                    val goldPrice = materialConfig.goldPrice
+                    val boostedGold = statsManager.localSell(player.uniqueId, goldPrice)
                     storageManager.withdraw(
                         player.uniqueId, data.materialId, data.amount
                     )
-                    goldBank.deposit(player.uniqueId, goldPrice)
+                    goldBank.deposit(player.uniqueId, boostedGold)
                     player.closeInventory()
                     player.respond("armazem.iten_vendido") {
                         replace(
                             "{material}" to materialConfig.name,
                             "{quantia}" to data.amount.commaFormat(),
-                            "{ouro}" to goldPrice.toFormat()
+                            "{ouro}" to boostedGold.toFormat()
                         )
                     }
                 }

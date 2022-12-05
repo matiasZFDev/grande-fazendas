@@ -17,6 +17,7 @@ class FarmPlayerTableManager : TableManager<FarmPlayer> {
     private val questTable = QuestTable("grandefazendas_quest")
     private val industryTable = IndustryTable("grandefazendas_industry")
     private val boosterTable = BoosterTable("grandefazendas_booster")
+    private val upgradesTable = UpgradesTable("grandefazendas_upgrades")
 
     override fun insertAll(connection: Connection, values: Collection<FarmPlayer>) {
         val storageItems = values.map { player ->
@@ -37,6 +38,7 @@ class FarmPlayerTableManager : TableManager<FarmPlayer> {
         questTable.insertAll(connection, values)
         industryTable.insertAll(connection, values)
         boosterTable.insertAll(connection, values)
+        upgradesTable.insertAll(connection, values)
     }
 
     override fun fetchAll(connection: Connection): Collection<FarmPlayer> {
@@ -48,6 +50,7 @@ class FarmPlayerTableManager : TableManager<FarmPlayer> {
         questTable.createTable(connection)
         industryTable.createTable(connection)
         boosterTable.createTable(connection)
+        upgradesTable.createTable(connection)
         val playersData = playerTable.fetchAll(connection)
         val farmHoes = hoeTable.fetchAll(connection)
         val itemStorages = itemStorageTable.fetchAll(connection)
@@ -56,6 +59,7 @@ class FarmPlayerTableManager : TableManager<FarmPlayer> {
         val quests = questTable.fetchAll(connection)
         val industries = industryTable.fetchAll(connection)
         val boosters = boosterTable.fetchAll(connection)
+        val upgrades = upgradesTable.fetchAll(connection)
         return playersData.map { (playerId, playerData) ->
             FarmPlayer(
                 playerId,
@@ -68,7 +72,8 @@ class FarmPlayerTableManager : TableManager<FarmPlayer> {
                 itemStorages[playerId] ?: ItemStorage(),
                 farmHoes[playerId]!!,
                 playerData.gold,
-                boosters[playerId]
+                boosters[playerId],
+                upgrades[playerId]!!
             )
         }
     }

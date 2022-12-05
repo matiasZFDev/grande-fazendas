@@ -1,9 +1,6 @@
 package com.grandemc.fazendas.bukkit.view.master
 
-import com.grandemc.fazendas.bukkit.view.IslandTopView
-import com.grandemc.fazendas.bukkit.view.IslandView
-import com.grandemc.fazendas.bukkit.view.MarketView
-import com.grandemc.fazendas.bukkit.view.QuestsView
+import com.grandemc.fazendas.bukkit.view.*
 import com.grandemc.fazendas.global.openView
 import com.grandemc.post.external.lib.global.bukkit.nms.NBTReference
 import com.grandemc.post.external.lib.global.bukkit.nms.useReferenceIfPresent
@@ -20,6 +17,7 @@ class MasterClickHandler : ViewClickHandler.Stateless() {
                 "market" -> player.openView(MarketView::class)
                 "island" -> player.openView(IslandView::class)
                 "top" -> player.openView(IslandTopView::class)
+                "upgrades" -> player.openView(UpgradesView::class)
             }
         }
     }

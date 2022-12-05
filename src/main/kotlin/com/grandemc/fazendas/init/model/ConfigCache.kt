@@ -29,6 +29,7 @@ data class ConfigCache(
         val storage: StorageConfig,
         val market: MarketConfig,
         val rewards: RewardsChunk<Boolean?>,
-        val quests: QuestsConfig
+        val quests: QuestsConfig,
+        val upgrades: UpgradesConfig
     )
 }

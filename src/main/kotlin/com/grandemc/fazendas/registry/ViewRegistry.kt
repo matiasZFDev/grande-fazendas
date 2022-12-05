@@ -23,6 +23,7 @@ import com.grandemc.fazendas.bukkit.view.quests.history.QuestHistoryPackage
 import com.grandemc.fazendas.bukkit.view.quests.menu.QuestsPackage
 import com.grandemc.fazendas.bukkit.view.sell.MaterialSellPackage
 import com.grandemc.fazendas.bukkit.view.storage.StoragePackage
+import com.grandemc.fazendas.bukkit.view.upgrades.UpgradesPackage
 import com.grandemc.fazendas.init.model.ConfigCache
 import com.grandemc.fazendas.init.model.PluginAPIs
 import com.grandemc.fazendas.init.model.PluginManagers
@@ -120,7 +121,7 @@ class ViewRegistry(
         )))
         register(MaterialSellView(MaterialSellPackage(
             pluginManagers.storageManager, apis.conversationFactory,
-            pluginManagers.goldBank
+            pluginManagers.goldBank, pluginManagers.statsManager
         )))
         register(MasterView(MasterPackage(pluginManagers.goldBank)))
         register(IslandView(IslandPackage(
@@ -128,6 +129,9 @@ class ViewRegistry(
         )))
         register(IslandTopView(IslandTopPackage(
             states.islandTopState, configs.items
+        )))
+        register(UpgradesView(UpgradesPackage(
+            pluginManagers.upgradesManager, configs.items
         )))
     }
 }

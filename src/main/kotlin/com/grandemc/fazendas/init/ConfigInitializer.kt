@@ -20,11 +20,11 @@ class ConfigInitializer(private val plugin: Plugin) : Initializer<ConfigManager>
         "armazem", "escolher_craft", "industria", "iniciar_craft", "mercado",
         "mercado_categoria", "mercado_vender", "mercado_vender_material",
         "mercado_em_venda", "mercado_comprar", "missoes", "missoes_entrega",
-        "missoes_historia", "vender_material", "mestre", "ilha", "top"
+        "missoes_historia", "vender_material", "mestre", "ilha", "top", "melhorias"
     ).map { "menu/$it" }
     private fun rootFiles(): List<String> = listOf(
         "database", "enxada", "fertilizante", "industria", "itens", "lootbox",
         "materiais", "mercado", "missoes", "plantacoes", "farm/ilha", "itens",
-        "plantios", "armazem", "recompensas"
+        "plantios", "armazem", "recompensas", "melhorias"
     )
 }

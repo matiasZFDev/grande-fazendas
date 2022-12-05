@@ -43,6 +43,10 @@ class PluginManagersInitializer(
             player?.let { islandManager.joinIsland(it) }
         }
         val storageManager = StorageManager(playerManager, configs.materials)
+        val upgradesManager = UpgradesManager(playerManager, configs.upgrades)
+        val statsManager = StatsManager(
+            playerManager, farmManager, upgradesManager, configs.island,
+        )
         return PluginManagers(
             playerManager,
             locationManager,
@@ -58,11 +62,14 @@ class PluginManagersInitializer(
             GoldBank(playerManager),
             LandPlantManager(configs.island, locationManager, landManager),
             farmItemManager,
-            IndustryManager(farmManager, storageManager, configs.industry),
+            IndustryManager(
+                farmManager, storageManager, configs.industry, statsManager
+            ),
             MarketManager(marketService, configs.market),
             QuestManager(configs.quests, farmManager),
-            StatsManager(playerManager, farmManager, configs.island),
-            TaskManagerImpl(plugin)
+            statsManager,
+            TaskManagerImpl(plugin),
+            upgradesManager
         )
     }
 }

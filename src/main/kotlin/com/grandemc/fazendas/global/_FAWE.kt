@@ -12,6 +12,8 @@ fun newSession(world: World): EditSession {
         .getEditSessionBuilder(world)
         .fastmode(true)
         .limitUnlimited()
+        .allowedRegionsEverywhere()
+        .checkMemory(false)
         .build()
 }
 

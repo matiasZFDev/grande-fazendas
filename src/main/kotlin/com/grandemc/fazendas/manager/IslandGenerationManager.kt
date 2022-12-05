@@ -24,7 +24,7 @@ class IslandGenerationManager(
     private val successGeneration: (Player?) -> Unit
 ) {
     private val generationQueue: MutableList<UUID> = mutableListOf()
-    private val GENERATION_DELAY: Int = 10
+    private val GENERATION_DELAY: Int = 5
     private var delayCount: Int = 0
     private var generationTask: Int? = null
 

@@ -21,8 +21,17 @@ conteudo:
       - '&f(Algumas valoradas em &ncash&f)'
       - ''
       - '&aClique para conferir'
+  top:
+    slot: 12
+    head: 'https://textures.minecraft.net/texture/e3e45831c1ea817f7477bcaebfa3d2ee3a936ee8ea2b8bde29006b7e9bdf58'
+    nome: '&6&lI&6lhas &6&lR&6anking'
+    lore:
+      - '&7Os jogadores com as'
+      - '&7melhores, ilhas.'
+      - ''
+      - '&6Clique para ver'
   ilha:
-    slot: 13
+    slot: 14
     head: 'https://textures.minecraft.net/texture/6d0636fa7b7a812a1c7621e2399ed038d85b3eab03ca83c199b771af70e2b8c3'
     nome: '&b&lI&blha'
     lore:
@@ -41,12 +50,13 @@ conteudo:
       - ''
       - ' &8☗ &fOuro: &6⛂{ouro}'
       - ''
-  top:
+  melhorias:
     slot: 16
-    head: 'https://textures.minecraft.net/texture/e3e45831c1ea817f7477bcaebfa3d2ee3a936ee8ea2b8bde29006b7e9bdf58'
-    nome: '&6&lI&6lhas &6&lR&6anking'
+    id: 170
+    nome: '&e&lM&eelhorias'
     lore:
-      - '&7Os jogadores com as'
-      - '&7melhores, ilhas.'
+      - '&7Adquira novos boosts'
+      - '&7e melhorias na'
+      - '&7sua fazenda!'
       - ''
-      - '&6Clique para ver'
+      - '&eClique para ver'

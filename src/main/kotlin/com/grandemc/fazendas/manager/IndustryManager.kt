@@ -7,7 +7,8 @@ import java.util.UUID
 class IndustryManager(
     private val farmManager: FarmManager,
     private val storageManager: StorageManager,
-    private val industryConfig: IndustryConfig
+    private val industryConfig: IndustryConfig,
+    private val statsManager: StatsManager
 ) {
     fun isBaking(playerId: UUID): Boolean {
         return currentRecipe(playerId) != null
@@ -18,10 +19,11 @@ class IndustryManager(
     }
 
     fun startRecipe(playerId: UUID, recipe: IndustryConfig.IndustryRecipe) {
+        val bakeTime = statsManager.craftTime(playerId, recipe.bakeTime)
         farmManager.farm(playerId).industry().setCurrentRecipe(
             FarmRecipe(
                 recipe.id,
-                recipe.bakeTime
+                bakeTime
             )
         )
     }

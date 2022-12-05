@@ -23,7 +23,9 @@ class PlayerManager(private val playerService: DatabaseService<UUID, FarmPlayer>
         playerService.insert(FarmPlayer(
             playerId, null, ItemStorage(), FarmHoe(CustomEnchant.values().map {
                 HoeEnchant(it, 1)
-            }, 0.0),0.0, null
+            }, 0.0),0.0, null, FarmUpgrades(
+                FarmUpgradeType.values.map { FarmUpgrade(it, 0) }
+            )
         ))
     }
 }

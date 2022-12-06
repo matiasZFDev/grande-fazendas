@@ -11,8 +11,10 @@ import org.bukkit.event.EventHandler
 class IndustryTrait : Trait("fazenda-industry-menu") {
     @EventHandler
     fun click(event: NPCRightClickEvent) {
-        if (event.npc != getNPC())
+        if (event.npc != getNPC()) {
+            event.isCancelled = true
             return
+        }
         event.clicker.openView(IndustryView::class)
     }
 }

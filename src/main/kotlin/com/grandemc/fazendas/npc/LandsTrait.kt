@@ -11,8 +11,10 @@ import org.bukkit.event.EventHandler
 class LandsTrait : Trait("fazenda-lands-menu") {
     @EventHandler
     fun click(event: NPCRightClickEvent) {
-        if (event.npc != getNPC())
+        if (event.npc != getNPC()) {
+            event.isCancelled = true
             return
+        }
         event.clicker.openView(LandsView::class)
     }
 }

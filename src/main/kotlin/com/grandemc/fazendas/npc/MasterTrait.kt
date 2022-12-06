@@ -12,8 +12,10 @@ import org.bukkit.event.EventHandler
 class MasterTrait : Trait("fazenda-master-menu") {
     @EventHandler
     fun click(event: NPCRightClickEvent) {
-        if (event.npc != getNPC())
+        if (event.npc != getNPC()) {
+            event.isCancelled = true
             return
+        }
         event.clicker.openView(MasterView::class)
     }
 }

@@ -71,8 +71,12 @@ hologramas:
       - '&8✔ &fNível: &6&l{nivel}&r &8◄► &fXP: &a{xp}'
       - '&8✔ &eGerando {plantacao}&e...'
       - '&6Plantio no nível máximo!'
+plantio_formatos:
+  bloqueado: '&cBloqueado'
+  inativo: '&cInativo'
 evolucao:
   nivel_maximo: 50
+  nivel_maximo_xp: '&c∞'
   niveis:
     requisitos:
       cada_1: { xp: 1k }

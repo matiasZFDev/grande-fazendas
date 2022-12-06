@@ -5,6 +5,7 @@ import com.grandemc.post.external.lib.manager.database.DatabaseManager
 import com.grandemc.fazendas.init.*
 import com.grandemc.fazendas.init.model.*
 import com.grandemc.fazendas.manager.FarmItemManager
+import com.grandemc.fazendas.placeholder.FarmExpansion
 import com.grandemc.fazendas.provider.*
 import com.grandemc.fazendas.registry.*
 import com.grandemc.post.external.lib.util.state.LateMutableState
@@ -39,6 +40,11 @@ class PluginPostLoad(
         initStates()
         registerViews()
         configCache.updater.update()
+        FarmExpansion(
+            pluginManagers.playerManager, pluginManagers.landManager,
+            pluginManagers.goldBank, configCache.configs.island,
+            configCache.configs.farms,  configCache.configs.crops
+        ).register()
         registerExecutors()
         registerListeners()
         registerCommands()

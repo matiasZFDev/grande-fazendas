@@ -34,7 +34,8 @@ class IslandConfig(
         val islandNpcs: IslandNpcs,
         val landHolograms: LandHolograms,
         val evolution: IslandEvolution,
-        val baseSchematic: Clipboard
+        val baseSchematic: Clipboard,
+        val landFormats: LandsFormat
     )
     inner class IslandNpcs(
         val terrains: IslandNPC,
@@ -55,7 +56,12 @@ class IslandConfig(
     )
     inner class IslandEvolution(
         val maxLevel: Int,
+        val xpMaxValue: String,
         val levels: LevelContainer<IslandLevel>
+    )
+    inner class LandsFormat(
+        val blocked: String,
+        val inactive: String
     )
 
     override fun fetch(config: FileConfiguration): Config {
@@ -116,9 +122,14 @@ class IslandConfig(
                 ),
                 IslandEvolution(
                     getInt("evolucao.nivel_maximo"),
+                    getString("evolucao.nivel_maximo_xp"),
                     IslandLevelFetcher(section("evolucao.niveis")).fetch()
                 ),
-                baseSchematicFile.get().asSchematic(getString("mundo"))
+                baseSchematicFile.get().asSchematic(getString("mundo")),
+                LandsFormat(
+                    config.getString("plantio_formatos.bloqueado").color(),
+                    config.getString("plantio_formatos.inativo").color()
+                )
             )
         }
     }

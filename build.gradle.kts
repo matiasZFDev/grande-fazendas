@@ -25,6 +25,7 @@ dependencies {
     compileOnly(files("/home/aganac/BukkitDev/spigot.jar"))
     compileOnly(files("/home/aganac/BukkitDev/GrandeCash.jar"))
     compileOnly(files("/home/aganac/BukkitDev/FAWE.jar"))
+    compileOnly(files("/home/aganac/BukkitDev/PlaceholderAPI.jar"))
     compileOnly(files("/home/aganac/BukkitDev/WorldEdit.jar"))
     compileOnly("net.citizensnpcs:citizensapi:2.0.24-SNAPSHOT") {
         exclude(module = "bukkit")

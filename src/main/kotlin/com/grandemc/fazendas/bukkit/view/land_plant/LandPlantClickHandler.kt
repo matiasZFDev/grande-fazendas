@@ -2,8 +2,10 @@ package com.grandemc.fazendas.bukkit.view.land_plant
 
 import com.grandemc.fazendas.bukkit.event.FarmPlantEvent
 import com.grandemc.fazendas.bukkit.event.XpGainEvent
+import com.grandemc.fazendas.bukkit.view.LandView
 import com.grandemc.fazendas.bukkit.view.land.LandContext
 import com.grandemc.fazendas.config.CropsConfig
+import com.grandemc.fazendas.global.openView
 import com.grandemc.fazendas.global.respond
 import com.grandemc.fazendas.manager.IslandManager
 import com.grandemc.fazendas.manager.LandManager
@@ -12,6 +14,7 @@ import com.grandemc.fazendas.manager.StatsManager
 import com.grandemc.post.external.lib.global.bukkit.nms.NBTReference
 import com.grandemc.post.external.lib.global.bukkit.nms.toByte
 import com.grandemc.post.external.lib.global.bukkit.nms.useNBTValueIfPresent
+import com.grandemc.post.external.lib.global.bukkit.nms.useReferenceIfPresent
 import com.grandemc.post.external.lib.global.callEvent
 import com.grandemc.post.external.lib.global.dottedFormat
 import com.grandemc.post.external.lib.view.pack.ViewClickHandler
@@ -31,6 +34,13 @@ class LandPlantClickHandler(
         player: Player, data: LandContext?, item: ItemStack, event: InventoryClickEvent
     ) {
         requireNotNull(data)
+
+        item.useReferenceIfPresent(NBTReference.VIEW, "gfazendas.plant") {
+            when (it) {
+                "return" -> player.openView(LandView::class, data)
+            }
+        }
+
         item.useNBTValueIfPresent<NBTTagByte>(NBTReference.VIEW, "gfazendas.plant.crop") {
             val cropId = it.toByte()
             val cropData = cropsConfig.get().getCrop(cropId)

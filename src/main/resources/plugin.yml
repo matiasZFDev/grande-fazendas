@@ -2,7 +2,7 @@ name: GrandeFazendas
 main: com.grandemc.fazendas.GrandeFazendas
 version: 1.0
 softdepend: [Multiverse-Core]
-depend: [PostLib, Vault, GrandeCash, Multiverse-Core, FastAsyncWorldEdit, Citizens]
+depend: [PostLib, Vault, GrandeCash, FastAsyncWorldEdit, Citizens]
 commands:
   fazendas:
     aliases: [fazenda]

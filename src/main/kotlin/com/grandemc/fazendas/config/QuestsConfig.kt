@@ -1,7 +1,5 @@
 package com.grandemc.fazendas.config
 
-import com.boydti.fawe.Fawe
-import com.boydti.fawe.FaweAPI
 import com.grandemc.fazendas.GrandeFazendas
 import com.grandemc.fazendas.config.model.quest.resolve.QuestResolver
 import com.grandemc.fazendas.config.model.quest.resolve.QuestRewardResolver

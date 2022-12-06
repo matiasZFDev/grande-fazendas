@@ -24,12 +24,12 @@ class IslandGenerationManager(
     private val successGeneration: (Player?) -> Unit
 ) {
     private val generationQueue: MutableList<UUID> = mutableListOf()
-    private val GENERATION_DELAY: Int = 5
+    private val GENERATION_DELAY: Int = 15
     private var delayCount: Int = 0
     private var generationTask: Int? = null
 
     companion object {
-        const val ISLAND_Y: Int = 10
+        const val ISLAND_Y: Int = 40
     }
 
     fun isGeneratingIsland(playerId: UUID): Boolean {
@@ -70,9 +70,9 @@ class IslandGenerationManager(
         playerManager.player(playerId).setFarm(farm)
         player.respond("ilha.gerando_ilha")
         val weWorld = BukkitWorld(world)
+        val landLocation = locationManager.islandOrigin(playerId)
         buildManager.pasteSchematic(baseSchematic, baseLocation, weWorld)
         farmsConfig.get().farms.forEach {
-            val landLocation = locationManager.islandOrigin(playerId)
             buildManager.pasteSchematic(it.config.baseSchematic, landLocation, weWorld)
         }
         successGeneration(player)

@@ -15,9 +15,14 @@ class IslandLocationManager(
 ) {
     fun baseLocation(playerId: UUID? = null, yAxis: Boolean = true): Vector {
         val farmCount = playerId?.let { farmManager.farm(playerId).id() }
-            ?: playerManager.allPlayers().lastOrNull {
-                it.farm() != null
-            }?.farm()?.id()?.inc() ?: 0
+            ?: playerManager.allPlayers()
+                .filter { it.farm() != null }
+                .let { players ->
+                    if (players.isEmpty())
+                        0
+                    else
+                        players.maxByOrNull { it.farm()!!.id() }!!.farm()!!.id().inc()
+                }
         val locationX = farmCount * islandConfig.get().islandDistance
         return BlockVector(
             locationX,

@@ -19,6 +19,9 @@ import org.bukkit.event.player.PlayerInteractEvent
 class IslandInteractionListener(private val islandConfig: IslandConfig) : Listener {
     @EventHandler
     fun onBreak(event: BlockBreakEvent) {
+        if (event.player.hasPermission("grandemc.bypass"))
+            return
+
         if (event.block.world.name != islandConfig.get().worldName)
             return
         event.isCancelled = true
@@ -26,6 +29,9 @@ class IslandInteractionListener(private val islandConfig: IslandConfig) : Listen
 
     @EventHandler
     fun onPlace(event: BlockPlaceEvent) {
+        if (event.player.hasPermission("grandemc.bypass"))
+            return
+
         if (event.block.world.name != islandConfig.get().worldName)
             return
         event.isCancelled = true

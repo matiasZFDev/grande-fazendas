@@ -28,7 +28,13 @@ class StatsManager(
     fun boostedXp(playerId: UUID, xp: Int): Int {
         val boosterBoost = playerManager.player(playerId).booster()?.boost() ?: 0.0f
         val upgradeBoost = upgradeValue(playerId, FarmUpgradeType.XP_BOOST).toFloat()
-        return xp.times(boosterBoost + upgradeBoost).toInt()
+        val xpBoost = (boosterBoost + upgradeBoost).let {
+            if (it < 1)
+                return 1
+            else
+                it
+        }
+        return xp.times(xpBoost).toInt()
     }
 
     fun craftTime(playerId: UUID, time: Int): Int {

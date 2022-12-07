@@ -8,7 +8,6 @@ import com.grandemc.fazendas.global.getRange
 import com.grandemc.fazendas.manager.FarmItemManager
 import com.grandemc.fazendas.util.Range
 import com.grandemc.post.external.lib.cache.config.StateConfig
-import com.grandemc.post.external.lib.global.bukkit.getByte
 import com.grandemc.post.external.lib.global.bukkit.getShort
 import com.grandemc.post.external.lib.global.bukkit.mappedSection
 import com.grandemc.post.external.lib.global.bukkit.section
@@ -32,7 +31,6 @@ class QuestsConfig(
 ) {
     inner class Config(
         private val xp: Int,
-        private val dailyQuestsLimit: Byte,
         private val dailyQuestsReset: Int,
         private val dailyQuests: List<DailyQuest>,
         private val questHistory: QuestHistory
@@ -43,16 +41,9 @@ class QuestsConfig(
 
         fun xp(): Int = xp
 
-        fun dailyQuestsLimit(): Byte = dailyQuestsLimit
         fun dailyQuestsReset(): Int = dailyQuestsReset
         fun dailyQuests(): List<DailyQuest> {
             return dailyQuests
-        }
-        fun getDailyQuest(id: Short): DailyQuest {
-            return dailyQuests.first { it.id == id }
-        }
-        fun getHistoryQuest(position: Short): HistoryQuest {
-            return questHistory.getQuest(position)
         }
         fun getQuest(id: Short): Quest {
             return quests[id] ?: throw Error(
@@ -88,7 +79,6 @@ class QuestsConfig(
         val lootBox: String,
         val booster: String,
         val item: String,
-        val anyCrop: String,
         val progressFormat: ProgressFormat
     )
 
@@ -100,7 +90,6 @@ class QuestsConfig(
                 getString("lootbox"),
                 getString("booster"),
                 getString("iten"),
-                getString("plantar_qualquer"),
                 ProgressFormatFetcher.fromSection(section("progresso"))
             )
         }
@@ -130,7 +119,6 @@ class QuestsConfig(
         )
         return Config(
             config.getInt("xp"),
-            config.getByte("missoes_diarias"),
             config.section("diarias_reset").run {
                 (getInt("hora") * 3600) + (getInt("minuto") * 60)
             },

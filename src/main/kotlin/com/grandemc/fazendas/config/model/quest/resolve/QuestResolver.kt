@@ -54,20 +54,13 @@ class QuestResolver(
                 formats.progressFormat
             )
             QuestType.PLANT -> {
-                val cropId: Byte?
-                val cropName: String
-                if (section.getString("plantacao").equals("qualquer", true))  {
-                    cropId = null
-                    cropName = formats.anyCrop
-                }
-
-                else {
-                    val cropConfig = cropsConfig.get().getCropByNameId(
-                        section.getString("plantacao")
-                    )
-                    cropId = cropConfig.id
-                    cropName = cropConfig.name
-                }
+                val cropId =
+                    if (section.getString("plantacao").equals("qualquer", true))
+                        null
+                    else
+                        cropsConfig.get().getCropByNameId(
+                            section.getString("plantacao")
+                        ).id
                     section.getByte("plantacao")
                 PlantQuest(
                     section.getString("nome").color(),

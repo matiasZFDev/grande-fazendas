@@ -38,7 +38,7 @@ class QuestRewardResolver(
                 lootBoxConfig.get().getLootBox(section.getByte("id"))!!,
                 section.getShort("quantia"),
                 farmItemManager,
-                formats.fertilizing
+                formats.lootBox
             )
             "booster" -> BoosterReward(
                 LootBoxConfig.Booster(

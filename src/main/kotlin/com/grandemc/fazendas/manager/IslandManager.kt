@@ -41,11 +41,12 @@ class IslandManager(
         islandPlayers[player.uniqueId] = IslandSession(entities)
     }
 
-    fun leaveIsland(player: Player) {
+    fun leaveIsland(player: Player, leaveCommand: Boolean = true) {
         islandPlayers[player.uniqueId]!!.entities().clearAll(player)
         islandPlayers.remove(player.uniqueId)
         player.inventory.removeItemByReference("gfazendas.farm_tool")
-        player.performCommand(islandConfig.get().leaveCommand)
+        if (leaveCommand)
+            player.performCommand(islandConfig.get().leaveCommand)
     }
 
     private fun session(playerId: UUID): IslandSession {

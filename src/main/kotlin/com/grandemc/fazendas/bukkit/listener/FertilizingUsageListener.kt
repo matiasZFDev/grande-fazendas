@@ -5,6 +5,8 @@ import com.grandemc.fazendas.bukkit.view.fertilizing.FertilizingContext
 import com.grandemc.fazendas.config.FertilizingConfig
 import com.grandemc.fazendas.global.openView
 import com.grandemc.fazendas.global.respond
+import com.grandemc.fazendas.manager.FarmManager
+import com.grandemc.fazendas.manager.IslandManager
 import com.grandemc.fazendas.manager.LandManager
 import com.grandemc.post.external.lib.global.bukkit.isRightClick
 import com.grandemc.post.external.lib.global.bukkit.nms.NBTReference
@@ -16,7 +18,8 @@ import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerInteractEvent
 
 class FertilizingUsageListener(
-    private val fertilizingConfig: FertilizingConfig
+    private val fertilizingConfig: FertilizingConfig,
+    private val islandManager: IslandManager
 ) : Listener {
     @EventHandler
     fun onInteract(event: PlayerInteractEvent) {
@@ -27,6 +30,17 @@ class FertilizingUsageListener(
             NBTReference.ITEM, "gfazendas.fertilizing"
         ) { id ->
             event.isCancelled = true
+
+            val playerId = event.player.uniqueId
+            if (!islandManager.hasIsland(playerId)) {
+                event.player.respond("fazenda.sem_ilha")
+                return
+            }
+
+            if (!islandManager.insideIsland(playerId)) {
+                event.player.respond("fertilizante.dentro_ilha")
+                return
+            }
 
             val fertilizingId = id.toByte()
             fertilizingConfig.get().getById(fertilizingId).let {

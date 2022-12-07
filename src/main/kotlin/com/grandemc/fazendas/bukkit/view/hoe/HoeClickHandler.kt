@@ -4,6 +4,7 @@ import com.grandemc.fazendas.bukkit.view.HoeView
 import com.grandemc.fazendas.config.FarmHoeConfig
 import com.grandemc.fazendas.global.openView
 import com.grandemc.fazendas.global.respond
+import com.grandemc.fazendas.manager.FarmItemManager
 import com.grandemc.fazendas.manager.GoldBank
 import com.grandemc.fazendas.manager.PlayerManager
 import com.grandemc.fazendas.storage.player.model.CustomEnchant
@@ -18,6 +19,7 @@ import org.bukkit.inventory.ItemStack
 class HoeClickHandler(
     private val playerManager: PlayerManager,
     private val goldBank: GoldBank,
+    private val farmItemManager: FarmItemManager,
     private val farmHoeConfig: FarmHoeConfig
 ) : ViewClickHandler.Stateless() {
     override fun onClick(player: Player, item: ItemStack, event: InventoryClickEvent) {
@@ -48,6 +50,7 @@ class HoeClickHandler(
             }
 
             farmHoe.upgradeEnchant(enchant)
+            farmItemManager.updateFarmToolLore(player.uniqueId, player.itemInHand)
             goldBank.withdraw(player.uniqueId, enchantLevelData.requirements.gold)
             player.openView(HoeView::class)
             player.respond("enxada.upada")

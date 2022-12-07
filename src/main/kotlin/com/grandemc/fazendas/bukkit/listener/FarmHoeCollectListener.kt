@@ -31,7 +31,8 @@ class FarmHoeCollectListener(
     private val farmHoeConfig: FarmHoeConfig,
     private val lootBoxConfig: LootBoxConfig,
     private val islandManager: IslandManager,
-    private val statsManager: StatsManager
+    private val statsManager: StatsManager,
+    private val farmManager: FarmManager
 ) : Listener {
     @EventHandler
     fun onInteract(event: PlayerInteractEvent) {
@@ -102,6 +103,7 @@ class FarmHoeCollectListener(
                 val earnedXp = statsManager.boostedXp(event.player.uniqueId, cropXp)
                 storageManager.deposit(event.player.uniqueId, landCrop, 1)
                 land.addXp(earnedXp)
+                farmManager.farm(event.player.uniqueId).addXp(earnedXp)
                 islandManager.updateLandHologram(event.player.uniqueId, land.typeId())
                 event.player.respond("plantio.coletada") {
                     replace(

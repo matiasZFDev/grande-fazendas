@@ -5,10 +5,7 @@ import com.grandemc.fazendas.config.FarmsConfig
 import com.grandemc.fazendas.config.IslandConfig
 import com.grandemc.fazendas.manager.helper.IslandEntityManager
 import com.grandemc.fazendas.manager.model.IslandSession
-import com.grandemc.post.external.lib.global.bukkit.giveItem
-import com.grandemc.post.external.lib.global.bukkit.offlinePlayer
-import com.grandemc.post.external.lib.global.bukkit.removeItemByReference
-import com.grandemc.post.external.lib.global.bukkit.runIfOnline
+import com.grandemc.post.external.lib.global.bukkit.*
 import org.bukkit.entity.Player
 import java.util.UUID
 
@@ -38,7 +35,8 @@ class IslandManager(
         val islandSpawn = locationManager.islandSpawn(player.uniqueId)
         val farmTool = farmItemManager.createFarmTool(player.uniqueId)
         player.teleport(islandSpawn)
-        player.giveItem(farmTool)
+        if (player.inventory.getItemByReference("gfazendas.farm_tool") == null)
+            player.giveItem(farmTool)
         val entities = entityManager.createEntities(player, islandSpawn)
         islandPlayers[player.uniqueId] = IslandSession(entities)
     }

@@ -19,16 +19,19 @@ class ListenerRegistry(
 
     fun registerAll() {
         register(RegisterOnJoinListener(managers.playerManager))
-        register(FertilizingUsageListener(configs.fertilizing))
+        register(FertilizingUsageListener(
+            configs.fertilizing, managers.islandManager
+        ))
         register(LootBoxOpenListener(configs.lootBox, managers.farmItemManager))
         register(IslandInteractionListener(configs.island))
         register(FarmHoeCollectListener(
             configs.island, managers.locationManager, managers.landManager,
             configs.crops, managers.storageManager, managers.farmItemManager,
             managers.playerManager, configs.farmHoe, configs.lootBox,
-            managers.islandManager, managers.statsManager
+            managers.islandManager, managers.statsManager, managers.farmManager
         ))
         register(FarmHoeMenuOpenListener())
+        register(IslandVoidFallListener(managers.islandManager, managers.locationManager))
         questListeners()
     }
 

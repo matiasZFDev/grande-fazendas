@@ -26,12 +26,14 @@ ajuda_staff:
 ilha:
   sem_ilha: '&cVocê não possui uma ilha. Digite /fazenda para cria-la.'
   gerando_ilha_fila: '&cVocê ja se encontra na fila de geração da fazenda.'
-  gerando_mundo: '&aGerando mundo... Sim, você vai ser o unico a ler isto.'
   gerando_ilha: '&aEstamos gerando a sua ilha, espere um momento.'
   gerando_fila:
     actionbar: '&aGeração da fazenda! Você está na posição #{posicao} da fila.'
   criada: '&aA sua fazenda foi criada com sucesso! Digite /fazenda para se teleportar ate ela.'
   teleportado: '&aVocê foi teleportado para a sua fazenda.'
+  queda:
+    titulo: '&c&lEITA'
+    subtitulo: '&fCaiu! Tranquilo, você não vai morrer.'
   saida: '&eVocê saiu da sua fazenda.'
 plantio:
   comprado:

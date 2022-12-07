@@ -12,5 +12,5 @@ class MarketSellPackage(
 ) : StatefulPackage<MarketSellContext>(
     MarketSellMenuContainer::class,
     MarketSellProcessor(storageManager),
-    MarketSellClickHandler(conversationFactory, marketManager)
+    MarketSellClickHandler(conversationFactory, marketManager, storageManager)
 )

@@ -66,7 +66,8 @@ class ViewRegistry(
             pluginManagers.islandManager
         )))
         register(HoeView(HoePackage(
-            pluginManagers.playerManager, configs.farmHoe, pluginManagers.goldBank
+            pluginManagers.playerManager, configs.farmHoe, pluginManagers.goldBank,
+            pluginManagers.farmItemManager
         )))
         register(IndustryView(IndustryPackage(
             pluginManagers.industryManager, configs.industry, configs.materials,

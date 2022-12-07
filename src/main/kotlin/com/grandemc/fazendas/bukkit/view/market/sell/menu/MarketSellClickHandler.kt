@@ -6,6 +6,7 @@ import com.grandemc.fazendas.bukkit.event.MarketPostEvent
 import com.grandemc.fazendas.bukkit.view.MarketSellMaterialView
 import com.grandemc.fazendas.bukkit.view.MarketView
 import com.grandemc.fazendas.bukkit.view.PageContext
+import com.grandemc.fazendas.global.commaFormat
 import com.grandemc.fazendas.global.openView
 import com.grandemc.fazendas.global.respond
 import com.grandemc.fazendas.manager.MarketManager
@@ -14,6 +15,7 @@ import com.grandemc.post.external.lib.global.bukkit.converse
 import com.grandemc.post.external.lib.global.bukkit.nms.NBTReference
 import com.grandemc.post.external.lib.global.bukkit.nms.useReferenceIfPresent
 import com.grandemc.post.external.lib.global.callEvent
+import com.grandemc.post.external.lib.global.toFormat
 import com.grandemc.post.external.lib.view.pack.ViewClickHandler
 import org.bukkit.conversations.ConversationFactory
 import org.bukkit.entity.Player
@@ -55,6 +57,10 @@ class MarketSellClickHandler(
 
                     requireNotNull(data.materialId)
 
+                    val materialConfig = storageManager.materialData(
+                        data.materialId
+                    )
+
                     storageManager.withdraw(
                         player.uniqueId, data.materialId, data.amount
                     )
@@ -66,7 +72,13 @@ class MarketSellClickHandler(
                     )
                     callEvent(MarketPostEvent(player.uniqueId))
                     player.closeInventory()
-                    player.respond("mercado_vender.vendido")
+                    player.respond("mercado_vender.vendido") {
+                        replace(
+                            "{material}" to materialConfig.name,
+                            "{quantia}" to data.amount.commaFormat(),
+                            "{preco}" to data.price.toFormat()
+                        )
+                    }
                 }
             }
         }

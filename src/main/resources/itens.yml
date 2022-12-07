@@ -198,7 +198,7 @@ mercado_produto_jogador:
     - ' &8∞ &fPreço: &6⛂{preco}'
     - ' &8∞ &fExpiração: &7{expiracao} '
     - ''
-    - '7aEsse é o seu produto!'
+    - '&7aEsse é o seu produto!'
 mercado_venda_escolher:
   id: 1
   nome: '{nome}'

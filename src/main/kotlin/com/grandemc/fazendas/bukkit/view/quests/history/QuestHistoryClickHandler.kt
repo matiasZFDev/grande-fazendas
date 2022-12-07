@@ -31,7 +31,7 @@ class QuestHistoryClickHandler(
 
                     if (currentQuest != null) {
                         player.closeInventory()
-                        player.respond("missao_historia.fazendo")
+                        player.respond("missao.fazendo")
                         return@useReferenceIfPresent
                     }
 

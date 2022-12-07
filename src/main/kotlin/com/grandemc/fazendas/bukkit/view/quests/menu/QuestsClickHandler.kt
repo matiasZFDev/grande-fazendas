@@ -43,8 +43,13 @@ class QuestsClickHandler(
                     val master = questManager.master(player.uniqueId)
                     val farmPlayer = playerManager.player(player.uniqueId)
 
+                    if (questManager.currentQuest(player.uniqueId) != null) {
+
+                        return@useReferenceIfPresent
+                    }
+
                     if (master.dailyQuestsDone() >= statsManager.dailyQuests(player.uniqueId)) {
-                        player.respond("missao_diaria.feitas")
+                        player.respond("missao.diarias.feitas")
                         return@useReferenceIfPresent
                     }
 
@@ -73,7 +78,7 @@ class QuestsClickHandler(
                                 0
                             )
                             master.startQuest(farmQuest)
-                            player.openView(QuestsView::class)
+                            player.closeInventory()
                             player.respond("missao.iniciada")
                         }
                 }

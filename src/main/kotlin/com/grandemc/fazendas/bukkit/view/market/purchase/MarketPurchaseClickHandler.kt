@@ -4,18 +4,15 @@ import com.grandemc.fazendas.bukkit.event.MarketBuyEvent
 import com.grandemc.fazendas.bukkit.event.MarketSellEvent
 import com.grandemc.fazendas.bukkit.view.MarketCategoryView
 import com.grandemc.fazendas.bukkit.view.MarketSellingView
-import com.grandemc.fazendas.global.openView
-import com.grandemc.fazendas.global.respond
-import com.grandemc.fazendas.global.updateView
+import com.grandemc.fazendas.global.*
 import com.grandemc.fazendas.manager.GoldBank
 import com.grandemc.fazendas.manager.MarketManager
 import com.grandemc.fazendas.manager.StorageManager
-import com.grandemc.post.external.lib.global.ApplyType
-import com.grandemc.post.external.lib.global.applyPercentage
+import com.grandemc.post.external.lib.global.*
 import com.grandemc.post.external.lib.global.bukkit.nms.NBTReference
 import com.grandemc.post.external.lib.global.bukkit.nms.useReferenceIfPresent
+import com.grandemc.post.external.lib.global.bukkit.offlinePlayer
 import com.grandemc.post.external.lib.global.bukkit.runIfOnline
-import com.grandemc.post.external.lib.global.callEvent
 import com.grandemc.post.external.lib.view.pack.ViewClickHandler
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
@@ -59,6 +56,9 @@ class MarketPurchaseClickHandler(
                     val goldWithTax = product.goldPrice.applyPercentage(
                         marketManager.tax(), ApplyType.DECREMENT
                     )
+                    val materialConfig = storageManager.materialData(
+                        data.product.itemId
+                    )
                     marketManager.removeProduct(product.id())
                     goldBank.withdraw(player.uniqueId, product.goldPrice)
                     goldBank.deposit(product.sellerId, goldWithTax)
@@ -68,10 +68,25 @@ class MarketPurchaseClickHandler(
                     callEvent(MarketSellEvent(product.sellerId))
 
                     player.closeInventory()
-                    player.respond("mercado.produto_comprado_comprador")
+                    player.respond("mercado.produto_comprado_comprador") {
+                        replace(
+                            "{material}" to materialConfig.name,
+                            "{quantia}" to data.product.amount.commaFormat(),
+                            "{preco}" to data.product.goldPrice.toFormat(),
+                            "{vendedor}" to data.product.sellerId.offlinePlayer().name
+                        )
+                    }
 
                     product.sellerId.runIfOnline {
-                        player.respond("mercado.produto_comprado_vendedor")
+                        player.respond("mercado.produto_comprado_vendedor") {
+                            replace(
+                                "{material}" to materialConfig.name,
+                                "{quantia}" to data.product.amount.commaFormat(),
+                                "{preco}" to data.product.goldPrice.toFormat(),
+                                "{taxa}" to marketManager.tax().intFormat(),
+                                "{preco_taxa}" to goldWithTax.toFormat()
+                            )
+                        }
                         updateView<MarketSellingView>()
                     }
                 }

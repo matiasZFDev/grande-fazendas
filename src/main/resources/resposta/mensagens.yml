@@ -97,6 +97,30 @@ receita:
     subtitulo: '&fA sua receita está pronta!'
 mercado:
   argumentos_invalidos: '&cDigite /fazenda mercado'
+  retirado: '&aProduto retirado do mercado.'
+  produto_invalido: '&cA autenticidade desse produto não é a esperada.'
+  produto_expirado: '&6&lFAZENDAS &cUm dos seus produtos do mercado cabou de expirar...'
+  compra_cancelada: '&cA compra foi cancelada.'
+  comprar_ouro: '&cVocê não possui o ouro preciso para essa compra.'
+  produto_comprado_vendedor:
+    - '&6&lFAZENDA &aUm produto seu foi vendido no mercado!'
+    - ''
+    - '    &fInformações da venda ▾'
+    - '    &8• &fProduto: {material}'
+    - '    &8• &fQuantia: &7{quantia}x'
+    - '    &8• &fPreço: &6⛂{preco}'
+    - '    &8• &fTaxa: &e%{taxa}'
+    - '    &8• &fObtido: &6⛂{preco_taxa}'
+    - ''
+  produto_comprado_comprador:
+    - '&6&lFAZENDA &aVocê comprou um produto no mercado!'
+    - ''
+    - '    &fInformações da compra ▾'
+    - '    &8• &fVendedor: &a{vendedor}'
+    - '    &8• &fProduto: {material}'
+    - '    &8• &fQuantia: &7{quantia}x'
+    - '    &8• &fPreço: &6⛂{preco}'
+    - ''
 mercado_vender:
   material_setado: '&aO material foi setado.'
   quantia_iniciar:
@@ -109,7 +133,15 @@ mercado_vender:
     - '    &aInsira o preço do material que deseja vender.'
     - '    &fDigite &c&lCANCELAR &fpara cancelar.'
   preco_setado: '&aO preço foi setado.'
-  vendido: '&aVocê colocou {material} &f({quantia}x) &apor &6⛂{preco} &aem venda!'
+  limite_a_venda: '&cVocê atingiu o máximo de produtos á venda.'
+  vendido:
+    - '&6&lFAZENDAS &aVocê postou um produto no mercado!
+    - '
+    - '    &fInformações da postagem▾'
+    - '    &8• &fProduto: {material}'
+    - '    &8• &fQuantia: &7{quantia}x'
+    - '    &8• &fPreço: &6⛂{preco}'
+    - ''
 armazem:
   iten_vender_quantia_iniciar:
     - ''
@@ -142,3 +174,13 @@ melhorias:
 resetar_diarias:
   argumentos_invalidos: '&cDigite /gfazendas resetardiarias'
   resetadas: '&aMissões diarias resetadas com sucesso.'
+missao:
+  fazendo: '&cVocê ja está fazendo uma missão.'
+  completada: '&aMissão completada!'
+  completada_xp:
+    actionbar: '&2☘ &aMissão completada &8● &a+{xp} &lXP'
+  iniciada: '&aUma missão foi iniciada.'
+  diarias_feitas: '&eVocê completou todas as suas missões diarias!'
+missao_historia:
+  completada: '&aMissão da historia completada!'
+  iniciada: '&cMissaõ de historia iniciada.'

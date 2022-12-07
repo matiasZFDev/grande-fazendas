@@ -35,6 +35,9 @@ class IslandProcessor(
 
             val island = farmManager.farm(player.uniqueId)
             val islandLevel = island.level()
+            val currentLevel = islandConfig.get().evolution.levels.level(
+                islandLevel.toInt()
+            )
 
             if (islandConfig.get().evolution.maxLevel == islandLevel.toInt()) {
                 remove("ilha_upavel")
@@ -42,24 +45,27 @@ class IslandProcessor(
                 modify("ilha_maximo") {
                     it.formatLore(
                         "{nivel}" to islandLevel.toString(),
-                        "{xp}" to island.xp().commaFormat()
+                        "{xp}" to island.xp().commaFormat(),
+                        "{diarias}" to currentLevel.upgrades.dailyQuests.toString()
                     )
                 }
             }
 
             else {
-                val upgradeXp = islandConfig.get().evolution.levels.level(
-                    islandLevel.toInt()
-                ).requirements.xp
+                val nextLevel = islandConfig.get().evolution.levels.level(
+                    islandLevel.toInt().inc()
+                )
 
-                if (island.xp() >= upgradeXp) {
+                if (island.xp() >= currentLevel.requirements.xp) {
                     remove("ilha_nao_upavel")
                     remove("ilha_maximo")
                     modify("ilha_upavel") {
                         it.formatLore(
                             "{nivel}" to islandLevel.toString(),
                             "{xp}" to island.xp().commaFormat(),
-                            "{xp_preciso}" to upgradeXp.commaFormat()
+                            "{xp_preciso}" to currentLevel.requirements.xp.commaFormat(),
+                            "{diarias}" to currentLevel.upgrades.dailyQuests.toString(),
+                            "{diarias_evolucao}" to nextLevel.upgrades.dailyQuests.toString()
                         )
                     }
                 }
@@ -71,7 +77,9 @@ class IslandProcessor(
                         it.formatLore(
                             "{nivel}" to islandLevel.toString(),
                             "{xp}" to island.xp().commaFormat(),
-                            "{xp_preciso}" to upgradeXp.commaFormat()
+                            "{xp_preciso}" to currentLevel.requirements.xp.commaFormat(),
+                            "{diarias}" to currentLevel.upgrades.dailyQuests.toString(),
+                            "{diarias_evolucao}" to nextLevel.upgrades.dailyQuests.toString()
                         )
                     }
                 }

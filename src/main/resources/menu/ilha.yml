@@ -43,6 +43,7 @@ conteudo:
       - ''
       - ' &3⚒ &fNível: &b&l{nivel}'
       - ' &3⚒ &fXP: &a{xp} &8✈ &6&l{xp_preciso}'
+      - ' &3⚒ &fM. Diarias: &7{diarias} &8✈ &f{diarias_evolucao}'
       - ''
       - '&bClique para upar!'
   ilha_nao_upavel:
@@ -59,6 +60,7 @@ conteudo:
       - ''
       - ' &3⚒ &fNível: &b&l{nivel}'
       - ' &3⚒ &fXP: &a{xp} &8✈ &6&l{xp_preciso}'
+      - ' &3⚒ &fM. Diarias: &7{diarias} &8✈ &f{diarias_evolucao}'
       - ''
       - '&cXP insuficiente'
   ilha_maximo:
@@ -75,5 +77,6 @@ conteudo:
       - ''
       - ' &3⚒ &fNível: &b&l{nivel}'
       - ' &3⚒ &fXP: &6{xp}'
+      - ' &3⚒ &fM. Diarias: &7{diarias}'
       - ''
       - '&bNível máximo atingido!'

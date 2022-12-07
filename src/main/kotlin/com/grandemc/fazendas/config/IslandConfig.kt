@@ -4,6 +4,7 @@ import com.grandemc.fazendas.GrandeFazendas
 import com.grandemc.fazendas.config.model.level.LevelContainer
 import com.grandemc.fazendas.config.model.level.island.*
 import com.grandemc.fazendas.global.asSchematic
+import com.grandemc.fazendas.global.getFloat
 import com.grandemc.fazendas.util.Lazy
 import com.grandemc.fazendas.util.ViewVector
 import com.grandemc.post.external.lib.cache.config.StateConfig
@@ -28,14 +29,15 @@ class IslandConfig(
     inner class Config(
         val worldName: String,
         val islandDistance: Int,
-        val spawn: Vector,
+        val spawn: ViewVector,
         val cropBlock: Int,
         val leaveCommand: String,
         val islandNpcs: IslandNpcs,
         val landHolograms: LandHolograms,
         val evolution: IslandEvolution,
         val baseSchematic: Clipboard,
-        val landFormats: LandsFormat
+        val landFormats: LandsFormat,
+        val commandWhitelist: Set<String>
     )
     inner class IslandNpcs(
         val terrains: IslandNPC,
@@ -69,10 +71,12 @@ class IslandConfig(
             Config(
                 getString("mundo"),
                 getInt("distanca"),
-                BlockVector(
+                ViewVector(
                     getDouble("spawn.x"),
                     getDouble("spawn.y"),
-                    getDouble("spawn.z")
+                    getDouble("spawn.z"),
+                    getFloat("spawn.yaw"),
+                    getFloat("spawn.pitch")
                 ),
                 getInt("farm_bloco_plantacao"),
                 getString("comando_saida"),
@@ -129,7 +133,8 @@ class IslandConfig(
                 LandsFormat(
                     config.getString("plantio_formatos.bloqueado").color(),
                     config.getString("plantio_formatos.inativo").color()
-                )
+                ),
+                config.stringList("whitelist_comandos").toSet()
             )
         }
     }

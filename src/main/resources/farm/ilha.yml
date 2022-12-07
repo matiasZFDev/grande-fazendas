@@ -71,6 +71,17 @@ hologramas:
       - '&8✔ &fNível: &6&l{nivel}&r &8◄► &fXP: &a{xp}'
       - '&8✔ &eGerando {plantacao}&e...'
       - '&6Plantio no nível máximo!'
+whitelist_comandos:
+  - 'tell'
+  - 'r'
+  - '.'
+  - 'g'
+  - 'l'
+  - 's'
+  - 'msg'
+  - 'coins'
+  - 'money'
+  - 'cash'
 plantio_formatos:
   bloqueado: '&cBloqueado'
   inativo: '&cInativo'

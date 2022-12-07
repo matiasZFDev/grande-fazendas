@@ -48,5 +48,6 @@ class ListenerRegistry(
         register(MarketBuyListener(managers.questManager))
         register(MaterialHandOverListener(managers.questManager))
         register(BoosterConsumeListener(managers.playerManager))
+        register(IslandCommandListener(configs.island))
     }
 }

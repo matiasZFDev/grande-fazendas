@@ -10,6 +10,8 @@ import com.grandemc.fazendas.global.updateView
 import com.grandemc.fazendas.manager.GoldBank
 import com.grandemc.fazendas.manager.MarketManager
 import com.grandemc.fazendas.manager.StorageManager
+import com.grandemc.post.external.lib.global.ApplyType
+import com.grandemc.post.external.lib.global.applyPercentage
 import com.grandemc.post.external.lib.global.bukkit.nms.NBTReference
 import com.grandemc.post.external.lib.global.bukkit.nms.useReferenceIfPresent
 import com.grandemc.post.external.lib.global.bukkit.runIfOnline
@@ -54,9 +56,12 @@ class MarketPurchaseClickHandler(
                         return@useReferenceIfPresent
                     }
 
+                    val goldWithTax = product.goldPrice.applyPercentage(
+                        marketManager.tax(), ApplyType.DECREMENT
+                    )
                     marketManager.removeProduct(product.id())
                     goldBank.withdraw(player.uniqueId, product.goldPrice)
-                    goldBank.deposit(product.sellerId, product.goldPrice)
+                    goldBank.deposit(product.sellerId, goldWithTax)
                     storageManager.deposit(player.uniqueId, product.itemId, product.amount)
 
                     callEvent(MarketBuyEvent(player.uniqueId))

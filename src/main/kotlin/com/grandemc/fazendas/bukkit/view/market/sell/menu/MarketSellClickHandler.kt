@@ -9,6 +9,7 @@ import com.grandemc.fazendas.bukkit.view.PageContext
 import com.grandemc.fazendas.global.openView
 import com.grandemc.fazendas.global.respond
 import com.grandemc.fazendas.manager.MarketManager
+import com.grandemc.fazendas.manager.StorageManager
 import com.grandemc.post.external.lib.global.bukkit.converse
 import com.grandemc.post.external.lib.global.bukkit.nms.NBTReference
 import com.grandemc.post.external.lib.global.bukkit.nms.useReferenceIfPresent
@@ -21,7 +22,8 @@ import org.bukkit.inventory.ItemStack
 
 class MarketSellClickHandler(
     private val conversationFactory: ConversationFactory,
-    private val marketManager: MarketManager
+    private val marketManager: MarketManager,
+    private val storageManager: StorageManager
 ) : ViewClickHandler<MarketSellContext> {
     override fun onClick(player: Player, data: MarketSellContext?, item: ItemStack, event: InventoryClickEvent) {
         requireNotNull(data)
@@ -41,9 +43,13 @@ class MarketSellClickHandler(
                     MarketSellPriceConversation(data)
                 )
                 "post" -> {
+                    requireNotNull(data.materialId)
+                    storageManager.withdraw(
+                        player.uniqueId, data.materialId, data.amount
+                    )
                     marketManager.postItem(
                         player.uniqueId,
-                        data.materialId!!,
+                        data.materialId,
                         data.amount,
                         data.price
                     )

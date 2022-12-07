@@ -53,4 +53,8 @@ class MarketManager(
     fun getProduct(id: Int): MarketItem? {
         return marketService.get(id)
     }
+
+    fun tax(): Double {
+        return marketConfig.get().tax
+    }
 }

@@ -36,7 +36,7 @@ class MaterialSellClickHandler(
                 )
                 "sell" -> {
                     val materialConfig = storageManager.materialData(data.materialId)
-                    val goldPrice = materialConfig.goldPrice
+                    val goldPrice = materialConfig.goldPrice * data.amount
                     val boostedGold = statsManager.localSell(player.uniqueId, goldPrice)
                     storageManager.withdraw(
                         player.uniqueId, data.materialId, data.amount

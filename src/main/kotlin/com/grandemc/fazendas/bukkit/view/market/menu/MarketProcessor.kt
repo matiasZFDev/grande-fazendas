@@ -1,5 +1,6 @@
 package com.grandemc.fazendas.bukkit.view.market.menu
 
+import com.grandemc.fazendas.GrandeFazendas
 import com.grandemc.fazendas.bukkit.view.PageContext
 import com.grandemc.fazendas.config.model.MarketConfig
 import com.grandemc.fazendas.global.cut
@@ -27,7 +28,7 @@ class MarketProcessor(
 ) : MenuItemsProcessor<PageContext>  {
     override fun process(player: Player, data: PageContext?, items: MenuItems): Collection<SlotItem> {
         requireNotNull(data)
-        val categoriesPerPage = marketConfig.get().categoriesMenuSlots.size
+        val categoriesPerPage = GrandeFazendas.SLOTS_PATTERN.size
         val categorizedItems = marketManager.getProducts()
             .fold(mutableMapOf<Byte, Double>()) { acc, cur ->
                 acc[cur.itemId] = cur.amount + (acc[cur.itemId] ?: 0.0)
@@ -41,7 +42,7 @@ class MarketProcessor(
         val paginatedItems = categorizedItems
             .cut(categoriesPerPage * data.page, categoriesPerPage)
         val marketItems = paginatedItems
-            .zip(marketConfig.get().categoriesMenuSlots)
+            .zip(GrandeFazendas.SLOTS_PATTERN)
             .map { (product, slot) ->
                 val productConfig = storageManager.materialData(product.key)
                 val item = productConfig.item

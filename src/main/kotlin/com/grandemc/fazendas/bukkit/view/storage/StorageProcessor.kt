@@ -1,7 +1,7 @@
 package com.grandemc.fazendas.bukkit.view.storage
 
+import com.grandemc.fazendas.GrandeFazendas
 import com.grandemc.fazendas.config.MaterialsConfig
-import com.grandemc.fazendas.config.StorageConfig
 import com.grandemc.fazendas.global.commaFormat
 import com.grandemc.fazendas.manager.StorageManager
 import com.grandemc.post.external.lib.cache.config.chunk.base.ItemsChunk
@@ -18,7 +18,6 @@ import org.bukkit.entity.Player
 
 class StorageProcessor(
     private val storageManager: StorageManager,
-    private val storageConfig: StorageConfig,
     private val materialsConfig: MaterialsConfig,
     private val itemsConfig: ItemsChunk,
 ) : MenuItemsProcessor.Stateless() {
@@ -26,7 +25,7 @@ class StorageProcessor(
         val baseItems = items.values()
         val storageItems = storageManager
             .items(player.uniqueId)
-            .zip(storageConfig.get().menuSlots)
+            .zip(GrandeFazendas.SLOTS_PATTERN)
             .map { (storageItem, slot) ->
                 val materialConfig = materialsConfig.get().getById(storageItem.id)
                 val item = materialConfig.item

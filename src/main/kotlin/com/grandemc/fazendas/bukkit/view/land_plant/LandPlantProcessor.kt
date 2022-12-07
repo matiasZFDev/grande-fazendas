@@ -1,5 +1,6 @@
 package com.grandemc.fazendas.bukkit.view.land_plant
 
+import com.grandemc.fazendas.GrandeFazendas
 import com.grandemc.fazendas.bukkit.view.land.LandContext
 import com.grandemc.fazendas.config.CropsConfig
 import com.grandemc.fazendas.manager.FarmManager
@@ -25,7 +26,7 @@ class LandPlantProcessor(
         requireNotNull(data)
         val baseItems = items.values()
         val cropItems = cropsConfig.get().crops()
-            .zip(cropsConfig.get().menuSlots)
+            .zip(GrandeFazendas.SLOTS_PATTERN)
             .map { (crop, slot) ->
                 val itemKey = if (farmManager.farm(player.uniqueId).level() >= crop.islandLevel)
                     "plantacao_disponivel"

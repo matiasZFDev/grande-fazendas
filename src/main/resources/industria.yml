@@ -1,5 +1,4 @@
 # ilha id bugado
-selecao_menu_slots: [10,11]
 formato_ingrediente: '{ingrediente} &7{quantia}&8/&f{total}'
 receitas:
   pao:

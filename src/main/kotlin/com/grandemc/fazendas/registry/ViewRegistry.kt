@@ -74,8 +74,7 @@ class ViewRegistry(
             pluginManagers.storageManager
         )))
         register(StorageView(StoragePackage(
-            pluginManagers.storageManager, configs.storage, configs.materials,
-            configs.items
+            pluginManagers.storageManager, configs.materials, configs.items
         )))
         register(CraftSelectView(CraftSelectPackage(
             configs.industry, configs.items, configs.materials
@@ -90,8 +89,7 @@ class ViewRegistry(
             configs.items
         )))
         register(MarketCategoryView(MarketCategoryPackage(
-            pluginManagers.marketManager, configs.market, configs.items,
-            pluginManagers.storageManager
+            pluginManagers.marketManager, configs.items, pluginManagers.storageManager
         )))
         register(MarketSellView(MarketSellPackage(
             pluginManagers.storageManager, apis.conversationFactory,

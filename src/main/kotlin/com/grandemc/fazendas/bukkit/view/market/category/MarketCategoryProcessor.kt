@@ -1,6 +1,6 @@
 package com.grandemc.fazendas.bukkit.view.market.category
 
-import com.grandemc.fazendas.config.model.MarketConfig
+import com.grandemc.fazendas.GrandeFazendas
 import com.grandemc.fazendas.global.commaFormat
 import com.grandemc.fazendas.global.cut
 import com.grandemc.fazendas.manager.MarketManager
@@ -24,7 +24,6 @@ import org.bukkit.entity.Player
 
 class MarketCategoryProcessor(
     private val marketManager: MarketManager,
-    private val marketConfig: MarketConfig,
     private val itemsConfig: ItemsChunk,
     private val storageManager: StorageManager
 ) : MenuItemsProcessor<MarketCategoryContext> {
@@ -32,7 +31,7 @@ class MarketCategoryProcessor(
         player: Player, data: MarketCategoryContext?, items: MenuItems
     ): Collection<SlotItem> {
         requireNotNull(data)
-        val productsPerPage = marketConfig.get().productsMenuSlots.size
+        val productsPerPage = GrandeFazendas.SLOTS_PATTERN.size
         val categorizedItems = marketManager.getProductsById(
             data.categoryId, data.filter
         )
@@ -45,7 +44,7 @@ class MarketCategoryProcessor(
         )
         val materialConfig = storageManager.materialData(data.categoryId)
         val marketItems = paginatedItems
-            .zip(marketConfig.get().productsMenuSlots)
+            .zip(GrandeFazendas.SLOTS_PATTERN)
             .map { (product, slot) ->
                 val item = if (product.sellerId == player.uniqueId)
                     materialConfig.item

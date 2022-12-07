@@ -8,11 +8,10 @@ import com.grandemc.post.external.lib.view.pack.impl.StatelessPackage
 
 class StoragePackage(
     storageManager: StorageManager,
-    storageConfig: StorageConfig,
     materialsConfig: MaterialsConfig,
     itemsConfig: ItemsChunk,
 ) : StatelessPackage(
     StorageMenuContainer::class,
-    StorageProcessor(storageManager, storageConfig, materialsConfig, itemsConfig),
+    StorageProcessor(storageManager, materialsConfig, itemsConfig),
     StorageClickHandler()
 )

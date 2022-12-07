@@ -1,5 +1,6 @@
 package com.grandemc.fazendas.bukkit.view.craft.select
 
+import com.grandemc.fazendas.GrandeFazendas
 import com.grandemc.fazendas.config.IndustryConfig
 import com.grandemc.fazendas.config.MaterialsConfig
 import com.grandemc.post.external.lib.cache.config.chunk.base.ItemsChunk
@@ -24,7 +25,7 @@ class CraftSelectProcessor(
     override fun process(player: Player, items: MenuItems): Collection<SlotItem> {
         val baseItems = items.values()
         val recipeItems = industryConfig.get().recipes()
-            .zip(industryConfig.get().selectMenuSlots())
+            .zip(GrandeFazendas.SLOTS_PATTERN)
             .map { (recipe, slot) ->
                 val bakeTime = industryConfig.get().getById(recipe.id).bakeTime
                 val materialConfig = materialsConfig.get().getById(recipe.materialId)

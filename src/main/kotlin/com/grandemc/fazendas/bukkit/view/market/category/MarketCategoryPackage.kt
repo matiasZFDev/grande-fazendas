@@ -8,13 +8,12 @@ import com.grandemc.post.external.lib.view.pack.impl.StatefulPackage
 
 class MarketCategoryPackage(
     marketManager: MarketManager,
-    marketConfig: MarketConfig,
     itemsConfig: ItemsChunk,
     storageManager: StorageManager
 ) : StatefulPackage<MarketCategoryContext>(
     MarketCategoryMenuContainer::class,
     MarketCategoryProcessor(
-        marketManager, marketConfig, itemsConfig, storageManager
+        marketManager, itemsConfig, storageManager
     ),
     MarketCategoryClickHandler(marketManager)
 )

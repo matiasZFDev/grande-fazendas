@@ -1,13 +1,13 @@
 package com.grandemc.fazendas.bukkit.listener
 
 import com.grandemc.fazendas.config.IslandConfig
-import org.bukkit.Material
 import org.bukkit.entity.EntityType
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.event.block.BlockPlaceEvent
 import org.bukkit.event.entity.EntityDamageByEntityEvent
+import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.hanging.HangingBreakEvent
 import org.bukkit.event.hanging.HangingPlaceEvent
 import org.bukkit.event.player.PlayerArmorStandManipulateEvent
@@ -70,6 +70,13 @@ class IslandInteractionListener(private val islandConfig: IslandConfig) : Listen
         if (event.player.world.name != islandConfig.get().worldName)
             return
         if (event.rightClicked.type == EntityType.PLAYER)
+            return
+        event.isCancelled = true
+    }
+
+    @EventHandler
+    fun onDamage(event: EntityDamageEvent) {
+        if (event.entity.world.name != islandConfig.get().worldName)
             return
         event.isCancelled = true
     }

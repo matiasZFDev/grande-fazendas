@@ -57,4 +57,8 @@ class MarketManager(
     fun tax(): Double {
         return marketConfig.get().tax
     }
+
+    fun emptyItems(): MarketConfig.EmptyItems {
+        return marketConfig.get().emptyItems
+    }
 }

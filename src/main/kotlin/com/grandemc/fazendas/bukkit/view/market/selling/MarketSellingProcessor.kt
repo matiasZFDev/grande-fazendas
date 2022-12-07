@@ -25,8 +25,13 @@ class MarketSellingProcessor(
 ) : MenuItemsProcessor.Stateless() {
     override fun process(player: Player, items: MenuItems): Collection<SlotItem> {
         val baseItems = items.values()
-        val marketItems = marketManager
+        val playerProducts = marketManager
             .getPlayerProducts(player.uniqueId)
+
+        if (playerProducts.isEmpty())
+            return baseItems + marketManager.emptyItems().sellerItem
+
+        val marketItems = playerProducts
             .zip(GrandeFazendas.SLOTS_PATTERN)
             .map { (marketItem, slot) ->
                 val materialConfig = storageManager.materialData(marketItem.itemId)

@@ -3,3 +3,26 @@ produtos_menu_slots: [10,11,12,13,14,15,16,19,20,21,22,23,24,25,28,29,30,31,32,3
 tempo_expiracao: 2880 # minutos
 limite_itens_a_venda: 10
 taxa: 5
+vazio:
+  seus_itens:
+    slot: 13
+    id: 410
+    nome: '&cVazio'
+    lore:
+      - '&7Você não possui'
+      - '&7nenhum iten á venda.'
+  categorias:
+    slot: 22
+    id: 30
+    nome: '&cVazio'
+    lore:
+      - '&7Não nenhum produto'
+      - '&7de nenhuma categoría.'
+  produtos:
+    slot: 22
+    id: 30
+    nome: '&cVazio'
+    lore:
+      - '&7Não há nenhum'
+      - '&7produto dessa'
+      - '&7categoría.'

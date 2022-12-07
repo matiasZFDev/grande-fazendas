@@ -14,9 +14,8 @@ import java.util.UUID
 
 class FarmTable(tableName: String) : FixedTable<FarmPlayer, UUID, FarmTable.Data>(tableName) {
     inner class Data(
-        val ownerId: UUID,
         val id: Int,
-        val level: Byte,
+        val level: Short,
         val xp: Int,
         val location: Cuboid
     )
@@ -25,7 +24,7 @@ class FarmTable(tableName: String) : FixedTable<FarmPlayer, UUID, FarmTable.Data
         return buildColumnTable(tableName) {
             addColumn("owner_id", "BINARY(16) NOT NULL")
             addColumn("id", "INT NOT NULL", true)
-            addColumn("level", "TINYINT NOT NULL", true)
+            addColumn("level", "SMALLINT NOT NULL", true)
             addColumn("xp", "INT NOT NULL", true)
             addColumn("location_world_id", "BINARY(16) NOT NULL")
             addColumn("location_min_x", "INT NOT NULL")
@@ -42,7 +41,7 @@ class FarmTable(tableName: String) : FixedTable<FarmPlayer, UUID, FarmTable.Data
         val farm = value.farm() ?: return false
         statement.setBytes(1, value.id().getBytes())
         statement.setInt(2, farm.id())
-        statement.setByte(3, farm.level())
+        statement.setShort(3, farm.level())
         statement.setInt(4, farm.xp())
         statement.setBytes(5, farm.location().min().world.uid.getBytes())
         statement.setInt(6, farm.location().min().blockX)
@@ -52,7 +51,7 @@ class FarmTable(tableName: String) : FixedTable<FarmPlayer, UUID, FarmTable.Data
         statement.setInt(10, farm.location().max().blockY)
         statement.setInt(11, farm.location().max().blockZ)
         statement.setInt(12, farm.id())
-        statement.setByte(13, farm.level())
+        statement.setShort(13, farm.level())
         statement.setInt(14, farm.xp())
         return true
     }
@@ -60,9 +59,8 @@ class FarmTable(tableName: String) : FixedTable<FarmPlayer, UUID, FarmTable.Data
     override fun consumeResultSet(data: MutableMap<UUID, Data>, resultSet: ResultSet) {
         val ownerId = resultSet.getBytes("owner_id").toUUID()
         data[ownerId] = Data(
-            ownerId,
             resultSet.getInt("id"),
-            resultSet.getByte("level"),
+            resultSet.getShort("level"),
             resultSet.getInt("xp"),
             resultSet.getCuboid()
         )

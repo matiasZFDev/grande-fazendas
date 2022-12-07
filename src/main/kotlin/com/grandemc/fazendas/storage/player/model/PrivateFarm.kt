@@ -5,7 +5,7 @@ import com.grandemc.fazendas.util.cuboid.Cuboid
 class PrivateFarm(
     private val id: Int,
     private val location: Cuboid,
-    private var level: Byte,
+    private var level: Short,
     private var xp: Int,
     private val lands: MutableList<FarmLand>,
     private val questMaster: QuestMaster,
@@ -20,7 +20,7 @@ class PrivateFarm(
     fun setXp(xp: Int) {
         this.xp = xp
     }
-    fun level(): Byte = level
+    fun level(): Short = level
     fun levelUp() {
         level++
     }

@@ -27,4 +27,8 @@ class QuestMaster(
     fun startQuest(quest: FarmQuest) {
         currentQuest = quest
     }
+
+    fun resetDailyQuests() {
+        dailyDoneQuests = 0
+    }
 }

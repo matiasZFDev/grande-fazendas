@@ -139,3 +139,6 @@ booster:
   expirado: '&cO seu booster da fazenda cabou de expirar.'
 melhorias:
   upada: '&6&lFAZENDAS &aMelhoria upada com sucesso!'
+resetar_diarias:
+  argumentos_invalidos: '&cDigite /gfazendas resetardiarias'
+  resetadas: '&aMissões diarias resetadas com sucesso.'

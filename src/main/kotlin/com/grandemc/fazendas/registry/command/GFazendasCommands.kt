@@ -7,11 +7,9 @@ import com.grandemc.post.external.lib.global.command.buildCommand
 import com.grandemc.post.external.lib.manager.config.ConfigManager
 import com.grandemc.post.external.lib.manager.database.DatabaseManager
 import com.grandemc.fazendas.bukkit.command.*
-import com.grandemc.fazendas.bukkit.command.gfazendas.GiveFertilizing
-import com.grandemc.fazendas.bukkit.command.gfazendas.GiveLootBox
-import com.grandemc.fazendas.bukkit.command.gfazendas.Reload
-import com.grandemc.fazendas.bukkit.command.gfazendas.Save
+import com.grandemc.fazendas.bukkit.command.gfazendas.*
 import com.grandemc.fazendas.manager.FarmItemManager
+import com.grandemc.fazendas.manager.PlayerManager
 import com.grandemc.fazendas.provider.GlobalMessagesProvider
 import org.bukkit.plugin.java.JavaPlugin
 
@@ -20,7 +18,8 @@ class GFazendasCommands(
     private val configManager: ConfigManager,
     private val configCacheUpdater: Updatable,
     private val databaseManager: DatabaseManager,
-    private val farmItemManager: FarmItemManager
+    private val farmItemManager: FarmItemManager,
+    private val playerManager: PlayerManager
 ) : Factory<CommandCompound> {
     override fun create(): CommandCompound {
         return buildCommand(plugin, GlobalMessagesProvider.get()) {
@@ -36,6 +35,7 @@ class GFazendasCommands(
                 module("ajuda", gfazendasHelp)
                 module("darfertilizante", GiveFertilizing(farmItemManager))
                 module("darlootbox", GiveLootBox(farmItemManager))
+                module("resetardiarias", ResetDailyQuests(playerManager))
             }
         }
     }

@@ -37,7 +37,8 @@ class CommandRegistry(
     )
 
     private fun gfazendas(): Factory<CommandCompound> = GFazendasCommands(
-        plugin, configManager, configCacheUpdater, databaseManager, farmItemManager
+        plugin, configManager, configCacheUpdater, databaseManager, farmItemManager,
+        playerManager
     )
 
     private fun xfazendas(): Factory<CommandCompound> = XFazendasCommands(

@@ -25,11 +25,9 @@ class StorageClickHandler : ViewClickHandler.Stateless() {
         item.useNBTValueIfPresent<NBTTagByte>(
             NBTReference.VIEW, "gfazendas.storage.item"
         ) {
-            if (event.isShiftClick && event.isRightClick) {
-                player.openView(MaterialSellView::class, MaterialSellContext(
-                    it.toByte(), 1
-                ))
-            }
+            player.openView(MaterialSellView::class, MaterialSellContext(
+                it.toByte(), 1
+            ))
         }
     }
 }

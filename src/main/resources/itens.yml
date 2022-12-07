@@ -151,7 +151,7 @@ material_armazem:
     - ''
     - ' &fQuantia: &7{quantia}'
     - ''
-    - '&aClique para gerenciar'
+    - '&aClique para vender'
 material_craft:
   id: 1
   nome: "{nome}"

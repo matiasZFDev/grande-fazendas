@@ -45,7 +45,7 @@ formatos:
 diarias:
   coletar_trigo_1:
     id: 0
-    nivel_ilha: 1
+    nivel_ilha: '1-5'
     chance: 50
     missao: { nome: '&eColetar Trigo (x100)', tipo: coleta, plantacao: trigo, quantia: 100 }
     recompensas:
@@ -56,7 +56,7 @@ diarias:
 
   entregar_cenoura_1:
     id: 1
-    nivel_ilha: 1
+    nivel_ilha: '5-10'
     chance: 30
     missao: { nome: '&eEntregar cenoura (x100)', tipo: entrega, material: cenoura, quantia: 50 }
     recompensas:
@@ -67,7 +67,7 @@ diarias:
 
   craftar_bolo_1:
     id: 2
-    nivel_ilha: 1
+    nivel_ilha: '6-10'
     chance: 30
     missao: { nome: '&aCrie Bolo de cenoura (x1)', tipo: craft, material: bolo_cenoura, quantia: 1 }
     recompensas:

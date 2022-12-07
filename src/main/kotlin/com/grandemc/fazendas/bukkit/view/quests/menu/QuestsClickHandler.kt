@@ -6,6 +6,7 @@ import com.grandemc.fazendas.bukkit.view.QuestsView
 import com.grandemc.fazendas.config.QuestsConfig
 import com.grandemc.fazendas.global.openView
 import com.grandemc.fazendas.global.respond
+import com.grandemc.fazendas.global.rollUntil
 import com.grandemc.fazendas.manager.PlayerManager
 import com.grandemc.fazendas.manager.QuestManager
 import com.grandemc.fazendas.manager.StatsManager
@@ -50,16 +51,20 @@ class QuestsClickHandler(
                     master.useDailyQuests()
 
                     questsConfig.get().dailyQuests()
-                        .filter { level -> farmPlayer.farm()!!.level() >= level.islandLevel }
+                        .filter { level ->
+                            level.islandLevelRange.isInside(
+                                farmPlayer.farm()!!.level().toInt()
+                            )
+                        }
                         .let { quests ->
-                            var quest: QuestsConfig.DailyQuest? = quests.find { el ->
+                            val quest = quests.rollUntil(1000) { el ->
                                 RandomUtils.roll(el.chance)
                             }
 
-                            while (quest == null) {
-                                quest = quests.find { el ->
-                                    RandomUtils.roll(el.chance)
-                                }
+                            if (quest == null) {
+                                player.closeInventory()
+                                player.respond("geral.error")
+                                return@useReferenceIfPresent
                             }
 
                             val farmQuest = FarmQuest(

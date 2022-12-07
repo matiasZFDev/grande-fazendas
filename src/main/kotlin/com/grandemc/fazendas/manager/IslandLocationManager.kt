@@ -1,6 +1,7 @@
 package com.grandemc.fazendas.manager
 
 import com.grandemc.fazendas.config.IslandConfig
+import com.grandemc.fazendas.global.add
 import com.grandemc.fazendas.global.toLocation
 import com.sk89q.worldedit.BlockVector
 import com.sk89q.worldedit.Vector
@@ -42,6 +43,8 @@ class IslandLocationManager(
 
     fun islandSpawn(playerId: UUID): Location {
         val world = Bukkit.getWorld(islandConfig.get().worldName)
-        return islandOrigin(playerId).add(islandConfig.get().spawn).toLocation(world)
+        return islandOrigin(playerId).toLocation(world).add(
+            islandConfig.get().spawn
+        )
     }
 }

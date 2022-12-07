@@ -10,3 +10,24 @@ fun <E : Any> Collection<E>.firstIndex(action: (Int, E) -> Boolean): Int {
         action(index++, it)
     }
 }
+
+fun <E : Any> Collection<E>.rollUntil(action: (E) -> Boolean): E {
+    var value: E? = find(action)
+
+    while (value == null)
+        value = find(action)
+
+    return value
+}
+
+fun <E : Any> Collection<E>.rollUntil(rollLimit: Int, action: (E) -> Boolean): E? {
+    var value: E? = find(action)
+    var rollCount = 1
+
+    while (value == null && rollCount < rollLimit) {
+        value = find(action)
+        rollCount++
+    }
+
+    return value
+}

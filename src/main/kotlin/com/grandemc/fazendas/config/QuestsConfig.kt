@@ -4,7 +4,9 @@ import com.grandemc.fazendas.GrandeFazendas
 import com.grandemc.fazendas.config.model.quest.resolve.QuestResolver
 import com.grandemc.fazendas.config.model.quest.resolve.QuestRewardResolver
 import com.grandemc.fazendas.config.model.quest.type.*
+import com.grandemc.fazendas.global.getRange
 import com.grandemc.fazendas.manager.FarmItemManager
+import com.grandemc.fazendas.util.Range
 import com.grandemc.post.external.lib.cache.config.StateConfig
 import com.grandemc.post.external.lib.global.bukkit.getByte
 import com.grandemc.post.external.lib.global.bukkit.getShort
@@ -64,7 +66,7 @@ class QuestsConfig(
     }
     inner class DailyQuest(
         val id: Short,
-        val islandLevel: Short,
+        val islandLevelRange: Range,
         val chance: Double,
         val quest: Quest
     )
@@ -111,7 +113,7 @@ class QuestsConfig(
         val dailyQuests = config.section("diarias").mappedSection {
             DailyQuest(
                 getShort("id"),
-                getShort("nivel_ilha"),
+                getRange("nivel_ilha"),
                 getDouble("chance"),
                 questResolver.resolve(this)
             )

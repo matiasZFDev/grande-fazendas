@@ -43,7 +43,18 @@ class MarketSellClickHandler(
                     MarketSellPriceConversation(data)
                 )
                 "post" -> {
+                    val playerProducts = marketManager.getPlayerProducts(
+                        player.uniqueId
+                    )
+
+                    if (marketManager.sellingLimit().toInt() == playerProducts.size) {
+                        player.closeInventory()
+                        player.respond("mercado_vender.limite_a_venda")
+                        return@useReferenceIfPresent
+                    }
+
                     requireNotNull(data.materialId)
+
                     storageManager.withdraw(
                         player.uniqueId, data.materialId, data.amount
                     )

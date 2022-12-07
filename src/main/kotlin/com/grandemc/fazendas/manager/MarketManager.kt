@@ -61,4 +61,8 @@ class MarketManager(
     fun emptyItems(): MarketConfig.EmptyItems {
         return marketConfig.get().emptyItems
     }
+
+    fun sellingLimit(): Short {
+        return marketConfig.get().productLimit
+    }
 }

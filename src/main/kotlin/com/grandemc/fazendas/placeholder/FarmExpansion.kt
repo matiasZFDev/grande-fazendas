@@ -36,6 +36,12 @@ class FarmExpansion(
         if (player == null)
             return null
 
+        if (
+            !playerManager.hasPlayer(player.uniqueId) ||
+            playerManager.player(player.uniqueId).farm() == null
+        )
+            return null
+
         if (params == "ouro") {
             return goldBank.gold(player.uniqueId).toFormat()
         }
@@ -71,7 +77,7 @@ class FarmExpansion(
                 else {
                     val land = landManager.land(player.uniqueId, it.config.id)
 
-                    if (land.isResetting())
+                    if (land.isResetting() && land.cropId() != null)
                         cropsConfig.get().getCrop(
                             land.cropId()!!
                         ).name

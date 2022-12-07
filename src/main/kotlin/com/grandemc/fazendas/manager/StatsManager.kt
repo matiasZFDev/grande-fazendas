@@ -30,7 +30,7 @@ class StatsManager(
         val upgradeBoost = upgradeValue(playerId, FarmUpgradeType.XP_BOOST).toFloat()
         val xpBoost = (boosterBoost + upgradeBoost).let {
             if (it < 1)
-                return 1
+                1f
             else
                 it
         }

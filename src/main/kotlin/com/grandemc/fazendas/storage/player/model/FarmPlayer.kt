@@ -24,7 +24,7 @@ class FarmPlayer(
         this.gold += gold
     }
     fun withdrawGold(gold: Double) {
-        this.gold =- gold
+        this.gold -= gold
     }
     fun booster(): FarmBooster? = booster
     fun setBooster(booster: FarmBooster?) {

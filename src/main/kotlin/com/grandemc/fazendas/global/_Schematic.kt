@@ -1,13 +1,9 @@
 package com.grandemc.fazendas.global
 
-import com.grandemc.fazendas.util.cuboid.Cuboid
-import com.grandemc.fazendas.util.cuboid.FixedCuboid
-import com.sk89q.worldedit.BlockVector
 import com.sk89q.worldedit.Vector
 import com.sk89q.worldedit.bukkit.BukkitWorld
 import com.sk89q.worldedit.extent.clipboard.Clipboard
 import com.sk89q.worldedit.extent.clipboard.io.ClipboardFormat
-import com.sk89q.worldedit.regions.Region
 import org.bukkit.Bukkit
 import org.bukkit.Location
 import org.bukkit.World
@@ -40,19 +36,4 @@ fun Vector.toLocation(world: World): Location {
 
 fun String.findWorld(): World {
     return Bukkit.getWorld(this)
-}
-
-fun Clipboard.toCuboid(origin: Vector, world: World): Cuboid {
-    return FixedCuboid(
-        origin.add(region.minimumPoint).toLocation(world),
-        origin.add(region.maximumPoint).toLocation(world),
-    )
-}
-
-fun Region.min(): Vector {
-    return BlockVector(
-        minOf(minimumPoint.x, maximumPoint.x),
-        minOf(minimumPoint.y, maximumPoint.y),
-        minOf(minimumPoint.z, maximumPoint.z)
-    )
 }

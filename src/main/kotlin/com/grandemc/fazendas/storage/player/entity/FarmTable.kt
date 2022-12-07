@@ -1,8 +1,6 @@
 package com.grandemc.fazendas.storage.player.entity
 
-import com.grandemc.fazendas.global.getCuboid
 import com.grandemc.fazendas.storage.player.model.FarmPlayer
-import com.grandemc.fazendas.util.cuboid.Cuboid
 import com.grandemc.post.external.lib.database.base.FixedTable
 import com.grandemc.post.external.lib.database.base.model.Table
 import com.grandemc.post.external.lib.database.buildColumnTable
@@ -16,8 +14,7 @@ class FarmTable(tableName: String) : FixedTable<FarmPlayer, UUID, FarmTable.Data
     inner class Data(
         val id: Int,
         val level: Short,
-        val xp: Int,
-        val location: Cuboid
+        val xp: Int
     )
 
     override fun tableModel(): Table {
@@ -26,13 +23,6 @@ class FarmTable(tableName: String) : FixedTable<FarmPlayer, UUID, FarmTable.Data
             addColumn("id", "INT NOT NULL", true)
             addColumn("level", "SMALLINT NOT NULL", true)
             addColumn("xp", "INT NOT NULL", true)
-            addColumn("location_world_id", "BINARY(16) NOT NULL")
-            addColumn("location_min_x", "INT NOT NULL")
-            addColumn("location_min_y", "INT NOT NULL")
-            addColumn("location_min_z", "INT NOT NULL")
-            addColumn("location_max_x", "INT NOT NULL")
-            addColumn("location_max_y", "INT NOT NULL")
-            addColumn("location_max_z", "INT NOT NULL")
             primaryKey("owner_id")
         }
     }
@@ -43,16 +33,9 @@ class FarmTable(tableName: String) : FixedTable<FarmPlayer, UUID, FarmTable.Data
         statement.setInt(2, farm.id())
         statement.setShort(3, farm.level())
         statement.setInt(4, farm.xp())
-        statement.setBytes(5, farm.location().min().world.uid.getBytes())
-        statement.setInt(6, farm.location().min().blockX)
-        statement.setInt(7, farm.location().min().blockY)
-        statement.setInt(8, farm.location().min().blockZ)
-        statement.setInt(9, farm.location().max().blockX)
-        statement.setInt(10, farm.location().max().blockY)
-        statement.setInt(11, farm.location().max().blockZ)
-        statement.setInt(12, farm.id())
-        statement.setShort(13, farm.level())
-        statement.setInt(14, farm.xp())
+        statement.setInt(5, farm.id())
+        statement.setShort(6, farm.level())
+        statement.setInt(7, farm.xp())
         return true
     }
 
@@ -61,8 +44,7 @@ class FarmTable(tableName: String) : FixedTable<FarmPlayer, UUID, FarmTable.Data
         data[ownerId] = Data(
             resultSet.getInt("id"),
             resultSet.getShort("level"),
-            resultSet.getInt("xp"),
-            resultSet.getCuboid()
+            resultSet.getInt("xp")
         )
     }
 }

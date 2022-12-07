@@ -3,7 +3,6 @@ package com.grandemc.fazendas.manager
 import com.grandemc.fazendas.config.FarmsConfig
 import com.grandemc.fazendas.config.IslandConfig
 import com.grandemc.fazendas.global.respond
-import com.grandemc.fazendas.global.toCuboid
 import com.grandemc.fazendas.storage.player.model.FarmIndustry
 import com.grandemc.fazendas.storage.player.model.PrivateFarm
 import com.grandemc.fazendas.storage.player.model.QuestMaster
@@ -59,7 +58,6 @@ class IslandGenerationManager(
         val baseSchematic = islandConfig.get().baseSchematic
         val farm = PrivateFarm(
             farmId,
-            baseSchematic.toCuboid(baseLocation, world),
             1,
             0,
             mutableListOf(),

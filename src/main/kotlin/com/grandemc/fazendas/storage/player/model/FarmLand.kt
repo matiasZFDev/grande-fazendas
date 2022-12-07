@@ -1,9 +1,5 @@
 package com.grandemc.fazendas.storage.player.model
 
-import com.grandemc.fazendas.util.cuboid.Cuboid
-import com.grandemc.post.external.lib.global.ApplyType
-import com.grandemc.post.external.lib.global.applyPercentage
-
 class FarmLand(
     private val typeId: Byte,
     private var cropId: Byte?,
@@ -21,9 +17,6 @@ class FarmLand(
     fun xp(): Int = xp
     fun addXp(xp: Int) {
         this.xp += xp
-    }
-    fun setXp(xp: Int) {
-        this.xp = xp
     }
     fun level(): Byte = level
     fun levelUp() {

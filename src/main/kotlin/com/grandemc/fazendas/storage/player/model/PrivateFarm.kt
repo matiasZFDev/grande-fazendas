@@ -1,10 +1,7 @@
 package com.grandemc.fazendas.storage.player.model
 
-import com.grandemc.fazendas.util.cuboid.Cuboid
-
 class PrivateFarm(
     private val id: Int,
-    private val location: Cuboid,
     private var level: Short,
     private var xp: Int,
     private val lands: MutableList<FarmLand>,
@@ -12,7 +9,6 @@ class PrivateFarm(
     private val industry: FarmIndustry
 ) {
     fun id(): Int = id
-    fun location(): Cuboid = location
     fun xp(): Int = xp
     fun addXp(xp: Int) {
         this.xp += xp

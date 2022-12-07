@@ -37,7 +37,7 @@ class MarketProcessor(
             .entries.sortedBy { it.key }
 
         if (categorizedItems.isEmpty())
-            return items.values() + marketManager.emptyItems().categoriesItem
+            return listOf(marketManager.emptyItems().categoriesItem)
 
         val paginatedItems = categorizedItems
             .cut(categoriesPerPage * data.page, categoriesPerPage)

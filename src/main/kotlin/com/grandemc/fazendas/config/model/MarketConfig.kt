@@ -7,6 +7,7 @@ import com.grandemc.post.external.lib.cache.config.model.SlotItem
 import com.grandemc.post.external.lib.global.bukkit.*
 import com.grandemc.post.external.lib.util.CustomConfig
 import org.bukkit.configuration.file.FileConfiguration
+import org.bukkit.inventory.ItemStack
 
 class MarketConfig(customConfig: CustomConfig) : StateConfig<MarketConfig.Config>(
     customConfig, GrandeFazendas.CONTEXT
@@ -34,9 +35,9 @@ class MarketConfig(customConfig: CustomConfig) : StateConfig<MarketConfig.Config
                 getShort("limite_itens_a_venda"),
                 getDouble("taxa"),
                 EmptyItems(
-                    slotItemFromSection(section("vazio.seus_itens")),
-                    slotItemFromSection(section("vazio.categorias")),
-                    slotItemFromSection(section("vazio.produtos"))
+                    slotItemFromSection(section("vazio.seus_itens")).useAndGet(ItemStack::colorMeta),
+                    slotItemFromSection(section("vazio.categorias")).useAndGet(ItemStack::colorMeta),
+                    slotItemFromSection(section("vazio.produtos")).useAndGet(ItemStack::colorMeta)
                 )
             )
         }

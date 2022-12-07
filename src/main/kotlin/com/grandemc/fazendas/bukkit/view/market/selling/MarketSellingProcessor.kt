@@ -29,7 +29,7 @@ class MarketSellingProcessor(
             .getPlayerProducts(player.uniqueId)
 
         if (playerProducts.isEmpty())
-            return baseItems + marketManager.emptyItems().sellerItem
+            return listOf(marketManager.emptyItems().sellerItem)
 
         val marketItems = playerProducts
             .zip(GrandeFazendas.SLOTS_PATTERN)

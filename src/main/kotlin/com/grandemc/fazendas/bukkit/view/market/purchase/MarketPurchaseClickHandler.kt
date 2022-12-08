@@ -78,7 +78,7 @@ class MarketPurchaseClickHandler(
                     }
 
                     product.sellerId.runIfOnline {
-                        player.respond("mercado.produto_comprado_vendedor") {
+                        respond("mercado.produto_comprado_vendedor") {
                             replace(
                                 "{material}" to materialConfig.name,
                                 "{quantia}" to data.product.amount.commaFormat(),

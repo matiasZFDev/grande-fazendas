@@ -135,8 +135,8 @@ mercado_vender:
   preco_setado: '&aO preço foi setado.'
   limite_a_venda: '&cVocê atingiu o máximo de produtos á venda.'
   vendido:
-    - '&6&lFAZENDAS &aVocê postou um produto no mercado!
-    - '
+    - '&6&lFAZENDAS &aVocê postou um produto no mercado!'
+    - ''
     - '    &fInformações da postagem▾'
     - '    &8• &fProduto: {material}'
     - '    &8• &fQuantia: &7{quantia}x'

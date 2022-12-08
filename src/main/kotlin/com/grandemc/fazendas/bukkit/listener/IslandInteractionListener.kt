@@ -94,6 +94,9 @@ class IslandInteractionListener(
         if (event.entity.world.name != islandManager.islandWorld())
             return
 
+        if (event.entity !is Player)
+            return
+
         event.isCancelled = true
 
         if (event.cause == EntityDamageEvent.DamageCause.VOID) {

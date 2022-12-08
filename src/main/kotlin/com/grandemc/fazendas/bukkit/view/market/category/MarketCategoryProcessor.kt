@@ -37,7 +37,10 @@ class MarketCategoryProcessor(
         )
 
         if (categorizedItems.isEmpty())
-            return listOf(marketManager.emptyItems().productsItem)
+            return newItemProcessing(items) {
+                remove("anterior")
+                remove("seguinte")
+            } + marketManager.emptyItems().productsItem
 
         val paginatedItems = categorizedItems.cut(
             productsPerPage * data.page, productsPerPage

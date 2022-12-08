@@ -85,7 +85,7 @@ class ViewRegistry(
         )))
 
         register(MarketView(MarketPackage(
-            pluginManagers.marketManager, configs.market, pluginManagers.storageManager,
+            pluginManagers.marketManager, pluginManagers.storageManager,
             configs.items
         )))
         register(MarketCategoryView(MarketCategoryPackage(

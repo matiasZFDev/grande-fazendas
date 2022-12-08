@@ -2,7 +2,6 @@ package com.grandemc.fazendas.bukkit.view.market.menu
 
 import com.grandemc.fazendas.GrandeFazendas
 import com.grandemc.fazendas.bukkit.view.PageContext
-import com.grandemc.fazendas.config.model.MarketConfig
 import com.grandemc.fazendas.global.cut
 import com.grandemc.fazendas.manager.MarketManager
 import com.grandemc.fazendas.manager.StorageManager
@@ -22,7 +21,6 @@ import org.bukkit.entity.Player
 
 class MarketProcessor(
     private val marketManager: MarketManager,
-    private val marketConfig: MarketConfig,
     private val storageManager: StorageManager,
     private val itemsConfig: ItemsChunk
 ) : MenuItemsProcessor<PageContext>  {
@@ -37,7 +35,10 @@ class MarketProcessor(
             .entries.sortedBy { it.key }
 
         if (categorizedItems.isEmpty())
-            return listOf(marketManager.emptyItems().categoriesItem)
+            return newItemProcessing(items) {
+                remove("anterior")
+                remove("seguinte")
+            } + marketManager.emptyItems().categoriesItem
 
         val paginatedItems = categorizedItems
             .cut(categoriesPerPage * data.page, categoriesPerPage)

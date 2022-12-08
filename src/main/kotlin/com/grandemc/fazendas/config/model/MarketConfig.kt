@@ -23,7 +23,8 @@ class MarketConfig(customConfig: CustomConfig) : StateConfig<MarketConfig.Config
     inner class EmptyItems(
         val sellerItem: SlotItem,
         val categoriesItem: SlotItem,
-        val productsItem: SlotItem
+        val productsItem: SlotItem,
+        val soldItem: SlotItem
     )
 
     override fun fetch(config: FileConfiguration): MarketConfig.Config {
@@ -37,7 +38,8 @@ class MarketConfig(customConfig: CustomConfig) : StateConfig<MarketConfig.Config
                 EmptyItems(
                     slotItemFromSection(section("vazio.seus_itens")).useAndGet(ItemStack::colorMeta),
                     slotItemFromSection(section("vazio.categorias")).useAndGet(ItemStack::colorMeta),
-                    slotItemFromSection(section("vazio.produtos")).useAndGet(ItemStack::colorMeta)
+                    slotItemFromSection(section("vazio.produtos")).useAndGet(ItemStack::colorMeta),
+                    slotItemFromSection(section("vazio.vendidos")).useAndGet(ItemStack::colorMeta),
                 )
             )
         }

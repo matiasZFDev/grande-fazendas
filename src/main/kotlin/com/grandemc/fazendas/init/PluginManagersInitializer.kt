@@ -6,8 +6,10 @@ import com.grandemc.post.external.lib.init.Initializer
 import com.grandemc.fazendas.init.model.PluginManagers
 import com.grandemc.fazendas.manager.*
 import com.grandemc.fazendas.manager.IslandLocationManager
+import com.grandemc.fazendas.manager.controller.MarketSoldItemController
 import com.grandemc.fazendas.manager.task.TaskManagerImpl
 import com.grandemc.fazendas.storage.market.model.MarketItem
+import com.grandemc.fazendas.storage.market.model.MarketSoldItem
 import com.grandemc.fazendas.storage.player.model.FarmPlayer
 import com.grandemc.post.external.lib.database.base.DatabaseService
 import org.bukkit.entity.Player
@@ -17,6 +19,7 @@ import java.util.UUID
 class PluginManagersInitializer(
     private val playerService: DatabaseService<UUID, FarmPlayer>,
     private val marketService: DatabaseService<Int, MarketItem>,
+    private val marketSoldService: DatabaseService<Int, MarketSoldItem>,
     private val plugin: Plugin,
     private val configs: ConfigCache.Configs
 ) : Initializer<PluginManagers> {
@@ -69,7 +72,8 @@ class PluginManagersInitializer(
             QuestManager(configs.quests, farmManager),
             statsManager,
             TaskManagerImpl(plugin),
-            upgradesManager
+            upgradesManager,
+            MarketSoldItemController(marketSoldService)
         )
     }
 }

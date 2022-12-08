@@ -341,3 +341,15 @@ melhoria_maximo:
     - '{<lore>}'
     - ''
     - '&6Nível máximo atingido'
+mercado_produto_vendido:
+  head: 'https://textures.minecraft.net/texture/d177a94e2bd08bbd83944658b34202b69ac36c28a86d298cfcc044ef28b309db'
+  nome: '&6&lV&6enda &6&l#{posicao}'
+  lore:
+    - ''
+    - ' &a✔ &fProduto: {produto}'
+    - ' &a✔ &fQuantia: &7{quantia}'
+    - ' &a✔ &fPreço: &6⛂{preco}'
+    - ' &a✔ &fTaxa: &e{taxa}%'
+    - ' &a✔ &fObtido: &6⛂{obtido}'
+    - ''
+    - '&6Clique para colher o ouro'

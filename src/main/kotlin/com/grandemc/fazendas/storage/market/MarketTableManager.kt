@@ -1,6 +1,7 @@
 package com.grandemc.fazendas.storage.market
 
 import com.grandemc.fazendas.storage.market.entity.MarketItemTable
+import com.grandemc.fazendas.storage.market.entity.MarketSoldItemTable
 import com.grandemc.fazendas.storage.market.model.MarketItem
 import com.grandemc.post.external.lib.database.base.TableManager
 import java.sql.Connection

@@ -4,10 +4,12 @@ import com.grandemc.fazendas.bukkit.event.MarketBuyEvent
 import com.grandemc.fazendas.bukkit.event.MarketSellEvent
 import com.grandemc.fazendas.bukkit.view.MarketCategoryView
 import com.grandemc.fazendas.bukkit.view.MarketSellingView
+import com.grandemc.fazendas.bukkit.view.MarketSoldView
 import com.grandemc.fazendas.global.*
 import com.grandemc.fazendas.manager.GoldBank
 import com.grandemc.fazendas.manager.MarketManager
 import com.grandemc.fazendas.manager.StorageManager
+import com.grandemc.fazendas.manager.controller.MarketSoldItemController
 import com.grandemc.post.external.lib.global.*
 import com.grandemc.post.external.lib.global.bukkit.nms.NBTReference
 import com.grandemc.post.external.lib.global.bukkit.nms.useReferenceIfPresent
@@ -20,6 +22,7 @@ import org.bukkit.inventory.ItemStack
 
 class MarketPurchaseClickHandler(
     private val marketManager: MarketManager,
+    private val marketSoldItemController: MarketSoldItemController,
     private val storageManager: StorageManager,
     private val goldBank: GoldBank
 ) : ViewClickHandler<MarketPurchaseContext> {
@@ -60,8 +63,8 @@ class MarketPurchaseClickHandler(
                         data.product.itemId
                     )
                     marketManager.removeProduct(product.id())
+                    marketSoldItemController.saveItem(product)
                     goldBank.withdraw(player.uniqueId, product.goldPrice)
-                    goldBank.deposit(product.sellerId, goldWithTax)
                     storageManager.deposit(player.uniqueId, product.itemId, product.amount)
 
                     callEvent(MarketBuyEvent(player.uniqueId))
@@ -88,6 +91,7 @@ class MarketPurchaseClickHandler(
                             )
                         }
                         updateView<MarketSellingView>()
+                        updateView<MarketSoldView>()
                     }
                 }
             }

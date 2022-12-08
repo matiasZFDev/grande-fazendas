@@ -6,13 +6,8 @@ conteudo:
     head: 'https://textures.minecraft.net/texture/bfa7dcc32a4332f048efec93ef5466f3440db49c2582f920e6284a54ace3dbe'
     nome: '&a&lC&aompletadas'
     lore:
-      - '&7Visualize todas as'
-      - '&7missoes que você'
-      - '&7vez!'
-      - ''
-      - ' &fMissões: &7{quantia}'
-      - ''
-      - '&aClique para visualizar'
+      - '&7Você completou &f{quantia}x'
+      - '&7missões no total.'
   entrega_fechada:
     slot: 11
     id: 328

@@ -116,3 +116,7 @@ class IslandTopView(viewPackage: ViewPackage<ContextData>) : PackedView<ContextD
 class UpgradesView(viewPackage: ViewPackage<ContextData>) : PackedView<ContextData>(
     viewPackage, GlobalMenuContainerProvider.get()
 )
+
+class MarketSoldView(viewPackage: ViewPackage<ContextData>) : PackedView<ContextData>(
+    viewPackage, GlobalMenuContainerProvider.get()
+)

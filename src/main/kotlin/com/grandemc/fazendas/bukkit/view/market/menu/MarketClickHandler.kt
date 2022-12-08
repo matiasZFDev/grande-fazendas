@@ -27,6 +27,7 @@ class MarketClickHandler : ViewClickHandler<PageContext> {
                     MarketSellContext(null, 1, 100.0)
                 )
                 "selling" -> player.openView(MarketSellingView::class)
+                "sold" -> player.openView(MarketSoldView::class)
             }
         }
         item.useNBTValueIfPresent<NBTTagByte>(

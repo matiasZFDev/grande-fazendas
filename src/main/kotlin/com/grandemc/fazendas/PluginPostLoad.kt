@@ -68,6 +68,7 @@ class PluginPostLoad(
         pluginManagers = PluginManagersInitializer(
             servicesData.playerService,
             servicesData.marketService,
+            servicesData.marketSoldService,
             plugin,
             configCache.configs,
         ).init()

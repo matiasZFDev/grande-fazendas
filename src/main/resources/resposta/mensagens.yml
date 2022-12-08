@@ -112,6 +112,7 @@ mercado:
     - '    &8• &fTaxa: &e%{taxa}'
     - '    &8• &fObtido: &6⛂{preco_taxa}'
     - ''
+    - '&aColete o ouro ganho em /fazenda mercado ➡ vendidos'
   produto_comprado_comprador:
     - '&6&lFAZENDA &aVocê comprou um produto no mercado!'
     - ''
@@ -121,6 +122,11 @@ mercado:
     - '    &8• &fQuantia: &7{quantia}x'
     - '    &8• &fPreço: &6⛂{preco}'
     - ''
+  venda_colhida:
+    _lista:
+      m1: '&6+ ⛂{ouro} (Colheita de venda)'
+      m2:
+        actionbar: '&aColheita de venda &8• &a⬆ &6⛂{ouro}'
 mercado_vender:
   material_setado: '&aO material foi setado.'
   quantia_iniciar:

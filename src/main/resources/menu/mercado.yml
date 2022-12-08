@@ -1,8 +1,18 @@
 titulo: 'Mercado da fazenda'
 linhas: 6
 conteudo:
+  vendidos:
+    slot: 47
+    head: 'https://textures.minecraft.net/texture/6e59f2d3b9e7fb950e8ed792be4920fb7a7a9b934569e445b2b3503fe3ab902'
+    nome: '&e&lV&eendidos'
+    lore:
+      - '&7Confira seus produtos'
+      - '&7vendidos e recolha o'
+      - '&7ouro ganho!'
+      - ''
+      - '&eClique para ver'
   em_venda:
-    slot: 48
+    slot: 51
     head: 'https://textures.minecraft.net/texture/2ab879e1e590041146bc78c018af5877d39e5475eb7db368fcaf2acda373833d'
     nome: '&a&lS&aeus itens'
     lore:
@@ -11,7 +21,7 @@ conteudo:
       - ''
       - '&aClique para gerenciar'
   vender:
-    slot: 50
+    slot: 49
     head: 'https://textures.minecraft.net/texture/a5062e352814833dbca59e953c881cc09ec87b754265aa30120106769a7ef3d2'
     nome: '&6&lV&6ender'
     lore:

@@ -4,7 +4,7 @@ taxa: 5
 vazio:
   seus_itens:
     slot: 13
-    id: 410
+    id: 166
     nome: '&cVazio'
     lore:
       - '&7Você não possui'
@@ -24,3 +24,11 @@ vazio:
       - '&7Não há nenhum'
       - '&7produto dessa'
       - '&7categoría.'
+  vendidos:
+    slot: 22
+    id: 166
+    nome: '&cVazio'
+    lore:
+      - '&7Você não vendeu'
+      - '&7nenhum iten'
+      - '&7ainda.'

@@ -19,7 +19,6 @@ fun newHologramLine(world: World, customName: String = ""): EntityArmorStand {
         this.customName = customName
         customNameVisible = true
         isInvisible = true
-        n(true)
         setGravity(false)
     }
 }

@@ -1,0 +1,45 @@
+titulo: 'Menu da fazenda'
+linhas: 3
+conteudo:
+  mercado:
+    slot: 11
+    head: 'https://textures.minecraft.net/texture/a5062e352814833dbca59e953c881cc09ec87b754265aa30120106769a7ef3d2'
+    nome: '&6&lM&6ercado'
+    lore:
+      - '&7Venda e compre itens'
+      - '&7dos proprios jogadores!'
+      - ''
+      - '&6Clique para ver'
+  fazenda_fora:
+    slot: 13
+    head: 'https://textures.minecraft.net/texture/17980b940af858f910943464ee00359287cb0b5810680b60b89be4210dda0ed1'
+    nome: '&a&lI&alha'
+    lore:
+      - '&7O local da sua'
+      - '&7fazenda!'
+      - ''
+      - ' &8✸ &fNível: &6&l{nivel}'
+      - ' &8✸ &fXP: &a{xp}'
+      - ''
+      - '&aClique para se teleportar'
+  fazenda_dentro:
+    slot: 13
+    head: 'https://textures.minecraft.net/texture/17980b940af858f910943464ee00359287cb0b5810680b60b89be4210dda0ed1'
+    nome: '&e&lI&elha'
+    lore:
+      - '&7O local da sua'
+      - '&7fazenda!'
+      - ''
+      - ' &8✸ &fNível: &6&l{nivel}'
+      - ' &8✸ &fXP: &a{xp}'
+      - ''
+      - '&cClique para sair'
+  plantios:
+    slot: 15
+    head: 'https://textures.minecraft.net/texture/e837f64da8b735139b4b0173e66f6d80b2081c868c6813a20112b8aeca5c7f66'
+    nome: '&a&lP&alantios'
+    lore:
+      - '&7O estado dos seus plantios.'
+      - ''
+      - ' &8✔ {<plantios>}'
+      - ''

@@ -21,7 +21,7 @@ class ConfigInitializer(private val plugin: Plugin) : Initializer<ConfigManager>
         "mercado_categoria", "mercado_vender", "mercado_vender_material",
         "mercado_em_venda", "mercado_comprar", "missoes", "missoes_entrega",
         "missoes_historia", "vender_material", "mestre", "ilha", "top", "melhorias",
-        "mercado_vendidos"
+        "mercado_vendidos", "fazenda"
     ).map { "menu/$it" }
     private fun rootFiles(): List<String> = listOf(
         "database", "enxada", "fertilizante", "industria", "itens", "lootbox",

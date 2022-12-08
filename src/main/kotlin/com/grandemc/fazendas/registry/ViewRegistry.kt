@@ -7,6 +7,7 @@ import com.grandemc.fazendas.bukkit.view.fertilizing.FertilizingPackage
 import com.grandemc.fazendas.bukkit.view.hoe.HoePackage
 import com.grandemc.fazendas.bukkit.view.industry.IndustryPackage
 import com.grandemc.fazendas.bukkit.view.island.IslandPackage
+import com.grandemc.fazendas.bukkit.view.island.menu.IslandMainMenuPackage
 import com.grandemc.fazendas.bukkit.view.island.top.IslandTopPackage
 import com.grandemc.fazendas.bukkit.view.land.LandPackage
 import com.grandemc.fazendas.bukkit.view.land_plant.LandPlantPackage
@@ -35,7 +36,7 @@ import com.grandemc.post.external.lib.view.base.View
 
 class ViewRegistry(
     private val viewManager: ViewManager,
-    private val pluginManagers: PluginManagers,
+    private val managers: PluginManagers,
     private val configs: ConfigCache.Configs,
     private val apis: PluginAPIs,
     private val states: PluginStates
@@ -46,96 +47,100 @@ class ViewRegistry(
 
     fun registerAll() {
         register(LandsView(LandsPackage(
-            configs.lands, configs.farms, pluginManagers.landManager,
-            pluginManagers.goldBank, pluginManagers.storageManager, configs.items,
-            pluginManagers.islandManager
+            configs.lands, configs.farms, managers.landManager,
+            managers.goldBank, managers.storageManager, configs.items,
+            managers.islandManager
         )))
         register(LandView(LandPackage(
-            pluginManagers.landManager, pluginManagers.goldBank, configs.farms,
+            managers.landManager, managers.goldBank, configs.farms,
             configs.fertilizing, configs.materials, configs.island,
-            pluginManagers.islandManager, pluginManagers.landPlantManager,
+            managers.islandManager, managers.landPlantManager,
             configs.crops
         )))
         register(LandPlantView(LandPlantPackage(
-            configs.items, configs.crops, pluginManagers.farmManager,
-            pluginManagers.landPlantManager, pluginManagers.landManager,
-            pluginManagers.islandManager, pluginManagers.statsManager
+            configs.items, configs.crops, managers.farmManager,
+            managers.landPlantManager, managers.landManager,
+            managers.islandManager, managers.statsManager
         )))
         register(FertilizingView(FertilizingPackage(
-            configs.fertilizing, configs.farms, pluginManagers.landManager,
-            configs.items, configs.crops, pluginManagers.statsManager,
-            pluginManagers.islandManager
+            configs.fertilizing, configs.farms, managers.landManager,
+            configs.items, configs.crops, managers.statsManager,
+            managers.islandManager
         )))
         register(HoeView(HoePackage(
-            pluginManagers.playerManager, configs.farmHoe, pluginManagers.goldBank,
-            pluginManagers.farmItemManager
+            managers.playerManager, configs.farmHoe, managers.goldBank,
+            managers.farmItemManager
         )))
         register(IndustryView(IndustryPackage(
-            pluginManagers.industryManager, configs.industry, configs.materials,
-            pluginManagers.storageManager
+            managers.industryManager, configs.industry, configs.materials,
+            managers.storageManager
         )))
         register(StorageView(StoragePackage(
-            pluginManagers.storageManager, configs.materials, configs.items
+            managers.storageManager, configs.materials, configs.items
         )))
         register(CraftSelectView(CraftSelectPackage(
             configs.industry, configs.items, configs.materials
         )))
         register(CraftStartView(CraftStartPackage(
-            pluginManagers.storageManager, configs.industry,
-            pluginManagers.industryManager
+            managers.storageManager, configs.industry,
+            managers.industryManager
         )))
 
         register(MarketView(MarketPackage(
-            pluginManagers.marketManager, pluginManagers.storageManager,
+            managers.marketManager, managers.storageManager,
             configs.items
         )))
         register(MarketCategoryView(MarketCategoryPackage(
-            pluginManagers.marketManager, configs.items, pluginManagers.storageManager
+            managers.marketManager, configs.items, managers.storageManager
         )))
         register(MarketSellView(MarketSellPackage(
-            pluginManagers.storageManager, apis.conversationFactory,
-            pluginManagers.marketManager
+            managers.storageManager, apis.conversationFactory,
+            managers.marketManager
         )))
         register(MarketSellMaterialView(MarketSellMaterialPackage(
-            pluginManagers.storageManager, configs.items
+            managers.storageManager, configs.items
         )))
         register(MarketSellingView(MarketSellingPackage(
-            pluginManagers.marketManager, pluginManagers.storageManager,
+            managers.marketManager, managers.storageManager,
             configs.items
         )))
         register(MarketPurchaseView(MarketPurchasePackage(
-            pluginManagers.marketManager, pluginManagers.storageManager,
-            pluginManagers.goldBank, pluginManagers.marketSoldItemController
+            managers.marketManager, managers.storageManager,
+            managers.goldBank, managers.marketSoldItemController
         )))
 
         register(QuestsView(QuestsPackage(
-            pluginManagers.questManager, pluginManagers.statsManager,
-            configs.quests, pluginManagers.playerManager
+            managers.questManager, managers.statsManager,
+            configs.quests, managers.playerManager
         )))
         register(QuestHandOverView(QuestHandOverPackage(
-            pluginManagers.questManager, pluginManagers.storageManager,
+            managers.questManager, managers.storageManager,
             configs.materials, apis.conversationFactory
         )))
         register(QuestHistoryView(QuestHistoryPackage(
-            pluginManagers.questManager, pluginManagers.farmManager, configs.items
+            managers.questManager, managers.farmManager, configs.items
         )))
         register(MaterialSellView(MaterialSellPackage(
-            pluginManagers.storageManager, apis.conversationFactory,
-            pluginManagers.goldBank, pluginManagers.statsManager
+            managers.storageManager, apis.conversationFactory,
+            managers.goldBank, managers.statsManager
         )))
-        register(MasterView(MasterPackage(pluginManagers.goldBank)))
+        register(MasterView(MasterPackage(managers.goldBank)))
         register(IslandView(IslandPackage(
-            pluginManagers.farmManager, configs.island, pluginManagers.playerManager
+            managers.farmManager, configs.island, managers.playerManager
         )))
         register(IslandTopView(IslandTopPackage(
             states.islandTopState, configs.items
         )))
         register(UpgradesView(UpgradesPackage(
-            pluginManagers.upgradesManager, configs.items
+            managers.upgradesManager, configs.items
         )))
         register(MarketSoldView(MarketSoldPackage(
-            pluginManagers.marketSoldItemController, pluginManagers.marketManager,
-            pluginManagers.storageManager, configs.items, pluginManagers.goldBank
+            managers.marketSoldItemController, managers.marketManager,
+            managers.storageManager, configs.items, managers.goldBank
+        )))
+        register(IslandMainMenuView(IslandMainMenuPackage(
+            managers.farmManager, managers.landManager, configs.island,
+            configs.farms, configs.crops, managers.islandManager
         )))
     }
 }

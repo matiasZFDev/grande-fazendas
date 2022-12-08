@@ -85,6 +85,7 @@ whitelist_comandos:
 plantio_formatos:
   bloqueado: '&cBloqueado'
   inativo: '&cInativo'
+  plantio: '{nome}&7: {estado}'
 evolucao:
   nivel_maximo: 50
   nivel_maximo_xp: '&c∞'

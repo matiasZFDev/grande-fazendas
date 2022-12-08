@@ -3,6 +3,7 @@ package com.grandemc.fazendas.manager
 import com.grandemc.fazendas.config.CropsConfig
 import com.grandemc.fazendas.config.FarmsConfig
 import com.grandemc.fazendas.config.IslandConfig
+import com.grandemc.fazendas.global.respond
 import com.grandemc.fazendas.manager.helper.IslandEntityManager
 import com.grandemc.fazendas.manager.model.IslandSession
 import com.grandemc.post.external.lib.global.bukkit.*
@@ -39,12 +40,14 @@ class IslandManager(
             player.giveItem(farmTool)
         val entities = entityManager.createEntities(player, islandSpawn)
         islandPlayers[player.uniqueId] = IslandSession(entities)
+        player.respond("ilha.teleportado")
     }
 
     fun leaveIsland(player: Player, leaveCommand: Boolean = true) {
         islandPlayers[player.uniqueId]!!.entities().clearAll(player)
         islandPlayers.remove(player.uniqueId)
         player.inventory.removeItemByReference("gfazendas.farm_tool")
+        player.respond("ilha.saida")
         if (leaveCommand)
             player.performCommand(islandConfig.get().leaveCommand)
     }

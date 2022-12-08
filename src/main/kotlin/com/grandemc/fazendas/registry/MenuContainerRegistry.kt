@@ -6,6 +6,7 @@ import com.grandemc.fazendas.bukkit.view.fertilizing.FertilizingMenuContainer
 import com.grandemc.fazendas.bukkit.view.hoe.HoeMenuContainer
 import com.grandemc.fazendas.bukkit.view.industry.IndustryMenuContainer
 import com.grandemc.fazendas.bukkit.view.island.IslandMenuContainer
+import com.grandemc.fazendas.bukkit.view.island.menu.IslandMainMenuContainer
 import com.grandemc.fazendas.bukkit.view.island.top.IslandTopMenuContainer
 import com.grandemc.fazendas.bukkit.view.land.LandMenuContainer
 import com.grandemc.fazendas.bukkit.view.land_plant.LandPlantMenuContainer
@@ -74,5 +75,6 @@ class MenuContainerRegistry(
         register<IslandTopMenuContainer>("top")
         register<UpgradesMenuContainer>("melhorias")
         register<MarketSoldMenuContainer>("mercado_vendidos")
+        register<IslandMainMenuContainer>("fazenda")
     }
 }

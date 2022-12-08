@@ -63,7 +63,8 @@ class IslandConfig(
     )
     inner class LandsFormat(
         val blocked: String,
-        val inactive: String
+        val inactive: String,
+        val land: String
     )
 
     override fun fetch(config: FileConfiguration): Config {
@@ -132,7 +133,8 @@ class IslandConfig(
                 baseSchematicFile.get().asSchematic(getString("mundo")),
                 LandsFormat(
                     config.getString("plantio_formatos.bloqueado").color(),
-                    config.getString("plantio_formatos.inativo").color()
+                    config.getString("plantio_formatos.inativo").color(),
+                    config.getString("plantio_formatos.plantio").color()
                 ),
                 config.stringList("whitelist_comandos").toSet()
             )

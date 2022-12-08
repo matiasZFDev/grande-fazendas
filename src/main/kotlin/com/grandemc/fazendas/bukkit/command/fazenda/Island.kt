@@ -1,5 +1,7 @@
 package com.grandemc.fazendas.bukkit.command.fazenda
 
+import com.grandemc.fazendas.bukkit.view.IslandMainMenuView
+import com.grandemc.fazendas.global.openView
 import com.grandemc.fazendas.global.respond
 import com.grandemc.fazendas.manager.IslandGenerationManager
 import com.grandemc.fazendas.manager.IslandManager
@@ -22,13 +24,6 @@ class Island(
             return
         }
 
-        if (!islandManager.insideIsland(player.uniqueId)) {
-            islandManager.joinIsland(player)
-            player.respond("ilha.teleportado")
-            return
-        }
-
-        islandManager.leaveIsland(player)
-        player.respond("ilha.saida")
+        player.openView(IslandMainMenuView::class)
     }
 }

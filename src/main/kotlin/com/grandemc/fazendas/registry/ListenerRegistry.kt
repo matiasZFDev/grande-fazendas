@@ -34,7 +34,9 @@ class ListenerRegistry(
         ))
         register(FarmHoeMenuOpenListener())
         register(IslandCommandListener(configs.island, managers.islandManager))
+        register(IslandLeaveListener(managers.islandManager))
         register(IslandPlayerTeleportListener(managers.islandManager))
+        register(BoosterConsumeListener(managers.playerManager))
         questListeners()
     }
 
@@ -50,6 +52,5 @@ class ListenerRegistry(
         register(MarketSellListener(managers.questManager))
         register(MarketBuyListener(managers.questManager))
         register(MaterialHandOverListener(managers.questManager))
-        register(BoosterConsumeListener(managers.playerManager))
     }
 }

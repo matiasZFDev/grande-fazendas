@@ -13,6 +13,9 @@ class IslandPlayerTeleportListener(
         if (!islandManager.insideIsland(event.player.uniqueId))
             return
 
+        if (event.cause == PlayerTeleportEvent.TeleportCause.END_PORTAL)
+            return
+
         event.isCancelled = true
     }
 }

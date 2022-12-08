@@ -63,4 +63,8 @@ class IslandManager(
             session(uniqueId).entities().updateHologram(this, landId)
         }
     }
+
+    fun islandWorld(): String {
+        return islandConfig.get().worldName
+    }
 }

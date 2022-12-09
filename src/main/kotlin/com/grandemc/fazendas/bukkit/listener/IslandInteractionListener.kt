@@ -11,6 +11,7 @@ import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.event.block.BlockPlaceEvent
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.entity.EntityDamageEvent
+import org.bukkit.event.entity.ItemSpawnEvent
 import org.bukkit.event.hanging.HangingBreakEvent
 import org.bukkit.event.hanging.HangingPlaceEvent
 import org.bukkit.event.player.PlayerArmorStandManipulateEvent
@@ -24,6 +25,14 @@ class IslandInteractionListener(
     private val islandManager: IslandManager,
     private val locationManager: IslandLocationManager
 ) : Listener {
+    @EventHandler
+    fun onItemSpawn(event: ItemSpawnEvent) {
+        if (event.entity.world.name != islandManager.islandWorld())
+            return
+
+        event.isCancelled = true
+    }
+
     @EventHandler
     fun onBreak(event: BlockBreakEvent) {
         if (event.player.hasPermission("grandemc.bypass"))

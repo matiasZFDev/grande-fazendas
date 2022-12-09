@@ -121,6 +121,9 @@ class IslandInteractionListener(
 
     @EventHandler
     fun onDamage(event: EntityDamageByEntityEvent) {
+        if (event.entity.world.name != islandManager.islandWorld())
+            return
+
         if (event.damager is Player) {
             if (islandManager.insideIsland(event.damager.uniqueId)) {
                 event.isCancelled = true
@@ -129,7 +132,7 @@ class IslandInteractionListener(
         }
 
         if (event.entity is Player) {
-            if (!islandManager.insideIsland(event.entity.uniqueId)) {
+            if (islandManager.insideIsland(event.entity.uniqueId)) {
                 event.isCancelled = true
                 return
             }

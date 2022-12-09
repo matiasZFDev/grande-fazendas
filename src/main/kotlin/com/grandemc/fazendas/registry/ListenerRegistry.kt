@@ -52,5 +52,6 @@ class ListenerRegistry(
         register(MarketSellListener(managers.questManager))
         register(MarketBuyListener(managers.questManager))
         register(MaterialHandOverListener(managers.questManager))
+        register(IslandDropListener(managers.islandManager))
     }
 }

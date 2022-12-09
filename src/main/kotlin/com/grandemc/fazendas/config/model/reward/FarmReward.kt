@@ -6,5 +6,4 @@ import org.bukkit.inventory.ItemStack
 class FarmReward(
     override val item: ItemStack?,
     override val data: Boolean? = null
-) : GenericReward<Boolean?> {
-}
+) : GenericReward<Boolean?>

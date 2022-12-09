@@ -49,6 +49,7 @@ conteudo:
   atual_ativa:
     slot: 13
     id: 340
+    glow: true
     nome: '&a&lM&aissão!'
     lore:
       - '&7Complete missões e'
@@ -68,6 +69,7 @@ conteudo:
   atual_completa:
     slot: 13
     id: 340
+    glow: true
     nome: '&a&lM&aissão!'
     lore:
       - '&7Complete missões e'

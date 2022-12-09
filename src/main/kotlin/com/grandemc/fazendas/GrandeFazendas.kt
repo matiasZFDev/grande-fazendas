@@ -20,6 +20,7 @@ class GrandeFazendas : GrandePlugin() {
     private lateinit var databaseManager: DatabaseManager
 
     companion object {
+        val REWARDS_KEY: String = "recompensas"
         val DESC_MID_SLOTS_PATTERN: List<Int> = listOf(
             10,11,12,13,14,15,16,21,22,23
         )

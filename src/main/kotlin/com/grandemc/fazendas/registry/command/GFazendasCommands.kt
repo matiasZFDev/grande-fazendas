@@ -36,6 +36,7 @@ class GFazendasCommands(
                 module("darfertilizante", GiveFertilizing(farmItemManager))
                 module("darlootbox", GiveLootBox(farmItemManager))
                 module("resetardiarias", ResetDailyQuests(playerManager))
+                module("recompensas", Rewards())
             }
         }
     }

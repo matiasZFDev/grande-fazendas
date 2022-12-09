@@ -45,8 +45,7 @@ plantio:
   crescido: '&6A plantação "{plantacao}&6" cresceu em um plantio!'
   coletada:
     actionbar: '&2☘ &f+1 &e{plantacao} &8● &a+{xp} &lXP'
-  replantado:
-    actionbar: '&a&lEBA! &aO que aconteceu? não quebrou esse bagui...'
+  replantado: '&a&lEBA! &aO que aconteceu? não quebrou esse bagui...'
   lootbox:
     titulo: '&6&lFAZENDA'
     subtitulo: '&aVocê achou uma {lootbox}&a!'

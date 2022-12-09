@@ -23,6 +23,8 @@ import com.grandemc.fazendas.bukkit.view.master.MasterPackage
 import com.grandemc.fazendas.bukkit.view.quests.hand_over.QuestHandOverPackage
 import com.grandemc.fazendas.bukkit.view.quests.history.QuestHistoryPackage
 import com.grandemc.fazendas.bukkit.view.quests.menu.QuestsPackage
+import com.grandemc.fazendas.bukkit.view.reward.RewardEditView
+import com.grandemc.fazendas.bukkit.view.reward.RewardsView
 import com.grandemc.fazendas.bukkit.view.sell.MaterialSellPackage
 import com.grandemc.fazendas.bukkit.view.storage.StoragePackage
 import com.grandemc.fazendas.bukkit.view.upgrades.UpgradesPackage
@@ -142,5 +144,7 @@ class ViewRegistry(
             managers.farmManager, managers.landManager, configs.island,
             configs.farms, configs.crops, managers.islandManager
         )))
+        register(RewardsView(configs.rewards.get()))
+        register(RewardEditView(configs.rewards.get()))
     }
 }

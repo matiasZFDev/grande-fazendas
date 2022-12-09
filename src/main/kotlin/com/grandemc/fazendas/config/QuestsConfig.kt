@@ -6,6 +6,7 @@ import com.grandemc.fazendas.config.model.quest.resolve.QuestRewardResolver
 import com.grandemc.fazendas.config.model.quest.type.*
 import com.grandemc.fazendas.global.getRange
 import com.grandemc.fazendas.manager.FarmItemManager
+import com.grandemc.fazendas.manager.StatsManager
 import com.grandemc.fazendas.util.Range
 import com.grandemc.post.external.lib.cache.config.StateConfig
 import com.grandemc.post.external.lib.global.bukkit.getShort
@@ -21,6 +22,7 @@ import org.bukkit.configuration.file.FileConfiguration
 class QuestsConfig(
     customConfig: CustomConfig,
     private val farmItemManager: MutableState<FarmItemManager>,
+    private val statsManager: MutableState<StatsManager>,
     private val cropsConfig: CropsConfig,
     private val materialsConfig: MaterialsConfig,
     private val fertilizingConfig: FertilizingConfig,
@@ -94,7 +96,8 @@ class QuestsConfig(
             )
         }
         val questRewardResolver = QuestRewardResolver(
-            farmItemManager, fertilizingConfig, lootBoxConfig, rewardsConfig, formats
+            farmItemManager, fertilizingConfig, lootBoxConfig, rewardsConfig, formats,
+            statsManager
         )
         val questResolver = QuestResolver(
             questRewardResolver, formats, cropsConfig, materialsConfig

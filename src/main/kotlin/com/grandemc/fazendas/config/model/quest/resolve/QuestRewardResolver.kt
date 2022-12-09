@@ -4,6 +4,7 @@ import com.grandemc.fazendas.config.*
 import com.grandemc.fazendas.config.model.quest.reward.*
 import com.grandemc.fazendas.global.getFloat
 import com.grandemc.fazendas.manager.FarmItemManager
+import com.grandemc.fazendas.manager.StatsManager
 import com.grandemc.post.external.lib.global.bukkit.getByte
 import com.grandemc.post.external.lib.global.bukkit.getShort
 import com.grandemc.post.external.lib.global.bukkit.mappedSection
@@ -16,7 +17,8 @@ class QuestRewardResolver(
     private val fertilizingConfig: FertilizingConfig,
     private val lootBoxConfig: LootBoxConfig,
     private val rewardsConfig: RewardsChunk<Boolean?>,
-    private val formats: QuestsConfig.RewardsFormat
+    private val formats: QuestsConfig.RewardsFormat,
+    private val statsManager: MutableState<StatsManager>
 ) {
     fun resolve(section: ConfigurationSection): QuestReward {
         if (!section.contains("tipo")) {
@@ -32,7 +34,8 @@ class QuestRewardResolver(
         return when (section.getString("tipo")) {
             "xp" -> XpReward(
                 section.getInt("quantia"),
-                formats.xp
+                formats.xp,
+                statsManager
             )
             "lootbox" -> LootBoxReward(
                 lootBoxConfig.get().getLootBox(section.getByte("id"))!!,

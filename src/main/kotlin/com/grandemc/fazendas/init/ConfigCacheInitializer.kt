@@ -13,6 +13,7 @@ import com.grandemc.post.external.lib.util.CustomConfig
 import com.grandemc.fazendas.init.model.ConfigCache
 import com.grandemc.fazendas.init.model.ConfigCacheUpdater
 import com.grandemc.fazendas.manager.FarmItemManager
+import com.grandemc.fazendas.manager.StatsManager
 import com.grandemc.fazendas.util.lazyValue
 import com.grandemc.post.external.lib.util.state.MutableState
 import com.grandemc.post.external.util.reward.base.config.chunk.BaseRewardsChunk
@@ -24,7 +25,8 @@ class ConfigCacheInitializer(
     private val configManager: ConfigManager,
     private val menuContainerManager: MenuContainerManager,
     private val context: String,
-    private val farmItemManager: MutableState<FarmItemManager>
+    private val farmItemManager: MutableState<FarmItemManager>,
+    private val statsManager: MutableState<StatsManager>
 ) : Initializer<ConfigCache> {
     override fun init(): ConfigCache {
         val chunks = chunks()
@@ -93,6 +95,7 @@ class ConfigCacheInitializer(
             QuestsConfig(
                 config("missoes"),
                 farmItemManager,
+                statsManager,
                 cropsConfig,
                 materialsConfig,
                 fertilizingConfig,

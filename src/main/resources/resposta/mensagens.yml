@@ -185,8 +185,10 @@ missao:
   completada: '&aMissão completada!'
   completada_xp:
     actionbar: '&2☘ &aMissão completada &8● &a+{xp} &lXP'
+  recompensa_xp:
+    actionbar: '&2☘ &aRecompensa missão &8● &a+{xp} &lXP'
   iniciada: '&aUma missão foi iniciada.'
   diarias_feitas: '&eVocê completou todas as suas missões diarias!'
 missao_historia:
   completada: '&aMissão da historia completada!'
-  iniciada: '&cMissaõ de historia iniciada.'
+  iniciada: '&aMissaõ de historia iniciada.'

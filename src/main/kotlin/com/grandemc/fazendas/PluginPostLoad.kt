@@ -5,6 +5,7 @@ import com.grandemc.post.external.lib.manager.database.DatabaseManager
 import com.grandemc.fazendas.init.*
 import com.grandemc.fazendas.init.model.*
 import com.grandemc.fazendas.manager.FarmItemManager
+import com.grandemc.fazendas.manager.StatsManager
 import com.grandemc.fazendas.placeholder.FarmExpansion
 import com.grandemc.fazendas.provider.*
 import com.grandemc.fazendas.registry.*
@@ -27,11 +28,12 @@ class PluginPostLoad(
 
     override fun run() {
         val farmItemManagerState = LateMutableState<FarmItemManager>()
+        val statsManagerState = LateMutableState<StatsManager>()
         initAPIs()
         guiManagers = GuiManagersInitializer().init()
         configCache = ConfigCacheInitializer(
             plugin, configManager, guiManagers.menuContainerManager, context,
-            farmItemManagerState
+            farmItemManagerState, statsManagerState
         ).init()
         initProviders()
         initPluginManagers()

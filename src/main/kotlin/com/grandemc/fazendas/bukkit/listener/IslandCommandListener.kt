@@ -13,6 +13,9 @@ class IslandCommandListener(
 ) : Listener {
     @EventHandler
     fun onCommand(event: PlayerCommandPreprocessEvent) {
+        if (event.player.hasPermission("grandemc.bypass"))
+            return
+
         if (!islandManager.insideIsland(event.player.uniqueId))
             return
 

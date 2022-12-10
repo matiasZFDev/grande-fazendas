@@ -15,13 +15,15 @@ class IslandManager(
     private val locationManager: IslandLocationManager,
     private val islandConfig: IslandConfig,
     private val farmItemManager: FarmItemManager,
+    farmManager: FarmManager,
     farmsConfig: FarmsConfig,
     landManager: LandManager,
     cropsConfig: CropsConfig
 ) {
     private val islandPlayers: MutableMap<UUID, IslandSession> = mutableMapOf()
     private val entityManager: IslandEntityManager = IslandEntityManager(
-        locationManager, islandConfig, farmsConfig, landManager, cropsConfig
+        locationManager, islandConfig, farmsConfig, landManager, farmManager,
+        cropsConfig
     )
 
     fun insideIsland(playerId: UUID): Boolean {

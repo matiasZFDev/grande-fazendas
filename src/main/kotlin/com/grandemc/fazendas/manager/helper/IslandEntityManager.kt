@@ -6,6 +6,7 @@ import com.grandemc.fazendas.config.IslandConfig
 import com.grandemc.fazendas.global.Hologram
 import com.grandemc.fazendas.global.add
 import com.grandemc.fazendas.global.prepareHologram
+import com.grandemc.fazendas.manager.FarmManager
 import com.grandemc.fazendas.manager.IslandLocationManager
 import com.grandemc.fazendas.manager.LandManager
 import com.grandemc.fazendas.manager.model.IslandEntities
@@ -24,12 +25,14 @@ import net.citizensnpcs.api.trait.Trait
 import org.bukkit.Location
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Player
+import java.util.*
 
 class IslandEntityManager(
     private val locationManager: IslandLocationManager,
     private val islandConfig: IslandConfig,
     private val farmsConfig: FarmsConfig,
     private val landManager: LandManager,
+    private val farmManager: FarmManager,
     private val cropsConfig: CropsConfig
 ) {
     private val npcRegistry = CitizensAPI.createAnonymousNPCRegistry(MemoryNPCDataStore())
@@ -45,9 +48,12 @@ class IslandEntityManager(
     private fun createNPC(
         configNPC: IslandConfig.IslandNPC,
         origin: Location,
+        id: Int,
         trait: Trait? = null
     ): NPC {
-        val npc = npcRegistry.createNPC(EntityType.PLAYER, configNPC.name)
+        val npc = npcRegistry.createNPC(
+            EntityType.PLAYER, UUID.randomUUID(), id, configNPC.name
+        )
         val npcLocation = origin.add(configNPC.position)
         npc.spawn(npcLocation)
         npc.data().setPersistent(NPC.NAMEPLATE_VISIBLE_METADATA, false)
@@ -67,6 +73,7 @@ class IslandEntityManager(
     }
 
     fun createEntities(player: Player, origin: Location): IslandEntities {
+        val id = farmManager.farm(player.uniqueId).id()
         val npcs = islandConfig.get().islandNpcs
         val entities = IslandEntities(listOf(
                 createHologramNPC(player, npcs.terrains, origin),
@@ -93,9 +100,9 @@ class IslandEntityManager(
                 cropsConfig
             ),
             listOf(
-                createNPC(npcs.terrains, origin, LandsTrait()),
-                createNPC(npcs.industry, origin, IndustryTrait()),
-                createNPC(npcs.master, origin, MasterTrait())
+                createNPC(npcs.terrains, origin, 1000 + (id * 3) + 1, LandsTrait()),
+                createNPC(npcs.industry, origin, 1000 + (id * 3) + 2, IndustryTrait()),
+                createNPC(npcs.master, origin, 1000 + (id * 3) + 3, MasterTrait())
             )
         )
         farmsConfig.get().farms.forEach {

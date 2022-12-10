@@ -39,7 +39,7 @@ class PluginManagersInitializer(
         )
         val islandManager = IslandManager(
             playerManager, locationManager, configs.island, farmItemManager,
-            configs.farms, landManager, configs.crops
+            farmManager, configs.farms, landManager, configs.crops
         )
         val successGeneration: (Player?) -> Unit = { player: Player? ->
             player.respond("ilha.criada")

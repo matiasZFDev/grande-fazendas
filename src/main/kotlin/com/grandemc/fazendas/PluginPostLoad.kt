@@ -38,6 +38,7 @@ class PluginPostLoad(
         initProviders()
         initPluginManagers()
         farmItemManagerState.change(pluginManagers.farmItemManager)
+        statsManagerState.change(pluginManagers.statsManager)
         initFactories()
         initStates()
         registerViews()

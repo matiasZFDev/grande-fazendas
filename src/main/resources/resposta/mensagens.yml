@@ -191,3 +191,7 @@ missao:
 missao_historia:
   completada: '&aMissão da historia completada!'
   iniciada: '&aMissaõ de historia iniciada.'
+darouro:
+  argumentos_invalidos: '&cDigite /gfazendas darxp <jogador> <xp>'
+  enviado: '&eForam enviados &6⛂{ouro} &epro jogador &6{jogador}&e.'
+  recebido: '&eVocê recebeu &6⛂{ouro} &eouros.'

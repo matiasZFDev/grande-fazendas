@@ -20,7 +20,8 @@ class CommandRegistry(
     private val islandGenerationManager: IslandGenerationManager,
     private val farmItemManager: FarmItemManager,
     private val playerManager: PlayerManager,
-    private val landManager: LandManager
+    private val landManager: LandManager,
+    private val goldBank: GoldBank
 ) {
     fun registerAll() {
         factories()
@@ -38,7 +39,7 @@ class CommandRegistry(
 
     private fun gfazendas(): Factory<CommandCompound> = GFazendasCommands(
         plugin, configManager, configCacheUpdater, databaseManager, farmItemManager,
-        playerManager
+        playerManager, goldBank
     )
 
     private fun xfazendas(): Factory<CommandCompound> = XFazendasCommands(

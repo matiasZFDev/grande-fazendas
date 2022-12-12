@@ -125,7 +125,7 @@ class PluginPostLoad(
             plugin, configManager, configCache.updater, databaseManager,
             pluginManagers.islandManager, pluginManagers.islandGenerationManager,
             pluginManagers.farmItemManager, pluginManagers.playerManager,
-            pluginManagers.landManager
+            pluginManagers.landManager, pluginManagers.goldBank
         ).registerAll()
     }
 }

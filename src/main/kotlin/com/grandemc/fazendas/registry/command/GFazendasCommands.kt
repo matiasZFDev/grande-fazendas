@@ -9,6 +9,7 @@ import com.grandemc.post.external.lib.manager.database.DatabaseManager
 import com.grandemc.fazendas.bukkit.command.*
 import com.grandemc.fazendas.bukkit.command.gfazendas.*
 import com.grandemc.fazendas.manager.FarmItemManager
+import com.grandemc.fazendas.manager.GoldBank
 import com.grandemc.fazendas.manager.PlayerManager
 import com.grandemc.fazendas.provider.GlobalMessagesProvider
 import org.bukkit.plugin.java.JavaPlugin
@@ -19,7 +20,8 @@ class GFazendasCommands(
     private val configCacheUpdater: Updatable,
     private val databaseManager: DatabaseManager,
     private val farmItemManager: FarmItemManager,
-    private val playerManager: PlayerManager
+    private val playerManager: PlayerManager,
+    private val goldBank: GoldBank
 ) : Factory<CommandCompound> {
     override fun create(): CommandCompound {
         return buildCommand(plugin, GlobalMessagesProvider.get()) {
@@ -37,6 +39,7 @@ class GFazendasCommands(
                 module("darlootbox", GiveLootBox(farmItemManager))
                 module("resetardiarias", ResetDailyQuests(playerManager))
                 module("recompensas", Rewards())
+                module("darouro", GiveGold(goldBank))
             }
         }
     }

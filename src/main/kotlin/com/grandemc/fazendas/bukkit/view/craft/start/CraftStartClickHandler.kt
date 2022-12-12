@@ -31,7 +31,7 @@ class CraftStartClickHandler(
                     }
 
                     val recipe = industryConfig.get().getById(data.recipeId)
-                    val recipeName = storageManager.materialData(recipe.id).name
+                    val recipeName = storageManager.materialData(recipe.materialId).name
                     recipe.items.forEach { requiredItem ->
                         val materialId = storageManager.materialId(
                             requiredItem.name

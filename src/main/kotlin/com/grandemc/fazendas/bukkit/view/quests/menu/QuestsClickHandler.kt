@@ -53,8 +53,6 @@ class QuestsClickHandler(
                         return@useReferenceIfPresent
                     }
 
-                    master.useDailyQuests()
-
                     questsConfig.get().dailyQuests()
                         .filter { level ->
                             level.islandLevelRange.isInside(
@@ -71,6 +69,8 @@ class QuestsClickHandler(
                                 player.respond("geral.error")
                                 return@useReferenceIfPresent
                             }
+
+                            master.useDailyQuests()
 
                             val farmQuest = FarmQuest(
                                 quest.id,

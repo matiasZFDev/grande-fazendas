@@ -36,15 +36,15 @@ class FarmExpansion(
         if (player == null)
             return null
 
+        if (params == "ouro") {
+            return goldBank.gold(player.uniqueId).toFormat()
+        }
+
         if (
             !playerManager.hasPlayer(player.uniqueId) ||
             playerManager.player(player.uniqueId).farm() == null
         )
             return null
-
-        if (params == "ouro") {
-            return goldBank.gold(player.uniqueId).toFormat()
-        }
 
         if (params == "nivel") {
             return playerManager.player(player.uniqueId).farm()!!.level().toString()

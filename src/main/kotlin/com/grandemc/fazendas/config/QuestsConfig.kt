@@ -52,6 +52,9 @@ class QuestsConfig(
                 "Missão #$id não existe."
             )
         }
+        fun hasQuest(id: Short): Boolean {
+            return quests.contains(id)
+        }
 
         fun history(): QuestsConfig.QuestHistory {
             return questHistory

@@ -195,3 +195,11 @@ darouro:
   argumentos_invalidos: '&cDigite /gfazendas darxp <jogador> <xp>'
   enviado: '&eForam enviados &6⛂{ouro} &epro jogador &6{jogador}&e.'
   recebido: '&eVocê recebeu &6⛂{ouro} &eouros.'
+setar_missao:
+  argumentos_invalidos: '&cDigite /gfazendas setarmissao <jogador> <id>'
+  jogador_farm: '&cO jogador não possui farm.'
+  setada: '&aMissão setada com sucesso.'
+acabar_missao:
+  argumentos_invalidos: '&cDigite /gfazendas acabarmissao <jogador>'
+  sem: '&cO jogador não está fazendo nenhuma missão.'
+  acabada: '&aMissão acabada com sucesso.'

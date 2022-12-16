@@ -11,6 +11,7 @@ import com.grandemc.fazendas.bukkit.command.gfazendas.*
 import com.grandemc.fazendas.manager.FarmItemManager
 import com.grandemc.fazendas.manager.GoldBank
 import com.grandemc.fazendas.manager.PlayerManager
+import com.grandemc.fazendas.manager.QuestManager
 import com.grandemc.fazendas.provider.GlobalMessagesProvider
 import org.bukkit.plugin.java.JavaPlugin
 
@@ -21,7 +22,8 @@ class GFazendasCommands(
     private val databaseManager: DatabaseManager,
     private val farmItemManager: FarmItemManager,
     private val playerManager: PlayerManager,
-    private val goldBank: GoldBank
+    private val goldBank: GoldBank,
+    private val questManager: QuestManager
 ) : Factory<CommandCompound> {
     override fun create(): CommandCompound {
         return buildCommand(plugin, GlobalMessagesProvider.get()) {
@@ -40,6 +42,8 @@ class GFazendasCommands(
                 module("resetardiarias", ResetDailyQuests(playerManager))
                 module("recompensas", Rewards())
                 module("darouro", GiveGold(goldBank))
+                module("setarmissao", SetQuest(questManager, playerManager))
+                module("acabarmissao", FinishQuest(questManager, playerManager))
             }
         }
     }

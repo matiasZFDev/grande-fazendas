@@ -9,7 +9,7 @@ import java.util.UUID
 
 class QuestManager(
     private val questsConfig: QuestsConfig,
-    private val farmManager: FarmManager
+    private val farmManager: FarmManager,
 ) {
     fun currentQuest(playerId: UUID): FarmQuest? {
         return master(playerId).current()
@@ -51,5 +51,9 @@ class QuestManager(
 
     fun questDoneXp(): Int {
         return questsConfig.get().xp()
+    }
+
+    fun hasQuest(id: Short): Boolean {
+        return questsConfig.get().hasQuest(id)
     }
 }
